@@ -57,9 +57,17 @@ const OnboardingIntake: React.FC = () => {
         };
 
         try {
+            // Use URLSearchParams for x-www-form-urlencoded data to work better with no-cors if needed, 
+            // but Airtable webhooks generally accept JSON. However, 'no-cors' mode makes the response opaque 
+            // and restricts headers. To trigger the webhook reliably from a browser without a proxy,
+            // we try 'no-cors'. Note: We won't be able to read the response status.
+
             await fetch(WEBHOOK_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                mode: 'no-cors', // IMPORTANT: Bypasses CORS, but response is opaque
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify(payload),
             });
             navigate('/onboarding/booking');
