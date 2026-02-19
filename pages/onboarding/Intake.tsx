@@ -5,7 +5,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import OnboardingHeader from '../../components/OnboardingHeader';
 
-const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK';
+const WEBHOOK_URL = 'https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wflx6fAEx7njnHymn/wtrm7DaCjHnOQnVrd';
 
 const OnboardingIntake: React.FC = () => {
     const navigate = useNavigate();
@@ -42,6 +42,7 @@ const OnboardingIntake: React.FC = () => {
 
         const payload = {
             source: 'onboarding_intake',
+            submitted_at: new Date().toISOString(),
             company_name: formData.businessName,
             website: formData.website,
             business_type: formData.businessType,
@@ -53,7 +54,6 @@ const OnboardingIntake: React.FC = () => {
             tasks_to_delegate: formData.tasksToDelegate,
             hours_per_week: formData.hoursPerWeek,
             start_timeline: formData.startTimeline,
-            // Removed: employee_count, current_crm, tools_used, revenue_goal, success_in_90_days
         };
 
         try {
