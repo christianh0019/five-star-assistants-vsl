@@ -5,7 +5,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import OnboardingHeader from '../../components/OnboardingHeader';
 
-const WEBHOOK_URL = 'https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wflx6fAEx7njnHymn/wtrm7DaCjHnOQnVrd';
+
 
 const OnboardingIntake: React.FC = () => {
     const navigate = useNavigate();
@@ -57,14 +57,9 @@ const OnboardingIntake: React.FC = () => {
         };
 
         try {
-            // Use URLSearchParams for x-www-form-urlencoded data to work better with no-cors if needed, 
-            // but Airtable webhooks generally accept JSON. However, 'no-cors' mode makes the response opaque 
-            // and restricts headers. To trigger the webhook reliably from a browser without a proxy,
-            // we try 'no-cors'. Note: We won't be able to read the response status.
-
-            await fetch(WEBHOOK_URL, {
+            // Use local Vercel API proxy to avoid CORS issues
+            await fetch('/api/submit-intake', {
                 method: 'POST',
-                mode: 'no-cors', // IMPORTANT: Bypasses CORS, but response is opaque
                 headers: {
                     'Content-Type': 'application/json',
                 },
