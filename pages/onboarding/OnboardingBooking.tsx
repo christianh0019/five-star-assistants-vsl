@@ -6,7 +6,7 @@ const OnboardingBooking: React.FC = () => {
     const navigate = useNavigate();
 
     // Replace with the onboarding call calendar ID when available
-    const CALENDAR_ID = 'ONBOARDING_CALENDAR_ID';
+    const CALENDAR_ID = 't7VFI6qpbudnPP57fAcZ';
     const calendarUrl = `https://api.leadconnectorhq.com/widget/booking/${CALENDAR_ID}`;
 
     return (
