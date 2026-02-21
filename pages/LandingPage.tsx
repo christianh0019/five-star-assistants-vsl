@@ -8,6 +8,7 @@ import ProcessSection from '../components/ProcessSection';
 import FinalPush from '../components/FinalPush';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
+import ScrollReveal from '../components/ScrollReveal';
 import { useNavigate } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
@@ -28,14 +29,34 @@ const LandingPage: React.FC = () => {
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow">
-                <Hero onOpenSurvey={openSurvey} />
-                <TrustBadges />
-                <WhoWeWorkWithSection />
-                <CapabilitiesSection />
-                <ResultsSection />
-                <ProcessSection />
-                <FinalPush onOpenSurvey={openSurvey} />
+            <main className="flex-grow overflow-x-hidden">
+                <ScrollReveal>
+                    <Hero onOpenSurvey={openSurvey} />
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.2}>
+                    <TrustBadges />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <WhoWeWorkWithSection />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <CapabilitiesSection />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <ResultsSection />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <ProcessSection />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <FinalPush onOpenSurvey={openSurvey} />
+                </ScrollReveal>
             </main>
 
             <Footer />
