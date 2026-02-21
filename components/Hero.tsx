@@ -18,13 +18,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
         </div>
 
         {/* H1 Headline */}
-        <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8 drop-shadow-sm">
-          Get A Trained Virtual Assistant In <span className="text-gold italic">7 Days Or Less</span>
+        <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
+          We'll Recruit And Train Your Perfect Remote Employee Starting at <span className="text-gold italic">Just $6/HR</span>
         </h1>
 
         {/* Sub-headline */}
-        <p className="font-subheading text-navy/70 text-lg md:text-xl font-medium tracking-wide mb-12 max-w-2xl uppercase text-sm">
-          We recruit, train, place, and manage elite virtual assistants so you can scale faster with less stress.
+        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wide mb-12 max-w-2xl">
+          And if you don't love them, you don't pay or we'll replace them at no cost.
         </p>
 
         {/* Primary CTA */}
