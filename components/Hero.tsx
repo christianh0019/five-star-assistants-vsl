@@ -22,14 +22,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
 
         {/* Sub-headline */}
         <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl uppercase">
-          And if you don't love them, <strong className="font-bold text-navy">you don't pay or we'll replace them at no cost.</strong>
+          And if you don't love them, <span className="text-navy">you don't pay or we'll replace them at no cost.</span>
         </p>
 
         {/* Primary CTA */}
         <Button
           onClick={onOpenSurvey}
           variant="primary"
-          className="w-full md:w-auto min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+          className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
         >
           Book A Discovery Call
         </Button>
