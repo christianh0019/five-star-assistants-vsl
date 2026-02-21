@@ -29,7 +29,7 @@ const LandingPage: React.FC = () => {
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow overflow-x-hidden">
+            <main className="flex-grow">
                 <ScrollReveal>
                     <Hero onOpenSurvey={openSurvey} />
                 </ScrollReveal>

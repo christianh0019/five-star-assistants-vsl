@@ -1,5 +1,5 @@
-import React, { ReactNode, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 interface ScrollRevealProps {
     children: ReactNode;
@@ -8,17 +8,14 @@ interface ScrollRevealProps {
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', delay = 0 }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-
     return (
         <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1], // Custom subtle easing (out-expo style)
+                duration: 0.7,
+                ease: [0.21, 1.11, 0.81, 0.99], // Spring-like feel without being too bouncy
                 delay: delay
             }}
             className={className}
