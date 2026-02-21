@@ -25,7 +25,7 @@ const ProcessSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-offwhite py-24 px-4">
+    <section className="bg-white py-24 md:py-32 px-4 border-b border-gray-100">
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-20">

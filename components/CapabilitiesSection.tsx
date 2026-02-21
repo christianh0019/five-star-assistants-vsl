@@ -4,7 +4,7 @@ import { Target, Search, Users, Sparkles } from 'lucide-react';
 const CapabilitiesSection: React.FC = () => {
 
   return (
-    <section id="capabilities" className="bg-white py-24 md:py-32 px-4 border-b border-gray-50 relative overflow-hidden">
+    <section id="capabilities" className="bg-offwhite py-24 md:py-32 px-4 border-b border-gray-100 relative overflow-hidden">
       {/* Soft decorative background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gold/5 blur-[120px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-navy/5 blur-[150px] rounded-full pointer-events-none"></div>

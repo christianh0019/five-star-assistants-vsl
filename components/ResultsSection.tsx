@@ -21,8 +21,8 @@ const ResultsSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mb-32 relative z-10">
 
           {/* Stat 1: Payroll */}
-          <div className="flex flex-col items-center text-center group">
-            <div className="w-20 h-20 bg-navy/5 rounded-2xl mb-8 flex items-center justify-center group-hover:bg-navy transition-colors duration-500 transform group-hover:scale-110">
+          <div className="bg-gray-50 p-10 md:p-12 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div className="w-20 h-20 bg-white rounded-2xl mb-8 flex items-center justify-center shadow-sm group-hover:bg-navy transition-colors duration-500 transform group-hover:scale-110">
               <DollarSign className="w-10 h-10 text-navy group-hover:text-gold transition-colors duration-500" strokeWidth={1.5} />
             </div>
             <h3 className="font-heading text-6xl md:text-7xl font-bold text-navy mb-4 group-hover:text-gold transition-colors duration-300">
@@ -31,14 +31,14 @@ const ResultsSection: React.FC = () => {
             <h4 className="font-heading text-2xl font-bold text-navy mb-4">
               Lower Payroll Costs
             </h4>
-            <p className="font-body text-gray-500 text-lg leading-relaxed max-w-md">
+            <p className="font-body text-gray-500 text-lg leading-relaxed max-w-sm">
               Get elite talent for a fraction of the cost of a domestic hire.
             </p>
           </div>
 
           {/* Stat 2: Time */}
-          <div className="flex flex-col items-center text-center group mt-12 md:mt-0">
-            <div className="w-20 h-20 bg-gold/10 rounded-2xl mb-8 flex items-center justify-center group-hover:bg-gold transition-colors duration-500 transform group-hover:scale-110">
+          <div className="bg-gray-50 p-10 md:p-12 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center text-center group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div className="w-20 h-20 bg-white rounded-2xl mb-8 flex items-center justify-center shadow-sm group-hover:bg-gold transition-colors duration-500 transform group-hover:scale-110">
               <Clock className="w-10 h-10 text-gold group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
             </div>
             <h3 className="font-heading text-6xl md:text-7xl font-bold text-navy mb-4 group-hover:text-gold transition-colors duration-300">
@@ -47,7 +47,7 @@ const ResultsSection: React.FC = () => {
             <h4 className="font-heading text-2xl font-bold text-navy mb-4">
               Hours Reclaimed Per Week
             </h4>
-            <p className="font-body text-gray-500 text-lg leading-relaxed max-w-md">
+            <p className="font-body text-gray-500 text-lg leading-relaxed max-w-sm">
               Stop doing low-leverage tasks. Focus on strategy and growth.
             </p>
           </div>
