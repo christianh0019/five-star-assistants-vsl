@@ -20,16 +20,14 @@ const FinalPush: React.FC<FinalPushProps> = ({ onOpenSurvey }) => {
 
           <div className="relative z-10 flex flex-col items-center">
             <Sparkles className="w-12 h-12 text-gold mb-8 animate-pulse" />
-
             <h2 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-md">
-              Ready to get your <br className="hidden md:block" />
-              <span className="italic font-light text-gold">time back?</span>
+              Ready to cut costs & <br className="hidden md:block" />
+              get your <span className="italic font-light text-gold">time back?</span>
             </h2>
 
             <p className="font-body text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed">
-              Book a free staffing strategy call. We’ll show you exactly what to delegate first and how fast you can scale.
+              Book a free staffing strategy call. We’ll show you how to slash your payroll by 30-50% while scaling faster than ever.
             </p>
-
             <Button
               onClick={onOpenSurvey}
               variant="primary"

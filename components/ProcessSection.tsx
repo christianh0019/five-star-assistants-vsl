@@ -51,7 +51,7 @@ const ProcessSection: React.FC = () => {
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gray-100 group-hover:bg-gold transition-colors duration-500"></div>
 
               {/* Faded Background Number */}
-              <div className="absolute -right-4 -bottom-8 font-heading text-[120px] leading-none text-gray-50 group-hover:text-gold/5 transition-colors duration-500 font-bold z-0 pointer-events-none select-none">
+              <div className="absolute -right-4 -bottom-8 font-heading text-[120px] leading-none text-gray-100 group-hover:text-gold/10 transition-colors duration-500 font-bold z-0 pointer-events-none select-none">
                 {item.step}
               </div>
 
