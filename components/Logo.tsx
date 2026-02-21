@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({ variant = 'dark', className = '' }) => {
       <img
         src={variant === 'light' ? "/logo-white.png" : "/logo.png"}
         alt="Five Star Assistants Logo"
-        className="h-10 md:h-14 w-auto object-contain hover:scale-105 transition-transform duration-300 origin-left"
+        className="h-14 md:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300 origin-left"
       />
 
     </div>
