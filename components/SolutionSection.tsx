@@ -3,7 +3,7 @@ import { CheckCircle, Users, UserPlus, ClipboardCheck, GraduationCap, Rocket, Ba
 
 const SolutionSection: React.FC = () => {
   return (
-    <section className="bg-white py-24 px-4 relative overflow-hidden">
+    <section id="who-we-work-with" className="bg-white py-24 px-4 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-offwhite/50 -z-10"></div>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Play } from 'lucide-react';
 import Button from './Button';
-import Logo from './Logo';
 
 interface HeroProps {
   onOpenSurvey: () => void;
@@ -12,10 +11,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
     <section className="relative pt-4 md:pt-12 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
       <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
 
-        {/* Brand Logo */}
-        <div className="mb-6 md:mb-10 scale-90 md:scale-100 opacity-90">
-          <Logo variant="dark" />
-        </div>
+
 
         {/* H1 Headline */}
         <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">

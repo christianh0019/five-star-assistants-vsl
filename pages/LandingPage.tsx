@@ -11,6 +11,8 @@ import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import { useNavigate } from 'react-router-dom';
 
+import Navbar from '../components/Navbar';
+
 const LandingPage: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
     const navigate = useNavigate();
@@ -26,7 +28,8 @@ const LandingPage: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
-            <main className="flex-grow">
+            <Navbar onOpenSurvey={openSurvey} />
+            <main className="flex-grow pt-20"> {/* Added pt-20 to offset fixed Navbar */}
                 <Hero onOpenSurvey={openSurvey} />
                 <TrustBadges />
                 <ProblemSection />

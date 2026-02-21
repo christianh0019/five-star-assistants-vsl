@@ -14,9 +14,9 @@ const CapabilitiesSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-offwhite py-24 px-4">
+    <section id="capabilities" className="bg-offwhite py-24 px-4">
       <div className="max-w-5xl mx-auto">
-        
+
         <div className="text-center mb-16">
           <h2 className="font-heading text-navy text-3xl md:text-4xl font-bold mb-6">
             What Your Assistant Can Handle
@@ -38,7 +38,7 @@ const CapabilitiesSection: React.FC = () => {
 
         <div className="text-center max-w-3xl mx-auto">
           <p className="font-heading text-2xl md:text-3xl text-navy italic leading-normal">
-            "If it’s repeatable, it can be offloaded. <br/>If it’s specific to your business, we train it."
+            "If it’s repeatable, it can be offloaded. <br />If it’s specific to your business, we train it."
           </p>
         </div>
 

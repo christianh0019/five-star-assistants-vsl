@@ -30,7 +30,7 @@ const ResultsSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white py-24 px-4 border-b border-gray-100 relative overflow-hidden">
+    <section id="results" className="bg-white py-24 px-4 border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-20">
