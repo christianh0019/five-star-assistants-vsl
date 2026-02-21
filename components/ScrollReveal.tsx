@@ -10,11 +10,11 @@ interface ScrollRevealProps {
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', delay = 0 }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{
-                duration: 0.7,
+                duration: 0.8,
                 ease: [0.21, 1.11, 0.81, 0.99], // Spring-like feel without being too bouncy
                 delay: delay
             }}
