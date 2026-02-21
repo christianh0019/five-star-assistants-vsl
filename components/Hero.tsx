@@ -8,7 +8,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
   return (
-    <section className="relative pt-4 md:pt-12 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
+    <section className="relative pt-28 md:pt-36 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
       <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
 
 
@@ -19,8 +19,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
         </h1>
 
         {/* Sub-headline */}
-        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wide mb-12 max-w-2xl">
-          And if you don't love them, you don't pay or we'll replace them at no cost.
+        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl uppercase">
+          And if you don't love them, <strong className="font-bold text-navy">you don't pay or we'll replace them at no cost.</strong>
         </p>
 
         {/* Primary CTA */}

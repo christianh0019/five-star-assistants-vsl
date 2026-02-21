@@ -29,7 +29,7 @@ const LandingPage: React.FC = () => {
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow pt-20"> {/* Added pt-20 to offset fixed Navbar */}
+            <main className="flex-grow">
                 <Hero onOpenSurvey={openSurvey} />
                 <TrustBadges />
                 <ProblemSection />
