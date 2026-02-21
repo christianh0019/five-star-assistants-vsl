@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import TrustBadges from '../components/TrustBadges';
-import ProblemSection from '../components/ProblemSection';
-import SolutionSection from '../components/SolutionSection';
+import WhoWeWorkWithSection from '../components/WhoWeWorkWithSection';
 import CapabilitiesSection from '../components/CapabilitiesSection';
 import ResultsSection from '../components/ResultsSection';
 import ProcessSection from '../components/ProcessSection';
@@ -32,8 +31,7 @@ const LandingPage: React.FC = () => {
             <main className="flex-grow">
                 <Hero onOpenSurvey={openSurvey} />
                 <TrustBadges />
-                <ProblemSection />
-                <SolutionSection />
+                <WhoWeWorkWithSection />
                 <CapabilitiesSection />
                 <ResultsSection />
                 <ProcessSection />
