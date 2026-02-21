@@ -74,6 +74,7 @@ const CapabilitiesSection: React.FC = () => {
                   { role: "Bilingual Inbound Sales Representative", type: "Sales" },
                   { role: "Real Estate Cold Calling Specialist", type: "Outreach" },
                   { role: "E-Commerce Customer Support Lead", type: "Operations" },
+                  { role: "Hair Salon Receptionist", type: "Admin" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-gold/50 hover:shadow-md transition-all group">
                     <span className="font-body text-navy font-semibold text-sm md:text-base">{item.role}</span>
@@ -84,14 +85,6 @@ const CapabilitiesSection: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-10 pt-8 border-t border-gray-100 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy text-white mb-4 shadow-lg mx-auto">
-                  <Users className="w-6 h-6" />
-                </div>
-                <p className="font-heading text-xl text-navy italic">
-                  "You name the software and the outcome.<br />We deliver the person."
-                </p>
-              </div>
             </div>
           </div>
 
