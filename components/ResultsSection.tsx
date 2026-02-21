@@ -26,7 +26,7 @@ const ResultsSection: React.FC = () => {
               <DollarSign className="w-10 h-10 text-navy group-hover:text-gold transition-colors duration-500" strokeWidth={1.5} />
             </div>
             <h3 className="font-heading text-6xl md:text-7xl font-bold text-navy mb-4 group-hover:text-gold transition-colors duration-300">
-              30-50%
+              60-70%
             </h3>
             <h4 className="font-heading text-2xl font-bold text-navy mb-4">
               Lower Payroll Costs

@@ -26,7 +26,7 @@ const FinalPush: React.FC<FinalPushProps> = ({ onOpenSurvey }) => {
             </h2>
 
             <p className="font-body text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed">
-              Book a free staffing strategy call. We’ll show you how to slash your payroll by 30-50% while scaling faster than ever.
+              Book a free staffing strategy call. We’ll show you how to slash your payroll by 60-70% while scaling faster than ever.
             </p>
             <Button
               onClick={onOpenSurvey}
