@@ -1,7 +1,12 @@
 import React from 'react';
 import { PhoneCall, Search, Rocket, HeartHandshake } from 'lucide-react';
+import Button from './Button';
 
-const ProcessSection: React.FC = () => {
+interface ProcessSectionProps {
+  onOpenSurvey?: () => void;
+}
+
+const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenSurvey }) => {
   const steps = [
     {
       step: "01",
@@ -77,6 +82,19 @@ const ProcessSection: React.FC = () => {
 
               </div>
             ))}
+          </div>
+
+          <div className="mt-20 text-center">
+            <Button
+              onClick={onOpenSurvey}
+              variant="primary"
+              className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+            >
+              Book A Discovery Call
+            </Button>
+            <p className="font-heading italic text-gray-500 text-sm">
+              100% Free. No Obligation.
+            </p>
           </div>
         </div>
 

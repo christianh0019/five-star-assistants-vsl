@@ -39,19 +39,19 @@ const LandingPage: React.FC = () => {
                 </ScrollReveal>
 
                 <ScrollReveal>
-                    <WhoWeWorkWithSection />
+                    <WhoWeWorkWithSection onOpenSurvey={openSurvey} />
                 </ScrollReveal>
 
                 <ScrollReveal>
-                    <CapabilitiesSection />
+                    <CapabilitiesSection onOpenSurvey={openSurvey} />
                 </ScrollReveal>
 
                 <ScrollReveal>
-                    <ResultsSection />
+                    <ResultsSection onOpenSurvey={openSurvey} />
                 </ScrollReveal>
 
                 <ScrollReveal>
-                    <ProcessSection />
+                    <ProcessSection onOpenSurvey={openSurvey} />
                 </ScrollReveal>
 
                 <ScrollReveal>

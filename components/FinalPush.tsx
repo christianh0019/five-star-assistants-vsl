@@ -31,11 +31,11 @@ const FinalPush: React.FC<FinalPushProps> = ({ onOpenSurvey }) => {
             <Button
               onClick={onOpenSurvey}
               variant="primary"
-              className="w-full md:w-auto min-w-[320px] shadow-[0_0_40px_rgba(212,175,55,0.3)] hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] transform hover:-translate-y-1 transition-all duration-300 bg-gold text-navy font-bold text-lg md:text-xl py-5"
+              className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
             >
-              Book Your Discovery Call
+              Book A Discovery Call
             </Button>
-            <p className="font-heading italic text-gray-400 text-sm mt-6">
+            <p className="font-heading italic text-gray-400 text-sm">
               100% Free. No Obligation.
             </p>
           </div>

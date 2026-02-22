@@ -1,7 +1,12 @@
 import React from 'react';
 import { Clock, DollarSign, Play } from 'lucide-react';
+import Button from './Button';
 
-const ResultsSection: React.FC = () => {
+interface ResultsSectionProps {
+  onOpenSurvey?: () => void;
+}
+
+const ResultsSection: React.FC<ResultsSectionProps> = ({ onOpenSurvey }) => {
   return (
     <section id="results" className="bg-white py-24 md:py-32 px-4 border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -119,6 +124,19 @@ const ResultsSection: React.FC = () => {
             </div>
 
           </div>
+        </div>
+
+        <div className="mt-20 text-center">
+          <Button
+            onClick={onOpenSurvey}
+            variant="primary"
+            className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+          >
+            Book A Discovery Call
+          </Button>
+          <p className="font-heading italic text-gray-500 text-sm">
+            100% Free. No Obligation.
+          </p>
         </div>
 
       </div>

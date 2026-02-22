@@ -1,7 +1,12 @@
 import React from 'react';
 import { Globe, Store, CheckCircle, ArrowRight } from 'lucide-react';
+import Button from './Button';
 
-const WhoWeWorkWithSection: React.FC = () => {
+interface WhoWeWorkWithSectionProps {
+    onOpenSurvey?: () => void;
+}
+
+const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurvey }) => {
     return (
         <section id="who-we-work-with" className="bg-white py-24 md:py-32 px-4 relative overflow-hidden border-b border-gray-100">
             {/* Background elements */}
@@ -88,6 +93,19 @@ const WhoWeWorkWithSection: React.FC = () => {
                         </ul>
                     </div>
 
+                </div>
+
+                <div className="mt-16 text-center">
+                    <Button
+                        onClick={onOpenSurvey}
+                        variant="primary"
+                        className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+                    >
+                        Book A Discovery Call
+                    </Button>
+                    <p className="font-heading italic text-gray-500 text-sm">
+                        100% Free. No Obligation.
+                    </p>
                 </div>
             </div>
         </section>

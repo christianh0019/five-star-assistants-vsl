@@ -1,7 +1,12 @@
 import React from 'react';
 import { Target, Search, Users, Sparkles } from 'lucide-react';
+import Button from './Button';
 
-const CapabilitiesSection: React.FC = () => {
+interface CapabilitiesSectionProps {
+  onOpenSurvey?: () => void;
+}
+
+const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({ onOpenSurvey }) => {
 
   return (
     <section id="capabilities" className="bg-offwhite py-24 md:py-32 px-4 border-b border-gray-100 relative overflow-hidden">
@@ -88,6 +93,19 @@ const CapabilitiesSection: React.FC = () => {
             </div>
           </div>
 
+        </div>
+
+        <div className="mt-20 text-center">
+          <Button
+            onClick={onOpenSurvey}
+            variant="primary"
+            className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+          >
+            Book A Discovery Call
+          </Button>
+          <p className="font-heading italic text-gray-500 text-sm">
+            100% Free. No Obligation.
+          </p>
         </div>
       </div>
     </section>
