@@ -11,7 +11,7 @@ import SurveyModal from '../components/SurveyModal';
 import ScrollReveal from '../components/ScrollReveal';
 import { useNavigate } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
+
 
 const LocalStorefrontLanding: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
@@ -28,7 +28,6 @@ const LocalStorefrontLanding: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
-            <Navbar onOpenSurvey={openSurvey} />
             <main className="flex-grow">
                 <ScrollReveal>
                     <Hero onOpenSurvey={openSurvey} />
