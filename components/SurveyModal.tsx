@@ -6,6 +6,7 @@ interface SurveyModalProps {
     isOpen: boolean;
     onClose: () => void;
     onComplete?: () => void;
+    source?: string;
 }
 
 type QuestionType = 'single' | 'multi' | 'short' | 'contact';
@@ -20,19 +21,6 @@ interface Question {
 }
 
 const questions: Question[] = [
-    {
-        id: 1,
-        text: "What best describes your business?",
-        subtext: "(choose one)",
-        type: 'single',
-        options: [
-            "Online Service Provider",
-            "Brick & Mortar Business",
-            "Coach / Consultant",
-            "E-commerce",
-            "Other"
-        ]
-    },
     {
         id: 2,
         text: "Which tasks are taking up most of your time right now?",
@@ -106,7 +94,7 @@ const questions: Question[] = [
     }
 ];
 
-const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete }) => {
+const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, source }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<Record<number, any>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -171,12 +159,14 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete }
         setIsSubmitting(true);
 
         try {
+            const payload = { ...answers, ...(source && { source }) };
+
             await fetch("https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(answers),
+                body: JSON.stringify(payload),
             });
         } catch (error) {
             console.error("Error submitting survey:", error);

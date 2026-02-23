@@ -65,6 +65,7 @@ const LandingPage: React.FC = () => {
                 isOpen={isSurveyOpen}
                 onClose={closeSurvey}
                 onComplete={handleSurveyComplete}
+                source="General"
             />
         </div>
     );
