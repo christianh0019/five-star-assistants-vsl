@@ -31,7 +31,16 @@ const LocalServiceLanding: React.FC = () => {
             <Navbar onOpenSurvey={openSurvey} />
             <main className="flex-grow">
                 <ScrollReveal>
-                    <Hero onOpenSurvey={openSurvey} />
+                    <Hero
+                        onOpenSurvey={openSurvey}
+                        callout="Local Service Business Owners:"
+                        headline="Stop Missing Leads, Managing Admin, And Doing Everything Yourself"
+                        subheadline={
+                            <>
+                                Get a dedicated assistant to handle follow-ups, scheduling, invoicing, and customer communication for just $6/hr. <span className="text-navy">Love It Or It’s Free Guarantee.</span>
+                            </>
+                        }
+                    />
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.2}>

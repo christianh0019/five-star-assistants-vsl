@@ -4,9 +4,12 @@ import Button from './Button';
 
 interface HeroProps {
   onOpenSurvey: () => void;
+  callout?: React.ReactNode;
+  headline?: React.ReactNode;
+  subheadline?: React.ReactNode;
 }
 
-const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
+const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadline }) => {
   return (
     <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
       <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
@@ -14,15 +17,25 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey }) => {
         {/* Callout Pill */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-          Attention Busy Business Owners...
-        </div>        {/* H1 Headline */}
+          {callout || "Attention Busy Business Owners..."}
+        </div>
+
+        {/* H1 Headline */}
         <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
-          We'll Recruit And Train Your Perfect Remote Employee Starting at <span className="text-gold italic">Just $6/HR</span>
+          {headline || (
+            <>
+              We'll Recruit And Train Your Perfect Remote Employee Starting at <span className="text-gold italic">Just $6/HR</span>
+            </>
+          )}
         </h1>
 
         {/* Sub-headline */}
         <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl uppercase">
-          And if you don't love them, <span className="text-navy">you don't pay or we'll replace them at no cost.</span>
+          {subheadline || (
+            <>
+              And if you don't love them, <span className="text-navy">you don't pay or we'll replace them at no cost.</span>
+            </>
+          )}
         </p>
 
         {/* Primary CTA */}
