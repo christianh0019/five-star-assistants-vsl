@@ -5,6 +5,7 @@ import LocalServiceLanding from './pages/LocalServiceLanding';
 import LocalStorefrontLanding from './pages/LocalStorefrontLanding';
 import OnlineServiceLanding from './pages/OnlineServiceLanding';
 import OnlineBusinessLanding from './pages/OnlineBusinessLanding';
+import RealEstateLanding from './pages/RealEstateLanding';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route path="/local-storefront" element={<LocalStorefrontLanding />} />
         <Route path="/online-service" element={<OnlineServiceLanding />} />
         <Route path="/online-business" element={<OnlineBusinessLanding />} />
+        <Route path="/real-estate" element={<RealEstateLanding />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
 
