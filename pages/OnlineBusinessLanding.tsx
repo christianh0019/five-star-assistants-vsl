@@ -10,8 +10,7 @@ import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import ScrollReveal from '../components/ScrollReveal';
 import { useNavigate } from 'react-router-dom';
-
-
+import Navbar from '../components/Navbar';
 
 const OnlineBusinessLanding: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
@@ -28,6 +27,7 @@ const OnlineBusinessLanding: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <Navbar hideMenu />
             <main className="flex-grow">
                 <ScrollReveal>
                     <Hero onOpenSurvey={openSurvey} />
