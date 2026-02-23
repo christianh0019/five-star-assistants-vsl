@@ -1,6 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
+import LocalServiceLanding from './pages/LocalServiceLanding';
+import LocalStorefrontLanding from './pages/LocalStorefrontLanding';
+import OnlineServiceLanding from './pages/OnlineServiceLanding';
+import OnlineBusinessLanding from './pages/OnlineBusinessLanding';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
@@ -16,6 +20,10 @@ const App: React.FC = () => {
       <Routes>
         {/* Main funnel */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/local-service" element={<LocalServiceLanding />} />
+        <Route path="/local-storefront" element={<LocalStorefrontLanding />} />
+        <Route path="/online-service" element={<OnlineServiceLanding />} />
+        <Route path="/online-business" element={<OnlineBusinessLanding />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
 
