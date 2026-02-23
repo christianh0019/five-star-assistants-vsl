@@ -37,34 +37,10 @@ const LocalServiceLanding: React.FC = () => {
                         headline="Stop Missing Leads, Managing Admin, And Doing Everything Yourself"
                         subheadline={
                             <>
-                                Get a dedicated assistant to handle follow-ups, scheduling, invoicing, and customer communication for just $6/hr. <span className="text-navy">Love It Or It’s Free Guarantee.</span>
+                                Get a dedicated assistant to handle follow-ups, scheduling, invoicing, and customer communication for <span className="font-bold text-navy">just $6/hr. Love It Or It’s Free Guarantee.</span>
                             </>
                         }
                     />
-                </ScrollReveal>
-
-                <ScrollReveal delay={0.2}>
-                    <TrustBadges />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <WhoWeWorkWithSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <CapabilitiesSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <ResultsSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <ProcessSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <FinalPush onOpenSurvey={openSurvey} />
                 </ScrollReveal>
             </main>
 

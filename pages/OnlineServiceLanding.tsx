@@ -33,30 +33,6 @@ const OnlineServiceLanding: React.FC = () => {
                 <ScrollReveal>
                     <Hero onOpenSurvey={openSurvey} />
                 </ScrollReveal>
-
-                <ScrollReveal delay={0.2}>
-                    <TrustBadges />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <WhoWeWorkWithSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <CapabilitiesSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <ResultsSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <ProcessSection onOpenSurvey={openSurvey} />
-                </ScrollReveal>
-
-                <ScrollReveal>
-                    <FinalPush onOpenSurvey={openSurvey} />
-                </ScrollReveal>
             </main>
 
             <Footer />

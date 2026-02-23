@@ -30,7 +30,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadlin
         </h1>
 
         {/* Sub-headline */}
-        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl uppercase">
+        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl">
           {subheadline || (
             <>
               And if you don't love them, <span className="text-navy">you don't pay or we'll replace them at no cost.</span>
