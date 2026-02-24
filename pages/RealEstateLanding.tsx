@@ -27,10 +27,14 @@ const RealEstateLanding: React.FC = () => {
                     <Hero
                         onOpenSurvey={openSurvey}
                         callout="Busy Real Estate Agents"
-                        headline="Turn More Leads Into Showings Without Doing Everything Yourself"
+                        headline={
+                            <>
+                                Turn <span className="text-gold italic">More Leads Into Showings</span> Without Doing Everything Yourself
+                            </>
+                        }
                         subheadline={
                             <>
-                                Get a trained assistant to respond instantly, qualify prospects, and manage your backend for <span className="font-bold text-navy">$6/hr. Love It Or It’s Free Guarantee.</span>
+                                Get a trained assistant to respond instantly, qualify and book prospects, and manage your backend for <span className="font-bold text-navy">$6/hr. Love It Or It’s Free Guarantee.</span>
                             </>
                         }
                     />
