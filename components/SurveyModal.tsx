@@ -118,7 +118,15 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
         setIsSubmitting(true);
 
         try {
-            const payload = { ...answers, ...(source && { source }) };
+            const payload = {
+                monthlyRevenue: answers[5] || '',
+                businessName: answers[8]?.businessName || '',
+                name: answers[8]?.name || '',
+                email: answers[8]?.email || '',
+                phone: answers[8]?.phone || '',
+                website: answers[8]?.website || '',
+                ...(source && { source })
+            };
 
             await fetch("https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK", {
                 method: "POST",
@@ -148,7 +156,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
         const answer = answers[currentQuestion.id];
         if (currentQuestion.type === 'multi') return answer && answer.length > 0;
         if (currentQuestion.type === 'contact') {
-            return answer && answer.businessName && answer.name && answer.email && answer.phone;
+            return answer && answer.businessName && answer.name && answer.email && answer.phone && answer.website;
         }
         return !!answer;
     };
@@ -306,6 +314,17 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
                                         placeholder="(555) 123-4567"
                                         onChange={handleContactChange}
                                         value={answers[currentQuestion.id]?.phone || ''}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-navy mb-1">Website URL</label>
+                                    <input
+                                        type="url"
+                                        name="website"
+                                        className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                        placeholder="https://www.yourdomain.com"
+                                        onChange={handleContactChange}
+                                        value={answers[currentQuestion.id]?.website || ''}
                                     />
                                 </div>
                             </div>
