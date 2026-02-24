@@ -33,8 +33,16 @@ const OnlineServiceLanding: React.FC = () => {
                     <Hero
                         onOpenSurvey={openSurvey}
                         callout="Attention Agency Owners"
-                        headline="Hire A-Players Overseas For Just $10-15/hr"
-                        subheadline="College-educated, English-fluent specialists placed into the exact roles your agency needs, from delivery to account management. And if you don't love them, it's free, guaranteed!"
+                        headline={
+                            <>
+                                Hire A-Players Overseas <span className="text-gold italic">For Just $10-15/hr</span>
+                            </>
+                        }
+                        subheadline={
+                            <>
+                                College-educated, English-fluent specialists placed into the exact roles your agency needs, from delivery to account management. <span className="font-bold text-navy">And if you don't love them, it's free, guaranteed!</span>
+                            </>
+                        }
                     />
                 </ScrollReveal>
             </main>
