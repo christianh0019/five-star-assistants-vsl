@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { X, ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import Button from './Button';
 
@@ -20,27 +20,43 @@ interface Question {
     placeholder?: string;
 }
 
-const questions: Question[] = [
-    {
-        id: 5,
-        text: "What’s your current monthly business revenue?",
-        type: 'single',
-        options: [
-            "Under $5k",
-            "$5k–$15k",
-            "$15k–$50k",
-            "$50k+"
-        ]
-    },
-    {
-        id: 8,
-        text: "How Can We Contact You?",
-        subtext: "We promise we won't spam you.",
-        type: 'contact'
-    }
-];
-
 const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, source }) => {
+    const questions = useMemo(() => {
+        const baseQuestions: Question[] = [
+            {
+                id: 5,
+                text: "What’s your current monthly business revenue?",
+                type: 'single',
+                options: [
+                    "Under $5k",
+                    "$5k–$15k",
+                    "$15k–$50k",
+                    "$50k+"
+                ]
+            },
+            {
+                id: 8,
+                text: "How Can We Contact You?",
+                subtext: "We promise we won't spam you.",
+                type: 'contact'
+            }
+        ];
+
+        if (source === 'General') {
+            return [
+                {
+                    id: 1,
+                    text: "What best describes your business?",
+                    type: 'short',
+                    placeholder: "e.g. Real Estate, Marketing Agency, Local Gym..."
+                },
+                ...baseQuestions
+            ];
+        }
+
+        return baseQuestions;
+    }, [source]);
+
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<Record<number, any>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -125,7 +141,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
                 email: answers[8]?.email || '',
                 phone: answers[8]?.phone || '',
                 website: answers[8]?.website || '',
-                ...(source && { source })
+                contactType: source === 'General' ? (answers[1] || 'Unknown') : (source || 'Unknown')
             };
 
             await fetch("https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK", {
