@@ -70,6 +70,13 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
             }
         } else {
             setAnswers({ ...answers, [currentQuestion.id]: option });
+
+            // Disqualify immediately after short delay to show selection
+            if (currentQuestion.id === 5 && option === "Under $5k") {
+                setTimeout(() => setIsDisqualified(true), 250);
+                return;
+            }
+
             // Auto advance for single select if not last step
             if (currentQuestion.type === 'single' && !isLastStep) {
                 setTimeout(() => handleNext(), 250);
