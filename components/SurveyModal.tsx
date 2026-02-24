@@ -44,6 +44,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<Record<number, any>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isDisqualified, setIsDisqualified] = useState(false);
 
     if (!isOpen) return null;
 
@@ -89,6 +90,11 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
     };
 
     const handleNext = () => {
+        if (currentQuestion.id === 5 && answers[5] === "Under $5k") {
+            setIsDisqualified(true);
+            return;
+        }
+
         if (currentStep < questions.length - 1) {
             setCurrentStep(currentStep + 1);
         }
@@ -139,6 +145,37 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
         }
         return !!answer;
     };
+
+    if (isDisqualified) {
+        return (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/80 backdrop-blur-sm animate-in fade-in duration-200">
+                <div className="bg-white rounded-lg shadow-2xl w-full max-w-lg overflow-hidden relative flex flex-col p-8 md:p-12 text-center">
+                    <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-navy transition-colors">
+                        <X size={24} />
+                    </button>
+
+                    <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <X className="text-gray-400" size={32} />
+                    </div>
+
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-navy mb-4">
+                        Thank You For Applying
+                    </h2>
+
+                    <p className="font-body text-gray-600 mb-8 leading-relaxed">
+                        At this time, our services are optimized for businesses generating over $5k/mo in revenue. We appreciate you taking the time to apply, and we wish you the best as you grow your business!
+                    </p>
+
+                    <button
+                        onClick={onClose}
+                        className="bg-navy text-white px-8 py-3 rounded shadow-lg font-heading font-bold uppercase tracking-wide hover:bg-navy/90 transition-all mx-auto"
+                    >
+                        Close Window
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/80 backdrop-blur-sm animate-in fade-in duration-200">
