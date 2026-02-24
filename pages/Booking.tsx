@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BookingWidget from '../components/BookingWidget';
 import { CheckCircle } from 'lucide-react';
 import Logo from '../components/Logo';
@@ -7,6 +7,13 @@ import { Link } from 'react-router-dom';
 const Booking: React.FC = () => {
     // Using the ID from the reference project for now
     const CALENDAR_ID = 'pPex5OdxMW9i7kQBs89C';
+
+    useEffect(() => {
+        // Fire Meta Pixel 'Lead' event when booking page is viewed
+        if (typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'Lead');
+        }
+    }, []);
 
     return (
         <div className="min-h-screen pt-12 pb-20 bg-gray-50 relative overflow-hidden flex flex-col items-center">

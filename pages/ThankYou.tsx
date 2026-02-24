@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle, Calendar, ArrowRight, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
@@ -6,6 +6,13 @@ import Logo from '../components/Logo';
 const ThankYou: React.FC = () => {
     // Placeholder video ID
     const VIDEO_SRC = "https://www.youtube.com/embed/CNngG1p-HQQ?si=aOk84JEwMYWrQURq";
+
+    useEffect(() => {
+        // Fire Meta Pixel 'Schedule' event when thank you page is viewed
+        if (typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'Schedule');
+        }
+    }, []);
 
     return (
         <div className="min-h-screen pt-12 pb-20 bg-gray-50 relative overflow-hidden flex flex-col items-center">
