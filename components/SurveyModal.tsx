@@ -22,44 +22,6 @@ interface Question {
 
 const questions: Question[] = [
     {
-        id: 2,
-        text: "Which tasks are taking up most of your time right now?",
-        subtext: "(multi-select)",
-        type: 'multi',
-        options: [
-            "Following up with leads",
-            "Admin work / data entry",
-            "Inbox and scheduling",
-            "Customer support",
-            "Social media posting",
-            "Bookkeeping",
-            "Project coordination",
-            "Other"
-        ]
-    },
-    {
-        id: 3,
-        text: "Roughly how many hours per week are you personally stuck doing these tasks?",
-        type: 'single',
-        options: [
-            "Under 5 hours",
-            "5–10 hours",
-            "10–20 hours",
-            "20+ hours"
-        ]
-    },
-    {
-        id: 4,
-        text: "Have you ever hired a VA or remote team member before?",
-        type: 'single',
-        options: [
-            "Yes and it worked great",
-            "Yes but it didn’t go well",
-            "No but I’m interested",
-            "No and I’m unsure"
-        ]
-    },
-    {
         id: 5,
         text: "What’s your current monthly business revenue?",
         type: 'single',
@@ -71,25 +33,9 @@ const questions: Question[] = [
         ]
     },
     {
-        id: 6,
-        text: "What’s your main goal right now?",
-        subtext: "(short answer)",
-        type: 'short',
-        placeholder: "Grow faster, free up time, reduce stress, scale team, etc."
-    },
-    {
-        id: 7,
-        text: "Are you ready to delegate and invest in support if it makes sense?",
-        type: 'single',
-        options: [
-            "Yes, I’m ready now",
-            "Possibly, want to learn more",
-            "Just researching"
-        ]
-    },
-    {
         id: 8,
-        text: "Where should we send your custom staffing plan?",
+        text: "How Can We Contact You?",
+        subtext: "We promise we won't spam you.",
         type: 'contact'
     }
 ];
@@ -189,7 +135,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
         const answer = answers[currentQuestion.id];
         if (currentQuestion.type === 'multi') return answer && answer.length > 0;
         if (currentQuestion.type === 'contact') {
-            return answer && answer.name && answer.email && answer.phone;
+            return answer && answer.businessName && answer.name && answer.email && answer.phone;
         }
         return !!answer;
     };
@@ -272,9 +218,19 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
                             ></textarea>
                         )}
 
-                        {/* Contact Form Type */}
                         {currentQuestion.type === 'contact' && (
                             <div className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-bold text-navy mb-1">Business Name</label>
+                                    <input
+                                        type="text"
+                                        name="businessName"
+                                        className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                        placeholder="Acme Corp"
+                                        onChange={handleContactChange}
+                                        value={answers[currentQuestion.id]?.businessName || ''}
+                                    />
+                                </div>
                                 <div>
                                     <label className="block text-sm font-bold text-navy mb-1">Full Name</label>
                                     <input
@@ -348,7 +304,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
                         ${(!canProceed() || isSubmitting) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gold-hover hover:scale-105'}
                     `}
                         >
-                            {isSubmitting ? 'Submitting...' : 'Book Discovery Call'}
+                            {isSubmitting ? 'Submitting...' : 'Submit'}
                             {!isSubmitting && <Check size={20} className="ml-2" />}
                         </button>
                     )}
