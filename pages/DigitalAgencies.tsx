@@ -126,18 +126,21 @@ const DigitalAgencies: React.FC = () => {
                     <div className="max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                             <div className="lg:col-span-7">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm font-bold uppercase tracking-widest mb-6">
-                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                                    The Problem
-                                </div>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
-                                    Why Agencies Get Stuck
+                                <h2 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    WHY AGENCIES GET STUCK
                                 </h2>
+                                <h3 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
+                                    Most Agencies Don't Have a Lead Problem.<br />
+                                    <span className="text-gray-500">They Have a Capacity Problem.</span>
+                                </h3>
                                 <div className="border-l-4 border-gold pl-6 md:pl-8 py-2">
-                                    <div className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
-                                        At first the agency grows fast. You land a few clients, start getting results, and suddenly things take off. But then something happens. <b>You become the bottleneck.</b><br /><br />
-                                        You are managing fulfillment, handling client communication, reviewing ads, answering questions, and trying to grow the business at the same time.<br /><br />
-                                        Hiring locally sounds like the solution until you see the numbers.
+                                    <div className="font-body text-gray-700 text-lg md:text-xl leading-relaxed space-y-4">
+                                        <p>At first the agency grows fast.</p>
+                                        <p>You land a few clients, start getting results, and suddenly things take off.</p>
+                                        <p>But then something happens.</p>
+                                        <p className="font-bold text-navy text-2xl">You become the bottleneck.</p>
+                                        <p>You are managing fulfillment, handling client communication, reviewing ads, answering questions, and trying to grow the business at the same time.</p>
+                                        <p>Hiring locally sounds like the solution until you see the numbers.</p>
                                     </div>
                                 </div>
                             </div>
@@ -146,13 +149,13 @@ const DigitalAgencies: React.FC = () => {
                                 <div className="bg-white rounded-3xl p-8 shadow-xl shadow-navy/5 border border-gray-100 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                                     <h3 className="font-heading font-bold text-navy text-2xl mb-6 relative z-10">
-                                        Most agencies hit the same wall:
+                                        A single U.S. employee can cost:
                                     </h3>
-                                    <ul className="space-y-5 relative z-10">
+                                    <ul className="space-y-4 relative z-10">
                                         {painPoints.map((pain, idx) => (
                                             <li key={idx} className="flex items-start gap-4">
                                                 <div className="mt-1 flex-shrink-0">
-                                                    <AlertCircle className="text-red-500 w-5 h-5 flex-shrink-0" />
+                                                    <span className="text-red-500 font-bold">•</span>
                                                 </div>
                                                 <span className="font-body text-gray-800 text-lg font-medium shadow-sm">
                                                     {pain}
@@ -160,6 +163,10 @@ const DigitalAgencies: React.FC = () => {
                                             </li>
                                         ))}
                                     </ul>
+                                    <div className="mt-8 relative z-10 pt-6 border-t border-gray-100">
+                                        <p className="font-heading font-bold text-red-500 text-xl mb-3">Now your margins are gone.</p>
+                                        <p className="text-gray-600 font-medium leading-relaxed">So most agency owners stay stuck doing work they should have delegated years ago.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -169,31 +176,41 @@ const DigitalAgencies: React.FC = () => {
                 {/* ARBITRAGE SECTION */}
                 <section className="py-20 md:py-32 bg-gray-50 px-4">
                     <div className="max-w-6xl mx-auto">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div>
-                                <div className="flex items-center gap-4 mb-6">
-                                    <span className="w-12 h-[1px] bg-gold"></span>
-                                    <span className="font-body text-gold font-bold tracking-[0.2em] uppercase text-xs">The Secret</span>
-                                </div>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
-                                    The Agencies Scaling Fast Aren't Hiring Locally
+                        <div className="grid lg:grid-cols-12 gap-16 items-center">
+                            <div className="lg:col-span-7">
+                                <h2 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    HOW SMART AGENCIES SCALE
                                 </h2>
+                                <h3 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
+                                    The Agencies Scaling Fast Aren't Hiring Locally
+                                </h3>
                                 <div className="prose prose-lg text-gray-600 font-body mb-8">
-                                    <p className="text-xl leading-relaxed">
-                                        They are building remote teams. Instead of paying $60k–$90k for one employee, they hire highly capable overseas specialists for <span className="font-bold text-navy">$10–15/hour.</span>
+                                    <p className="text-xl leading-relaxed mb-6 font-bold text-navy">
+                                        They are building remote teams.
                                     </p>
-                                    <div className="my-8 p-6 bg-white border-l-4 border-gold rounded-r shadow-sm">
-                                        <p className="font-heading font-semibold text-navy text-lg m-0">
-                                            But finding good people overseas isn't easy. You've probably heard the horror stories. Bad communication, missed deadlines, poor quality work, people disappearing.<br /><br />That is exactly why Five Star Assistants exists. We remove the entire hiring risk.
+                                    <p className="text-xl leading-relaxed mb-6">
+                                        Instead of paying $60k–$90k for one employee, they hire highly capable overseas specialists for <span className="font-bold text-navy">$10–15/hour.</span>
+                                    </p>
+                                    <div className="my-8 p-8 bg-white border-l-4 border-gold rounded-r-2xl shadow-sm">
+                                        <p className="font-heading font-bold text-navy text-xl mb-4">
+                                            But finding good people overseas isn't easy.
                                         </p>
+                                        <p className="text-gray-600 mb-4">You've probably heard the horror stories.</p>
+                                        <ul className="mb-6 space-y-2 font-medium">
+                                            <li className="flex items-center gap-2"><span className="text-red-500 font-bold">•</span> Bad communication</li>
+                                            <li className="flex items-center gap-2"><span className="text-red-500 font-bold">•</span> Missed deadlines</li>
+                                            <li className="flex items-center gap-2"><span className="text-red-500 font-bold">•</span> Poor quality work</li>
+                                            <li className="flex items-center gap-2"><span className="text-red-500 font-bold">•</span> People disappearing</li>
+                                        </ul>
+                                        <p className="font-heading font-bold text-navy text-xl mb-2 mt-8">That is exactly why Five Star Assistants exists.</p>
+                                        <p className="font-heading font-bold text-gold text-2xl">We remove the entire hiring risk.</p>
                                     </div>
-                                    <p className="font-bold text-navy text-xl">We handle everything.</p>
                                 </div>
                             </div>
 
-                            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-gray-100">
+                            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-gray-100 lg:col-span-5 w-full">
                                 <h3 className="font-heading text-2xl font-bold text-navy mb-8 pb-6 border-b border-gray-100">
-                                    What Five Star Assistants Provides
+                                    We handle:
                                 </h3>
                                 <ul className="space-y-6">
                                     {[
@@ -205,13 +222,16 @@ const DigitalAgencies: React.FC = () => {
                                         "Replacement if needed"
                                     ].map((feature, idx) => (
                                         <li key={idx} className="flex items-center gap-4 group">
-                                            <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                                                <Check className="text-gold group-hover:text-white transition-colors" size={24} />
+                                            <div className="mt-1 flex-shrink-0">
+                                                <span className="text-gold font-bold text-2xl">•</span>
                                             </div>
                                             <span className="font-body text-xl text-gray-700 font-medium">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
+                                <div className="mt-8 pt-6 border-t border-gray-100">
+                                    <p className="font-heading font-bold text-navy text-lg leading-relaxed">You simply choose the candidate you want and they start working inside your agency.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -222,9 +242,15 @@ const DigitalAgencies: React.FC = () => {
                     <section className="py-20 md:py-32 bg-white px-4">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    ROLES WE PLACE FOR AGENCIES
+                                </h3>
                                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                     The Exact Roles Agencies Need To Scale
                                 </h2>
+                                <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto">
+                                    We place overseas specialists into the same positions agencies usually struggle to hire locally.
+                                </p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {roles.map((role, idx) => (
@@ -237,6 +263,10 @@ const DigitalAgencies: React.FC = () => {
                                     </div>
                                 ))}
                             </div>
+                            <div className="mt-16 text-center">
+                                <p className="font-heading text-2xl md:text-3xl font-bold text-navy mb-4">These aren't basic virtual assistants.</p>
+                                <p className="font-body text-xl text-gray-600">These are specialists trained in the roles agencies actually need.</p>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -245,8 +275,11 @@ const DigitalAgencies: React.FC = () => {
                 <section className="py-20 md:py-32 bg-gray-50 px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
+                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                HOW THE PROCESS WORKS
+                            </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                How Our Process Works
+                                Hiring A Remote Specialist Is Simpler Than You Think
                             </h2>
                         </div>
                         <div className="space-y-8 relative before:absolute before:inset-0 before:ml-8 md:before:mx-auto before:-translate-x-px md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
@@ -256,11 +289,14 @@ const DigitalAgencies: React.FC = () => {
                                         {idx + 1}
                                     </div>
                                     <div className="w-[calc(100%-5rem)] md:w-[calc(50%-3rem)] bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group-hover:shadow-md transition-shadow">
-                                        <h3 className="font-heading font-bold text-xl text-navy mb-2">{step.title}</h3>
+                                        <h3 className="font-heading font-bold text-xl text-navy mb-2">Step {idx + 1} – {step.title}</h3>
                                         <p className="font-body text-gray-600 leading-relaxed">{step.description}</p>
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="mt-16 text-center">
+                            <p className="font-heading text-2xl md:text-3xl font-bold text-navy">No recruiting headaches. No endless interviews.</p>
                         </div>
                     </div>
                 </section>
@@ -271,20 +307,33 @@ const DigitalAgencies: React.FC = () => {
                         <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse text-gold">
                             <ShieldCheck size={40} />
                         </div>
-                        <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-8 drop-shadow-md">
+                        <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                            OUR ZERO-RISK GUARANTEE
+                        </h3>
+                        <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
                             Hiring Overseas Shouldn't Feel Risky
                         </h2>
-                        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] p-8 md:p-12 mb-8">
-                            <p className="font-body text-xl md:text-2xl text-blue-100 font-medium mb-8">
-                                If your remote employee isn't the right fit:
+                        <p className="font-body text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                            That is why we remove the risk completely.
+                        </p>
+                        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] p-8 md:p-12 mb-8 inline-block text-left relative min-w-full sm:min-w-[500px]">
+                            <p className="font-body text-xl md:text-2xl text-blue-100 font-medium mb-8 text-center">
+                                If the candidate we place isn't the right fit:
                             </p>
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-                                <span className="font-heading font-bold text-2xl md:text-3xl text-gold">We replace them for free</span>
-                                <span className="font-body italic text-gray-400">or</span>
-                                <span className="font-heading font-bold text-2xl md:text-3xl text-gold">You don't pay</span>
-                            </div>
+                            <ul className="space-y-4 mb-6">
+                                <li className="font-heading font-bold text-2xl md:text-3xl text-gold flex items-center justify-center gap-3">
+                                    <span className="text-white opacity-50">•</span> We replace them for free
+                                </li>
+                                <li className="font-body italic text-gray-400 text-center text-xl my-4">
+                                    or
+                                </li>
+                                <li className="font-heading font-bold text-2xl md:text-3xl text-gold flex items-center justify-center gap-3">
+                                    <span className="text-white opacity-50">•</span> You don't pay
+                                </li>
+                            </ul>
+                            <p className="font-body text-xl text-white text-center italic mt-8 border-t border-white/10 pt-8 opacity-80">Simple as that.</p>
                         </div>
-                        <p className="font-heading text-xl md:text-2xl text-white font-bold tracking-wider">
+                        <p className="font-heading text-xl md:text-2xl text-white font-bold tracking-wider mt-4">
                             We only win when you are happy with the hire.
                         </p>
                     </div>
@@ -294,6 +343,9 @@ const DigitalAgencies: React.FC = () => {
                 <section className="py-20 md:py-32 bg-white px-4">
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
+                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                COST COMPARISON
+                            </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 Hiring Locally vs Hiring Through Five Star Assistants
                             </h2>
@@ -302,7 +354,7 @@ const DigitalAgencies: React.FC = () => {
                             {/* Local Hire Column */}
                             <div className="bg-gray-50 border border-gray-200 rounded-[2rem] p-8 md:p-12 shadow-sm">
                                 <h3 className="font-heading text-2xl font-bold text-gray-500 mb-8 pb-4 border-b border-gray-200 text-center">
-                                    The Local Hire
+                                    Local Hire
                                 </h3>
                                 <ul className="space-y-6">
                                     {[
@@ -343,6 +395,11 @@ const DigitalAgencies: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
+                        <div className="mt-16 text-center">
+                            <p className="font-heading text-2xl md:text-3xl font-bold text-navy max-w-3xl mx-auto">
+                                Many agencies build entire teams for the cost of one local employee.
+                            </p>
+                        </div>
                     </div>
                 </section>
 
@@ -371,6 +428,9 @@ const DigitalAgencies: React.FC = () => {
                 <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
+                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                FREQUENTLY ASKED QUESTIONS
+                            </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 Frequently Asked Questions
                             </h2>
@@ -412,13 +472,20 @@ const DigitalAgencies: React.FC = () => {
                     <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 z-0 hidden md:block"></div>
 
                     <div className="max-w-4xl mx-auto text-center relative z-10">
-                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 drop-shadow-md">
-                            Your Agency Doesn't Need More Hustle. It Needs More Capacity.
+                        <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6">
+                            FINAL CTA
+                        </h3>
+                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 drop-shadow-md leading-tight">
+                            Your Agency Doesn't Need More Hustle.<br />
+                            <span className="text-gold">It Needs More Capacity.</span>
                         </h2>
 
-                        <p className="font-subheading text-blue-100 text-xl md:text-2xl tracking-wide max-w-2xl mx-auto mb-16 opacity-90">
-                            The fastest growing agencies aren't doing everything themselves. They are building teams. If you want to scale without blowing up your payroll, hiring overseas talent is the smartest move you can make. Tell us the role you need and we'll introduce you to qualified candidates.
-                        </p>
+                        <div className="font-subheading text-blue-100 text-xl md:text-2xl tracking-wide max-w-3xl mx-auto mb-16 opacity-90 space-y-6">
+                            <p>The fastest growing agencies aren't doing everything themselves.</p>
+                            <p>They are building teams.</p>
+                            <p>If you want to scale without blowing up your payroll, hiring overseas talent is the smartest move you can make.</p>
+                            <p className="font-bold text-white">Tell us the role you need and we'll introduce you to qualified candidates.</p>
+                        </div>
 
                         <div className="flex flex-col items-center">
                             <Button
