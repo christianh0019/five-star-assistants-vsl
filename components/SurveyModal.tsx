@@ -42,7 +42,17 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
             }
         ];
 
-        if (source === 'General') {
+        const generalSources = [
+            'General',
+            'Pricing',
+            'Results',
+            'How It Works',
+            'Local Service Businesses',
+            'Digital Agencies',
+            'Real Estate Agents'
+        ];
+
+        if (generalSources.includes(source || '')) {
             return [
                 {
                     id: 1,
