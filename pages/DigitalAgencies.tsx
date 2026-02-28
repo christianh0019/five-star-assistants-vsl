@@ -34,7 +34,7 @@ const DigitalAgencies: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white flex flex-col font-body">
-            <Navbar onOpenSurvey={openSurvey} hideMenu />
+            <Navbar onOpenSurvey={openSurvey} />
 
             <main className="flex-grow">
                 <NicheHero
