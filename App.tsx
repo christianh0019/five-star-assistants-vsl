@@ -16,6 +16,9 @@ import OnboardingComplete from './pages/onboarding/Complete';
 import LocalServiceBusinesses from './pages/LocalServiceBusinesses';
 import DigitalAgencies from './pages/DigitalAgencies';
 import RealEstateAgents from './pages/RealEstateAgents';
+import Pricing from './pages/Pricing';
+import Results from './pages/Results';
+import HowItWorks from './pages/HowItWorks';
 
 const App: React.FC = () => {
   return (
@@ -32,6 +35,9 @@ const App: React.FC = () => {
         <Route path="/local-service-businesses" element={<LocalServiceBusinesses />} />
         <Route path="/digital-agencies" element={<DigitalAgencies />} />
         <Route path="/real-estate-agents" element={<RealEstateAgents />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
 

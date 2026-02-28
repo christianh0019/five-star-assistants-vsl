@@ -58,15 +58,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
             >
                 <div className={`max-w-7xl mx-auto px-4 md:px-8 flex items-center ${hideMenu ? 'justify-center md:justify-start' : 'justify-between'}`}>
                     {/* Brand */}
-                    <div
+                    <Link
+                        to="/"
                         className="flex-shrink-0 cursor-pointer relative z-[60]"
                         onClick={() => {
                             setIsMobileMenuOpen(false);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                     >
                         <Logo variant="dark" />
-                    </div>
+                    </Link>
 
                     {!hideMenu && (
                         <>
@@ -91,24 +91,24 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
                                     </div>
                                 </div>
 
-                                <button
-                                    onClick={() => scrollToSection('pricing')}
+                                <Link
+                                    to="/pricing"
                                     className="text-sm font-body font-medium text-gray-600 hover:text-navy transition-colors"
                                 >
                                     Pricing
-                                </button>
-                                <button
-                                    onClick={() => scrollToSection('results')}
+                                </Link>
+                                <Link
+                                    to="/results"
                                     className="text-sm font-body font-medium text-gray-600 hover:text-navy transition-colors"
                                 >
                                     Results
-                                </button>
-                                <button
-                                    onClick={() => scrollToSection('process')}
+                                </Link>
+                                <Link
+                                    to="/how-it-works"
                                     className="text-sm font-body font-medium text-gray-600 hover:text-navy transition-colors"
                                 >
                                     How It Works
-                                </button>
+                                </Link>
 
                                 {onOpenSurvey && (
                                     <button
@@ -155,26 +155,29 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
                             </div>
                         </div>
                         <div className="w-12 h-px bg-gray-200 mx-auto"></div>
-                        <button
-                            onClick={() => scrollToSection('pricing')}
+                        <Link
+                            to="/pricing"
+                            onClick={() => setIsMobileMenuOpen(false)}
                             className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
                         >
                             Pricing
-                        </button>
+                        </Link>
                         <div className="w-12 h-px bg-gray-200 mx-auto"></div>
-                        <button
-                            onClick={() => scrollToSection('results')}
+                        <Link
+                            to="/results"
+                            onClick={() => setIsMobileMenuOpen(false)}
                             className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
                         >
                             Results
-                        </button>
+                        </Link>
                         <div className="w-12 h-px bg-gray-200 mx-auto"></div>
-                        <button
-                            onClick={() => scrollToSection('process')}
+                        <Link
+                            to="/how-it-works"
+                            onClick={() => setIsMobileMenuOpen(false)}
                             className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
                         >
                             How It Works
-                        </button>
+                        </Link>
 
                         {onOpenSurvey && (
                             <div className="mt-12">
