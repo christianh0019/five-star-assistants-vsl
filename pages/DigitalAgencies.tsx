@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
+import Hero from '../components/Hero';
+import ScrollReveal from '../components/ScrollReveal';
 import { useNavigate } from 'react-router-dom';
 
-import NicheHero from '../components/niche/NicheHero';
 import NichePain from '../components/niche/NichePain';
 import NicheArbitrage from '../components/niche/NicheArbitrage';
 import NicheRoles from '../components/niche/NicheRoles';
@@ -28,28 +29,27 @@ const DigitalAgencies: React.FC = () => {
         navigate('/booking');
     };
 
-    const scrollToRoles = () => {
-        document.getElementById('roles-section')?.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <div className="min-h-screen bg-white flex flex-col font-body">
             <Navbar onOpenSurvey={openSurvey} />
 
             <main className="flex-grow">
-                <NicheHero
-                    headline={<>Hire Dedicated Remote Employees for Your <span className="text-gold italic">Digital Agency</span> Starting at $6–$15/Hour</>}
-                    subheadline="We recruit, vet, and place overseas professionals who handle the day-to-day work inside your business so you can grow without hiring expensive local staff."
-                    bullets={[
-                        "College-educated overseas professionals",
-                        "Fully vetted and interview-ready",
-                        "If you don't love them, you don't pay"
-                    ]}
-                    primaryCTA="Find Your Remote Employee"
-                    secondaryCTA="See Available Roles"
-                    onPrimaryClick={openSurvey}
-                    onSecondaryClick={scrollToRoles}
-                />
+                <ScrollReveal>
+                    <Hero
+                        onOpenSurvey={openSurvey}
+                        callout="Attention Agency Owners"
+                        headline={
+                            <>
+                                Hire A-Players Overseas <span className="text-gold italic">For Just $10-15/hr</span>
+                            </>
+                        }
+                        subheadline={
+                            <>
+                                College-educated, English-fluent specialists placed into the exact roles your agency needs, from delivery to account management. <span className="font-bold text-navy">And if you don't love them, it's free, guaranteed!</span>
+                            </>
+                        }
+                    />
+                </ScrollReveal>
 
                 <NichePain
                     niche="Digital Agency"
