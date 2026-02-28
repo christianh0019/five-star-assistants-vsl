@@ -52,26 +52,34 @@ const DigitalAgencies: React.FC = () => {
                 </ScrollReveal>
 
                 <NichePain
-                    niche="Digital Agency"
+                    niche="Agencies"
                     painPoints={[
-                        "Too many repetitive, low-leverage tasks",
-                        "Too expensive to hire experienced local staff",
-                        "No time to focus on sales and growth",
-                        "Constant operational bottlenecks slowing delivery"
+                        "$60k+ salary",
+                        "payroll taxes",
+                        "benefits",
+                        "recruiting time",
+                        "training"
                     ]}
-                    cycleText="You try to do everything yourself &rarr; growth stalls &rarr; hiring locally feels too expensive &rarr; you stay stuck."
+                    cycleText={
+                        <>
+                            At first the agency grows fast. You land a few clients, start getting results, and suddenly things take off. But then something happens. <b>You become the bottleneck.</b><br /><br />
+                            You are managing fulfillment, handling client communication, reviewing ads, answering questions, and trying to grow the business at the same time.<br /><br />
+                            Hiring locally sounds like the solution until you see the numbers.
+                        </>
+                    }
                 />
 
                 <NicheArbitrage
-                    headline="How Smart Agencies Scale Without Expensive Local Hires"
-                    conceptDescription={<>Instead of hiring a $50,000 employee locally, you hire a trained overseas professional for <span className="font-bold text-navy">$6–$15/hour.</span></>}
-                    conceptKeyDifference="But the key difference: You don't have to recruit, train, or manage the hiring process."
+                    headline="The Agencies Scaling Fast Aren't Hiring Locally"
+                    conceptDescription={<>They are building remote teams. Instead of paying $60k–$90k for one employee, they hire highly capable overseas specialists for <span className="font-bold text-navy">$10–15/hour.</span></>}
+                    conceptKeyDifference={<>But finding good people overseas isn't easy. You've probably heard the horror stories. Bad communication, missed deadlines, poor quality work, people disappearing.<br /><br />That is exactly why Five Star Assistants exists. We remove the entire hiring risk.</>}
                     features={[
-                        "Sourcing & Recruiting",
-                        "Deep Screening & Testing",
-                        "Interview Scheduling",
-                        "Payroll Management",
-                        "Ongoing Performance Support"
+                        "Recruiting",
+                        "Candidate screening",
+                        "Interviews",
+                        "Vetting",
+                        "Payroll",
+                        "Replacement if needed"
                     ]}
                 />
 
@@ -79,12 +87,30 @@ const DigitalAgencies: React.FC = () => {
                     <NicheRoles
                         niche="Agencies"
                         roles={[
-                            "Media Buyers",
-                            "Video Editors",
-                            "Graphic Designers",
-                            "Account Managers",
-                            "Appointment Setters",
-                            "Social Media Managers"
+                            {
+                                title: "Media Buyers",
+                                description: "Manage ad accounts across Meta, Google, TikTok, and more."
+                            },
+                            {
+                                title: "Video Editors",
+                                description: "Short-form content, ad creatives, YouTube editing, and social media clips."
+                            },
+                            {
+                                title: "Graphic Designers",
+                                description: "Ad creatives, landing pages, and branding assets."
+                            },
+                            {
+                                title: "Account Managers",
+                                description: "Handle client communication, updates, and reporting."
+                            },
+                            {
+                                title: "Appointment Setters",
+                                description: "Follow up with leads and book sales calls for your team."
+                            },
+                            {
+                                title: "Operations Assistants",
+                                description: "Manage CRM updates, reporting, SOPs, and daily tasks."
+                            }
                         ]}
                     />
                 </div>
@@ -92,47 +118,48 @@ const DigitalAgencies: React.FC = () => {
                 <NicheProcess
                     steps={[
                         {
-                            title: "Tell Us What You Need",
-                            description: "Describe the role and responsibilities you need filled inside your agency."
+                            title: "Tell Us The Role",
+                            description: "Describe the position and responsibilities your agency needs."
                         },
                         {
-                            title: "We Recruit and Vet Candidates",
-                            description: "We source, skill-test, and interview candidates specifically for your required tools and workflow."
+                            title: "We Recruit Candidates",
+                            description: "Our team sources and screens qualified professionals."
                         },
                         {
-                            title: "You Meet the Finalists",
-                            description: "You interview the top 2-3 candidates and choose who you want to hire. No guesswork."
+                            title: "Meet Your Candidates",
+                            description: "You interview the finalists and choose who you want."
                         },
                         {
                             title: "They Start Working",
-                            description: "Your new remote employee begins immediately, integrated right into your team."
+                            description: "Your new remote employee begins contributing immediately."
                         }
                     ]}
                 />
 
                 <NicheGuarantee
-                    headline="Our Zero-Risk Hiring Guarantee"
+                    headline="Hiring Overseas Shouldn't Feel Risky"
                     guarantees={[
                         "We replace them for free",
-                        "You don't pay."
+                        "You don't pay"
                     ]}
-                    footerText="No long contracts. No risk."
+                    footerText="We only win when you are happy with the hire."
                 />
 
                 <NicheCostComparison
                     localHireFeatures={[
-                        "$50,000+ Base Salary",
-                        "Payroll Taxes & Insurance",
-                        "Health Benefits",
-                        "Office Space Costs",
-                        "Expensive Recruiting Headaches"
+                        "$60k–$90k salary",
+                        "Payroll taxes",
+                        "Benefits",
+                        "Office space",
+                        "Recruiting time",
+                        "Training time"
                     ]}
                     fsaFeatures={[
-                        "$6–$15/hr Flat Rate",
-                        "Pre-Vetted Professionals",
-                        "No Recruiting Fees",
-                        "No Long-Term Contracts",
-                        "Flexible Scaling"
+                        "$10–15/hour specialists",
+                        "Pre-vetted candidates",
+                        "No recruiting process",
+                        "Flexible scaling",
+                        "Replace anytime if needed"
                     ]}
                 />
 
@@ -143,27 +170,31 @@ const DigitalAgencies: React.FC = () => {
                 <NicheFAQ
                     faqs={[
                         {
-                            question: "Are overseas workers reliable?",
-                            answer: "Absolutely. We only place college-educated professionals who have been rigorously tested for reliability, English fluency, and technical skills. They treat this as their career, not a gig."
+                            question: "Are overseas employees reliable?",
+                            answer: "Yes. We recruit college-educated professionals with strong English and previous remote work experience."
                         },
                         {
-                            question: "What about communication and timezones?",
-                            answer: "Your remote employee works within your preferred time zone (e.g., EST or PST). They integrate directly into your Slack, Teams, or preferred communication channels."
+                            question: "What about time zones?",
+                            answer: "Many overseas professionals work U.S. hours or overlapping schedules."
                         },
                         {
-                            question: "What if it doesn't work out?",
-                            answer: "We stand by our Zero-Risk Guarantee. If the candidate isn't the right fit within the specified trial period, we will replace them entirely for free, or you don't pay."
+                            question: "Who manages the employee?",
+                            answer: "They work directly inside your agency just like a normal team member."
                         },
                         {
-                            question: "Do I manage them directly?",
-                            answer: "Yes! They are your dedicated employee. They report to you, use your systems, and follow your SOPs. We handle the HR, payroll, and initial match, but you manage their day-to-day work."
+                            question: "What if the hire doesn't work out?",
+                            answer: "We replace them for free or you don't pay."
+                        },
+                        {
+                            question: "How quickly can we hire someone?",
+                            answer: "Most agencies meet qualified candidates within a few days."
                         }
                     ]}
                 />
 
                 <NicheFinalPush
-                    headline="Hire Your Next Remote Employee Without the Hiring Headache"
-                    subheadline="Tell us the role you need and we'll introduce you to qualified, ready-to-work candidates."
+                    headline="Your Agency Doesn't Need More Hustle. It Needs More Capacity."
+                    subheadline="The fastest growing agencies aren't doing everything themselves. They are building teams. If you want to scale without blowing up your payroll, hiring overseas talent is the smartest move you can make. Tell us the role you need and we'll introduce you to qualified candidates."
                     ctaText="Find Your Remote Employee"
                     onCtaClick={openSurvey}
                 />

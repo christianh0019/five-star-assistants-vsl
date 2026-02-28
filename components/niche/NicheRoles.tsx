@@ -1,9 +1,14 @@
 import React from 'react';
 import { UserCheck } from 'lucide-react';
 
+interface Role {
+    title: string;
+    description: string;
+}
+
 interface NicheRolesProps {
     niche: string;
-    roles: string[];
+    roles: Role[];
 }
 
 const NicheRoles: React.FC<NicheRolesProps> = ({ niche, roles }) => {
@@ -12,7 +17,7 @@ const NicheRoles: React.FC<NicheRolesProps> = ({ niche, roles }) => {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                        Remote Roles We Place for {niche}
+                        The Exact Roles {niche} Need To Scale
                     </h2>
                 </div>
 
@@ -22,7 +27,8 @@ const NicheRoles: React.FC<NicheRolesProps> = ({ niche, roles }) => {
                             <div className="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
                                 <UserCheck className="text-navy group-hover:text-gold w-8 h-8 transition-colors" />
                             </div>
-                            <h3 className="font-heading font-bold text-xl text-navy">{role}</h3>
+                            <h3 className="font-heading font-bold text-xl text-navy mb-3">{role.title}</h3>
+                            <p className="font-body text-gray-600 text-sm leading-relaxed">{role.description}</p>
                         </div>
                     ))}
                 </div>
