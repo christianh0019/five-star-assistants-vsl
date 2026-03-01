@@ -18,6 +18,7 @@ import DigitalAgencies from './pages/DigitalAgencies';
 import RealEstateAgents from './pages/RealEstateAgents';
 import Pricing from './pages/Pricing';
 import Results from './pages/Results';
+import CaseStudyDetail from './pages/CaseStudyDetail';
 import HowItWorks from './pages/HowItWorks';
 
 const App: React.FC = () => {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
         <Route path="/real-estate-agents" element={<RealEstateAgents />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/results/:slug" element={<CaseStudyDetail />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
