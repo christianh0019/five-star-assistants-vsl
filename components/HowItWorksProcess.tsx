@@ -50,7 +50,7 @@ const processSteps: StepData[] = [
         number: "4",
         title: "We Handle Payroll and Administration",
         description: "You do not need to manage international payroll, tax paperwork, or contractor payments.\n\nFive Star Assistants handles the payroll infrastructure so your assistant is paid on time and in compliance with international payment systems.\n\nYou receive a simple monthly invoice based on the agreed hourly rate.",
-        imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-4.jpg",
         imageAlt: "Payroll and administrative paperwork"
     },
     {
