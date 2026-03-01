@@ -43,10 +43,28 @@ const HowItWorks: React.FC = () => {
                             <Button
                                 onClick={openSurvey}
                                 variant="primary"
-                                className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+                                className="min-w-[280px] md:min-w-[320px] mb-12 shadow-xl hover:shadow-2xl"
                             >
                                 Book A Discovery Call
                             </Button>
+
+                            {/* Hero Image */}
+                            <div className="w-full relative mt-4 md:mt-8">
+                                {/* Decorative elements behind the image */}
+                                <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-r from-gold/20 via-navy/5 to-gold/20 rounded-[2rem] md:rounded-[2.5rem] blur-xl opacity-50"></div>
+
+                                <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-navy/10 transform transition-transform duration-500 hover:scale-[1.01]">
+                                    <div className="aspect-video w-full bg-navy flex items-center justify-center relative group">
+                                        <img
+                                            src="/images/how-it-works-hero.jpg"
+                                            alt="Five Star Assistants Global Team Sync via Zoom"
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                        />
+                                        {/* Subtle overlay */}
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
