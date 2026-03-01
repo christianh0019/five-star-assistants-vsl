@@ -75,15 +75,7 @@ const Results: React.FC = () => {
                                         {study.summary}
                                     </p>
 
-                                    {/* Metrics preview */}
-                                    <div className="grid grid-cols-2 gap-4 mb-8 pt-6 border-t border-gray-100">
-                                        {study.metrics.slice(0, 2).map((metric, idx) => (
-                                            <div key={idx}>
-                                                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">{metric.label}</div>
-                                                <div className="font-heading text-xl font-bold text-navy">{metric.value}</div>
-                                            </div>
-                                        ))}
-                                    </div>
+
 
                                     {/* Link block */}
                                     <div className="flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
