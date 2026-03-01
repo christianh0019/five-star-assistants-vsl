@@ -62,7 +62,7 @@ const processSteps: StepData[] = [
             "View activity and productivity reports",
             "Maintain visibility into your assistant’s work"
         ],
-        imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-5.jpg",
         imageAlt: "Productivity dashboard and tracking"
     },
     {
