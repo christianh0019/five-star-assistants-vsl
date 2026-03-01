@@ -82,7 +82,10 @@ const HowItWorksProcess: React.FC = () => {
                 {/* Global timeline line (desktop only) */}
                 <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-navy/5 -translate-x-1/2 hidden lg:block rounded-full"></div>
 
-                <div className="space-y-24 lg:space-y-0">
+                <div className="space-y-16 lg:space-y-0 relative">
+                    {/* Mobile vertical timeline line */}
+                    <div className="absolute left-[38px] top-12 bottom-0 w-1 bg-navy/5 block lg:hidden rounded-full z-0"></div>
+
                     {processSteps.map((step, index) => {
                         const isEven = index % 2 === 0;
 
@@ -99,45 +102,49 @@ const HowItWorksProcess: React.FC = () => {
                                     </div>
 
                                     {/* Text Content */}
-                                    <div className={`w-full lg:w-[45%] flex flex-col mb-12 lg:mb-0 ${!isEven ? 'lg:items-start lg:text-left' : 'lg:items-end lg:text-right'}`}>
+                                    {/* Using w-[42%] gives the center dot plenty of breathing room */}
+                                    <div className={`w-full lg:w-[42%] flex flex-col mb-12 lg:mb-0 ${!isEven ? 'lg:items-start lg:text-left' : 'lg:items-end lg:text-right'} relative z-10`}>
 
-                                        {/* Mobile Step Badge */}
-                                        <div className="lg:hidden inline-flex items-center justify-center w-12 h-12 rounded-full bg-navy text-white font-bold font-heading text-xl mb-6 shadow-sm">
-                                            {step.number}
+                                        {/* Mobile Header Block (Row with Badge + Phase pill) */}
+                                        <div className={`flex items-center gap-4 mb-6 ${!isEven ? 'justify-start' : 'justify-start lg:justify-end'} w-full pl-6 lg:pl-0`}>
+                                            <div className="lg:hidden shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-navy border-4 border-white text-white font-bold font-heading text-xl shadow-md z-10">
+                                                {step.number}
+                                            </div>
+                                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-xs font-bold tracking-widest uppercase shadow-sm">
+                                                Phase {step.number}
+                                            </div>
                                         </div>
 
-                                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
-                                            Phase {step.number}
-                                        </div>
-
-                                        <h3 className="font-heading text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
+                                        <h3 className={`font-heading text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight pl-[4.5rem] lg:pl-0 pr-4 lg:pr-0 ${!isEven ? 'text-left' : 'text-left lg:text-right'} w-full`}>
                                             {step.title}
                                         </h3>
 
-                                        <div className="font-body text-lg text-gray-600 leading-relaxed space-y-4">
+                                        <div className={`font-body text-lg text-gray-600 leading-relaxed space-y-4 pl-[4.5rem] lg:pl-0 pr-4 lg:pr-0 ${!isEven ? 'text-left' : 'text-left lg:text-right'} w-full`}>
                                             {step.description.split('\n\n').map((paragraph, pIdx) => (
                                                 <p key={pIdx}>{paragraph}</p>
                                             ))}
                                         </div>
 
                                         {step.bullets && (
-                                            <ul className={`mt-8 space-y-4 inline-block text-left ${!isEven ? '' : 'lg:text-right lg:flex lg:flex-col lg:items-end w-full'}`}>
-                                                {step.bullets.map((bullet, bIdx) => (
-                                                    <li key={bIdx} className={`flex items-start gap-3 w-full max-w-sm ${!isEven ? 'justify-start' : 'justify-end lg:flex-row-reverse'}`}>
-                                                        <CheckCircle2 className={`w-6 h-6 text-gold shrink-0 mt-0.5 ${!isEven ? '' : 'lg:ml-3 lg:mr-0'}`} />
-                                                        <span className="font-body text-gray-800 font-medium">{bullet}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                            <div className={`mt-8 pl-[4.5rem] lg:pl-0 pr-4 lg:pr-0 w-full flex flex-col ${!isEven ? 'items-start' : 'items-start lg:items-end'}`}>
+                                                <ul className={`space-y-4 inline-block`}>
+                                                    {step.bullets.map((bullet, bIdx) => (
+                                                        <li key={bIdx} className={`flex items-start gap-3 w-full max-w-sm text-left ${!isEven ? 'justify-start' : 'justify-start lg:flex-row-reverse lg:text-right'}`}>
+                                                            <CheckCircle2 className={`w-6 h-6 text-gold shrink-0 mt-0.5 ${!isEven ? '' : 'lg:ml-3 lg:mr-0'}`} />
+                                                            <span className="font-body text-gray-800 font-medium leading-snug">{bullet}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         )}
                                     </div>
 
-                                    <div className="hidden lg:block w-[10%]"></div>
+                                    <div className="hidden lg:block w-[16%]"></div>
 
                                     {/* Image Content */}
-                                    <div className={`w-full lg:w-[45%] relative group perspective`}>
+                                    <div className={`w-full lg:w-[42%] relative group perspective pl-[4.5rem] lg:pl-0 pr-4 lg:pr-0 mb-12 lg:mb-0`}>
                                         <div className={`absolute inset-4 rounded-[2rem] transform transition-transform duration-500 group-hover:rotate-6 bg-gold/20 ${!isEven ? '-rotate-3' : 'rotate-3'}`}></div>
-                                        <div className="relative bg-white p-2 rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+                                        <div className="relative bg-white p-2 rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl z-10">
                                             <div className="aspect-[4/3] rounded-[1.5rem] overflow-hidden bg-gray-100">
                                                 <img
                                                     src={step.imageUrl}
