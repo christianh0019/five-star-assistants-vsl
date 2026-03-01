@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
+import HowItWorksProcess from '../components/HowItWorksProcess';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 
@@ -48,6 +49,8 @@ const HowItWorks: React.FC = () => {
                         </div>
                     </div>
                 </section>
+
+                <HowItWorksProcess />
             </main>
             <Footer />
             <SurveyModal
