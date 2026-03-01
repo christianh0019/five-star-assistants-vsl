@@ -69,7 +69,7 @@ const processSteps: StepData[] = [
         number: "6",
         title: "Ongoing Support and Replacement Guarantee",
         description: "If issues arise, our team is available to help resolve them.\n\nIf an assistant is not the right fit, we will replace them at no cost or refund the placement fee.\n\nOur goal is to ensure every placement becomes a long-term asset to your business.",
-        imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-6.jpg",
         imageAlt: "Ongoing support and handshake guarantee"
     }
 ];
