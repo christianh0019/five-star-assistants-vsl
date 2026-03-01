@@ -259,35 +259,22 @@ const Pricing: React.FC = () => {
                     <div className="max-w-5xl mx-auto relative z-10">
                         <div className="flex flex-col items-center text-center">
 
-                            {/* Shield Icon styling */}
-                            <div className="relative mb-12 group">
-                                <div className="absolute inset-0 bg-gold/30 rounded-full blur-2xl group-hover:bg-gold/40 transition-colors duration-500"></div>
-                                <div className="w-28 h-28 bg-white/5 backdrop-blur-md rounded-full border border-gold/30 flex items-center justify-center relative shadow-[0_0_50px_rgba(255,215,0,0.15)] z-10 transform group-hover:scale-105 transition-transform duration-500">
-                                    <ShieldCheck className="text-gold w-14 h-14 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]" strokeWidth={1.5} />
-                                </div>
-                            </div>
 
-                            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gold/10 border border-gold/20 text-gold font-heading text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
+
+                            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white font-heading text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">
                                 <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                                 OUR GUARANTEE
                             </div>
 
-                            <h2 className="font-heading text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
+                            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                                 Zero Risk Guarantee
                             </h2>
 
-                            <h3 className="font-heading text-3xl md:text-4xl font-bold text-gold mb-12 max-w-3xl mx-auto leading-tight">
+                            <p className="font-body text-xl text-blue-100 max-w-2xl mx-auto font-bold mb-16">
                                 Hiring Shouldn't Be a Gamble.
-                            </h3>
+                            </p>
 
-                            <div className="max-w-3xl mx-auto space-y-4 mb-16">
-                                <p className="font-body text-xl md:text-2xl text-blue-100 font-medium leading-relaxed">
-                                    Most recruiting firms charge thousands just to introduce candidates. <span className="text-white font-bold opacity-80 italic">Even if the hire fails.</span>
-                                </p>
-                                <p className="font-heading text-3xl font-bold text-white drop-shadow-sm pt-4">
-                                    We don't believe in that.
-                                </p>
-                            </div>
+
 
                             <div className="w-full max-w-4xl bg-white/5 backdrop-blur-md border border-white/10 rounded-[3rem] p-10 md:p-16 shadow-2xl relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
@@ -323,16 +310,17 @@ const Pricing: React.FC = () => {
                 {/* SECTION 7: Final CTA */}
                 <section className="bg-white py-32 px-4 border-t border-gray-100">
                     <div className="max-w-5xl mx-auto text-center">
-                        <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6">
+                        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-navy/5 border border-navy/10 text-navy font-heading text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">
+                            <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                             READY TO START?
-                        </h3>
-                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-12 leading-tight">
+                        </div>
+                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
                             Build Your Team Without the<br />
                             <span className="text-gold">Hiring Headache</span>
                         </h2>
 
                         <div className="max-w-3xl mx-auto mb-16">
-                            <p className="font-body text-2xl text-gray-800 mb-12 leading-relaxed">Tell us the role you want to fill and we'll introduce you to qualified candidates.</p>
+                            <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mb-16 font-bold">Tell us the role you want to fill and we'll introduce you to qualified candidates.</p>
 
                             <ul className="grid md:grid-cols-3 gap-6 font-bold text-navy text-xl justify-center max-w-3xl mx-auto">
                                 <li className="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex items-center justify-center gap-3">
