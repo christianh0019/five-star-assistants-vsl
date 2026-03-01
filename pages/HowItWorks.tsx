@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import HowItWorksProcess from '../components/HowItWorksProcess';
+import FinalPush from '../components/FinalPush';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 
@@ -51,6 +52,7 @@ const HowItWorks: React.FC = () => {
                 </section>
 
                 <HowItWorksProcess />
+                <FinalPush onOpenSurvey={openSurvey} />
             </main>
             <Footer />
             <SurveyModal

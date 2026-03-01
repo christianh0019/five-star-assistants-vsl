@@ -81,12 +81,6 @@ const HowItWorksProcess: React.FC = () => {
 
                 {/* Global timeline line (desktop only) */}
                 <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-navy/5 -translate-x-1/2 hidden lg:block rounded-full">
-                    {/* Top Marker */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-[3px] border-gold rounded-full shadow-sm z-10"></div>
-                    {/* Bottom Marker */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-[3px] border-gold rounded-full shadow-sm z-10">
-                        <div className="absolute inset-0 rounded-full bg-gold/50 animate-ping"></div>
-                    </div>
                 </div>
 
                 <div className="space-y-16 lg:space-y-0 relative">
