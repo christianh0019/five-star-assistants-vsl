@@ -23,7 +23,7 @@ const Pricing: React.FC = () => {
         <div className="min-h-screen bg-white flex flex-col font-body">
             <Navbar onOpenSurvey={openSurvey} />
 
-            <main className="flex-grow pt-24">
+            <main className="flex-grow">
 
                 {/* HERO SECTION: The Smart Way to Build a Team */}
                 <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
