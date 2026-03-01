@@ -248,132 +248,74 @@ const Pricing: React.FC = () => {
                     </div>
                 </section>
 
-                {/* SECTION 5: Example Cost Comparison */}
-                <section className="py-20 md:py-32 bg-gray-50 px-4">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                THE ROI
-                            </h3>
-                            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                Example Cost Comparison
-                            </h2>
-                            <p className="font-heading font-bold text-2xl text-gray-800">
-                                Hiring a Marketing Specialist
-                            </p>
-                        </div>
 
-                        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                            {/* Traditional Column */}
-                            <div className="bg-white border-2 border-gray-100 rounded-[2rem] p-8 md:p-10 shadow-sm relative flex flex-col justify-between">
-                                <div>
-                                    <h3 className="font-heading text-xl font-bold text-gray-500 mb-8 pb-4 border-b border-gray-100 text-center uppercase tracking-wider">
-                                        Traditional U.S. Hire
-                                    </h3>
-                                    <div className="space-y-6">
-                                        <div className="flex justify-between items-center text-gray-600 text-lg">
-                                            <span>Salary</span>
-                                            <span className="font-bold">$65,000</span>
-                                        </div>
-                                        <div className="flex justify-between items-center text-gray-600 text-lg">
-                                            <span>Taxes + benefits</span>
-                                            <span className="font-bold">$15,000+</span>
-                                        </div>
-                                        <div className="flex justify-between items-center text-gray-600 text-lg">
-                                            <span>Recruiting costs</span>
-                                            <span className="font-bold">$5,000+</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
-                                    <span className="font-bold text-gray-800 text-xl">Total Annual Cost</span>
-                                    <span className="font-heading font-bold text-red-500 text-3xl">$85,000+</span>
-                                </div>
-                            </div>
-
-                            {/* FSA Column */}
-                            <div className="bg-white border-4 border-navy rounded-[2rem] p-8 md:p-10 shadow-xl relative transform md:-translate-y-4 flex flex-col justify-between overflow-hidden">
-                                <div className="absolute top-0 right-0 w-48 h-48 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 z-0"></div>
-                                <div className="relative z-10">
-                                    <div className="absolute -top-12 -right-4 bg-gold text-navy font-bold uppercase tracking-widest text-xs py-2 px-6 rounded-full shadow-lg">
-                                        Best Value
-                                    </div>
-                                    <h3 className="font-heading text-xl font-bold text-navy mb-8 pb-4 border-b border-gray-100 text-center uppercase tracking-wider">
-                                        Through Five Star Assistants
-                                    </h3>
-                                    <div className="space-y-6">
-                                        <div className="flex justify-between items-center text-navy font-medium text-lg">
-                                            <span>Remote specialist</span>
-                                            <span className="font-bold bg-navy/5 px-4 py-2 rounded-lg">$12/hour</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center relative z-10">
-                                    <span className="font-bold text-navy text-xl">Annual cost</span>
-                                    <span className="font-heading font-bold text-gold text-4xl">~$25,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-20 text-center">
-                            <div className="inline-block bg-navy/5 border border-navy/10 text-navy text-2xl md:text-3xl font-heading font-bold px-10 py-6 rounded-2xl mb-12 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
-                                Savings: <span className="text-gold font-black drop-shadow-sm ml-2">$60,000+ per year</span>
-                            </div>
-                            <p className="font-heading text-2xl md:text-4xl font-bold text-navy max-w-3xl mx-auto leading-tight">
-                                Many companies hire multiple remote specialists for the cost of one local employee.
-                            </p>
-                        </div>
-                    </div>
-                </section>
 
                 {/* SECTION 6: Zero Risk Guarantee */}
-                <section className="py-24 bg-navy px-4 border-y-8 border-gold overflow-hidden relative">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 z-0 hidden md:block"></div>
-                    <div className="max-w-4xl mx-auto text-center relative z-10">
-                        <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-10 text-gold shadow-[0_0_30px_rgba(255,215,0,0.2)]">
-                            <ShieldCheck size={48} />
-                        </div>
-                        <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6">
-                            OUR GUARANTEE
-                        </h3>
-                        <h2 className="font-heading text-4xl md:text-6xl font-bold text-white mb-10 drop-shadow-md pb-8 border-b border-white/10">
-                            Zero Risk Guarantee
-                        </h2>
+                <section className="py-24 md:py-32 bg-navy px-4 border-y-[12px] border-gold relative overflow-hidden">
+                    {/* Background glows */}
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 z-0 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 z-0 pointer-events-none"></div>
 
-                        <div className="max-w-2xl mx-auto">
-                            <h3 className="font-heading text-3xl font-bold text-white mb-8">
-                                Hiring Shouldn't Be a Gamble
+                    <div className="max-w-5xl mx-auto relative z-10">
+                        <div className="flex flex-col items-center text-center">
+
+                            {/* Shield Icon styling */}
+                            <div className="relative mb-12 group">
+                                <div className="absolute inset-0 bg-gold/30 rounded-full blur-2xl group-hover:bg-gold/40 transition-colors duration-500"></div>
+                                <div className="w-28 h-28 bg-white/5 backdrop-blur-md rounded-full border border-gold/30 flex items-center justify-center relative shadow-[0_0_50px_rgba(255,215,0,0.15)] z-10 transform group-hover:scale-105 transition-transform duration-500">
+                                    <ShieldCheck className="text-gold w-14 h-14 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]" strokeWidth={1.5} />
+                                </div>
+                            </div>
+
+                            <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gold/10 border border-gold/20 text-gold font-heading text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                                OUR GUARANTEE
+                            </div>
+
+                            <h2 className="font-heading text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg">
+                                Zero Risk Guarantee
+                            </h2>
+
+                            <h3 className="font-heading text-3xl md:text-4xl font-bold text-gold mb-12 max-w-3xl mx-auto leading-tight">
+                                Hiring Shouldn't Be a Gamble.
                             </h3>
-                            <p className="font-body text-xl text-blue-100 mb-4 font-medium leading-relaxed">
-                                Most recruiting firms charge thousands just to introduce candidates.
-                            </p>
-                            <p className="font-body text-xl text-blue-100 mb-8 font-medium">
-                                Even if the hire fails.
-                            </p>
-                            <p className="font-heading text-3xl text-gold font-bold mb-12 drop-shadow-sm">
-                                We don't believe in that.
-                            </p>
 
-                            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] p-10 md:p-14 mb-10 shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 left-0 w-32 h-32 bg-gold/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-                                <p className="font-body text-2xl text-white font-medium mb-8 text-center relative z-10">
+                            <div className="max-w-3xl mx-auto space-y-4 mb-16">
+                                <p className="font-body text-xl md:text-2xl text-blue-100 font-medium leading-relaxed">
+                                    Most recruiting firms charge thousands just to introduce candidates. <span className="text-white font-bold opacity-80 italic">Even if the hire fails.</span>
+                                </p>
+                                <p className="font-heading text-3xl font-bold text-white drop-shadow-sm pt-4">
+                                    We don't believe in that.
+                                </p>
+                            </div>
+
+                            <div className="w-full max-w-4xl bg-white/5 backdrop-blur-md border border-white/10 rounded-[3rem] p-10 md:p-16 shadow-2xl relative overflow-hidden group">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+
+                                <p className="font-heading text-2xl md:text-3xl text-gray-300 font-bold mb-10 text-center relative z-10">
                                     If the candidate we place isn't the right fit:
                                 </p>
-                                <div className="space-y-6 text-left inline-block relative z-10 w-full max-w-sm mx-auto">
-                                    <div className="flex items-center gap-6 justify-center">
-                                        <span className="text-gold font-bold text-2xl">•</span>
-                                        <span className="font-heading font-bold text-3xl md:text-4xl text-white">We replace them for free</span>
+
+                                <div className="grid md:grid-cols-2 gap-8 md:gap-12 relative z-10">
+                                    <div className="flex flex-col items-center justify-center text-center p-8 bg-black/20 rounded-3xl border border-white/5">
+                                        <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
+                                            <span className="text-gold text-3xl">1</span>
+                                        </div>
+                                        <span className="font-heading font-bold text-3xl text-white">We replace them for free</span>
                                     </div>
-                                    <div className="font-body italic text-gray-400 text-center my-6 text-xl">or</div>
-                                    <div className="flex items-center gap-6 justify-center">
-                                        <span className="text-gold font-bold text-2xl">•</span>
-                                        <span className="font-heading font-bold text-3xl md:text-4xl text-white">You don't pay</span>
+
+                                    <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-navy rounded-full border border-white/10 items-center justify-center font-heading font-black text-gold italic z-20">
+                                        OR
+                                    </div>
+
+                                    <div className="flex flex-col items-center justify-center text-center p-8 bg-black/20 rounded-3xl border border-white/5">
+                                        <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-6">
+                                            <span className="text-red-400 text-3xl">2</span>
+                                        </div>
+                                        <span className="font-heading font-bold text-3xl text-white">You don't pay</span>
                                     </div>
                                 </div>
                             </div>
-                            <p className="font-heading text-2xl md:text-3xl text-white font-bold tracking-wider pt-4">
-                                That is our guarantee.
-                            </p>
                         </div>
                     </div>
                 </section>
