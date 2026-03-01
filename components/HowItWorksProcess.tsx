@@ -43,7 +43,7 @@ const processSteps: StepData[] = [
         number: "3",
         title: "You Meet Pre-Vetted Candidates",
         description: "We present you with a small group of qualified candidates who match your requirements. You’ll review their profiles and meet them in a short interview to confirm they are the right fit for your team.\n\nOnce you choose a candidate, we handle the placement and get them started. Most roles are filled within 1–3 weeks.",
-        imageUrl: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-3.jpg",
         imageAlt: "Client meeting hand-selected candidate"
     },
     {
