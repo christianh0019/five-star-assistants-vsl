@@ -76,11 +76,18 @@ const processSteps: StepData[] = [
 
 const HowItWorksProcess: React.FC = () => {
     return (
-        <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <section className="py-24 md:py-32 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white relative overflow-hidden border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 relative z-10">
 
                 {/* Global timeline line (desktop only) */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-navy/5 -translate-x-1/2 hidden lg:block rounded-full"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-navy/5 -translate-x-1/2 hidden lg:block rounded-full">
+                    {/* Top Marker */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-[3px] border-gold rounded-full shadow-sm z-10"></div>
+                    {/* Bottom Marker */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-[3px] border-gold rounded-full shadow-sm z-10">
+                        <div className="absolute inset-0 rounded-full bg-gold/50 animate-ping"></div>
+                    </div>
+                </div>
 
                 <div className="space-y-16 lg:space-y-0 relative">
                     {/* Mobile vertical timeline line */}
@@ -97,7 +104,7 @@ const HowItWorksProcess: React.FC = () => {
                                 <div className={`flex flex-col lg:flex-row items-center justify-between w-full ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
 
                                     {/* Timeline Dot (desktop) */}
-                                    <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-16 h-16 bg-white border-[6px] border-navy rounded-full items-center justify-center z-10 text-navy font-bold font-heading text-2xl shadow-xl ring-8 ring-white">
+                                    <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-16 h-16 bg-white border-[6px] border-navy rounded-full items-center justify-center z-20 text-navy font-bold font-heading text-2xl shadow-xl ring-8 ring-white">
                                         {step.number}
                                     </div>
 
