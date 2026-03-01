@@ -25,60 +25,67 @@ const Pricing: React.FC = () => {
 
             <main className="flex-grow pt-24">
 
-                {/* SECTION 1: The Traditional Hiring Process Is Broken */}
-                <section className="py-20 md:py-32 bg-gray-50/50 px-4 border-b border-gray-100">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-                            <div className="lg:col-span-7">
-                                <h2 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                    THE PROBLEM
-                                </h2>
-                                <h3 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
-                                    The Traditional Hiring Process Is Broken
+                {/* HERO SECTION: The Traditional Hiring Process Is Broken */}
+                <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 bg-navy px-4 overflow-hidden border-b-4 border-gold">
+                    {/* Background visual effects */}
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 z-0 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/3 z-0 pointer-events-none"></div>
+
+                    <div className="max-w-6xl mx-auto relative z-10">
+                        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
+                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6 drop-shadow-sm">
+                                THE PROBLEM
+                            </h3>
+                            <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-md">
+                                The Traditional Hiring Process <br className="hidden md:block" /><span className="text-gold italic">Is Broken</span>
+                            </h1>
+                            <p className="font-body text-xl md:text-2xl text-blue-100 font-medium max-w-2xl mx-auto px-4">
+                                Hiring Employees the Normal Way Is Slow, Expensive, and Risky.
+                            </p>
+                        </div>
+
+                        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                            {/* Left Side: The List */}
+                            <div className="lg:col-span-7 bg-white/5 backdrop-blur-md rounded-[2rem] p-8 md:p-12 border border-white/10 shadow-2xl">
+                                <h3 className="font-body text-xl md:text-2xl text-white mb-8 border-b border-white/10 pb-6 font-medium leading-relaxed">
+                                    When most companies try to hire an employee, the process usually looks like this:
                                 </h3>
-                                <p className="font-bold text-xl text-navy mb-8">
-                                    Hiring Employees the Normal Way Is Slow, Expensive, and Risky
-                                </p>
-                                <div className="border-l-4 border-gold pl-6 md:pl-8 py-2">
-                                    <div className="font-body text-gray-700 text-lg md:text-xl leading-relaxed space-y-4">
-                                        <p>When most companies try to hire an employee, the process usually looks like this:</p>
-                                        <ul className="space-y-4 mt-6">
-                                            {[
-                                                "Write and post job listings",
-                                                "Sort through 100+ resumes",
-                                                "Conduct 30–50 interviews",
-                                                "Negotiate salary",
-                                                "Set up payroll",
-                                                "Pay employer taxes",
-                                                "Provide benefits",
-                                                "Train the employee",
-                                                "Hope the hire actually works out"
-                                            ].map((item, i) => (
-                                                <li key={i} className="flex items-center gap-3">
-                                                    <span className="text-red-500 font-bold">•</span>
-                                                    <span className="font-medium">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <ul className="space-y-5">
+                                    {[
+                                        "Write and post job listings",
+                                        "Sort through 100+ resumes",
+                                        "Conduct 30–50 interviews",
+                                        "Negotiate salary",
+                                        "Set up payroll",
+                                        "Pay employer taxes",
+                                        "Provide benefits",
+                                        "Train the employee",
+                                        "Hope the hire actually works out"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-4 text-gray-200 font-medium text-lg md:text-xl">
+                                            <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                                <X className="text-red-400 w-5 h-5" strokeWidth={3} />
+                                            </div>
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
 
-                            <div className="lg:col-span-5 w-full">
-                                <div className="bg-white rounded-3xl p-8 shadow-xl shadow-navy/5 border border-gray-100 relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                                    <h3 className="font-heading font-bold text-navy text-2xl mb-6 relative z-10">
-                                        And if the employee isn't a good fit?
-                                    </h3>
-                                    <p className="font-heading font-bold text-red-500 text-xl mb-8 relative z-10">
+                            {/* Right Side: The Consequence */}
+                            <div className="lg:col-span-5 bg-gold rounded-[2rem] p-8 md:p-12 shadow-[0_20px_50px_-12px_rgba(255,215,0,0.3)] transform lg:translate-y-12 relative overflow-hidden">
+                                <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/20 rounded-full blur-2xl pointer-events-none"></div>
+                                <h3 className="font-heading text-3xl font-bold text-navy mb-8 leading-tight relative z-10">
+                                    And if the employee isn't a good fit?
+                                </h3>
+                                <div className="bg-white rounded-2xl p-6 mb-8 shadow-inner relative z-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                                    <p className="font-heading font-black text-red-600 text-2xl text-center uppercase tracking-wide">
                                         You start the entire process again.
                                     </p>
-                                    <div className="mt-8 relative z-10 pt-6 border-t border-gray-100">
-                                        <p className="text-gray-600 font-medium leading-relaxed">
-                                            Most businesses underestimate how much time, risk, and money this process actually costs.
-                                        </p>
-                                    </div>
                                 </div>
+                                <p className="font-body text-navy/90 text-xl font-bold leading-relaxed relative z-10">
+                                    Most businesses underestimate how much time, risk, and money this process actually costs.
+                                </p>
                             </div>
                         </div>
                     </div>
