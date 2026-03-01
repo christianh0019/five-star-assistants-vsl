@@ -76,7 +76,7 @@ const processSteps: StepData[] = [
 
 const HowItWorksProcess: React.FC = () => {
     return (
-        <section className="py-24 md:py-32 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white relative overflow-hidden border-t border-gray-100">
+        <section className="py-24 md:py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 relative z-10">
 
                 {/* Global timeline line (desktop only) */}
@@ -103,13 +103,7 @@ const HowItWorksProcess: React.FC = () => {
 
                                 <div className={`flex flex-col lg:flex-row items-center justify-between w-full ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
 
-                                    {/* Timeline Dot (desktop) */}
-                                    <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-16 h-16 bg-white border-[6px] border-navy rounded-full items-center justify-center z-20 text-navy font-bold font-heading text-2xl shadow-xl ring-8 ring-white">
-                                        {step.number}
-                                    </div>
-
                                     {/* Text Content */}
-                                    {/* Using w-[42%] gives the center dot plenty of breathing room */}
                                     <div className={`w-full lg:w-[42%] flex flex-col mb-12 lg:mb-0 ${!isEven ? 'lg:items-start lg:text-left' : 'lg:items-end lg:text-right'} relative z-10`}>
 
                                         {/* Mobile Header Block (Row with Badge + Phase pill) */}
@@ -146,7 +140,12 @@ const HowItWorksProcess: React.FC = () => {
                                         )}
                                     </div>
 
-                                    <div className="hidden lg:block w-[16%]"></div>
+                                    {/* Center Timeline Dot Container (desktop) */}
+                                    <div className="hidden lg:flex w-[16%] justify-center items-center relative z-20">
+                                        <div className="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center font-bold font-heading text-2xl shadow-xl border-4 border-white z-20">
+                                            {step.number}
+                                        </div>
+                                    </div>
 
                                     {/* Image Content */}
                                     <div className={`w-full lg:w-[42%] relative group perspective pl-[4.5rem] lg:pl-0 pr-4 lg:pr-0 mb-12 lg:mb-0`}>

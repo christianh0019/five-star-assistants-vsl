@@ -22,9 +22,9 @@ const HowItWorks: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-body">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow">
+            <main className="flex-grow bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
                 {/* HERO SECTION */}
-                <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
+                <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8">
                     <div className="max-w-6xl mx-auto relative z-10">
                         <div className="max-w-[900px] mx-auto text-center flex flex-col items-center mb-0">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
