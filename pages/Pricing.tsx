@@ -31,7 +31,7 @@ const Pricing: React.FC = () => {
                         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                             <div className="lg:col-span-7">
                                 <h2 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                    SECTION 1
+                                    THE PROBLEM
                                 </h2>
                                 <h3 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
                                     The Traditional Hiring Process Is Broken
@@ -89,7 +89,7 @@ const Pricing: React.FC = () => {
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16">
                             <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                SECTION 2
+                                THE SOLUTION
                             </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 The Smart Way to Build a Team
@@ -163,7 +163,7 @@ const Pricing: React.FC = () => {
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16">
                             <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                SECTION 3
+                                WHAT WE DO
                             </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 What We Actually Handle For You
@@ -218,14 +218,11 @@ const Pricing: React.FC = () => {
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
                             <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                SECTION 4
+                                TRANSPARENT PRICING
                             </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 Simple Pricing
                             </h2>
-                            <p className="font-body text-2xl text-navy font-bold max-w-2xl mx-auto">
-                                Our Pricing Is Simple
-                            </p>
                             <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mt-6">
                                 Unlike traditional hiring where costs appear everywhere, our pricing is straightforward.
                             </p>
@@ -298,7 +295,7 @@ const Pricing: React.FC = () => {
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16">
                             <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                SECTION 5
+                                THE ROI
                             </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 Example Cost Comparison
@@ -379,7 +376,7 @@ const Pricing: React.FC = () => {
                             <ShieldCheck size={48} />
                         </div>
                         <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6">
-                            SECTION 6
+                            OUR GUARANTEE
                         </h3>
                         <h2 className="font-heading text-4xl md:text-6xl font-bold text-white mb-10 drop-shadow-md pb-8 border-b border-white/10">
                             Zero Risk Guarantee
@@ -427,11 +424,8 @@ const Pricing: React.FC = () => {
                 <section className="bg-white py-32 px-4 border-t border-gray-100">
                     <div className="max-w-5xl mx-auto text-center">
                         <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-6">
-                            SECTION 7
+                            READY TO START?
                         </h3>
-                        <h2 className="font-heading text-sm font-bold text-navy tracking-widest uppercase mb-6 opacity-60">
-                            Final CTA
-                        </h2>
                         <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-12 leading-tight">
                             Build Your Team Without the<br />
                             <span className="text-gold">Hiring Headache</span>
