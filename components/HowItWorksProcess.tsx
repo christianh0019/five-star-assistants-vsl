@@ -23,7 +23,7 @@ const processSteps: StepData[] = [
             "Customer support",
             "Operations and administrative support"
         ],
-        imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-1.jpg",
         imageAlt: "Team collaboration and planning"
     },
     {
