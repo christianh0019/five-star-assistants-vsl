@@ -103,52 +103,68 @@ const Pricing: React.FC = () => {
                 {/* SECTION 3: What We Actually Handle For You */}
                 <section className="py-20 md:py-32 bg-gray-50 px-4">
                     <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-16 md:mb-24">
                             <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
                                 WHAT WE DO
                             </h3>
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                 What We Actually Handle For You
                             </h2>
-                            <p className="font-body text-2xl text-navy font-bold max-w-2xl mx-auto">
-                                This Isn't Just Recruiting
-                            </p>
-                            <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mt-6">
-                                Most recruiting firms just send resumes and disappear. We handle the entire infrastructure behind your remote employee.
-                            </p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {[
                                 {
-                                    title: "Recruiting and Vetting",
-                                    desc: "We source, screen, and interview candidates before introducing them to you.\n\nYou only meet the best finalists."
+                                    title: "Recruiting & Talent Sourcing",
+                                    desc: "We actively recruit overseas professionals instead of waiting for random applicants.\n\nOur team sources college-educated, English-fluent candidates with experience working remotely in roles like marketing, operations, customer support, and administration.\n\nYou skip the job boards, resume sorting, and endless applicant filtering.\n\nWe bring you only the strongest candidates."
                                 },
                                 {
-                                    title: "Payroll and Payments",
-                                    desc: "We handle the payroll infrastructure so you don't have to manage international payments or compliance."
+                                    title: "Candidate Vetting & Interviews",
+                                    desc: "Before you ever meet a candidate, they go through our internal screening process.\n\nWe evaluate:\n\n• communication skills\n• professional experience\n• remote work readiness\n• technical ability\n\nBy the time you interview them, you're meeting pre-qualified finalists, not random applicants."
+                                },
+                                {
+                                    title: "Payroll & International Payments",
+                                    desc: "Hiring overseas employees normally requires navigating complicated international payments and compliance.\n\nWe handle the payroll infrastructure so you don't have to deal with:\n\n• international payment logistics\n• currency issues\n• contractor management\n\nYou simply pay one predictable rate for your assistant's time."
                                 },
                                 {
                                     title: "Productivity Monitoring",
-                                    desc: "Every assistant works through monitoring software that tracks:\n\n• screen activity\n• active work time\n• tasks completed"
+                                    desc: "Every assistant works through productivity tracking software that records:\n\n• active work time\n• screen activity\n• time spent on tasks\n\nThis ensures you have full visibility into how your assistant spends their work hours.\n\nNo guessing. No blind trust."
                                 },
                                 {
                                     title: "Daily Productivity Reports",
-                                    desc: "You receive reports showing:\n\n• hours worked\n• productivity metrics\n• work activity\n\nThis ensures you are only paying for real work."
+                                    desc: "You receive detailed reports showing:\n\n• hours worked\n• productivity metrics\n• activity summaries\n\nThese reports ensure you are only paying for real work being completed, not idle time.\n\nMost businesses never get this level of visibility with traditional employees."
                                 },
                                 {
-                                    title: "Management Oversight",
-                                    desc: "Our team helps ensure your assistant stays accountable and productive.\n\nYou get the benefits of a remote employee without the management headaches."
+                                    title: "Ongoing Support & Replacement Guarantee",
+                                    desc: "If your assistant isn't the right fit, we replace them.\n\nNo extra cost. No restarting the hiring process.\n\nOur team continues supporting the relationship so your remote employee stays productive and aligned with your business needs.\n\nYou get the flexibility of remote talent without the risk of hiring mistakes."
                                 }
                             ].map((feature, idx) => (
-                                <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col h-full">
-                                    <div className="w-16 h-16 rounded-full bg-navy/5 flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+                                <div key={idx} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col h-full relative overflow-hidden">
+                                    {/* Subtle gradient hover effect */}
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                                    <div className="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center mb-8 group-hover:bg-gold/10 group-hover:scale-110 transition-all duration-300 transform-gpu shrink-0">
                                         <Check className="text-navy group-hover:text-gold transition-colors" size={28} />
                                     </div>
-                                    <h3 className="font-heading font-bold text-2xl text-navy mb-4">{feature.title}</h3>
-                                    <p className="font-body text-gray-600 leading-relaxed text-lg whitespace-pre-line flex-grow">
-                                        {feature.desc}
-                                    </p>
+                                    <h3 className="font-heading font-bold text-2xl text-navy mb-6 leading-tight relative z-10">{feature.title}</h3>
+                                    <div className="font-body text-gray-600 text-lg leading-relaxed flex-grow space-y-4 relative z-10">
+                                        {feature.desc.split('\n\n').map((paragraph, pIdx) => {
+                                            if (paragraph.startsWith('•')) {
+                                                // Handle bulleted lists specifically
+                                                return (
+                                                    <ul key={pIdx} className="space-y-2 my-6">
+                                                        {paragraph.split('\n').map((item, iIdx) => (
+                                                            <li key={iIdx} className="flex items-start gap-3">
+                                                                <span className="text-gold font-bold mt-0.5">•</span>
+                                                                <span className="font-medium text-gray-700">{item.replace('• ', '')}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                );
+                                            }
+                                            return <p key={pIdx}>{paragraph}</p>;
+                                        })}
+                                    </div>
                                 </div>
                             ))}
                         </div>
