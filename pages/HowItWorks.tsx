@@ -20,11 +20,24 @@ const HowItWorks: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-body">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow flex items-center justify-center pt-24">
-                <div className="text-center">
-                    <h1 className="text-4xl font-heading font-medium text-navy mb-4">How It Works</h1>
-                    <p className="text-gray-600">Coming soon.</p>
-                </div>
+            <main className="flex-grow">
+                {/* HERO SECTION */}
+                <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
+                    <div className="max-w-6xl mx-auto relative z-10">
+                        <div className="max-w-[900px] mx-auto text-center flex flex-col items-center mb-0">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                                How It Works
+                            </div>
+                            <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
+                                Hiring reliable remote employees shouldn’t be complicated or risky.
+                            </h1>
+                            <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider max-w-3xl mx-auto leading-relaxed">
+                                Five Star Assistants handles the recruiting, screening, placement, and payroll so you can quickly add skilled team members without the cost and risk of hiring locally.
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
             <SurveyModal
