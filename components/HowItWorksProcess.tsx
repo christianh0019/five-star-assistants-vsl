@@ -36,7 +36,7 @@ const processSteps: StepData[] = [
             "Reliability and professionalism",
             "Technical skills for the role"
         ],
-        imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000",
+        imageUrl: "/images/phase-2.jpg",
         imageAlt: "Video interview screening process"
     },
     {
