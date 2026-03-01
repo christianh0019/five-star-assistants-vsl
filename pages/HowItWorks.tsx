@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import { useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
 
 const HowItWorks: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
@@ -30,11 +31,20 @@ const HowItWorks: React.FC = () => {
                                 How It Works
                             </div>
                             <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
-                                Hiring reliable remote employees shouldn’t be complicated or risky.
+                                Hiring reliable remote employees shouldn’t be <span className="text-gold italic">complicated or risky.</span>
                             </h1>
-                            <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider max-w-3xl mx-auto leading-relaxed">
+                            <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider max-w-3xl mx-auto leading-relaxed mb-12">
                                 Five Star Assistants handles the recruiting, screening, placement, and payroll so you can quickly add skilled team members without the cost and risk of hiring locally.
                             </p>
+
+                            {/* Primary CTA */}
+                            <Button
+                                onClick={openSurvey}
+                                variant="primary"
+                                className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+                            >
+                                Book A Discovery Call
+                            </Button>
                         </div>
                     </div>
                 </section>
