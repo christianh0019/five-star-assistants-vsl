@@ -24,17 +24,21 @@ const Results: React.FC = () => {
             <main className="flex-grow pt-24 pb-32">
 
                 {/* Hero block */}
-                <div className="bg-navy py-20 px-4 text-center border-b-[8px] border-gold relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 z-0"></div>
-                    <div className="max-w-4xl mx-auto relative z-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-body text-sm font-semibold mb-6 shadow-sm">
+                <div className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white text-center">
+                    <div className="max-w-[900px] mx-auto flex flex-col items-center relative z-10">
+                        {/* Callout Pill */}
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
                             <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                             Client Results
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 drop-shadow-sm">
-                            Real Companies. <br /> <span className="text-gold italic">Real Growth.</span>
+
+                        {/* H1 Headline */}
+                        <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
+                            Real Companies. <br className="hidden md:block" /> <span className="text-gold italic">Real Growth.</span>
                         </h1>
-                        <p className="font-subheading text-xl text-blue-100 max-w-2xl mx-auto">
+
+                        {/* Sub-headline */}
+                        <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl">
                             See how businesses are scaling faster, saving money, and eliminating bottlenecks with Five Star Assistants.
                         </p>
                     </div>
