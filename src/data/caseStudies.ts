@@ -27,7 +27,7 @@ export const caseStudies: CaseStudy[] = [
         summary: "How a Marketing Agency Founder Scaled His Business with Overseas Talent",
         fullDescription: "", // Left blank intentionally, as custom rendering will handle the long-form copy.
         videoUrl: "https://assets.cdn.filesafe.space/Vfs1lM3WjyR7NO8AgZeL/media/69a57652b617a7289a80c2f4.mp4",
-        thumbnailUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000",
+        thumbnailUrl: "/images/builderproject-thumbnail.png",
         metrics: [
             { label: "Roles Filled", value: "3" },
             { label: "Primary Need", value: "Fulfillment" },
