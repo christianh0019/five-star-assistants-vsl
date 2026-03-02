@@ -43,10 +43,14 @@ const HowItWorks: React.FC = () => {
                             <Button
                                 onClick={openSurvey}
                                 variant="primary"
-                                className="min-w-[280px] md:min-w-[320px] mb-12 shadow-xl hover:shadow-2xl"
+                                className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
                             >
                                 Book A Discovery Call
                             </Button>
+
+                            <p className="font-heading italic text-gray-500 text-sm mb-12">
+                                100% Free. No Obligation.
+                            </p>
 
                             {/* Hero Image */}
                             <div className="w-full relative mt-4 md:mt-8">
