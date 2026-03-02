@@ -19,9 +19,9 @@ const Results: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col font-body">
+        <div className="w-full bg-white flex flex-col min-h-screen font-body">
             <Navbar onOpenSurvey={openSurvey} />
-            <main className="flex-grow pt-24 pb-32">
+            <main className="flex-grow pb-32">
 
                 {/* Hero block */}
                 <div className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white text-center">
