@@ -403,6 +403,37 @@ const DigitalAgencies: React.FC = () => {
                     </div>
                 </section>
 
+                {/* CASE STUDY VIDEO SECTION */}
+                <section className="py-20 bg-gray-50 px-4 border-t border-gray-100">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="mb-12">
+                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                FEATURED CASE STUDY
+                            </h3>
+                            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy">
+                                BuilderProject Hires Entire Fulfillment Team
+                            </h2>
+                        </div>
+
+                        <div className="relative w-full aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-navy group">
+                            {/* Decorative glow */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-gold/30 via-navy/10 to-gold/30 rounded-[2.5rem] blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+
+                            <div className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden z-10 bg-black">
+                                <video
+                                    src="https://assets.cdn.filesafe.space/Vfs1lM3WjyR7NO8AgZeL/media/69a57652b617a7289a80c2f4.mp4"
+                                    className="w-full h-full object-contain"
+                                    controls
+                                    playsInline
+                                    preload="metadata"
+                                >
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* TESTIMONIAL SECTION */}
                 <section className="py-20 md:py-32 bg-gray-50 px-4">
                     <div className="max-w-4xl mx-auto text-center relative">
