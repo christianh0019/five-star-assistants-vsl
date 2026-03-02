@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
+import Button from '../components/Button';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 import { caseStudies } from '../src/data/caseStudies';
@@ -40,6 +41,19 @@ const Results: React.FC = () => {
                         {/* Sub-headline */}
                         <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl">
                             See how businesses are scaling faster, saving money, and eliminating bottlenecks with Five Star Assistants.
+                        </p>
+
+                        {/* Primary CTA */}
+                        <Button
+                            onClick={openSurvey}
+                            variant="primary"
+                            className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+                        >
+                            Book A Discovery Call
+                        </Button>
+
+                        <p className="font-heading italic text-gray-500 text-sm">
+                            100% Free. No Obligation.
                         </p>
                     </div>
                 </div>
