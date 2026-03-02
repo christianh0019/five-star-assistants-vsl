@@ -20,22 +20,22 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
     {
         id: "1",
-        slug: "marketing-agency-scaling",
-        clientName: "Acme Digital",
+        slug: "builderproject-fulfillment-team",
+        clientName: "BuilderProject",
         industry: "Digital Agency",
-        title: "How Acme Digital Scaled Operations Without Increasing Office Overhead",
-        summary: "By integrating 3 remote specialists, Acme Digital increased their client capacity by 40% while saving $120k annually.",
-        fullDescription: "Acme Digital was hitting a growth ceiling. Their local talent pool was too expensive to scale rapidly, and their senior team was bogged down in daily admin tasks. We introduced them to the Five Star Assistants framework.",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
+        title: "BuilderProject Hires Entire Fulfillment Team",
+        summary: "How a Marketing Agency Founder Scaled His Business with Overseas Talent",
+        fullDescription: "", // Left blank intentionally, as custom rendering will handle the long-form copy.
+        videoUrl: "https://assets.cdn.filesafe.space/Vfs1lM3WjyR7NO8AgZeL/media/69a57652b617a7289a80c2f4.mp4",
         thumbnailUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000",
         metrics: [
-            { label: "Annual Savings", value: "$120,000+" },
-            { label: "Capacity Increase", value: "40%" },
-            { label: "Time to Placement", value: "12 Days" }
+            { label: "Roles Filled", value: "3" },
+            { label: "Primary Need", value: "Fulfillment" },
+            { label: "Growth Focus", value: "Sales" }
         ],
-        challenge: "High local labor costs were eroding margins and preventing the agency from taking on new clients.",
-        solution: "Placed a dedicated remote Marketing Assistant and a Data Analyst to handle reporting and campaign setup.",
-        result: "The leadership team reclaimed 20 hours a week, allowing them to focus on high-ticket sales and strategy."
+        challenge: "",
+        solution: "",
+        result: ""
     },
     {
         id: "2",
