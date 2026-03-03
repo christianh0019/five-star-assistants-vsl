@@ -1,5 +1,6 @@
 import React from 'react';
-import { Globe, Store, CheckCircle, ArrowRight } from 'lucide-react';
+import { Globe, Store, CheckCircle, ArrowRight, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 interface WhoWeWorkWithSectionProps {
@@ -27,10 +28,10 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 relative z-10">
 
                     {/* Online Businesses Card */}
-                    <div className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-navy">
+                    <Link to="/digital-agencies" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-navy flex flex-col h-full">
                         <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
                             <Globe size={120} />
                         </div>
@@ -40,9 +41,9 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                         </div>
 
                         <h3 className="font-heading text-3xl font-bold text-navy mb-4">
-                            Online Businesses & Agencies
+                            Digital Agencies
                         </h3>
-                        <p className="text-gray-500 mb-8 font-body leading-relaxed">
+                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
                             Stop getting bogged down in your inbox and CRM. Hand off the digital heavy lifting so you can focus on strategy and closing deals.
                         </p>
 
@@ -59,10 +60,14 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                                 </li>
                             ))}
                         </ul>
-                    </div>
+
+                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
+                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                    </Link>
 
                     {/* Physical Businesses Card */}
-                    <div className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-gold">
+                    <Link to="/local-service-businesses" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-gold flex flex-col h-full">
                         <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
                             <Store size={120} />
                         </div>
@@ -72,9 +77,9 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                         </div>
 
                         <h3 className="font-heading text-3xl font-bold text-navy mb-4">
-                            Local Physical Businesses
+                            Local Service Businesses
                         </h3>
-                        <p className="text-gray-500 mb-8 font-body leading-relaxed">
+                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
                             Stop answering the phone while trying to run the job site. Let a dedicated assistant handle your back-office and customer scheduling.
                         </p>
 
@@ -91,21 +96,48 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                                 </li>
                             ))}
                         </ul>
-                    </div>
 
-                </div>
+                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
+                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                    </Link>
 
-                <div className="mt-16 text-center">
-                    <Button
-                        onClick={onOpenSurvey}
-                        variant="primary"
-                        className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
-                    >
-                        Book A Discovery Call
-                    </Button>
-                    <p className="font-heading italic text-gray-500 text-sm">
-                        100% Free. No Obligation.
-                    </p>
+                    {/* Real Estate Agents Card */}
+                    <Link to="/real-estate-agents" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-navy flex flex-col h-full">
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
+                            <Home size={120} />
+                        </div>
+
+                        <div className="w-16 h-16 bg-navy/5 text-navy rounded-xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
+                            <Home className="w-8 h-8" />
+                        </div>
+
+                        <h3 className="font-heading text-3xl font-bold text-navy mb-4">
+                            Real Estate Agents
+                        </h3>
+                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
+                            Stop chasing signatures and managing compliance. Hand off the transaction coordination to focus on prospecting and closing volume.
+                        </p>
+
+                        <ul className="space-y-4 mb-10">
+                            {[
+                                "Transaction Coordination",
+                                "MLS Listing Management",
+                                "Client Follow-up & Nurture",
+                                "Open House Prep & Scheduling"
+                            ].map((feature, i) => (
+                                <li key={i} className="flex items-start">
+                                    <CheckCircle className="w-5 h-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
+                                    <span className="text-navy font-medium text-sm md:text-base">{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
+                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                    </Link>
+
                 </div>
             </div>
         </section>

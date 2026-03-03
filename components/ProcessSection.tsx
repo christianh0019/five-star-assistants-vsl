@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhoneCall, Search, Rocket, HeartHandshake } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 interface ProcessSectionProps {
@@ -85,13 +86,14 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenSurvey }) => {
           </div>
 
           <div className="mt-20 text-center">
-            <Button
-              onClick={onOpenSurvey}
-              variant="primary"
-              className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
-            >
-              Book A Discovery Call
-            </Button>
+            <Link to="/how-it-works" className="inline-block">
+              <Button
+                variant="primary"
+                className="min-w-[280px] md:min-w-[320px] mb-4 shadow-xl hover:shadow-2xl"
+              >
+                See How It Works
+              </Button>
+            </Link>
             <p className="font-heading italic text-gray-500 text-sm">
               100% Free. No Obligation.
             </p>
