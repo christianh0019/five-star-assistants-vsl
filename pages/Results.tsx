@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import Button from '../components/Button';
+import FinalPush from '../components/FinalPush';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 import { caseStudies } from '../src/data/caseStudies';
@@ -105,6 +106,7 @@ const Results: React.FC = () => {
                     </div>
                 </div>
 
+                <FinalPush onOpenSurvey={openSurvey} />
             </main>
             <Footer />
             <SurveyModal
