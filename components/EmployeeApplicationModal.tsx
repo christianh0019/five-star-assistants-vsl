@@ -4,10 +4,9 @@ import { X, Check } from 'lucide-react';
 interface EmployeeApplicationModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onComplete?: () => void;
 }
 
-const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isOpen, onClose, onComplete }) => {
+const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isOpen, onClose }) => {
     const [answers, setAnswers] = useState({
         name: '',
         email: '',
@@ -67,13 +66,17 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                 resumeType
             };
 
-            await fetch("/api/submit-employee-application", {
+            const response = await fetch("/api/submit-employee-application", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(payload),
             });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit to server proxy");
+            }
         } catch (error) {
             console.error("Error submitting application:", error);
             alert("There was an error submitting your application. Please try again.");
@@ -83,10 +86,6 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
 
         setIsSubmitting(false);
         setIsSuccess(true);
-
-        if (onComplete) {
-            // Optional: call onComplete after a delay or let user click close
-        }
     };
 
     const handleClose = () => {
@@ -101,7 +100,6 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
             whyConsidered: ''
         });
         onClose();
-        if (isSuccess && onComplete) onComplete();
     };
 
     const canProceed = () => {

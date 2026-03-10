@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const AIRTABLE_WEBHOOK_URL = 'https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wfloeqnJ6kyNa0Ehy/wtrDkmXlkOsUthPOE';
+const AIRTABLE_WEBHOOK_URL = 'https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wflhKRnmDDQCRWAb3/wtrwQNXYR7KJadLI9';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Add CORS headers to allow requests from any origin
