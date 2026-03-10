@@ -45,6 +45,9 @@ const ReferralProgram: React.FC = () => {
                             >
                                 Book A Discovery Call
                             </Button>
+                            <p className="font-heading italic text-gray-500 text-sm mt-4">
+                                100% Free. No Obligation.
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -133,6 +136,9 @@ const ReferralProgram: React.FC = () => {
                         >
                             Contact Us Today
                         </Button>
+                        <p className="font-heading italic text-gray-500 text-sm mt-4">
+                            100% Free. No Obligation.
+                        </p>
                     </div>
                 </section>
 

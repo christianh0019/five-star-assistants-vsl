@@ -21,6 +21,7 @@ import Results from './pages/Results';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 import HowItWorks from './pages/HowItWorks';
 import ReferralProgram from './pages/ReferralProgram';
+import YouTubeVideos from './pages/YouTubeVideos';
 
 const App: React.FC = () => {
   return (
@@ -42,6 +43,7 @@ const App: React.FC = () => {
         <Route path="/results/:slug" element={<CaseStudyDetail />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/referral-program" element={<ReferralProgram />} />
+        <Route path="/youtube-videos" element={<YouTubeVideos />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
 
