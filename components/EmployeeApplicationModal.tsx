@@ -68,6 +68,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
 
             await fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wfloeqnJ6kyNa0Ehy/wtrDkmXlkOsUthPOE", {
                 method: "POST",
+                mode: "no-cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
