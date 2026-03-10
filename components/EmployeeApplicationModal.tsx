@@ -19,6 +19,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     if (!isOpen) return null;
 
@@ -54,25 +55,28 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                 resumeType = answers.resume.type;
             }
 
-            const payload = {
-                name: answers.name,
-                email: answers.email,
-                whatsapp: answers.whatsapp,
-                country: answers.country,
-                videoUrl: answers.videoUrl,
-                whyConsidered: answers.whyConsidered,
-                resumeBase64,
-                resumeName,
-                resumeType
-            };
+            const formData = new FormData();
+            formData.append('name', answers.name);
+            formData.append('email', answers.email);
+            formData.append('whatsapp', answers.whatsapp);
+            formData.append('country', answers.country);
+            formData.append('videoUrl', answers.videoUrl);
+            formData.append('whyConsidered', answers.whyConsidered);
+
+            // Also append file base64 data to make it easily readable for Airtable
+            formData.append('resumeBase64', resumeBase64);
+            formData.append('resumeName', resumeName);
+            formData.append('resumeType', resumeType);
+
+            // You can also append the raw file if the webhook handles multipart correctly
+            if (answers.resume) {
+                formData.append('resumeFile', answers.resume);
+            }
 
             await fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wfloeqnJ6kyNa0Ehy/wtrDkmXlkOsUthPOE", {
                 method: "POST",
                 mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
+                body: formData,
             });
         } catch (error) {
             console.error("Error submitting application:", error);
@@ -82,13 +86,26 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
         }
 
         setIsSubmitting(false);
+        setIsSuccess(true);
 
         if (onComplete) {
-            onComplete();
-        } else {
-            onClose();
-            alert("Thanks! We've received your application.");
+            // Optional: call onComplete after a delay or let user click close
         }
+    };
+
+    const handleClose = () => {
+        setIsSuccess(false);
+        setAnswers({
+            name: '',
+            email: '',
+            whatsapp: '',
+            country: '',
+            resume: null,
+            videoUrl: '',
+            whyConsidered: ''
+        });
+        onClose();
+        if (isSuccess && onComplete) onComplete();
     };
 
     const canProceed = () => {
@@ -106,125 +123,148 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                             Join Five Star Assistants
                         </span>
                     </div>
-                    <button onClick={onClose} className="text-gray-400 hover:text-navy transition-colors">
+                    <button onClick={handleClose} className="text-gray-400 hover:text-navy transition-colors">
                         <X size={24} />
                     </button>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 md:p-8 overflow-y-auto flex-grow">
-
-                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-navy mb-2">
-                        Employee Application
-                    </h2>
-
-                    <p className="text-gray-500 mb-6 italic">Please fill out all fields carefully.</p>
-
-                    <div className="space-y-4 mt-6 text-left">
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-bold text-navy mb-1">Full Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
-                                    placeholder="John Doe"
-                                    onChange={handleTextChange}
-                                    value={answers.name}
-                                />
+                    {isSuccess ? (
+                        <div className="text-center py-12 px-4">
+                            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Check size={40} className="text-green-500" />
                             </div>
-                            <div>
-                                <label className="block text-sm font-bold text-navy mb-1">Email Address</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
-                                    placeholder="john@example.com"
-                                    onChange={handleTextChange}
-                                    value={answers.email}
-                                />
+                            <h2 className="font-heading text-3xl font-bold text-navy mb-4">
+                                Thanks for applying!
+                            </h2>
+                            <p className="text-gray-600 text-lg max-w-md mx-auto leading-relaxed">
+                                We'll reach out via email and Whatsapp if we identify an opportunity based on your skillset.
+                            </p>
+                            <button
+                                onClick={handleClose}
+                                className="mt-10 bg-navy text-white px-8 py-4 rounded shadow-xl font-heading font-bold uppercase tracking-wide hover:bg-navy/90 hover:scale-105 transition-all inline-block"
+                            >
+                                Close Window
+                            </button>
+                        </div>
+                    ) : (
+                        <>
+                            <h2 className="font-heading text-2xl md:text-3xl font-bold text-navy mb-2">
+                                Employee Application
+                            </h2>
+
+                            <p className="text-gray-500 mb-6 italic">Please fill out all fields carefully.</p>
+
+                            <div className="space-y-4 mt-6 text-left">
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-bold text-navy mb-1">Full Name</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
+                                            placeholder="John Doe"
+                                            onChange={handleTextChange}
+                                            value={answers.name}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-navy mb-1">Email Address</label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
+                                            placeholder="john@example.com"
+                                            onChange={handleTextChange}
+                                            value={answers.email}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-bold text-navy mb-1">WhatsApp Number</label>
+                                        <input
+                                            type="tel"
+                                            name="whatsapp"
+                                            className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
+                                            placeholder="+1 234 567 8900"
+                                            onChange={handleTextChange}
+                                            value={answers.whatsapp}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-navy mb-1">Country</label>
+                                        <input
+                                            type="text"
+                                            name="country"
+                                            className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
+                                            placeholder="e.g. Philippines"
+                                            onChange={handleTextChange}
+                                            value={answers.country}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-navy mb-1">Resume (PDF)</label>
+                                    <input
+                                        type="file"
+                                        name="resume"
+                                        accept=".pdf"
+                                        className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none bg-white text-gray-900"
+                                        onChange={handleFileChange}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-navy mb-1">Video Application (URL)</label>
+                                    <input
+                                        type="url"
+                                        name="videoUrl"
+                                        className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
+                                        placeholder="https://youtube.com/... or Loom link"
+                                        onChange={handleTextChange}
+                                        value={answers.videoUrl}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-bold text-navy mb-1">Why should you be considered?</label>
+                                    <textarea
+                                        name="whyConsidered"
+                                        className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none min-h-[120px] text-gray-900"
+                                        placeholder="Tell us about your experience and why you'd be a great fit for our US clients..."
+                                        onChange={handleTextChange}
+                                        value={answers.whyConsidered}
+                                    ></textarea>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-bold text-navy mb-1">WhatsApp Number</label>
-                                <input
-                                    type="tel"
-                                    name="whatsapp"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
-                                    placeholder="+1 234 567 8900"
-                                    onChange={handleTextChange}
-                                    value={answers.whatsapp}
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-bold text-navy mb-1">Country</label>
-                                <input
-                                    type="text"
-                                    name="country"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
-                                    placeholder="e.g. Philippines"
-                                    onChange={handleTextChange}
-                                    value={answers.country}
-                                />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-bold text-navy mb-1">Resume (PDF)</label>
-                            <input
-                                type="file"
-                                name="resume"
-                                accept=".pdf"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none bg-white text-gray-900"
-                                onChange={handleFileChange}
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-bold text-navy mb-1">Video Application (URL)</label>
-                            <input
-                                type="url"
-                                name="videoUrl"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
-                                placeholder="https://youtube.com/... or Loom link"
-                                onChange={handleTextChange}
-                                value={answers.videoUrl}
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-bold text-navy mb-1">Why should you be considered?</label>
-                            <textarea
-                                name="whyConsidered"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none min-h-[120px] text-gray-900"
-                                placeholder="Tell us about your experience and why you'd be a great fit for our US clients..."
-                                onChange={handleTextChange}
-                                value={answers.whyConsidered}
-                            ></textarea>
-                        </div>
-                    </div>
+                        </>
+                    )}
 
                 </div>
 
                 {/* Footer / Navigation */}
-                <div className="p-6 bg-white border-t border-gray-100 flex justify-end items-center shrink-0">
+                {!isSuccess && (
+                    <div className="p-6 bg-white border-t border-gray-100 flex justify-end items-center shrink-0">
 
-                    <button
-                        onClick={handleSubmit}
-                        disabled={!canProceed() || isSubmitting}
-                        className={`
+                        <button
+                            onClick={handleSubmit}
+                            disabled={!canProceed() || isSubmitting}
+                            className={`
                             bg-gold text-navy px-8 py-4 rounded shadow-xl font-heading font-bold uppercase tracking-wide flex items-center transition-all
                             ${(!canProceed() || isSubmitting) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gold-hover hover:scale-105'}
                         `}
-                    >
-                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
-                        {!isSubmitting && <Check size={20} className="ml-2" />}
-                    </button>
+                        >
+                            {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                            {!isSubmitting && <Check size={20} className="ml-2" />}
+                        </button>
 
-                </div>
+                    </div>
+                )}
 
             </div>
         </div>
