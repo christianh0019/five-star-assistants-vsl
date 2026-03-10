@@ -13,12 +13,6 @@ const ForEmployeesLanding: React.FC = () => {
     const openSurvey = () => setIsSurveyOpen(true);
     const closeSurvey = () => setIsSurveyOpen(false);
 
-    // This will be passed to EmployeeApplicationModal to handle redirect
-    const handleSurveyComplete = () => {
-        closeSurvey();
-        navigate('/thank-you'); // Consider sending them to a different thank you page later
-    };
-
     return (
         <div className="min-h-screen bg-navy flex flex-col font-body text-white selection:bg-gold/30 selection:text-white">
             <Navbar onOpenSurvey={openSurvey} hideMenu alwaysWhite />
@@ -196,7 +190,6 @@ const ForEmployeesLanding: React.FC = () => {
             <EmployeeApplicationModal
                 isOpen={isSurveyOpen}
                 onClose={closeSurvey}
-                onComplete={handleSurveyComplete}
             />
         </div>
     );

@@ -55,28 +55,24 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                 resumeType = answers.resume.type;
             }
 
-            const formData = new FormData();
-            formData.append('name', answers.name);
-            formData.append('email', answers.email);
-            formData.append('whatsapp', answers.whatsapp);
-            formData.append('country', answers.country);
-            formData.append('videoUrl', answers.videoUrl);
-            formData.append('whyConsidered', answers.whyConsidered);
+            const payload = {
+                name: answers.name,
+                email: answers.email,
+                whatsapp: answers.whatsapp,
+                country: answers.country,
+                videoUrl: answers.videoUrl,
+                whyConsidered: answers.whyConsidered,
+                resumeBase64,
+                resumeName,
+                resumeType
+            };
 
-            // Also append file base64 data to make it easily readable for Airtable
-            formData.append('resumeBase64', resumeBase64);
-            formData.append('resumeName', resumeName);
-            formData.append('resumeType', resumeType);
-
-            // You can also append the raw file if the webhook handles multipart correctly
-            if (answers.resume) {
-                formData.append('resumeFile', answers.resume);
-            }
-
-            await fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wfloeqnJ6kyNa0Ehy/wtrDkmXlkOsUthPOE", {
+            await fetch("/api/submit-employee-application", {
                 method: "POST",
-                mode: "no-cors",
-                body: formData,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
             });
         } catch (error) {
             console.error("Error submitting application:", error);
