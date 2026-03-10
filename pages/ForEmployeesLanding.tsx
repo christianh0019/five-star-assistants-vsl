@@ -21,9 +21,9 @@ const ForEmployeesLanding: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-navy flex flex-col font-body text-white selection:bg-gold/30 selection:text-white">
-            <Navbar onOpenSurvey={openSurvey} hideMenu />
+            <Navbar onOpenSurvey={openSurvey} hideMenu alwaysWhite />
 
-            <main className="flex-grow">
+            <main className="flex-grow pt-24">
                 {/* HERO SECTION */}
                 <section className="relative pt-36 md:pt-48 pb-24 px-4 md:px-8 overflow-hidden">
                     {/* Background Accents */}

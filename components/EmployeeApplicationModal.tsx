@@ -127,7 +127,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                                 <input
                                     type="text"
                                     name="name"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
                                     placeholder="John Doe"
                                     onChange={handleTextChange}
                                     value={answers.name}
@@ -138,7 +138,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                                 <input
                                     type="email"
                                     name="email"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
                                     placeholder="john@example.com"
                                     onChange={handleTextChange}
                                     value={answers.email}
@@ -152,7 +152,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                                 <input
                                     type="tel"
                                     name="whatsapp"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
                                     placeholder="+1 234 567 8900"
                                     onChange={handleTextChange}
                                     value={answers.whatsapp}
@@ -163,7 +163,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                                 <input
                                     type="text"
                                     name="country"
-                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                    className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
                                     placeholder="e.g. Philippines"
                                     onChange={handleTextChange}
                                     value={answers.country}
@@ -177,7 +177,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                                 type="file"
                                 name="resume"
                                 accept=".pdf"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none bg-white text-gray-700"
+                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none bg-white text-gray-900"
                                 onChange={handleFileChange}
                             />
                         </div>
@@ -187,7 +187,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                             <input
                                 type="url"
                                 name="videoUrl"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none"
+                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none text-gray-900"
                                 placeholder="https://youtube.com/... or Loom link"
                                 onChange={handleTextChange}
                                 value={answers.videoUrl}
@@ -198,7 +198,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                             <label className="block text-sm font-bold text-navy mb-1">Why should you be considered?</label>
                             <textarea
                                 name="whyConsidered"
-                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none min-h-[120px]"
+                                className="w-full p-3 border border-gray-300 rounded focus:border-gold outline-none min-h-[120px] text-gray-900"
                                 placeholder="Tell us about your experience and why you'd be a great fit for our US clients..."
                                 onChange={handleTextChange}
                                 value={answers.whyConsidered}

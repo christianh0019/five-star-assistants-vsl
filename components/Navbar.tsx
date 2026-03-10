@@ -6,9 +6,10 @@ import Logo from './Logo';
 interface NavbarProps {
     onOpenSurvey?: () => void;
     hideMenu?: boolean;
+    alwaysWhite?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
+const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -51,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen
                     ? 'bg-white py-4'
-                    : scrolled
+                    : (scrolled || alwaysWhite)
                         ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 py-4'
                         : 'bg-transparent py-4 md:py-6'
                     }`}
