@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import SurveyModal from '../components/SurveyModal';
+import EmployeeApplicationModal from '../components/EmployeeApplicationModal';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { Briefcase, Globe, ShieldCheck, TrendingUp, CheckCircle } from 'lucide-react';
@@ -13,7 +13,7 @@ const ForEmployeesLanding: React.FC = () => {
     const openSurvey = () => setIsSurveyOpen(true);
     const closeSurvey = () => setIsSurveyOpen(false);
 
-    // This will be passed to SurveyModal to handle redirect
+    // This will be passed to EmployeeApplicationModal to handle redirect
     const handleSurveyComplete = () => {
         closeSurvey();
         navigate('/thank-you'); // Consider sending them to a different thank you page later
@@ -193,11 +193,10 @@ const ForEmployeesLanding: React.FC = () => {
             {/* Note: In a real system, you might want a modified dark Footer as well, but standard is fine for now */}
             <Footer />
 
-            <SurveyModal
+            <EmployeeApplicationModal
                 isOpen={isSurveyOpen}
                 onClose={closeSurvey}
                 onComplete={handleSurveyComplete}
-                source="For Employees Landing"
             />
         </div>
     );
