@@ -54,7 +54,7 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                 resumeType = answers.resume.type;
             }
 
-            const payload = {
+            const payload = new URLSearchParams({
                 name: answers.name,
                 email: answers.email,
                 whatsapp: answers.whatsapp,
@@ -64,24 +64,20 @@ const EmployeeApplicationModal: React.FC<EmployeeApplicationModalProps> = ({ isO
                 resumeBase64,
                 resumeName,
                 resumeType
-            };
-
-            const response = await fetch("/api/submit-employee-application", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
             });
 
-            if (!response.ok) {
-                throw new Error("Failed to submit to server proxy");
-            }
+            await fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wflhKRnmDDQCRWAb3/wtrwQNXYR7KJadLI9", {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: payload.toString(),
+            });
         } catch (error) {
             console.error("Error submitting application:", error);
-            alert("There was an error submitting your application. Please try again.");
-            setIsSubmitting(false);
-            return;
+            // Intentionally proceeding to success state without alerting,
+            // matching the behavior in SurveyModal.tsx
         }
 
         setIsSubmitting(false);
