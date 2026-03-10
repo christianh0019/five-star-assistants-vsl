@@ -2,32 +2,9 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
-import { useNavigate } from 'react-router-dom';
-import { Play } from 'lucide-react';
-
-const youtubeVideos = [
-    {
-        id: '1',
-        title: 'How to Hire Your First Virtual Assistant',
-        thumbnail: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800',
-        url: 'https://youtube.com',
-        duration: '12:45'
-    },
-    {
-        id: '2',
-        title: 'Top 5 Tasks to Delegate to an Overseas Team',
-        thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800',
-        url: 'https://youtube.com',
-        duration: '08:20'
-    },
-    {
-        id: '3',
-        title: 'Why Traditional Hiring is Costing You Money',
-        thumbnail: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800',
-        url: 'https://youtube.com',
-        duration: '15:10'
-    }
-];
+import { useNavigate, Link } from 'react-router-dom';
+import { Play, Calendar, Clock } from 'lucide-react';
+import { youtubeVideos } from '../data/youtubeVideos';
 
 const YouTubeVideos: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
@@ -64,11 +41,9 @@ const YouTubeVideos: React.FC = () => {
                     {/* Video Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {youtubeVideos.map((video) => (
-                            <a
+                            <Link
                                 key={video.id}
-                                href={video.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                to={`/youtube-videos/${video.slug}`}
                                 className="group flex flex-col items-start bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                             >
                                 {/* Thumbnail Container */}
@@ -92,15 +67,32 @@ const YouTubeVideos: React.FC = () => {
                                     </div>
                                 </div>
 
+                                {/* Meta */}
+                                <div className="flex items-center gap-4 text-xs text-gray-400 mb-4 font-medium uppercase tracking-wide w-full">
+                                    <div className="flex items-center gap-1">
+                                        <Calendar size={14} />
+                                        {video.date}
+                                    </div>
+                                    <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                                    <div className="flex items-center gap-1">
+                                        <Clock size={14} />
+                                        {video.readTime}
+                                    </div>
+                                </div>
+
                                 {/* Content */}
                                 <h3 className="text-xl font-heading font-bold text-navy mb-3 leading-tight group-hover:text-gold transition-colors">
                                     {video.title}
                                 </h3>
 
+                                <p className="text-gray-600 mb-6 line-clamp-2 leading-relaxed text-sm">
+                                    {video.excerpt}
+                                </p>
+
                                 <span className="mt-auto inline-flex items-center font-bold text-navy group-hover:text-gold group-hover:gap-1 transition-all">
-                                    Watch Video <Play size={16} fill="currentColor" className="ml-1" />
+                                    Watch & Read <Play size={16} fill="currentColor" className="ml-1" />
                                 </span>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>
