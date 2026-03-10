@@ -127,6 +127,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
                                     How It Works
                                 </Link>
 
+                                {/* For Employees Link */}
+                                <Link
+                                    to="/for-employees"
+                                    className="text-sm font-body font-medium text-navy hover:text-gold transition-colors ml-4 mr-2"
+                                >
+                                    Apply for Work
+                                </Link>
+
                                 {onOpenSurvey && (
                                     <button
                                         onClick={onOpenSurvey}
@@ -204,6 +212,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu }) => {
                             className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
                         >
                             How It Works
+                        </Link>
+                        <div className="w-12 h-px bg-gray-200 mx-auto"></div>
+                        <Link
+                            to="/for-employees"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
+                        >
+                            Apply for Work (Waitlist)
                         </Link>
 
                         {onOpenSurvey && (
