@@ -136,6 +136,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                                     Apply for Work
                                 </Link>
 
+                                <a
+                                    href="https://app.fivestarassistants.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm font-body font-medium text-navy hover:text-gold transition-colors ml-2 mr-4"
+                                >
+                                    Login
+                                </a>
+
                                 {onOpenSurvey && (
                                     <button
                                         onClick={onOpenSurvey}
@@ -222,6 +231,16 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                         >
                             Apply for Work (Waitlist)
                         </Link>
+                        <div className="w-12 h-px bg-gray-200 mx-auto"></div>
+                        <a
+                            href="https://app.fivestarassistants.com"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Login
+                        </a>
 
                         {onOpenSurvey && (
                             <div className="mt-12">
