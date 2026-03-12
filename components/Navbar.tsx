@@ -73,24 +73,6 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                         <>
                             {/* Desktop Navigation */}
                             <div className="hidden md:flex items-center gap-8">
-                                {/* Who We Work With Dropdown */}
-                                <div className="relative group">
-                                    <button
-                                        onClick={() => scrollToSection('who-we-work-with')}
-                                        className="text-sm font-body font-medium text-gray-600 group-hover:text-navy transition-colors flex items-center gap-1 py-4"
-                                    >
-                                        Who We Work With
-                                        <ChevronDown size={16} className="transition-transform duration-300 group-hover:rotate-180" />
-                                    </button>
-
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[220px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
-                                        <div className="py-2">
-                                            <Link to="/local-service-businesses" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Local Service Businesses</Link>
-                                            <Link to="/digital-agencies" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Digital Agencies</Link>
-                                            <Link to="/real-estate-agents" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Real Estate Agents</Link>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 {/* Resources Dropdown */}
                                 <div className="relative group">
@@ -176,20 +158,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                         }`}
                 >
                     <div className="flex flex-col gap-8 text-center mt-10">
-                        <div className="flex flex-col items-center">
-                            <button
-                                onClick={() => scrollToSection('who-we-work-with')}
-                                className="text-2xl font-heading font-medium text-navy hover:text-gold transition-colors flex items-center gap-2"
-                            >
-                                Who We Work With
-                            </button>
-                            <div className="flex flex-col gap-4 mt-6">
-                                <Link onClick={() => setIsMobileMenuOpen(false)} to="/local-service-businesses" className="text-lg font-body font-medium text-gray-500 hover:text-navy transition-colors">Local Service Businesses</Link>
-                                <Link onClick={() => setIsMobileMenuOpen(false)} to="/digital-agencies" className="text-lg font-body font-medium text-gray-500 hover:text-navy transition-colors">Digital Agencies</Link>
-                                <Link onClick={() => setIsMobileMenuOpen(false)} to="/real-estate-agents" className="text-lg font-body font-medium text-gray-500 hover:text-navy transition-colors">Real Estate Agents</Link>
-                            </div>
-                        </div>
-                        <div className="w-12 h-px bg-gray-200 mx-auto"></div>
+
                         <div className="flex flex-col items-center">
                             <span className="text-2xl font-heading font-medium text-navy flex items-center gap-2">
                                 Resources
