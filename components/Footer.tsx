@@ -51,10 +51,10 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="pt-4">
-                <a href="#" className="hover:text-gold transition-colors block">Privacy Policy</a>
+                <Link to="/privacy" className="hover:text-gold transition-colors block">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors block">Terms of Service</a>
+                <Link to="/terms" className="hover:text-gold transition-colors block">Terms of Service</Link>
               </li>
             </ul>
           </div>

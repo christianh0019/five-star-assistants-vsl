@@ -24,6 +24,8 @@ import ReferralProgram from './pages/ReferralProgram';
 import YouTubeVideos from './pages/YouTubeVideos';
 import YouTubeVideoDetail from './pages/YouTubeVideoDetail';
 import ForEmployeesLanding from './pages/ForEmployeesLanding';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 const App: React.FC = () => {
   return (
@@ -50,6 +52,8 @@ const App: React.FC = () => {
         <Route path="/for-employees" element={<ForEmployeesLanding />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
