@@ -15,27 +15,25 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadlin
       <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
 
         {/* Callout Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-          {callout || "Attention Busy Business Owners..."}
-        </div>
+        {callout && (
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            {callout}
+          </div>
+        )}
 
         {/* H1 Headline */}
         <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 drop-shadow-sm">
           {headline || (
             <>
-              We'll Recruit And Train Your Perfect Remote Employee Starting at <span className="text-gold italic">Just $6/HR</span>
+              Hire Remote Talent Starting at <span className="text-gold italic">$6/hr</span>
             </>
           )}
         </h1>
 
         {/* Sub-headline */}
         <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider mb-12 max-w-2xl">
-          {subheadline || (
-            <>
-              And if you don't love them, <span className="text-navy">you don't pay or we'll replace them at no cost.</span>
-            </>
-          )}
+          {subheadline || "No placement fees. Candidates within 4 days. Cancel anytime."}
         </p>
 
         {/* Primary CTA */}
