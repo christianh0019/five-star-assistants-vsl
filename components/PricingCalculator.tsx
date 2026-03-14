@@ -299,13 +299,13 @@ const PricingCalculator: React.FC = () => {
                   <label className="block font-heading font-bold text-navy text-xs tracking-widest uppercase mb-3">
                     Schedule
                   </label>
-                  <div className="inline-flex bg-gray-100 rounded-xl p-1">
+                  <div className="flex w-full bg-gray-100 rounded-xl p-1">
                     {scheduleOptions.map(({ value, label }) => (
                       <button
                         key={value}
                         type="button"
                         onClick={() => setSchedule(value)}
-                        className={`px-7 py-3 rounded-lg font-heading font-bold text-sm transition-all duration-200 ${
+                        className={`flex-1 py-3 rounded-lg font-heading font-bold text-sm transition-all duration-200 ${
                           schedule === value
                             ? 'bg-navy text-white shadow-md'
                             : 'text-gray-500 hover:text-navy'
