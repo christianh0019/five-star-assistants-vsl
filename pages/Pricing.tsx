@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
+import PricingCalculator from '../components/PricingCalculator';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Check, X } from 'lucide-react';
 import Button from '../components/Button';
@@ -249,6 +250,9 @@ const Pricing: React.FC = () => {
                 </section>
 
 
+
+                {/* SECTION 5: Pricing Calculator */}
+                <PricingCalculator />
 
                 {/* SECTION 6: Zero Risk Guarantee */}
                 <section className="py-24 md:py-32 bg-navy px-4 border-y-[12px] border-gold relative overflow-hidden">
