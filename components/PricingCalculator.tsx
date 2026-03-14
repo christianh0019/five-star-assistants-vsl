@@ -214,23 +214,9 @@ const PricingCalculator: React.FC = () => {
     'w-full bg-gray-50 border-2 border-gray-200 text-navy font-body text-base rounded-xl px-5 py-4 focus:outline-none focus:border-gold transition-colors placeholder:text-gray-400';
 
   return (
-    <section className="py-20 md:py-28 bg-white px-4">
+    <section className="pb-20 md:pb-28 bg-white px-4">
       <div className="max-w-3xl mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-              INSTANT ESTIMATE
-            </h3>
-            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-5">
-              See Your Role's Starting Rate
-            </h2>
-            <p className="font-body text-lg text-gray-500 max-w-xl mx-auto">
-              Select a category, role, and experience level for an instant hourly rate estimate.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
           <div className="bg-white rounded-[2rem] shadow-[0_4px_40px_rgba(10,25,47,0.08)] border border-gray-100 overflow-hidden">
 
             {/* ── PHASE 1: Role Selection ─────────────────────────────── */}

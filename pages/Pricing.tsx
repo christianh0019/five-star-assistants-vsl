@@ -33,10 +33,10 @@ const Pricing: React.FC = () => {
                             Our Pricing
                         </div>
                         <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-sm">
-                            See What Remote Talent Actually Costs
+                            See Your Role's Average Hourly Rate
                         </h1>
                         <p className="font-subheading text-navy/70 text-lg md:text-xl font-medium tracking-wider max-w-2xl mx-auto">
-                            Select your role below for an instant hourly rate estimate.
+                            Select a category, role, and experience level for an instant hourly rate estimate.
                         </p>
                     </div>
                 </section>
