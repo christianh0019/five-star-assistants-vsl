@@ -71,12 +71,8 @@ const Pricing: React.FC = () => {
                 {/* HERO */}
                 <section className="relative pt-36 md:pt-48 pb-12 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
                     <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
-                            <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                            Our Pricing
-                        </div>
                         <h1 className="font-heading text-navy text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 drop-shadow-sm">
-                            See Your Role's Average Hourly Rate
+                            See Your Role's <span className="text-gold italic">Average Hourly Rate</span>
                         </h1>
                         <p className="font-subheading text-navy/70 text-lg md:text-xl font-medium tracking-wider max-w-2xl mx-auto">
                             Select a category, role, and experience level for an instant hourly rate estimate.
@@ -185,47 +181,46 @@ const Pricing: React.FC = () => {
                 </section>
 
                 {/* FINAL CTA */}
-                <section className="bg-white py-32 px-4 border-t border-gray-100">
-                    <div className="max-w-5xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-navy/5 border border-navy/10 text-navy font-heading text-sm font-bold tracking-widest uppercase mb-6 shadow-sm">
-                            <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                <section className="bg-navy py-24 md:py-32 px-4 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+
+                    <div className="max-w-4xl mx-auto text-center relative z-10">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-body text-sm font-semibold mb-8">
+                            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                             READY TO START?
                         </div>
-                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
-                            Build Your Team Without the<br />
-                            <span className="text-gold">Hiring Headache</span>
+
+                        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                            Build Your Team Without the{' '}
+                            <span className="text-gold italic">Hiring Headache</span>
                         </h2>
 
-                        <div className="max-w-3xl mx-auto mb-16">
-                            <p className="font-body text-xl text-gray-600 max-w-2xl mx-auto mb-16 font-bold">Tell us the role you want to fill and we'll introduce you to qualified candidates.</p>
+                        <p className="font-body text-lg text-blue-100/80 max-w-xl mx-auto mb-12">
+                            Tell us the role you want to fill and we'll introduce you to qualified candidates — fast.
+                        </p>
 
-                            <ul className="grid md:grid-cols-3 gap-6 font-bold text-navy text-xl justify-center max-w-3xl mx-auto">
-                                <li className="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex items-center justify-center gap-3">
-                                    <X className="text-red-500 w-6 h-6" /> <span className="opacity-80">No</span> recruiting process.
-                                </li>
-                                <li className="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex items-center justify-center gap-3">
-                                    <X className="text-red-500 w-6 h-6" /> <span className="opacity-80">No</span> payroll complexity.
-                                </li>
-                                <li className="bg-gray-50 border border-gray-100 p-6 rounded-2xl flex items-center justify-center gap-3">
-                                    <X className="text-red-500 w-6 h-6" /> <span className="opacity-80">No</span> hiring risk.
-                                </li>
-                            </ul>
-
-                            <p className="font-heading font-bold text-navy text-3xl mt-16 pb-8 border-b border-gray-100">
-                                Just talented professionals ready to work.
-                            </p>
+                        <div className="flex flex-wrap justify-center gap-3 mb-12">
+                            {['No recruiting process', 'No payroll complexity', 'No hiring risk'].map((item) => (
+                                <div key={item} className="flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-5 py-2.5">
+                                    <X className="text-gold w-4 h-4 flex-shrink-0" />
+                                    <span className="font-body text-white font-medium text-sm">{item}</span>
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="flex flex-col items-center">
-                            <Button
-                                onClick={openSurvey}
-                                variant="primary"
-                                className="w-full sm:w-auto min-w-[360px] text-xl shadow-[0_0_40px_rgba(255,215,0,0.3)] hover:shadow-[0_0_60px_rgba(255,215,0,0.4)] animate-pulse hover:animate-none group relative overflow-hidden py-5"
-                            >
-                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
-                                <span className="relative z-10 font-bold tracking-wide">Find Your Remote Employee</span>
-                            </Button>
-                        </div>
+                        <p className="font-heading font-bold text-white text-2xl md:text-3xl mb-12">
+                            Just talented professionals ready to work.
+                        </p>
+
+                        <Button
+                            onClick={openSurvey}
+                            variant="primary"
+                            className="w-full sm:w-auto min-w-[320px] text-xl shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] py-5"
+                        >
+                            Find Your Remote Employee
+                        </Button>
+                        <p className="font-heading italic text-white/40 text-sm mt-4">100% Free. No Obligation.</p>
                     </div>
                 </section>
 
