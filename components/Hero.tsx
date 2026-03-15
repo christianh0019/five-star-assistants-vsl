@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadlin
         <h1 className="font-heading text-navy text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 drop-shadow-sm">
           {headline || (
             <>
-              Hire Remote Talent Starting at <span className="text-gold italic">$6/hr</span>
+              Hire Top 1% Remote Talent Starting at <span className="text-gold italic">$4/hr</span>
             </>
           )}
         </h1>
