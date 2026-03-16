@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import Button from './Button';
 
@@ -10,6 +10,16 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadline }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setPlaying(true);
+    }
+  };
+
   return (
     <section className="relative pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
       <div className="max-w-[900px] mx-auto text-center flex flex-col items-center relative z-10">
@@ -50,17 +60,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadlin
         </p>
 
         {/* VSL Video Container */}
-        <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl border-4 border-white aspect-video relative group">
-          {/* Show play button overlay if needed, or autoplay muted */}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors pointer-events-none z-10"></div>
-          <iframe
-            className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&rel=0"
-            title="Five Star Assistants VSL"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+        <div className="w-full max-w-4xl mx-auto rounded-[1.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video relative group">
+          <video
+            ref={videoRef}
+            className="w-full h-full rounded-[1.5rem]"
+            src="/FSAVideo.mp4"
+            poster="/FSAVideoThumbnail.png"
+            controls
+            playsInline
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          />
+          {!playing && (
+            <button
+              onClick={handlePlay}
+              className="absolute inset-0 flex items-center justify-center z-10 group/btn"
+              aria-label="Play video"
+            >
+              <div className="w-20 h-20 rounded-full bg-white/90 shadow-2xl flex items-center justify-center transition-transform duration-200 group-hover/btn:scale-110">
+                <Play size={32} className="text-navy ml-1" fill="currentColor" />
+              </div>
+            </button>
+          )}
         </div>
 
       </div>
