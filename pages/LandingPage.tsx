@@ -6,6 +6,7 @@ import CapabilitiesSection from '../components/CapabilitiesSection';
 import ResultsSection from '../components/ResultsSection';
 import ProcessSection from '../components/ProcessSection';
 import FinalPush from '../components/FinalPush';
+import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
 import ScrollReveal from '../components/ScrollReveal';
@@ -52,6 +53,10 @@ const LandingPage: React.FC = () => {
 
                 <ScrollReveal>
                     <ProcessSection onOpenSurvey={openSurvey} />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <FAQSection />
                 </ScrollReveal>
 
                 <ScrollReveal>
