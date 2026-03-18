@@ -9,7 +9,8 @@ import {
     Clock, DollarSign, ShieldCheck, Users,
     HeadphonesIcon, Package, Share2, Globe,
     ClipboardList, Mail, Calculator, Search,
-    ChevronLeft, ChevronRight, ImageIcon, Check,
+    ChevronLeft, ChevronRight, Check,
+    FileX, BadgeDollarSign, RefreshCw, CreditCard, Globe2, Timer,
 } from 'lucide-react';
 
 const socialProofStats = [
@@ -102,44 +103,38 @@ const sampleJobs = [
         ],
         requirements: '1+ yr paid social · Meta Ads Manager · Canva or Adobe',
     },
+];
+
+const advantages = [
     {
-        icon: Mail,
-        title: 'Email Marketing Coordinator',
-        rate: '$7–9/hr',
-        responsibilities: [
-            'Build and manage Klaviyo flows and broadcast campaigns',
-            'Segment lists based on purchase behavior and LTV',
-            'Draft and design promotional email content',
-            'A/B test subject lines, CTAs, and send times',
-            'Report on open, click, and revenue-per-email metrics',
-        ],
-        requirements: '1+ yr Klaviyo or Mailchimp · Basic HTML email · Copywriting',
+        icon: FileX,
+        title: 'No Lock-In Contracts',
+        desc: 'Work with us month to month. No long-term commitments required.',
     },
     {
-        icon: Globe,
-        title: 'Shopify Store Manager',
-        rate: '$8–11/hr',
-        responsibilities: [
-            'Maintain and update Shopify storefront content daily',
-            'Implement app integrations and test functionality',
-            'Manage discount codes, promotions, and gift cards',
-            'Monitor site speed and storefront conversion metrics',
-            'Coordinate with developers on theme updates',
-        ],
-        requirements: '2+ yr Shopify · Liquid basics preferred · Google Analytics',
+        icon: BadgeDollarSign,
+        title: 'No Set Up Fees',
+        desc: 'Recruiting is completely free. You only pay once your assistant starts.',
     },
     {
-        icon: Search,
-        title: 'E-Commerce Data Analyst',
-        rate: '$9–12/hr',
-        responsibilities: [
-            'Build weekly sales and performance dashboards',
-            'Analyze product and category-level revenue trends',
-            'Track ad spend ROI across all marketing channels',
-            'Prepare monthly business reviews for the owner',
-            'Identify top/bottom performers and make recommendations',
-        ],
-        requirements: '2+ yr e-commerce analytics · Excel / Looker / GA4',
+        icon: RefreshCw,
+        title: 'Free To Change Your Staff',
+        desc: "If someone isn't the right fit, we replace them at no extra cost.",
+    },
+    {
+        icon: CreditCard,
+        title: 'One Simple Hourly Rate',
+        desc: 'Your rate covers everything — computer, internet, and all associated fees.',
+    },
+    {
+        icon: Globe2,
+        title: '24/7 Operation',
+        desc: 'We can staff global businesses around the clock, any time zone.',
+    },
+    {
+        icon: Timer,
+        title: 'Flexible Hours',
+        desc: 'Assistants are available from a minimum of 20 hours per week — scale as needed.',
     },
 ];
 
@@ -311,19 +306,13 @@ const ECommerce: React.FC = () => {
                                     </p>
                                 </div>
 
-                                {/* Image placeholder */}
+                                {/* Industry image */}
                                 <div className="hidden lg:block sticky top-32">
-                                    <div className="aspect-[4/5] rounded-[2rem] border-2 border-dashed border-gray-200 bg-white flex flex-col items-center justify-center gap-4 shadow-sm">
-                                        <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
-                                            <ImageIcon size={28} className="text-gray-300" />
-                                        </div>
-                                        <p className="font-heading font-semibold text-gray-300 text-base tracking-wide">
-                                            Image Placeholder
-                                        </p>
-                                        <p className="font-body text-xs text-gray-300">
-                                            Replace with industry photo
-                                        </p>
-                                    </div>
+                                    <img
+                                        src="/images/ecom-industry-1.png"
+                                        alt="E-Commerce virtual assistant"
+                                        className="w-full rounded-[2rem] shadow-xl object-cover"
+                                    />
                                 </div>
 
                             </div>
@@ -348,7 +337,7 @@ const ECommerce: React.FC = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {sampleJobs.map((job, idx) => (
+                                {sampleJobs.slice(0, 3).map((job, idx) => (
                                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col overflow-hidden">
 
                                         {/* Card header */}
@@ -393,6 +382,41 @@ const ECommerce: React.FC = () => {
                                             <p className="font-body text-xs text-gray-500 leading-relaxed">{job.requirements}</p>
                                         </div>
 
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* Advantages */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-navy px-4 border-t-8 border-gold">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    WHY FIVE STAR ASSISTANTS
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6">
+                                    Everything Included. Zero Hassle.
+                                </h2>
+                                <p className="font-body text-lg text-blue-100/70 max-w-xl mx-auto">
+                                    We've removed every friction point from hiring remote talent so you can focus on growing your store.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {advantages.map(({ icon: Icon, title, desc }, idx) => (
+                                    <div key={idx} className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-colors duration-200">
+                                        <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
+                                            <Icon size={22} className="text-gold" />
+                                        </div>
+                                        <h3 className="font-heading font-bold text-white text-lg mb-2 leading-snug">
+                                            {title}
+                                        </h3>
+                                        <p className="font-body text-sm text-blue-100/60 leading-relaxed">
+                                            {desc}
+                                        </p>
                                     </div>
                                 ))}
                             </div>
