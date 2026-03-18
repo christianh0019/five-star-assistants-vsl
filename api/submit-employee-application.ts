@@ -1,14 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const AIRTABLE_WEBHOOK_URL = 'https://hooks.airtable.com/workflows/v1/genericWebhook/appvyWh9e0V6IA0uZ/wflhKRnmDDQCRWAb3/wtrwQNXYR7KJadLI9';
+// Set FSA_APP_URL in your Vercel environment variables
+// e.g. https://app.fivestarassistants.com
+const FSA_APP_URL = process.env.FSA_APP_URL ?? '';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    // Add CORS headers to allow requests from any origin
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    // Handle preflight OPTIONS request
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
@@ -17,24 +17,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
+    if (!FSA_APP_URL) {
+        console.error('FSA_APP_URL environment variable is not set');
+        return res.status(500).json({ error: 'Server misconfiguration' });
+    }
+
     try {
         const payload = req.body;
-
-        // Log payload for debugging (visible in Vercel logs)
         console.log('Received employee application payload:', !!payload);
 
-        const response = await fetch(AIRTABLE_WEBHOOK_URL, {
+        const response = await fetch(`${FSA_APP_URL}/api/apply/general`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         });
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('Airtable Error:', errorText);
-            return res.status(response.status).json({ error: `Airtable error: ${response.statusText}`, details: errorText });
+            console.error('FSA App Error:', errorText);
+            return res.status(response.status).json({ error: `Submission failed: ${response.statusText}`, details: errorText });
         }
 
         const data = await response.json();
