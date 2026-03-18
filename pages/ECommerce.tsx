@@ -318,6 +318,15 @@ const ECommerce: React.FC = () => {
                                 </div>
 
                             </div>
+
+                            {/* CTA under carousel */}
+                            <div className="mt-14 text-center">
+                                <Button onClick={openSurvey} variant="primary">
+                                    Find My E-Commerce Assistant
+                                </Button>
+                                <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
+                            </div>
+
                         </div>
                     </section>
                 </ScrollReveal>
@@ -338,7 +347,7 @@ const ECommerce: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
                                 {sampleJobs.slice(0, 3).map((job, idx) => (
                                     <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col overflow-hidden">
 
@@ -387,6 +396,14 @@ const ECommerce: React.FC = () => {
                                     </div>
                                 ))}
                             </div>
+
+                            <div className="text-center">
+                                <Button onClick={openSurvey} variant="primary">
+                                    Hire A Role Like These
+                                </Button>
+                                <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
+                            </div>
+
                         </div>
                     </section>
                 </ScrollReveal>
@@ -407,7 +424,7 @@ const ECommerce: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
                                 {advantages.map(({ icon: Icon, title, desc }, idx) => (
                                     <div key={idx} className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 hover:bg-white/[0.08] transition-colors duration-200">
                                         <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
@@ -422,6 +439,14 @@ const ECommerce: React.FC = () => {
                                     </div>
                                 ))}
                             </div>
+
+                            <div className="text-center">
+                                <Button onClick={openSurvey} variant="primary">
+                                    Get Started — It's Free
+                                </Button>
+                                <p className="font-heading italic text-white/30 text-sm mt-3">No setup fees. No long-term contracts.</p>
+                            </div>
+
                         </div>
                     </section>
                 </ScrollReveal>
@@ -538,7 +563,7 @@ const ECommerce: React.FC = () => {
                                 </h2>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
                                 {[
                                     {
                                         icon: DollarSign,
@@ -565,6 +590,14 @@ const ECommerce: React.FC = () => {
                                     </div>
                                 ))}
                             </div>
+
+                            <div className="text-center">
+                                <Button onClick={openSurvey} variant="primary">
+                                    Start Building Your Team
+                                </Button>
+                                <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
+                            </div>
+
                         </div>
                     </section>
                 </ScrollReveal>
@@ -585,10 +618,10 @@ const ECommerce: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-12">
+                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch mb-12">
 
                                 {/* Stat cards */}
-                                <div className="space-y-4">
+                                <div className="flex flex-col justify-between gap-4 h-full">
                                     {[
                                         { value: '$2.8T', label: 'Global e-commerce market value in 2022' },
                                         { value: '12.2%', label: 'Compound annual growth rate (CAGR)' },
@@ -602,7 +635,7 @@ const ECommerce: React.FC = () => {
                                 </div>
 
                                 {/* Horizontal bar chart */}
-                                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8">
+                                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 h-full">
                                     <p className="font-heading text-xs font-bold text-gold tracking-widest uppercase mb-8">MARKET GROWTH</p>
                                     <div className="space-y-6">
                                         {[
