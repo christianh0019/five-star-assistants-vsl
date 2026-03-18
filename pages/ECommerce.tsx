@@ -11,7 +11,9 @@ import {
     ClipboardList, Mail, Calculator, Search,
     ChevronLeft, ChevronRight, Check,
     FileX, BadgeDollarSign, RefreshCw, CreditCard, Globe2, Timer,
+    Code2, Megaphone, Award, Target, TrendingUp,
 } from 'lucide-react';
+import Button from '../components/Button';
 
 const socialProofStats = [
     { icon: Clock,       value: '4 Days',  label: 'Average Time to First Candidate' },
@@ -419,6 +421,217 @@ const ECommerce: React.FC = () => {
                                         </p>
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* Built Around Your Success */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+                                {/* Left: narrative */}
+                                <div>
+                                    <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                        WHY FSA FOR E-COMMERCE
+                                    </h3>
+                                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-8 leading-tight">
+                                        Built Around Your Success
+                                    </h2>
+                                    <div className="space-y-5 font-body text-gray-600 text-lg leading-relaxed mb-10">
+                                        <p>At Five Star Assistants, we've built a smarter way to run e-commerce operations — combining deep industry knowledge with elite offshore talent, so your store runs efficiently without you doing everything yourself.</p>
+                                        <p>As a specialized e-commerce staffing partner, we make sure you're matched with thoroughly vetted professionals who understand your platforms, your customers, and your goals.</p>
+                                    </div>
+                                    <Button onClick={openSurvey} variant="primary">
+                                        Book A Discovery Call
+                                    </Button>
+                                    <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
+                                </div>
+
+                                {/* Right: two feature boxes */}
+                                <div className="space-y-6">
+                                    <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                                        <h3 className="font-heading font-bold text-navy text-xl mb-4">
+                                            Streamlined, Clear, and Dependable
+                                        </h3>
+                                        <p className="font-body text-gray-600 mb-5">Our approach is built for maximum efficiency. Partnering with Five Star Assistants guarantees:</p>
+                                        <ul className="space-y-3">
+                                            {[
+                                                'Access to top-tier e-commerce specialists',
+                                                'A pricing model tailored to your exact needs',
+                                                'Ongoing support from our team at every stage',
+                                            ].map((item) => (
+                                                <li key={item} className="flex items-start gap-3">
+                                                    <span className="text-gold font-bold mt-0.5">—</span>
+                                                    <span className="font-body text-gray-700 font-medium">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div className="bg-navy rounded-2xl p-8">
+                                        <h3 className="font-heading font-bold text-white text-xl mb-4">
+                                            Integrity at the Helm
+                                        </h3>
+                                        <p className="font-body text-blue-100/80 leading-relaxed">
+                                            In e-commerce, precision and trust are everything. Your data stays safeguarded and is shared only with your chosen assistant. No hidden fees, no surprises — just a clean, honest partnership focused on your growth.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* All The Skills Your Store Needs */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-gray-50 px-4 border-t border-gray-100">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    WHAT WE COVER
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                    All The Skills Your Store Needs, Under One Roof
+                                </h2>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {[
+                                    {
+                                        icon: Users,
+                                        title: 'Administrative & Client Relations',
+                                        desc: 'Boost efficiency by offloading admin and customer care — reduce operational costs by up to 70%.',
+                                        items: ['Data entry & database management', 'Customer support & client assistance', 'Audio-to-text transcription', 'Talent coordination & HR support'],
+                                    },
+                                    {
+                                        icon: Code2,
+                                        title: 'Tech & Web Solutions',
+                                        desc: 'Bring in skilled tech and web professionals without the overhead.',
+                                        items: ['Shopify & website development', 'E-commerce, CRM & automation', 'IT infrastructure management', 'Tech support & troubleshooting'],
+                                    },
+                                    {
+                                        icon: Megaphone,
+                                        title: 'Marketing & Sales',
+                                        desc: 'Elevate your brand and drive revenue with dedicated marketing professionals.',
+                                        items: ['Sales agents & appointment setters', 'Social media management', 'Content creation & copywriting', 'Outreach & lead generation'],
+                                    },
+                                    {
+                                        icon: Calculator,
+                                        title: 'Finance & Accounting',
+                                        desc: 'Keep your books clean and your cash flow organized.',
+                                        items: ['Bookkeeping & financial summaries', 'Certified accounting support', 'AR / AP billing operations', 'Financial planning & reporting'],
+                                    },
+                                ].map(({ icon: Icon, title, desc, items }, idx) => (
+                                    <div key={idx} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                                        <div className="w-12 h-12 rounded-xl bg-navy/[0.06] flex items-center justify-center mb-5">
+                                            <Icon size={22} className="text-navy/70" />
+                                        </div>
+                                        <h3 className="font-heading font-bold text-navy text-xl mb-3">{title}</h3>
+                                        <p className="font-body text-gray-500 text-sm mb-5 leading-relaxed">{desc}</p>
+                                        <ul className="space-y-2">
+                                            {items.map((item) => (
+                                                <li key={item} className="flex items-start gap-2.5">
+                                                    <span className="text-gold font-bold mt-0.5 shrink-0">—</span>
+                                                    <span className="font-body text-sm text-gray-700 font-medium">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* Three Pillars */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    THREE REASONS TO CHOOSE FSA
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                    Why E-Commerce Owners Trust Five Star Assistants
+                                </h2>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {[
+                                    {
+                                        icon: DollarSign,
+                                        title: 'Maximize Savings, Optimize Quality',
+                                        desc: "Our e-commerce staffing model delivers top-tier talent at a fraction of the cost of local hiring. You get high-quality work without the high overhead — starting at just $6/hr.",
+                                    },
+                                    {
+                                        icon: Award,
+                                        title: 'World-Class, Diverse Expertise',
+                                        desc: 'From product listings to customer support to paid ads, our remote specialists cover every corner of e-commerce operations. Your store gets what it needs to compete.',
+                                    },
+                                    {
+                                        icon: Target,
+                                        title: 'Efficiency Meets Focus',
+                                        desc: "Let us handle the operational details. Our staffing model frees your team to focus on growth strategy while we manage the day-to-day, ensuring a seamless experience for your customers.",
+                                    },
+                                ].map(({ icon: Icon, title, desc }, idx) => (
+                                    <div key={idx} className="relative bg-gray-50 rounded-[2rem] p-10 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                                        <div className="w-14 h-14 rounded-2xl bg-navy flex items-center justify-center mb-7">
+                                            <Icon size={24} className="text-gold" />
+                                        </div>
+                                        <h3 className="font-heading font-bold text-navy text-xl mb-4 leading-snug">{title}</h3>
+                                        <p className="font-body text-gray-600 leading-relaxed">{desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* Market Stats */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-navy px-4 border-t border-white/10">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    THE E-COMMERCE OPPORTUNITY
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6">
+                                    The Market Is Growing.<br />Your Operations Should Too.
+                                </h2>
+                                <p className="font-body text-lg text-blue-100/60 max-w-2xl mx-auto">
+                                    E-commerce is one of the fastest-growing sectors globally. Businesses that outsource operations now are positioning themselves to scale faster and more profitably.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                                {[
+                                    { value: '$2.8T', label: 'Global e-commerce market value in 2022' },
+                                    { value: '12.2%', label: 'Compound annual growth rate (CAGR)' },
+                                    { value: '$3.2T', label: 'Projected market value by 2023' },
+                                ].map(({ value, label }) => (
+                                    <div key={label} className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 text-center">
+                                        <p className="font-heading font-bold text-4xl md:text-5xl text-gold mb-3">{value}</p>
+                                        <p className="font-body text-sm text-blue-100/60 leading-relaxed">{label}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                                <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                    <TrendingUp size={28} className="text-gold" />
+                                </div>
+                                <div>
+                                    <p className="font-heading font-bold text-white text-xl md:text-2xl mb-3 leading-snug">
+                                        The e-commerce BPO market is witnessing significant expansion
+                                    </p>
+                                    <p className="font-body text-blue-100/60 leading-relaxed">
+                                        According to recent market research, the global e-commerce market is growing at a 12.2% CAGR. Businesses that build scalable remote operations today will have a decisive competitive advantage over the next decade.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </section>
