@@ -326,26 +326,16 @@ const ECommerce: React.FC = () => {
                 <ScrollReveal>
                     <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
                         <div className="max-w-7xl mx-auto">
-                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-12 md:mb-16">
-                                <div>
-                                    <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                        RECENTLY FILLED
-                                    </h3>
-                                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                        E-Commerce Jobs We've Successfully Placed
-                                    </h2>
-                                    <p className="font-body text-xl text-gray-500 leading-relaxed">
-                                        Real roles, real hires. Here's a sample of what we've placed for e-commerce businesses like yours.
-                                    </p>
-                                </div>
-                                <div className="hidden lg:block">
-                                    <div className="aspect-[4/3] rounded-[2rem] border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center gap-3">
-                                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                                            <ImageIcon size={22} className="text-gray-300" />
-                                        </div>
-                                        <p className="font-body text-sm text-gray-300">Image Placeholder</p>
-                                    </div>
-                                </div>
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    RECENTLY FILLED
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                    E-Commerce Jobs We've Successfully Placed
+                                </h2>
+                                <p className="font-body text-xl text-gray-500 max-w-2xl mx-auto">
+                                    Real roles, real hires. Here's a sample of what we've placed for e-commerce businesses like yours.
+                                </p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -460,35 +450,12 @@ const ECommerce: React.FC = () => {
                                     <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
                                 </div>
 
-                                {/* Right: two feature boxes */}
-                                <div className="space-y-6">
-                                    <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-                                        <h3 className="font-heading font-bold text-navy text-xl mb-4">
-                                            Streamlined, Clear, and Dependable
-                                        </h3>
-                                        <p className="font-body text-gray-600 mb-5">Our approach is built for maximum efficiency. Partnering with Five Star Assistants guarantees:</p>
-                                        <ul className="space-y-3">
-                                            {[
-                                                'Access to top-tier e-commerce specialists',
-                                                'A pricing model tailored to your exact needs',
-                                                'Ongoing support from our team at every stage',
-                                            ].map((item) => (
-                                                <li key={item} className="flex items-start gap-3">
-                                                    <span className="text-gold font-bold mt-0.5">—</span>
-                                                    <span className="font-body text-gray-700 font-medium">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                {/* Right: image placeholder */}
+                                <div className="hidden lg:flex aspect-[4/5] rounded-[2rem] border-2 border-dashed border-gray-200 bg-gray-50 items-center justify-center gap-3 flex-col">
+                                    <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+                                        <ImageIcon size={22} className="text-gray-300" />
                                     </div>
-
-                                    <div className="bg-navy rounded-2xl p-8">
-                                        <h3 className="font-heading font-bold text-white text-xl mb-4">
-                                            Integrity at the Helm
-                                        </h3>
-                                        <p className="font-body text-blue-100/80 leading-relaxed">
-                                            In e-commerce, precision and trust are everything. Your data stays safeguarded and is shared only with your chosen assistant. No hidden fees, no surprises — just a clean, honest partnership focused on your growth.
-                                        </p>
-                                    </div>
+                                    <p className="font-body text-sm text-gray-300">Image Placeholder</p>
                                 </div>
 
                             </div>
@@ -552,85 +519,6 @@ const ECommerce: React.FC = () => {
                                         </ul>
                                     </div>
                                 ))}
-                            </div>
-                        </div>
-                    </section>
-                </ScrollReveal>
-
-                {/* Cost Comparison Chart */}
-                <ScrollReveal>
-                    <section className="py-20 md:py-32 bg-gray-50 px-4 border-t border-gray-100">
-                        <div className="max-w-6xl mx-auto">
-                            <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-                                {/* Left: chart */}
-                                <div className="bg-white rounded-[2rem] p-8 md:p-12 border border-gray-100 shadow-sm">
-                                    <p className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-8">COST COMPARISON</p>
-
-                                    {/* Bar chart */}
-                                    <div className="flex items-end gap-6 h-52 mb-6">
-                                        {/* Local hire bar */}
-                                        <div className="flex-1 flex flex-col items-center gap-3">
-                                            <span className="font-heading font-bold text-red-400 text-base">$60k–90k/yr</span>
-                                            <div className="w-full rounded-t-2xl bg-gradient-to-t from-red-100 to-red-50 border border-red-100 flex-1 relative">
-                                                <div className="absolute bottom-0 left-0 right-0 h-full rounded-t-2xl" style={{ background: 'linear-gradient(to top, #fca5a5 0%, #fee2e2 100%)' }} />
-                                            </div>
-                                        </div>
-                                        {/* FSA bar */}
-                                        <div className="flex-1 flex flex-col items-end gap-3 justify-end" style={{ height: '100%' }}>
-                                            <span className="font-heading font-bold text-gold text-base">from $12k/yr</span>
-                                            <div className="w-full rounded-t-2xl border border-gold/20" style={{ height: '28%', background: 'linear-gradient(to top, #D4AF37 0%, #e8cc6e 100%)' }} />
-                                        </div>
-                                    </div>
-
-                                    {/* Labels */}
-                                    <div className="flex gap-6">
-                                        <div className="flex-1 text-center">
-                                            <p className="font-heading font-bold text-gray-500 text-sm">Local Employee</p>
-                                        </div>
-                                        <div className="flex-1 text-center">
-                                            <p className="font-heading font-bold text-navy text-sm">FSA Assistant</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Savings callout */}
-                                    <div className="mt-8 pt-8 border-t border-gray-100 flex items-center justify-between">
-                                        <span className="font-body text-gray-500 text-sm">Potential annual savings</span>
-                                        <span className="font-heading font-bold text-2xl text-gold">up to 80%</span>
-                                    </div>
-                                </div>
-
-                                {/* Right: image placeholder + breakdown */}
-                                <div className="space-y-6">
-                                    <div className="aspect-video rounded-[2rem] border-2 border-dashed border-gray-200 bg-white flex flex-col items-center justify-center gap-3 shadow-sm">
-                                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                                            <ImageIcon size={22} className="text-gray-300" />
-                                        </div>
-                                        <p className="font-body text-sm text-gray-300">Image Placeholder</p>
-                                    </div>
-
-                                    <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm space-y-4">
-                                        {[
-                                            { label: 'Salary', local: '$60k–90k', fsa: 'Hourly only' },
-                                            { label: 'Payroll taxes', local: 'Yes', fsa: 'None' },
-                                            { label: 'Benefits', local: 'Yes', fsa: 'None' },
-                                            { label: 'Recruiting cost', local: 'High', fsa: 'Free' },
-                                            { label: 'Replace if not a fit', local: 'Expensive', fsa: 'Free' },
-                                        ].map(({ label, local, fsa }) => (
-                                            <div key={label} className="grid grid-cols-3 gap-4 items-center py-2 border-b border-gray-50 last:border-0">
-                                                <span className="font-body text-sm text-gray-500">{label}</span>
-                                                <span className="font-body text-sm text-red-400 font-medium text-center">{local}</span>
-                                                <span className="font-body text-sm text-emerald-600 font-bold text-center">{fsa}</span>
-                                            </div>
-                                        ))}
-                                        <div className="grid grid-cols-3 gap-4 pt-2 text-xs font-heading font-bold text-gray-400 uppercase tracking-wider">
-                                            <span></span>
-                                            <span className="text-center">Local</span>
-                                            <span className="text-center">FSA</span>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </section>
