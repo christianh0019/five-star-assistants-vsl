@@ -450,12 +450,13 @@ const ECommerce: React.FC = () => {
                                     <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
                                 </div>
 
-                                {/* Right: image placeholder */}
-                                <div className="hidden lg:flex aspect-[4/5] rounded-[2rem] border-2 border-dashed border-gray-200 bg-gray-50 items-center justify-center gap-3 flex-col">
-                                    <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                                        <ImageIcon size={22} className="text-gray-300" />
-                                    </div>
-                                    <p className="font-body text-sm text-gray-300">Image Placeholder</p>
+                                {/* Right: industry image */}
+                                <div className="hidden lg:block">
+                                    <img
+                                        src="/images/ecom-industry-2.png"
+                                        alt="E-Commerce business owner"
+                                        className="w-full rounded-[2rem] shadow-xl object-cover"
+                                    />
                                 </div>
 
                             </div>
@@ -570,16 +571,16 @@ const ECommerce: React.FC = () => {
 
                 {/* Market Stats */}
                 <ScrollReveal>
-                    <section className="py-20 md:py-32 bg-navy px-4 border-t border-white/10">
+                    <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-12 md:mb-16">
                                 <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
                                     THE E-COMMERCE OPPORTUNITY
                                 </h3>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6">
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
                                     The Market Is Growing.<br />Your Operations Should Too.
                                 </h2>
-                                <p className="font-body text-lg text-blue-100/60 max-w-2xl mx-auto">
+                                <p className="font-body text-lg text-gray-500 max-w-2xl mx-auto">
                                     E-commerce is one of the fastest-growing sectors globally. Businesses that outsource operations now are positioning themselves to scale faster and more profitably.
                                 </p>
                             </div>
@@ -593,15 +594,15 @@ const ECommerce: React.FC = () => {
                                         { value: '12.2%', label: 'Compound annual growth rate (CAGR)' },
                                         { value: '$3.2T', label: 'Projected market value by 2023' },
                                     ].map(({ value, label }) => (
-                                        <div key={label} className="bg-white/[0.05] border border-white/10 rounded-2xl p-6 flex items-center gap-6">
+                                        <div key={label} className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex items-center gap-6">
                                             <p className="font-heading font-bold text-3xl text-gold flex-shrink-0 w-24">{value}</p>
-                                            <p className="font-body text-sm text-blue-100/60 leading-relaxed">{label}</p>
+                                            <p className="font-body text-sm text-gray-500 leading-relaxed">{label}</p>
                                         </div>
                                     ))}
                                 </div>
 
                                 {/* Horizontal bar chart */}
-                                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-8">
+                                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8">
                                     <p className="font-heading text-xs font-bold text-gold tracking-widest uppercase mb-8">MARKET GROWTH</p>
                                     <div className="space-y-6">
                                         {[
@@ -612,31 +613,31 @@ const ECommerce: React.FC = () => {
                                             { year: '2030*', value: '$7.4T+', pct: 100, projected: true },
                                         ].map(({ year, value, pct, projected }) => (
                                             <div key={year} className="flex items-center gap-4">
-                                                <span className={`font-heading font-bold text-sm w-14 flex-shrink-0 ${projected ? 'text-gold' : 'text-white/50'}`}>{year}</span>
-                                                <div className="flex-1 h-8 bg-white/5 rounded-full overflow-hidden">
+                                                <span className={`font-heading font-bold text-sm w-14 flex-shrink-0 ${projected ? 'text-gold' : 'text-gray-400'}`}>{year}</span>
+                                                <div className="flex-1 h-8 bg-gray-200 rounded-full overflow-hidden">
                                                     <div
-                                                        className={`h-full rounded-full transition-all ${projected ? 'bg-gold/50' : 'bg-gold'}`}
+                                                        className={`h-full rounded-full ${projected ? 'bg-gold/40' : 'bg-gold'}`}
                                                         style={{ width: `${pct}%` }}
                                                     />
                                                 </div>
-                                                <span className={`font-heading font-bold text-sm w-16 text-right flex-shrink-0 ${projected ? 'text-gold' : 'text-white/70'}`}>{value}</span>
+                                                <span className={`font-heading font-bold text-sm w-16 text-right flex-shrink-0 ${projected ? 'text-gold' : 'text-navy'}`}>{value}</span>
                                             </div>
                                         ))}
                                     </div>
-                                    <p className="font-body text-xs text-white/30 mt-6">* Projected estimate</p>
+                                    <p className="font-body text-xs text-gray-400 mt-6">* Projected estimate</p>
                                 </div>
 
                             </div>
 
-                            <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                                <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
-                                    <TrendingUp size={28} className="text-gold" />
+                            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                                <div className="w-16 h-16 rounded-2xl bg-navy/[0.06] flex items-center justify-center flex-shrink-0">
+                                    <TrendingUp size={28} className="text-navy/70" />
                                 </div>
                                 <div>
-                                    <p className="font-heading font-bold text-white text-xl md:text-2xl mb-3 leading-snug">
+                                    <p className="font-heading font-bold text-navy text-xl md:text-2xl mb-3 leading-snug">
                                         The e-commerce BPO market is witnessing significant expansion
                                     </p>
-                                    <p className="font-body text-blue-100/60 leading-relaxed">
+                                    <p className="font-body text-gray-500 leading-relaxed">
                                         According to recent market research, the global e-commerce market is growing at a 12.2% CAGR. Businesses that build scalable remote operations today will have a decisive competitive advantage over the next decade.
                                     </p>
                                 </div>
