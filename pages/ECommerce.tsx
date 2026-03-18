@@ -9,30 +9,14 @@ import {
     Clock, DollarSign, ShieldCheck, Users,
     HeadphonesIcon, Package, Share2, Globe,
     ClipboardList, Mail, Calculator, Search,
-    ChevronLeft, ChevronRight,
+    ChevronLeft, ChevronRight, ImageIcon, Check,
 } from 'lucide-react';
 
 const socialProofStats = [
-    {
-        icon: Clock,
-        value: '4 Days',
-        label: 'Average Time to First Candidate',
-    },
-    {
-        icon: DollarSign,
-        value: '$6/hr',
-        label: 'Starting Rate',
-    },
-    {
-        icon: ShieldCheck,
-        value: '100%',
-        label: 'Love It Or It\'s Free Guarantee',
-    },
-    {
-        icon: Users,
-        value: 'Top 1%',
-        label: 'Of Applicants Placed',
-    },
+    { icon: Clock,       value: '4 Days',  label: 'Average Time to First Candidate' },
+    { icon: DollarSign,  value: '$6/hr',   label: 'Starting Rate' },
+    { icon: ShieldCheck, value: '100%',    label: "Love It Or It's Free Guarantee" },
+    { icon: Users,       value: 'Top 1%',  label: 'Of Applicants Placed' },
 ];
 
 const roles = [
@@ -75,6 +59,87 @@ const roles = [
         icon: Search,
         title: 'Research & Data Analysis',
         desc: 'Make smarter business decisions backed by real data and market insight.\n\n• Conducting market research to identify trends, customer needs, and competitors\n• Analyzing sales data to understand product performance and buying patterns\n• Researching potential suppliers, partners, or new product lines\n• Gathering and analyzing customer feedback for product development\n• Using analytics tools to generate insights that inform business decisions',
+    },
+];
+
+const sampleJobs = [
+    {
+        icon: HeadphonesIcon,
+        title: 'Customer Support Specialist',
+        rate: '$6–8/hr',
+        responsibilities: [
+            'Manage Zendesk / Gorgias tickets across email and chat',
+            'Process return and exchange requests end-to-end',
+            'Respond to product and shipping inquiries within 2 hours',
+            'Escalate complex issues to the store owner',
+            'Maintain CSAT scores above 95%',
+        ],
+        requirements: '1+ yr e-commerce support · Zendesk or Gorgias · Strong written English',
+    },
+    {
+        icon: Package,
+        title: 'Product Listing & Inventory Manager',
+        rate: '$7–9/hr',
+        responsibilities: [
+            'Upload and optimize product listings on Shopify / Amazon',
+            'Monitor stock levels and trigger reorder alerts',
+            'Update product images, descriptions, and pricing',
+            'Coordinate with suppliers for PO management',
+            'Maintain inventory accuracy across all sales channels',
+        ],
+        requirements: '1+ yr Shopify or Amazon Seller Central · Excel / Google Sheets',
+    },
+    {
+        icon: Share2,
+        title: 'Social Media & Ads Manager',
+        rate: '$8–10/hr',
+        responsibilities: [
+            'Create and schedule content for Instagram, TikTok, and Facebook',
+            'Manage Meta Ads campaigns and reporting',
+            'Engage with followers and respond to DMs',
+            'Track performance metrics and suggest optimizations',
+            'Source and coordinate UGC content from customers',
+        ],
+        requirements: '1+ yr paid social · Meta Ads Manager · Canva or Adobe',
+    },
+    {
+        icon: Mail,
+        title: 'Email Marketing Coordinator',
+        rate: '$7–9/hr',
+        responsibilities: [
+            'Build and manage Klaviyo flows and broadcast campaigns',
+            'Segment lists based on purchase behavior and LTV',
+            'Draft and design promotional email content',
+            'A/B test subject lines, CTAs, and send times',
+            'Report on open, click, and revenue-per-email metrics',
+        ],
+        requirements: '1+ yr Klaviyo or Mailchimp · Basic HTML email · Copywriting',
+    },
+    {
+        icon: Globe,
+        title: 'Shopify Store Manager',
+        rate: '$8–11/hr',
+        responsibilities: [
+            'Maintain and update Shopify storefront content daily',
+            'Implement app integrations and test functionality',
+            'Manage discount codes, promotions, and gift cards',
+            'Monitor site speed and storefront conversion metrics',
+            'Coordinate with developers on theme updates',
+        ],
+        requirements: '2+ yr Shopify · Liquid basics preferred · Google Analytics',
+    },
+    {
+        icon: Search,
+        title: 'E-Commerce Data Analyst',
+        rate: '$9–12/hr',
+        responsibilities: [
+            'Build weekly sales and performance dashboards',
+            'Analyze product and category-level revenue trends',
+            'Track ad spend ROI across all marketing channels',
+            'Prepare monthly business reviews for the owner',
+            'Identify top/bottom performers and make recommendations',
+        ],
+        requirements: '2+ yr e-commerce analytics · Excel / Looker / GA4',
     },
 ];
 
@@ -149,10 +214,12 @@ const ECommerce: React.FC = () => {
                     </section>
                 </ScrollReveal>
 
-                {/* Roles Carousel */}
+                {/* Roles Carousel + Image */}
                 <ScrollReveal>
                     <section className="py-20 md:py-32 bg-gray-50 px-4 border-t border-gray-100">
-                        <div className="max-w-5xl mx-auto">
+                        <div className="max-w-7xl mx-auto">
+
+                            {/* Section header */}
                             <div className="text-center mb-12 md:mb-16">
                                 <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
                                     ROLES WE PLACE
@@ -165,86 +232,169 @@ const ECommerce: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="relative">
-                                <div
-                                    className="overflow-hidden rounded-[2rem]"
-                                    onTouchStart={handleTouchStart}
-                                    onTouchEnd={handleTouchEnd}
-                                >
+                            {/* 2-col: carousel left, image right */}
+                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+                                {/* Carousel */}
+                                <div className="relative">
                                     <div
-                                        className="flex transition-transform duration-500 ease-out"
-                                        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                                        className="overflow-hidden rounded-[2rem]"
+                                        onTouchStart={handleTouchStart}
+                                        onTouchEnd={handleTouchEnd}
                                     >
-                                        {roles.map((role, idx) => (
-                                            <div key={idx} className="w-full flex-shrink-0">
-                                                <div className="bg-white p-8 md:p-14 rounded-[2rem] border border-gray-100 shadow-sm relative overflow-hidden flex flex-col min-h-[320px]">
-                                                    <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-                                                    <div className="w-14 h-14 rounded-2xl bg-navy/5 flex items-center justify-center mb-6 shrink-0 relative z-10">
-                                                        <role.icon className="text-navy" size={24} />
-                                                    </div>
-                                                    <h3 className="font-heading font-bold text-2xl md:text-3xl text-navy mb-5 leading-tight relative z-10">
-                                                        {role.title}
-                                                    </h3>
-                                                    <div className="font-body text-gray-600 text-base leading-relaxed space-y-3 relative z-10">
-                                                        {role.desc.split('\n\n').map((paragraph, pIdx) => {
-                                                            if (paragraph.startsWith('•')) {
-                                                                return (
-                                                                    <ul key={pIdx} className="space-y-2">
-                                                                        {paragraph.split('\n').map((item, iIdx) => (
-                                                                            <li key={iIdx} className="flex items-start gap-3">
-                                                                                <span className="text-gold font-bold mt-0.5 shrink-0">•</span>
-                                                                                <span className="font-medium text-gray-700">{item.replace('• ', '')}</span>
-                                                                            </li>
-                                                                        ))}
-                                                                    </ul>
-                                                                );
-                                                            }
-                                                            return <p key={pIdx}>{paragraph}</p>;
-                                                        })}
+                                        <div
+                                            className="flex transition-transform duration-500 ease-out"
+                                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                                        >
+                                            {roles.map((role, idx) => (
+                                                <div key={idx} className="w-full flex-shrink-0">
+                                                    <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm relative overflow-hidden flex flex-col min-h-[340px]">
+                                                        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+                                                        <div className="w-14 h-14 rounded-2xl bg-navy/5 flex items-center justify-center mb-6 shrink-0 relative z-10">
+                                                            <role.icon className="text-navy" size={24} />
+                                                        </div>
+                                                        <h3 className="font-heading font-bold text-2xl md:text-3xl text-navy mb-5 leading-tight relative z-10">
+                                                            {role.title}
+                                                        </h3>
+                                                        <div className="font-body text-gray-600 text-base leading-relaxed space-y-3 relative z-10">
+                                                            {role.desc.split('\n\n').map((paragraph, pIdx) => {
+                                                                if (paragraph.startsWith('•')) {
+                                                                    return (
+                                                                        <ul key={pIdx} className="space-y-2">
+                                                                            {paragraph.split('\n').map((item, iIdx) => (
+                                                                                <li key={iIdx} className="flex items-start gap-3">
+                                                                                    <span className="text-gold font-bold mt-0.5 shrink-0">•</span>
+                                                                                    <span className="font-medium text-gray-700">{item.replace('• ', '')}</span>
+                                                                                </li>
+                                                                            ))}
+                                                                        </ul>
+                                                                    );
+                                                                }
+                                                                return <p key={pIdx}>{paragraph}</p>;
+                                                            })}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Controls */}
+                                    <div className="flex items-center justify-center gap-6 mt-8">
+                                        <button
+                                            onClick={prevSlide}
+                                            className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
+                                            aria-label="Previous"
+                                        >
+                                            <ChevronLeft size={20} />
+                                        </button>
+                                        <div className="flex items-center gap-2">
+                                            {roles.map((_, idx) => (
+                                                <button
+                                                    key={idx}
+                                                    onClick={() => setCurrentSlide(idx)}
+                                                    className={`rounded-full transition-all duration-300 h-2 ${idx === currentSlide ? 'bg-navy w-6' : 'bg-gray-300 hover:bg-gray-400 w-2'}`}
+                                                    aria-label={`Go to slide ${idx + 1}`}
+                                                />
+                                            ))}
+                                        </div>
+                                        <button
+                                            onClick={nextSlide}
+                                            className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
+                                            aria-label="Next"
+                                        >
+                                            <ChevronRight size={20} />
+                                        </button>
+                                    </div>
+                                    <p className="text-center font-body text-sm text-gray-400 mt-3">
+                                        {currentSlide + 1} of {roles.length}
+                                    </p>
+                                </div>
+
+                                {/* Image placeholder */}
+                                <div className="hidden lg:block sticky top-32">
+                                    <div className="aspect-[4/5] rounded-[2rem] border-2 border-dashed border-gray-200 bg-white flex flex-col items-center justify-center gap-4 shadow-sm">
+                                        <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center">
+                                            <ImageIcon size={28} className="text-gray-300" />
+                                        </div>
+                                        <p className="font-heading font-semibold text-gray-300 text-base tracking-wide">
+                                            Image Placeholder
+                                        </p>
+                                        <p className="font-body text-xs text-gray-300">
+                                            Replace with industry photo
+                                        </p>
                                     </div>
                                 </div>
 
-                                {/* Controls */}
-                                <div className="flex items-center justify-center gap-6 mt-8">
-                                    <button
-                                        onClick={prevSlide}
-                                        className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
-                                        aria-label="Previous"
-                                    >
-                                        <ChevronLeft size={20} />
-                                    </button>
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
 
-                                    <div className="flex items-center gap-2">
-                                        {roles.map((_, idx) => (
-                                            <button
-                                                key={idx}
-                                                onClick={() => setCurrentSlide(idx)}
-                                                className={`rounded-full transition-all duration-300 h-2 ${
-                                                    idx === currentSlide
-                                                        ? 'bg-navy w-6'
-                                                        : 'bg-gray-300 hover:bg-gray-400 w-2'
-                                                }`}
-                                                aria-label={`Go to slide ${idx + 1}`}
-                                            />
-                                        ))}
-                                    </div>
-
-                                    <button
-                                        onClick={nextSlide}
-                                        className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
-                                        aria-label="Next"
-                                    >
-                                        <ChevronRight size={20} />
-                                    </button>
-                                </div>
-
-                                <p className="text-center font-body text-sm text-gray-400 mt-3">
-                                    {currentSlide + 1} of {roles.length}
+                {/* Sample Jobs Filled */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-12 md:mb-16">
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    RECENTLY FILLED
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                    E-Commerce Jobs We've Successfully Placed
+                                </h2>
+                                <p className="font-body text-xl text-gray-500 max-w-2xl mx-auto">
+                                    Real roles, real hires. Here's a sample of what we've placed for e-commerce businesses like yours.
                                 </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {sampleJobs.map((job, idx) => (
+                                    <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col overflow-hidden">
+
+                                        {/* Card header */}
+                                        <div className="p-6 pb-4 border-b border-gray-50">
+                                            <div className="flex items-start justify-between gap-3 mb-4">
+                                                <div className="w-11 h-11 rounded-xl bg-navy/[0.06] flex items-center justify-center flex-shrink-0">
+                                                    <job.icon size={20} className="text-navy/70" />
+                                                </div>
+                                                <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-heading font-bold px-3 py-1 rounded-full border border-emerald-100">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                                    FILLED
+                                                </span>
+                                            </div>
+                                            <h3 className="font-heading font-bold text-lg text-navy leading-snug mb-2">
+                                                {job.title}
+                                            </h3>
+                                            <span className="inline-block bg-gold/10 text-navy font-heading font-bold text-sm px-3 py-1 rounded-full">
+                                                {job.rate}
+                                            </span>
+                                        </div>
+
+                                        {/* Responsibilities */}
+                                        <div className="p-6 flex-grow">
+                                            <p className="font-heading text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">
+                                                Responsibilities
+                                            </p>
+                                            <ul className="space-y-2">
+                                                {job.responsibilities.map((r, rIdx) => (
+                                                    <li key={rIdx} className="flex items-start gap-2.5">
+                                                        <Check size={14} className="text-gold mt-0.5 flex-shrink-0" strokeWidth={3} />
+                                                        <span className="font-body text-sm text-gray-600 leading-snug">{r}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        {/* Requirements footer */}
+                                        <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+                                            <p className="font-heading text-xs font-bold text-gray-400 tracking-widest uppercase mb-1.5">
+                                                Requirements
+                                            </p>
+                                            <p className="font-body text-xs text-gray-500 leading-relaxed">{job.requirements}</p>
+                                        </div>
+
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </section>
