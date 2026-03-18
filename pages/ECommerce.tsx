@@ -9,7 +9,7 @@ import {
     Clock, DollarSign, ShieldCheck, Users,
     HeadphonesIcon, Package, Share2, Globe,
     ClipboardList, Mail, Calculator, Search,
-    ChevronLeft, ChevronRight, Check,
+    ChevronLeft, ChevronRight, Check, ImageIcon,
     FileX, BadgeDollarSign, RefreshCw, CreditCard, Globe2, Timer,
     Code2, Megaphone, Award, Target, TrendingUp,
 } from 'lucide-react';
@@ -326,16 +326,26 @@ const ECommerce: React.FC = () => {
                 <ScrollReveal>
                     <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
                         <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-12 md:mb-16">
-                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                    RECENTLY FILLED
-                                </h3>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                    E-Commerce Jobs We've Successfully Placed
-                                </h2>
-                                <p className="font-body text-xl text-gray-500 max-w-2xl mx-auto">
-                                    Real roles, real hires. Here's a sample of what we've placed for e-commerce businesses like yours.
-                                </p>
+                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-12 md:mb-16">
+                                <div>
+                                    <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                        RECENTLY FILLED
+                                    </h3>
+                                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                        E-Commerce Jobs We've Successfully Placed
+                                    </h2>
+                                    <p className="font-body text-xl text-gray-500 leading-relaxed">
+                                        Real roles, real hires. Here's a sample of what we've placed for e-commerce businesses like yours.
+                                    </p>
+                                </div>
+                                <div className="hidden lg:block">
+                                    <div className="aspect-[4/3] rounded-[2rem] border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center gap-3">
+                                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+                                            <ImageIcon size={22} className="text-gray-300" />
+                                        </div>
+                                        <p className="font-body text-sm text-gray-300">Image Placeholder</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -547,6 +557,85 @@ const ECommerce: React.FC = () => {
                     </section>
                 </ScrollReveal>
 
+                {/* Cost Comparison Chart */}
+                <ScrollReveal>
+                    <section className="py-20 md:py-32 bg-gray-50 px-4 border-t border-gray-100">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+                                {/* Left: chart */}
+                                <div className="bg-white rounded-[2rem] p-8 md:p-12 border border-gray-100 shadow-sm">
+                                    <p className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-8">COST COMPARISON</p>
+
+                                    {/* Bar chart */}
+                                    <div className="flex items-end gap-6 h-52 mb-6">
+                                        {/* Local hire bar */}
+                                        <div className="flex-1 flex flex-col items-center gap-3">
+                                            <span className="font-heading font-bold text-red-400 text-base">$60k–90k/yr</span>
+                                            <div className="w-full rounded-t-2xl bg-gradient-to-t from-red-100 to-red-50 border border-red-100 flex-1 relative">
+                                                <div className="absolute bottom-0 left-0 right-0 h-full rounded-t-2xl" style={{ background: 'linear-gradient(to top, #fca5a5 0%, #fee2e2 100%)' }} />
+                                            </div>
+                                        </div>
+                                        {/* FSA bar */}
+                                        <div className="flex-1 flex flex-col items-end gap-3 justify-end" style={{ height: '100%' }}>
+                                            <span className="font-heading font-bold text-gold text-base">from $12k/yr</span>
+                                            <div className="w-full rounded-t-2xl border border-gold/20" style={{ height: '28%', background: 'linear-gradient(to top, #D4AF37 0%, #e8cc6e 100%)' }} />
+                                        </div>
+                                    </div>
+
+                                    {/* Labels */}
+                                    <div className="flex gap-6">
+                                        <div className="flex-1 text-center">
+                                            <p className="font-heading font-bold text-gray-500 text-sm">Local Employee</p>
+                                        </div>
+                                        <div className="flex-1 text-center">
+                                            <p className="font-heading font-bold text-navy text-sm">FSA Assistant</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Savings callout */}
+                                    <div className="mt-8 pt-8 border-t border-gray-100 flex items-center justify-between">
+                                        <span className="font-body text-gray-500 text-sm">Potential annual savings</span>
+                                        <span className="font-heading font-bold text-2xl text-gold">up to 80%</span>
+                                    </div>
+                                </div>
+
+                                {/* Right: image placeholder + breakdown */}
+                                <div className="space-y-6">
+                                    <div className="aspect-video rounded-[2rem] border-2 border-dashed border-gray-200 bg-white flex flex-col items-center justify-center gap-3 shadow-sm">
+                                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+                                            <ImageIcon size={22} className="text-gray-300" />
+                                        </div>
+                                        <p className="font-body text-sm text-gray-300">Image Placeholder</p>
+                                    </div>
+
+                                    <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm space-y-4">
+                                        {[
+                                            { label: 'Salary', local: '$60k–90k', fsa: 'Hourly only' },
+                                            { label: 'Payroll taxes', local: 'Yes', fsa: 'None' },
+                                            { label: 'Benefits', local: 'Yes', fsa: 'None' },
+                                            { label: 'Recruiting cost', local: 'High', fsa: 'Free' },
+                                            { label: 'Replace if not a fit', local: 'Expensive', fsa: 'Free' },
+                                        ].map(({ label, local, fsa }) => (
+                                            <div key={label} className="grid grid-cols-3 gap-4 items-center py-2 border-b border-gray-50 last:border-0">
+                                                <span className="font-body text-sm text-gray-500">{label}</span>
+                                                <span className="font-body text-sm text-red-400 font-medium text-center">{local}</span>
+                                                <span className="font-body text-sm text-emerald-600 font-bold text-center">{fsa}</span>
+                                            </div>
+                                        ))}
+                                        <div className="grid grid-cols-3 gap-4 pt-2 text-xs font-heading font-bold text-gray-400 uppercase tracking-wider">
+                                            <span></span>
+                                            <span className="text-center">Local</span>
+                                            <span className="text-center">FSA</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
                 {/* Three Pillars */}
                 <ScrollReveal>
                     <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
@@ -607,17 +696,48 @@ const ECommerce: React.FC = () => {
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                                {[
-                                    { value: '$2.8T', label: 'Global e-commerce market value in 2022' },
-                                    { value: '12.2%', label: 'Compound annual growth rate (CAGR)' },
-                                    { value: '$3.2T', label: 'Projected market value by 2023' },
-                                ].map(({ value, label }) => (
-                                    <div key={label} className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 text-center">
-                                        <p className="font-heading font-bold text-4xl md:text-5xl text-gold mb-3">{value}</p>
-                                        <p className="font-body text-sm text-blue-100/60 leading-relaxed">{label}</p>
+                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-12">
+
+                                {/* Stat cards */}
+                                <div className="space-y-4">
+                                    {[
+                                        { value: '$2.8T', label: 'Global e-commerce market value in 2022' },
+                                        { value: '12.2%', label: 'Compound annual growth rate (CAGR)' },
+                                        { value: '$3.2T', label: 'Projected market value by 2023' },
+                                    ].map(({ value, label }) => (
+                                        <div key={label} className="bg-white/[0.05] border border-white/10 rounded-2xl p-6 flex items-center gap-6">
+                                            <p className="font-heading font-bold text-3xl text-gold flex-shrink-0 w-24">{value}</p>
+                                            <p className="font-body text-sm text-blue-100/60 leading-relaxed">{label}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Horizontal bar chart */}
+                                <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-8">
+                                    <p className="font-heading text-xs font-bold text-gold tracking-widest uppercase mb-8">MARKET GROWTH</p>
+                                    <div className="space-y-6">
+                                        {[
+                                            { year: '2020', value: '$2.0T', pct: 36 },
+                                            { year: '2021', value: '$2.4T', pct: 44 },
+                                            { year: '2022', value: '$2.8T', pct: 52 },
+                                            { year: '2023', value: '$3.2T', pct: 60 },
+                                            { year: '2030*', value: '$7.4T+', pct: 100, projected: true },
+                                        ].map(({ year, value, pct, projected }) => (
+                                            <div key={year} className="flex items-center gap-4">
+                                                <span className={`font-heading font-bold text-sm w-14 flex-shrink-0 ${projected ? 'text-gold' : 'text-white/50'}`}>{year}</span>
+                                                <div className="flex-1 h-8 bg-white/5 rounded-full overflow-hidden">
+                                                    <div
+                                                        className={`h-full rounded-full transition-all ${projected ? 'bg-gold/50' : 'bg-gold'}`}
+                                                        style={{ width: `${pct}%` }}
+                                                    />
+                                                </div>
+                                                <span className={`font-heading font-bold text-sm w-16 text-right flex-shrink-0 ${projected ? 'text-gold' : 'text-white/70'}`}>{value}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                    <p className="font-body text-xs text-white/30 mt-6">* Projected estimate</p>
+                                </div>
+
                             </div>
 
                             <div className="bg-white/[0.05] border border-white/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
@@ -633,6 +753,48 @@ const ECommerce: React.FC = () => {
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </section>
+                </ScrollReveal>
+
+                {/* Final CTA */}
+                <ScrollReveal>
+                    <section className="bg-navy py-24 md:py-36 px-4 relative overflow-hidden border-t-8 border-gold">
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+                        <div className="max-w-4xl mx-auto text-center relative z-10">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-body text-sm font-semibold mb-8">
+                                <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                                READY TO GET STARTED?
+                            </div>
+
+                            <h2 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                                Your Store Deserves A{' '}
+                                <span className="text-gold italic">Five Star Team</span>
+                            </h2>
+
+                            <p className="font-body text-xl text-blue-100/70 max-w-2xl mx-auto mb-12 leading-relaxed">
+                                Tell us the role you need and we'll introduce you to a qualified e-commerce assistant — in as little as 4 days. No recruiting headaches, no hiring risk, no long-term contracts.
+                            </p>
+
+                            <div className="flex flex-wrap justify-center gap-3 mb-12">
+                                {['No setup fees', 'No lock-in contracts', 'Free replacement guarantee'].map((item) => (
+                                    <div key={item} className="flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-5 py-2.5">
+                                        <Check size={14} className="text-gold flex-shrink-0" strokeWidth={3} />
+                                        <span className="font-body text-white font-medium text-sm">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <Button
+                                onClick={openSurvey}
+                                variant="primary"
+                                className="w-full sm:w-auto min-w-[320px] text-xl shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] py-5"
+                            >
+                                Book A Free Discovery Call
+                            </Button>
+                            <p className="font-heading italic text-white/30 text-sm mt-4">100% Free. No Obligation.</p>
                         </div>
                     </section>
                 </ScrollReveal>
