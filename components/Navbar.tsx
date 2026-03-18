@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import {
+    Menu, X, ChevronDown,
+    Heart, Home, Scale, ShoppingBag, ShieldCheck,
+    Truck, BarChart2, Wrench, GraduationCap, Plane,
+    Phone, Monitor, Zap,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 
@@ -11,9 +16,26 @@ interface NavbarProps {
 
 const navLinkClass = 'text-sm font-body font-medium text-gray-600 hover:text-navy transition-colors';
 
+const industries = [
+    { label: 'Healthcare',           icon: Heart,         href: '/industries/healthcare' },
+    { label: 'Real Estate',          icon: Home,          href: '/industries/real-estate' },
+    { label: 'Legal',                icon: Scale,         href: '/industries/legal' },
+    { label: 'E-Commerce',           icon: ShoppingBag,   href: '/industries/e-commerce' },
+    { label: 'Insurance',            icon: ShieldCheck,   href: '/industries/insurance' },
+    { label: 'Logistics',            icon: Truck,         href: '/industries/logistics' },
+    { label: 'Financial Services',   icon: BarChart2,     href: '/industries/financial-services' },
+    { label: 'Home Services',        icon: Wrench,        href: '/industries/home-services' },
+    { label: 'Education & Training', icon: GraduationCap, href: '/industries/education' },
+    { label: 'Travel',               icon: Plane,         href: '/industries/travel' },
+    { label: 'Telecommunications',   icon: Phone,         href: '/industries/telecommunications' },
+    { label: 'Digital Agencies',     icon: Monitor,       href: '/digital-agencies' },
+    { label: 'Energy & Utilities',   icon: Zap,           href: '/industries/energy' },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -26,7 +48,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
         return () => { document.body.style.overflow = 'unset'; };
     }, [isMobileMenuOpen]);
 
-    const closeMobile = () => setIsMobileMenuOpen(false);
+    const closeMobile = () => {
+        setIsMobileMenuOpen(false);
+        setIsMobileIndustriesOpen(false);
+    };
 
     const handleGetStartedClick = () => {
         closeMobile();
@@ -54,11 +79,48 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                     {!hideMenu && (
                         <>
                             {/* ── Desktop Navigation ───────────────────────────── */}
-                            <div className="hidden md:flex items-center gap-8">
+                            <div className="hidden md:flex items-center gap-6 lg:gap-8">
 
                                 <Link to="/pricing" className={navLinkClass}>Pricing</Link>
                                 <Link to="/results" className={navLinkClass}>Results</Link>
                                 <Link to="/how-it-works" className={navLinkClass}>How It Works</Link>
+
+                                {/* Industries Mega Menu */}
+                                <div className="relative group">
+                                    <button className={`${navLinkClass} flex items-center gap-1 py-4 cursor-default`}>
+                                        Industries
+                                        <ChevronDown size={16} className="transition-transform duration-300 group-hover:rotate-180" />
+                                    </button>
+
+                                    {/* Mega Menu Panel */}
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[780px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+                                        {/* Header */}
+                                        <div className="px-6 py-4 bg-navy/[0.03] border-b border-gray-100 flex items-center justify-between">
+                                            <div>
+                                                <p className="text-xs font-heading font-bold text-gold tracking-widest uppercase">Industries We Serve</p>
+                                                <p className="text-xs font-body text-gray-500 mt-0.5">Specialized virtual assistant solutions for your industry</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Grid */}
+                                        <div className="grid grid-cols-4 gap-1 p-4">
+                                            {industries.map(({ label, icon: Icon, href }) => (
+                                                <Link
+                                                    key={label}
+                                                    to={href}
+                                                    className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-navy/5 transition-all duration-150 group/item"
+                                                >
+                                                    <div className="w-9 h-9 rounded-lg bg-navy/[0.06] flex items-center justify-center flex-shrink-0 group-hover/item:bg-gold/15 transition-colors duration-150">
+                                                        <Icon size={17} className="text-navy/70 group-hover/item:text-gold transition-colors duration-150" />
+                                                    </div>
+                                                    <span className="text-[13px] font-body font-medium text-gray-700 group-hover/item:text-navy transition-colors duration-150 leading-tight">
+                                                        {label}
+                                                    </span>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {/* Resources Dropdown */}
                                 <div className="relative group">
@@ -116,7 +178,6 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
                 >
-                    {/* Primary links */}
                     <div className="flex flex-col">
                         {[
                             { to: '/pricing',      label: 'Pricing' },
@@ -132,6 +193,37 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                                 {label}
                             </Link>
                         ))}
+
+                        {/* Industries — collapsible */}
+                        <div className="border-b border-gray-100">
+                            <button
+                                onClick={() => setIsMobileIndustriesOpen(!isMobileIndustriesOpen)}
+                                className="w-full flex items-center justify-between py-4 text-xl font-heading font-semibold text-navy hover:text-gold transition-colors"
+                            >
+                                Industries
+                                <ChevronDown
+                                    size={20}
+                                    className={`transition-transform duration-300 ${isMobileIndustriesOpen ? 'rotate-180 text-gold' : ''}`}
+                                />
+                            </button>
+                            <div className={`overflow-hidden transition-all duration-300 ${isMobileIndustriesOpen ? 'max-h-[600px] pb-4' : 'max-h-0'}`}>
+                                <div className="grid grid-cols-2 gap-1.5">
+                                    {industries.map(({ label, icon: Icon, href }) => (
+                                        <Link
+                                            key={label}
+                                            to={href}
+                                            onClick={closeMobile}
+                                            className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-navy/5 transition-colors"
+                                        >
+                                            <div className="w-8 h-8 rounded-lg bg-navy/[0.06] flex items-center justify-center flex-shrink-0">
+                                                <Icon size={15} className="text-navy/70" />
+                                            </div>
+                                            <span className="text-sm font-body font-medium text-gray-700 leading-tight">{label}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
 
                         {/* Resources sub-group */}
                         <div className="py-4 border-b border-gray-100">
