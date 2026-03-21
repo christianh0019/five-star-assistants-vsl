@@ -1,24 +1,43 @@
 import React from 'react';
-import { Globe, Store, CheckCircle, ArrowRight, Home } from 'lucide-react';
+import {
+    Heart, Home, Scale, ShoppingBag, ShieldCheck,
+    Truck, BarChart2, Wrench, GraduationCap, Plane,
+    Phone, Monitor, Zap, Plus,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
 
 interface WhoWeWorkWithSectionProps {
     onOpenSurvey?: () => void;
 }
 
+const industries = [
+    { label: 'Healthcare',           icon: Heart,         href: '/industries/healthcare' },
+    { label: 'Real Estate',          icon: Home,          href: '/industries/real-estate' },
+    { label: 'Legal',                icon: Scale,         href: '/industries/legal' },
+    { label: 'E-Commerce',           icon: ShoppingBag,   href: '/industries/e-commerce' },
+    { label: 'Insurance',            icon: ShieldCheck,   href: '/industries/insurance' },
+    { label: 'Logistics',            icon: Truck,         href: '/industries/logistics' },
+    { label: 'Financial Services',   icon: BarChart2,     href: '/industries/financial-services' },
+    { label: 'Home Services',        icon: Wrench,        href: '/industries/home-services' },
+    { label: 'Education & Training', icon: GraduationCap, href: '/industries/education' },
+    { label: 'Travel',               icon: Plane,         href: '/industries/travel' },
+    { label: 'Telecommunications',   icon: Phone,         href: '/industries/telecommunications' },
+    { label: 'Digital Agencies',     icon: Monitor,       href: '/digital-agencies' },
+    { label: 'Energy & Utilities',   icon: Zap,           href: '/industries/energy' },
+];
+
 const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurvey }) => {
     return (
         <section id="who-we-work-with" className="bg-white py-24 md:py-32 px-4 relative overflow-hidden border-b border-gray-100">
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-offwhite/50 -z-10 rounded-l-[100px] hidden lg:block"></div>
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-offwhite/50 -z-10 rounded-l-[100px] hidden lg:block" />
 
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center max-w-3xl mx-auto mb-20 animate-fadeIn">
+            <div className="max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="text-center max-w-3xl mx-auto mb-16 animate-fadeIn">
                     <div className="flex items-center justify-center gap-4 mb-6">
-                        <span className="w-12 h-[1px] bg-gold"></span>
+                        <span className="w-12 h-[1px] bg-gold" />
                         <span className="font-body text-gold font-bold tracking-[0.2em] uppercase text-xs">Who We Work With</span>
-                        <span className="w-12 h-[1px] bg-gold"></span>
+                        <span className="w-12 h-[1px] bg-gold" />
                     </div>
                     <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-8 leading-tight">
                         Built For <span className="italic font-light text-navy-light">Founders</span> Who Need Leverage
@@ -28,116 +47,35 @@ const WhoWeWorkWithSection: React.FC<WhoWeWorkWithSectionProps> = ({ onOpenSurve
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 relative z-10">
+                {/* Industry Tiles — 14 total (13 + "More") = 2×7 mobile, 5+5+4 desktop */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+                    {industries.map(({ label, icon: Icon, href }) => (
+                        <Link
+                            key={label}
+                            to={href}
+                            className="group flex flex-col items-center text-center gap-3 p-5 md:p-6 rounded-2xl border border-gray-100 bg-white hover:border-gold/40 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center group-hover:bg-gold/10 transition-colors duration-300">
+                                <Icon size={22} className="text-navy/60 group-hover:text-gold transition-colors duration-300" />
+                            </div>
+                            <span className="font-body font-medium text-gray-700 group-hover:text-navy text-sm leading-tight transition-colors duration-300">
+                                {label}
+                            </span>
+                        </Link>
+                    ))}
 
-                    {/* Online Businesses Card */}
-                    <Link to="/digital-agencies" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-navy flex flex-col h-full">
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
-                            <Globe size={120} />
+                    {/* 14th tile */}
+                    <button
+                        onClick={onOpenSurvey}
+                        className="group flex flex-col items-center text-center gap-3 p-5 md:p-6 rounded-2xl border border-dashed border-gray-200 bg-gray-50/40 hover:border-gold/40 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 cursor-pointer"
+                    >
+                        <div className="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center group-hover:bg-gold/10 transition-colors duration-300">
+                            <Plus size={22} className="text-navy/40 group-hover:text-gold transition-colors duration-300" />
                         </div>
-
-                        <div className="w-16 h-16 bg-navy/5 text-navy rounded-xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
-                            <Globe className="w-8 h-8" />
-                        </div>
-
-                        <h3 className="font-heading text-3xl font-bold text-navy mb-4">
-                            Digital Agencies
-                        </h3>
-                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
-                            Stop getting bogged down in your inbox and CRM. Hand off the digital heavy lifting so you can focus on strategy and closing deals.
-                        </p>
-
-                        <ul className="space-y-4 mb-10">
-                            {[
-                                "Inbox & Calendar Management",
-                                "Lead Follow-up & CRM Updates",
-                                "Social Media Posting & Community Management",
-                                "Data Entry & Research Tasks"
-                            ].map((feature, i) => (
-                                <li key={i} className="flex items-start">
-                                    <CheckCircle className="w-5 h-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
-                                    <span className="text-navy font-medium text-sm md:text-base">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
-                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                    </Link>
-
-                    {/* Physical Businesses Card */}
-                    <Link to="/local-service-businesses" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-gold flex flex-col h-full">
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
-                            <Store size={120} />
-                        </div>
-
-                        <div className="w-16 h-16 bg-gold/10 text-gold rounded-xl flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                            <Store className="w-8 h-8" />
-                        </div>
-
-                        <h3 className="font-heading text-3xl font-bold text-navy mb-4">
-                            Local Service Businesses
-                        </h3>
-                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
-                            Stop answering the phone while trying to run the job site. Let a dedicated assistant handle your back-office and customer scheduling.
-                        </p>
-
-                        <ul className="space-y-4 mb-10">
-                            {[
-                                "Inbound Call Routing & Answering",
-                                "Appointment Booking & Scheduling",
-                                "Estimating Prep & Dispatching Support",
-                                "Vendor Follow-up & Basic Bookkeeping"
-                            ].map((feature, i) => (
-                                <li key={i} className="flex items-start">
-                                    <CheckCircle className="w-5 h-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
-                                    <span className="text-navy font-medium text-sm md:text-base">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
-                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                    </Link>
-
-                    {/* Real Estate Agents Card */}
-                    <Link to="/real-estate-agents" className="bg-white p-8 md:p-12 rounded-2xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative overflow-hidden border-t-4 border-t-navy flex flex-col h-full">
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110">
-                            <Home size={120} />
-                        </div>
-
-                        <div className="w-16 h-16 bg-navy/5 text-navy rounded-xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors duration-300">
-                            <Home className="w-8 h-8" />
-                        </div>
-
-                        <h3 className="font-heading text-3xl font-bold text-navy mb-4">
-                            Real Estate Agents
-                        </h3>
-                        <p className="text-gray-500 mb-8 font-body leading-relaxed flex-grow">
-                            Stop chasing signatures and managing compliance. Hand off the transaction coordination to focus on prospecting and closing volume.
-                        </p>
-
-                        <ul className="space-y-4 mb-10">
-                            {[
-                                "Transaction Coordination",
-                                "MLS Listing Management",
-                                "Client Follow-up & Nurture",
-                                "Open House Prep & Scheduling"
-                            ].map((feature, i) => (
-                                <li key={i} className="flex items-start">
-                                    <CheckCircle className="w-5 h-5 text-gold mr-3 mt-0.5 flex-shrink-0" />
-                                    <span className="text-navy font-medium text-sm md:text-base">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-auto flex items-center text-gold font-bold font-heading text-lg group-hover:text-navy transition-colors">
-                            Learn More <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                    </Link>
-
+                        <span className="font-body font-medium text-gray-400 group-hover:text-navy text-sm leading-tight transition-colors duration-300">
+                            50+ Verticals
+                        </span>
+                    </button>
                 </div>
             </div>
         </section>
