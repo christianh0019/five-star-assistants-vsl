@@ -35,6 +35,7 @@ import Logistics from './pages/Logistics';
 import FinancialServices from './pages/FinancialServices';
 import HomeServices from './pages/HomeServices';
 import Education from './pages/Education';
+import Travel from './pages/Travel';
 
 const App: React.FC = () => {
   return (
@@ -74,6 +75,7 @@ const App: React.FC = () => {
         <Route path="/industries/financial-services" element={<FinancialServices />} />
         <Route path="/industries/home-services" element={<HomeServices />} />
         <Route path="/industries/education" element={<Education />} />
+        <Route path="/industries/travel" element={<Travel />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
