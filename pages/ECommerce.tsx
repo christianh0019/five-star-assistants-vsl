@@ -17,7 +17,7 @@ import Button from '../components/Button';
 
 const socialProofStats = [
     { icon: Clock,       value: '4 Days',  label: 'Average Time to First Candidate' },
-    { icon: DollarSign,  value: '$6/hr',   label: 'Starting Rate' },
+    { icon: DollarSign,  value: '$4/hr',   label: 'Starting Rate' },
     { icon: ShieldCheck, value: '100%',    label: "Love It Or It's Free Guarantee" },
     { icon: Users,       value: 'Top 1%',  label: 'Of Applicants Placed' },
 ];
@@ -308,7 +308,7 @@ const ECommerce: React.FC = () => {
                                 </div>
 
                                 {/* Industry image */}
-                                <div className="hidden lg:block sticky top-32">
+                                <div className="hidden lg:block">
                                     <img
                                         src="/images/ecom-industry-1.png"
                                         alt="E-Commerce virtual assistant"
