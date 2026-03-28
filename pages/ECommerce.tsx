@@ -313,7 +313,7 @@ const ECommerce: React.FC = () => {
                                 {/* Industry image */}
                                 <div className="hidden lg:block">
                                     <img
-                                        src="/images/ecom-industry-1.png"
+                                        src="/images/va-1.png"
                                         alt="E-Commerce virtual assistant"
                                         className="w-full rounded-[2rem] shadow-xl object-cover"
                                     />
@@ -478,7 +478,7 @@ const ECommerce: React.FC = () => {
                                 {/* Right: industry image */}
                                 <div className="hidden lg:block">
                                     <img
-                                        src="/images/ecom-industry-2.png"
+                                        src="/images/va-2.png"
                                         alt="E-Commerce business owner"
                                         className="w-full rounded-[2rem] shadow-xl object-cover"
                                     />
@@ -563,32 +563,48 @@ const ECommerce: React.FC = () => {
                                 </h2>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14">
-                                {[
-                                    {
-                                        icon: DollarSign,
-                                        title: 'Maximize Savings, Optimize Quality',
-                                        desc: "Our e-commerce staffing model delivers top-tier talent at a fraction of the cost of local hiring. You get high-quality work without the high overhead — starting at just $6/hr.",
-                                    },
-                                    {
-                                        icon: Award,
-                                        title: 'World-Class, Diverse Expertise',
-                                        desc: 'From product listings to customer support to paid ads, our remote specialists cover every corner of e-commerce operations. Your store gets what it needs to compete.',
-                                    },
-                                    {
-                                        icon: Target,
-                                        title: 'Efficiency Meets Focus',
-                                        desc: "Let us handle the operational details. Our staffing model frees your team to focus on growth strategy while we manage the day-to-day, ensuring a seamless experience for your customers.",
-                                    },
-                                ].map(({ icon: Icon, title, desc }, idx) => (
-                                    <div key={idx} className="relative bg-gray-50 rounded-[2rem] p-10 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                        <div className="w-14 h-14 rounded-2xl bg-navy flex items-center justify-center mb-7">
-                                            <Icon size={24} className="text-gold" />
+                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14">
+
+                                {/* Cards */}
+                                <div className="flex flex-col gap-6">
+                                    {[
+                                        {
+                                            icon: DollarSign,
+                                            title: 'Maximize Savings, Optimize Quality',
+                                            desc: "Our e-commerce staffing model delivers top-tier talent at a fraction of the cost of local hiring. You get high-quality work without the high overhead — starting at just $4/hr.",
+                                        },
+                                        {
+                                            icon: Award,
+                                            title: 'World-Class, Diverse Expertise',
+                                            desc: 'From product listings to customer support to paid ads, our remote specialists cover every corner of e-commerce operations. Your store gets what it needs to compete.',
+                                        },
+                                        {
+                                            icon: Target,
+                                            title: 'Efficiency Meets Focus',
+                                            desc: "Let us handle the operational details. Our staffing model frees your team to focus on growth strategy while we manage the day-to-day, ensuring a seamless experience for your customers.",
+                                        },
+                                    ].map(({ icon: Icon, title, desc }, idx) => (
+                                        <div key={idx} className="relative bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex gap-5 items-start">
+                                            <div className="w-12 h-12 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
+                                                <Icon size={22} className="text-gold" />
+                                            </div>
+                                            <div>
+                                                <h3 className="font-heading font-bold text-navy text-lg mb-2 leading-snug">{title}</h3>
+                                                <p className="font-body text-gray-600 text-sm leading-relaxed">{desc}</p>
+                                            </div>
                                         </div>
-                                        <h3 className="font-heading font-bold text-navy text-xl mb-4 leading-snug">{title}</h3>
-                                        <p className="font-body text-gray-600 leading-relaxed">{desc}</p>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
+
+                                {/* Image */}
+                                <div className="hidden lg:block">
+                                    <img
+                                        src="/images/va-3.png"
+                                        alt="Five Star Assistant at work"
+                                        className="w-full rounded-[2rem] shadow-xl object-cover"
+                                    />
+                                </div>
+
                             </div>
 
                             <div className="text-center">
