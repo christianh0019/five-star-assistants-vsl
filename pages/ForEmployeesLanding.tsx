@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import EmployeeApplicationModal from '../components/EmployeeApplicationModal';
-import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { Briefcase, Globe, ShieldCheck, TrendingUp, CheckCircle } from 'lucide-react';
 
-const ForEmployeesLanding: React.FC = () => {
-    const [isSurveyOpen, setIsSurveyOpen] = useState(false);
-    const navigate = useNavigate();
+const PORTAL_URL = 'https://app.fivestarassistants.com/apply/register';
 
-    const openSurvey = () => setIsSurveyOpen(true);
-    const closeSurvey = () => setIsSurveyOpen(false);
+const ForEmployeesLanding: React.FC = () => {
+    const goToPortal = () => window.open(PORTAL_URL, '_blank', 'noopener,noreferrer');
 
     return (
         <div className="min-h-screen bg-navy flex flex-col font-body text-white selection:bg-gold/30 selection:text-white">
-            <Navbar onOpenSurvey={openSurvey} hideMenu alwaysWhite />
+            <Navbar hideMenu alwaysWhite />
 
             <main className="flex-grow pt-24">
                 {/* HERO SECTION */}
@@ -28,7 +24,7 @@ const ForEmployeesLanding: React.FC = () => {
                         <div className="max-w-[900px] mx-auto text-center flex flex-col items-center">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white font-heading text-sm font-bold tracking-widest uppercase mb-8 shadow-sm backdrop-blur-sm">
                                 <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                                Global Talent Network
+                                Join Our Platform
                             </div>
 
                             <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8">
@@ -36,20 +32,20 @@ const ForEmployeesLanding: React.FC = () => {
                             </h1>
 
                             <p className="font-body text-gray-300 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-                                We match top-tier global professionals with growing United States businesses looking for reliable, long-term remote team members.
+                                Create a free account, browse real job postings from US businesses, and apply in minutes. No chasing clients. No middlemen taking your pay.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
                                 <Button
-                                    onClick={openSurvey}
+                                    onClick={goToPortal}
                                     variant="primary"
                                     className="min-w-[280px] text-lg py-4 shadow-[0_0_30px_rgba(255,215,0,0.2)] hover:shadow-[0_0_50px_rgba(255,215,0,0.4)] hover:scale-105 transition-all text-navy"
                                 >
-                                    Apply To Join Our Network
+                                    Create Your Free Account
                                 </Button>
                             </div>
                             <p className="font-heading italic text-gray-400 text-sm mt-6">
-                                Free to apply. Zero placement fees for candidates.
+                                Free to join. Zero placement fees for candidates.
                             </p>
                         </div>
                     </div>
@@ -60,10 +56,10 @@ const ForEmployeesLanding: React.FC = () => {
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-16">
                             <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-6">
-                                How The Placement Process Works
+                                How It Works
                             </h2>
                             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                                We handle the hard part of finding high-quality US clients so you can focus on doing great work.
+                                Go from sign-up to hired in a few simple steps.
                             </p>
                         </div>
 
@@ -74,23 +70,23 @@ const ForEmployeesLanding: React.FC = () => {
                             {[
                                 {
                                     step: "01",
-                                    title: "Apply Online",
-                                    desc: "Submit your resume and details. We look for strong communication skills and proven experience."
+                                    title: "Create Your Account",
+                                    desc: "Sign up for free in minutes. No fees, no paperwork — just your name and email to get started."
                                 },
                                 {
                                     step: "02",
-                                    title: "Internal Vetting",
-                                    desc: "Pass our initial screening, skill assessments, and video interview process to join our active network."
+                                    title: "Browse Job Postings",
+                                    desc: "See open roles from verified US businesses. Filter by skill, schedule, and pay rate."
                                 },
                                 {
                                     step: "03",
-                                    title: "Client Matching",
-                                    desc: "When a US business needs your exact skillset, we introduce you directly to the business owner."
+                                    title: "Apply With Ease",
+                                    desc: "Submit your profile directly to jobs that match your skills. No cold outreach required."
                                 },
                                 {
                                     step: "04",
                                     title: "Get Hired",
-                                    desc: "Interview directly with the client. If it's a fit, you get placed in a long-term, stable role."
+                                    desc: "Interview directly with the client. If it's a fit, you get placed in a stable, long-term role."
                                 }
                             ].map((item, idx) => (
                                 <div key={idx} className="relative z-10 flex flex-col items-center text-center group">
@@ -111,23 +107,23 @@ const ForEmployeesLanding: React.FC = () => {
                         <div className="grid md:grid-cols-2 gap-16 items-center">
                             <div>
                                 <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                    Why Work With Us
+                                    Why Join Our Platform
                                 </h3>
                                 <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                                    Better Clients. <br />
+                                    Better Jobs. <br />
                                     <span className="text-gray-400">Stable Income.</span>
                                 </h2>
                                 <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-                                    Stop fighting for low-paying gigs on crowded freelance platforms. We build direct relationships with growing US businesses that need long-term, dedicated team members.
+                                    Stop fighting for gigs on crowded freelance platforms. Our job board is filled with real openings from growing US businesses that need long-term, dedicated team members.
                                 </p>
 
                                 <ul className="space-y-6">
                                     {[
+                                        "Real job postings updated as new roles open up",
+                                        "Apply directly through the platform — no cold outreach",
                                         "Long-term, full-time positions (not short gigs)",
-                                        "Direct placement with verified US business owners",
-                                        "Competitive pay rates based on your experience",
-                                        "No agency fees taken directly from your agreed hourly rate",
-                                        "Consistent pay schedules"
+                                        "Competitive pay rates in USD based on your experience",
+                                        "Zero placement fees for candidates"
                                     ].map((benefit, idx) => (
                                         <li key={idx} className="flex items-start gap-4">
                                             <CheckCircle className="text-gold w-6 h-6 shrink-0 mt-0.5" />
@@ -168,29 +164,23 @@ const ForEmployeesLanding: React.FC = () => {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                     <div className="max-w-4xl mx-auto bg-navy border border-white/10 rounded-[3rem] p-12 md:p-20 text-center relative z-10 shadow-2xl">
-                        <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Ready To Elevate Your Career?</h2>
+                        <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Ready To Find Your Next Role?</h2>
                         <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                            If you are driven, fluent in English, and ready to work with top-tier US clients, we want to hear from you.
+                            Create your free account, explore open job postings, and apply to roles that match your skills — all in one place.
                         </p>
                         <Button
-                            onClick={openSurvey}
+                            onClick={goToPortal}
                             variant="primary"
                             className="min-w-[280px] text-xl py-5 shadow-[0_0_30px_rgba(255,215,0,0.2)] hover:shadow-[0_0_50px_rgba(255,215,0,0.4)] hover:scale-105 transition-all text-navy"
                         >
-                            Apply To Five Star Assistants
+                            Join The Platform Free
                         </Button>
                     </div>
                 </section>
 
             </main>
 
-            {/* Note: In a real system, you might want a modified dark Footer as well, but standard is fine for now */}
             <Footer />
-
-            <EmployeeApplicationModal
-                isOpen={isSurveyOpen}
-                onClose={closeSurvey}
-            />
         </div>
     );
 };
