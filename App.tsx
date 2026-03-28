@@ -29,6 +29,7 @@ import Terms from './pages/Terms';
 import ECommerce from './pages/ECommerce';
 import Healthcare from './pages/Healthcare';
 import RealEstateIndustry from './pages/RealEstateIndustry';
+import Legal from './pages/Legal';
 
 const App: React.FC = () => {
   return (
@@ -62,6 +63,7 @@ const App: React.FC = () => {
         <Route path="/industries/e-commerce" element={<ECommerce />} />
         <Route path="/industries/healthcare" element={<Healthcare />} />
         <Route path="/industries/real-estate" element={<RealEstateIndustry />} />
+        <Route path="/industries/legal" element={<Legal />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
