@@ -26,7 +26,7 @@ const roles = [
     {
         icon: Calendar,
         title: 'Dispatch & Scheduling VA',
-        desc: 'Book every job, fill your tech's calendar, and keep customers in the loop — all day.\n\n• Answer scheduling requests by phone, text, web form, and app\n• Book service calls and match them to the right tech based on location and skill\n• Send appointment confirmation texts and reminder calls to customers\n• Manage same-day changes, cancellations, and urgent reschedules on the fly\n• Update job statuses and technician notes in ServiceTitan, Jobber, or Housecall Pro throughout the day',
+        desc: "Book every job, fill your tech's calendar, and keep customers in the loop — all day.\n\n• Answer scheduling requests by phone, text, web form, and app\n• Book service calls and match them to the right tech based on location and skill\n• Send appointment confirmation texts and reminder calls to customers\n• Manage same-day changes, cancellations, and urgent reschedules on the fly\n• Update job statuses and technician notes in ServiceTitan, Jobber, or Housecall Pro throughout the day",
     },
     {
         icon: Phone,
@@ -61,7 +61,7 @@ const roles = [
     {
         icon: Package,
         title: 'Warranty, Parts & Vendor VA',
-        desc: 'Handle the back-and-forth with suppliers and manufacturers so your techs don't have to.\n\n• Process warranty claims and follow up with manufacturers until resolved\n• Coordinate parts orders and track delivery status for upcoming jobs\n• Communicate with subcontractors on scheduling, scopes, and payment status\n• Handle supplier invoices and reconcile purchase orders in your accounting system\n• Follow up on open warranty jobs and log all claim updates for the tech and owner',
+        desc: "Handle the back-and-forth with suppliers and manufacturers so your techs don't have to.\n\n• Process warranty claims and follow up with manufacturers until resolved\n• Coordinate parts orders and track delivery status for upcoming jobs\n• Communicate with subcontractors on scheduling, scopes, and payment status\n• Handle supplier invoices and reconcile purchase orders in your accounting system\n• Follow up on open warranty jobs and log all claim updates for the tech and owner",
     },
 ];
 
