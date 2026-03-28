@@ -18,7 +18,7 @@ import Button from '../components/Button';
 const socialProofStats = [
     { icon: Clock,       value: '4 Days',  label: 'Average Time to First Candidate' },
     { icon: DollarSign,  value: '$4/hr',   label: 'Starting Rate' },
-    { icon: ShieldCheck, value: '100%',    label: "Love It Or It's Free Guarantee" },
+    { icon: ShieldCheck, value: '100%',    label: "Free Placements" },
     { icon: Users,       value: 'Top 1%',  label: 'Of Applicants Placed' },
 ];
 
@@ -68,6 +68,7 @@ const roles = [
 const sampleJobs = [
     {
         icon: HeadphonesIcon,
+        photo: 'https://pbalmjdytwiqxpftipwn.supabase.co/storage/v1/object/public/applicant-files/headshots/1773576174552-fwmn5ytevcp.png',
         title: 'Customer Support Specialist',
         rate: '$6–8/hr',
         responsibilities: [
@@ -81,6 +82,7 @@ const sampleJobs = [
     },
     {
         icon: Package,
+        photo: 'https://pbalmjdytwiqxpftipwn.supabase.co/storage/v1/object/public/applicant-files/headshots/1773964439674-vxdguuo8qmd.png',
         title: 'Product Listing & Inventory Manager',
         rate: '$7–9/hr',
         responsibilities: [
@@ -94,6 +96,7 @@ const sampleJobs = [
     },
     {
         icon: Share2,
+        photo: 'https://pbalmjdytwiqxpftipwn.supabase.co/storage/v1/object/public/applicant-files/headshots/1773979102116-xofszo85x6.jpg',
         title: 'Social Media & Ads Manager',
         rate: '$8–10/hr',
         responsibilities: [
@@ -352,14 +355,12 @@ const ECommerce: React.FC = () => {
 
                                         {/* Card header */}
                                         <div className="p-6 pb-4 border-b border-gray-50">
-                                            <div className="flex items-start justify-between gap-3 mb-4">
-                                                <div className="w-11 h-11 rounded-xl bg-navy/[0.06] flex items-center justify-center flex-shrink-0">
-                                                    <job.icon size={20} className="text-navy/70" />
-                                                </div>
-                                                <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-heading font-bold px-3 py-1 rounded-full border border-emerald-100">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                                    FILLED
-                                                </span>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <img
+                                                    src={job.photo}
+                                                    alt="Placed assistant"
+                                                    className="w-11 h-11 rounded-full object-cover flex-shrink-0 border border-gray-100"
+                                                />
                                             </div>
                                             <h3 className="font-heading font-bold text-lg text-navy leading-snug mb-2">
                                                 {job.title}
