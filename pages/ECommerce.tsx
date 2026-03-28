@@ -176,16 +176,15 @@ const ECommerce: React.FC = () => {
                         callout="E-Commerce Store Owners"
                         headline={
                             <>
-                                Stop Drowning In Orders, Tickets,{' '}
-                                <span className="text-gold italic">And Admin</span>
+                                Hire an E-Commerce Virtual Assistant.{' '}
+                                <span className="text-gold italic">Top 1% Talent at $4/hr.</span>
                             </>
                         }
                         subheadline={
                             <>
-                                Get a dedicated e-commerce assistant to handle customer support,
-                                order management, and back-end operations for{' '}
+                                Get a dedicated VA for customer support, order management, and back-end operations.{' '}
                                 <span className="font-bold text-navy">
-                                    just $6/hr. Love It Or It's Free Guarantee.
+                                    Free placements. Matched in 7 days.
                                 </span>
                             </>
                         }
