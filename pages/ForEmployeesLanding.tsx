@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
-import { Briefcase, Globe, ShieldCheck, TrendingUp, CheckCircle, Play } from 'lucide-react';
+import { CheckCircle, Play } from 'lucide-react';
 
 const PORTAL_URL = 'https://app.fivestarassistants.com/apply/register';
 
@@ -213,26 +213,20 @@ const ForEmployeesLanding: React.FC = () => {
                                 </ul>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-[2rem] hover:shadow-md transition-shadow">
-                                    <Globe className="text-gold w-10 h-10 mb-6" />
-                                    <h4 className="font-heading text-xl font-bold text-navy mb-2">100% Remote</h4>
-                                    <p className="text-gray-500 text-sm">Work from anywhere. Our clients value output over physical location.</p>
+                            <div className="flex flex-col gap-6">
+                                <div className="rounded-[2rem] overflow-hidden shadow-xl">
+                                    <img
+                                        src="/images/for-employees-1.png"
+                                        alt="Virtual assistant working remotely"
+                                        className="w-full h-80 object-cover object-top"
+                                    />
                                 </div>
-                                <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-[2rem] hover:shadow-md transition-shadow sm:mt-8">
-                                    <Briefcase className="text-gold w-10 h-10 mb-6" />
-                                    <h4 className="font-heading text-xl font-bold text-navy mb-2">Career Growth</h4>
-                                    <p className="text-gray-500 text-sm">Become a core part of a US business and grow alongside them.</p>
-                                </div>
-                                <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-[2rem] hover:shadow-md transition-shadow">
-                                    <ShieldCheck className="text-gold w-10 h-10 mb-6" />
-                                    <h4 className="font-heading text-xl font-bold text-navy mb-2">Vetted Clients</h4>
-                                    <p className="text-gray-500 text-sm">We verify every business we work with to ensure a safe working standard.</p>
-                                </div>
-                                <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-[2rem] hover:shadow-md transition-shadow sm:mt-8">
-                                    <TrendingUp className="text-gold w-10 h-10 mb-6" />
-                                    <h4 className="font-heading text-xl font-bold text-navy mb-2">Competitive Pay</h4>
-                                    <p className="text-gray-500 text-sm">Earn strong wages in USD working for established Western businesses.</p>
+                                <div className="rounded-[2rem] overflow-hidden shadow-xl ml-0 md:ml-12">
+                                    <img
+                                        src="/images/for-employees-2.png"
+                                        alt="Virtual assistant at their desk"
+                                        className="w-full h-80 object-cover object-top"
+                                    />
                                 </div>
                             </div>
                         </div>
