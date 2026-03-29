@@ -28,26 +28,46 @@ const Footer: React.FC = () => {
               <li><Link to="/pricing" className="hover:text-gold transition-colors">Pricing</Link></li>
               <li><Link to="/results" className="hover:text-gold transition-colors">Results</Link></li>
               <li><Link to="/how-it-works" className="hover:text-gold transition-colors">How It Works</Link></li>
+              <li><Link to="/referral-program" className="hover:text-gold transition-colors">Referral Program</Link></li>
+              <li><Link to="/youtube-videos" className="hover:text-gold transition-colors">YouTube Videos</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Who We Serve */}
+          {/* Column 3: Industries */}
           <div>
-            <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Who We Serve</h4>
+            <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Industries</h4>
             <ul className="space-y-4 font-body text-sm text-gray-400">
-              <li><Link to="/local-service-businesses" className="hover:text-gold transition-colors">Local Service Businesses</Link></li>
+              <li><Link to="/industries/healthcare" className="hover:text-gold transition-colors">Healthcare</Link></li>
+              <li><Link to="/industries/real-estate" className="hover:text-gold transition-colors">Real Estate</Link></li>
+              <li><Link to="/industries/legal" className="hover:text-gold transition-colors">Legal</Link></li>
+              <li><Link to="/industries/e-commerce" className="hover:text-gold transition-colors">E-Commerce</Link></li>
+              <li><Link to="/industries/insurance" className="hover:text-gold transition-colors">Insurance</Link></li>
+              <li><Link to="/industries/logistics" className="hover:text-gold transition-colors">Logistics</Link></li>
+              <li><Link to="/industries/financial-services" className="hover:text-gold transition-colors">Financial Services</Link></li>
+              <li><Link to="/industries/home-services" className="hover:text-gold transition-colors">Home Services</Link></li>
+              <li><Link to="/industries/education" className="hover:text-gold transition-colors">Education & Training</Link></li>
+              <li><Link to="/industries/travel" className="hover:text-gold transition-colors">Travel</Link></li>
+              <li><Link to="/industries/telecommunications" className="hover:text-gold transition-colors">Telecommunications</Link></li>
               <li><Link to="/digital-agencies" className="hover:text-gold transition-colors">Digital Agencies</Link></li>
-              <li><Link to="/real-estate-agents" className="hover:text-gold transition-colors">Real Estate Agents</Link></li>
+              <li><Link to="/industries/energy" className="hover:text-gold transition-colors">Energy & Utilities</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Contact / Legal */}
+          {/* Column 4: Connect */}
           <div>
             <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Connect</h4>
             <ul className="space-y-4 font-body text-sm text-gray-400">
               <li>
                 <a href="mailto:support@fivestarassistants.com" className="hover:text-gold transition-colors">
                   support@fivestarassistants.com
+                </a>
+              </li>
+              <li>
+                <Link to="/for-employees" className="hover:text-gold transition-colors">Apply for Work</Link>
+              </li>
+              <li>
+                <a href="https://app.fivestarassistants.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+                  Login
                 </a>
               </li>
               <li className="pt-4">
