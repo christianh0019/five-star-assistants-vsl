@@ -77,16 +77,25 @@ const ForEmployeesLanding: React.FC = () => {
                 {/* HOW IT WORKS SECTION */}
                 <section className="py-24 bg-gray-50 border-t border-gray-100 px-4 md:px-8">
                     <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                The Process
-                            </h3>
-                            <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                How It Works
-                            </h2>
-                            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                                Go from sign-up to hired in a few simple steps.
-                            </p>
+                        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+                            <div>
+                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
+                                    The Process
+                                </h3>
+                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
+                                    How It Works
+                                </h2>
+                                <p className="text-xl text-gray-500">
+                                    Go from sign-up to hired in a few simple steps.
+                                </p>
+                            </div>
+                            <div className="rounded-[2rem] overflow-hidden shadow-xl">
+                                <img
+                                    src="/images/for-employees-2.png"
+                                    alt="Virtual assistant ready to work"
+                                    className="w-full h-72 object-cover object-top"
+                                />
+                            </div>
                         </div>
 
                         <div className="grid md:grid-cols-4 gap-8 relative">
@@ -213,21 +222,12 @@ const ForEmployeesLanding: React.FC = () => {
                                 </ul>
                             </div>
 
-                            <div className="flex flex-col gap-6">
-                                <div className="rounded-[2rem] overflow-hidden shadow-xl">
-                                    <img
-                                        src="/images/for-employees-1.png"
-                                        alt="Virtual assistant working remotely"
-                                        className="w-full h-80 object-cover object-top"
-                                    />
-                                </div>
-                                <div className="rounded-[2rem] overflow-hidden shadow-xl ml-0 md:ml-12">
-                                    <img
-                                        src="/images/for-employees-2.png"
-                                        alt="Virtual assistant at their desk"
-                                        className="w-full h-80 object-cover object-top"
-                                    />
-                                </div>
+                            <div className="rounded-[2rem] overflow-hidden shadow-xl aspect-square">
+                                <img
+                                    src="/images/for-employees-1.png"
+                                    alt="Virtual assistant working remotely"
+                                    className="w-full h-full object-cover object-top"
+                                />
                             </div>
                         </div>
                     </div>
