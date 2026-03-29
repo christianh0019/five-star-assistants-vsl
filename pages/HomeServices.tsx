@@ -234,7 +234,7 @@ const HomeServices: React.FC = () => {
                             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
                                 {/* Carousel */}
-                                <div className="relative">
+                                <div className="relative min-w-0">
                                     <div
                                         className="overflow-hidden rounded-[2rem]"
                                         onTouchStart={handleTouchStart}
@@ -245,7 +245,7 @@ const HomeServices: React.FC = () => {
                                             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                                         >
                                             {roles.map((role, idx) => (
-                                                <div key={idx} className="w-full flex-shrink-0">
+                                                <div key={idx} className="min-w-full">
                                                     <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm relative overflow-hidden flex flex-col min-h-[340px]">
                                                         <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
                                                         <div className="w-14 h-14 rounded-2xl bg-navy/5 flex items-center justify-center mb-6 shrink-0 relative z-10">
@@ -310,7 +310,7 @@ const HomeServices: React.FC = () => {
                                 </div>
 
                                 {/* Industry image */}
-                                <div className="hidden lg:block">
+                                <div className="mt-8 lg:mt-0">
                                     <img
                                         src="/images/va-1.png"
                                         alt="Home service virtual assistant"
@@ -465,7 +465,7 @@ const HomeServices: React.FC = () => {
                                     <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
                                 </div>
 
-                                <div className="hidden lg:block">
+                                <div className="mt-8 lg:mt-0">
                                     <img
                                         src="/images/va-2.png"
                                         alt="Home service virtual assistant at work"
@@ -584,7 +584,7 @@ const HomeServices: React.FC = () => {
                                     ))}
                                 </div>
 
-                                <div className="hidden lg:block">
+                                <div className="mt-8 lg:mt-0">
                                     <img
                                         src="/images/va-3.png"
                                         alt="Five Star Assistant at work"
