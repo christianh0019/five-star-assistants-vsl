@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
@@ -22,6 +23,12 @@ const Results: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen font-body">
+            <SEO
+                title="Client Results & Case Studies | Five Star Assistants"
+                description="Real results from real businesses. See how Five Star Assistants clients have scaled their operations, reduced costs, and freed up time with dedicated virtual assistants."
+                keywords="virtual assistant results, VA case studies, virtual assistant reviews, outsourcing success stories, Five Star Assistants clients, VA ROI"
+                canonical="https://www.fivestarassistants.com/results"
+            />
             <Navbar onOpenSurvey={openSurvey} />
             <main className="flex-grow pb-32">
 

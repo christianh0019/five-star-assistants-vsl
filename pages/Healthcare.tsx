@@ -13,6 +13,7 @@ import {
     Activity, Calculator, Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -167,6 +168,12 @@ const Healthcare: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Healthcare Virtual Assistants | HIPAA-Compliant, Starting at $4/hr | Five Star Assistants"
+                description="Hire HIPAA-trained virtual assistants for medical billing, prior auth, scribing & scheduling. Top 1% of applicants. Free placement. Matched in 7 days."
+                keywords="healthcare virtual assistant, medical virtual assistant, HIPAA compliant VA, medical billing VA, prior authorization specialist, virtual medical receptionist, remote healthcare admin"
+                canonical="https://www.fivestarassistants.com/industries/healthcare"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

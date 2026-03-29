@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
@@ -22,6 +23,12 @@ const HowItWorks: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-body">
+            <SEO
+                title="How Virtual Assistant Placement Works | Five Star Assistants"
+                description="Learn how Five Star Assistants finds, vets, and places the right virtual assistant for your business — in as little as 7 days. Free placement. No risk."
+                keywords="how virtual assistant placement works, VA hiring process, virtual assistant onboarding, how to hire a VA, virtual assistant matching"
+                canonical="https://www.fivestarassistants.com/how-it-works"
+            />
             <Navbar onOpenSurvey={openSurvey} />
             <main className="flex-grow bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
                 {/* HERO SECTION */}

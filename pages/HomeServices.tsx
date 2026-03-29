@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const HomeServices: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Home Services Virtual Assistants | Scheduling & Customer Service | Five Star Assistants"
+                description="Hire virtual assistants for home service businesses. Call answering, job scheduling, estimate follow-up, customer service & more. Free placement starting at $4/hr."
+                keywords="home services virtual assistant, HVAC virtual assistant, plumbing VA, roofing virtual assistant, home service scheduling, field service VA, contractor virtual assistant"
+                canonical="https://www.fivestarassistants.com/industries/home-services"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

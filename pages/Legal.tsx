@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp, Calendar,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Legal: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Legal Virtual Assistants | Law Firm Admin & Paralegal Support | Five Star Assistants"
+                description="Hire trained virtual assistants for law firms. Legal admin, client intake, document preparation, billing support & more. Free placement starting at $4/hr."
+                keywords="legal virtual assistant, law firm virtual assistant, paralegal support VA, legal admin, client intake VA, law office virtual assistant, legal document prep"
+                canonical="https://www.fivestarassistants.com/industries/legal"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

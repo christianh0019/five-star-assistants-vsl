@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp, Megaphone,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Telecommunications: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Telecom Virtual Assistants | Customer Service & Account Management | Five Star Assistants"
+                description="Hire virtual assistants for telecom companies. Customer support, billing inquiries, account management, technical admin & more. Starting at $4/hr."
+                keywords="telecom virtual assistant, telecommunications VA, customer service VA, billing support VA, account management VA, ISP virtual assistant, cable company VA"
+                canonical="https://www.fivestarassistants.com/industries/telecommunications"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

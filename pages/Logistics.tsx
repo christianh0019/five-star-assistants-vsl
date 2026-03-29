@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp, Megaphone,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Logistics: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Logistics Virtual Assistants | Dispatch & Operations Support | Five Star Assistants"
+                description="Hire virtual assistants for logistics and trucking companies. Dispatch coordination, load tracking, carrier outreach, freight admin & more. Starting at $4/hr."
+                keywords="logistics virtual assistant, dispatch coordinator VA, trucking virtual assistant, freight admin VA, load tracking assistant, logistics operations VA"
+                canonical="https://www.fivestarassistants.com/industries/logistics"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

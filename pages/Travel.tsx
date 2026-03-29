@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Travel: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Travel Agency Virtual Assistants | Booking & Client Support | Five Star Assistants"
+                description="Hire virtual assistants for travel agencies and tour operators. Booking coordination, itinerary management, client support & more. Starting at $4/hr."
+                keywords="travel agency virtual assistant, travel VA, booking coordinator VA, tour operator VA, itinerary management, travel client support, hospitality virtual assistant"
+                canonical="https://www.fivestarassistants.com/industries/travel"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

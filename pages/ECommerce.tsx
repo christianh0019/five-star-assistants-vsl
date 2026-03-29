@@ -14,6 +14,7 @@ import {
     Code2, Megaphone, Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '4 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const ECommerce: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="E-Commerce Virtual Assistants | Customer Service & Operations | Five Star Assistants"
+                description="Hire virtual assistants for your e-commerce business. Customer support, order management, product listings, returns & more. Free placement starting at $4/hr."
+                keywords="e-commerce virtual assistant, Amazon VA, Shopify virtual assistant, customer service VA, order management, product listing VA, e-commerce operations"
+                canonical="https://www.fivestarassistants.com/industries/e-commerce"
+            />
             <Navbar onOpenSurvey={openSurvey} />
 
             <main className="flex-grow">

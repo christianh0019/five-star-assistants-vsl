@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp, Megaphone,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const FinancialServices: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Financial Services Virtual Assistants | Admin & Client Support | Five Star Assistants"
+                description="Hire virtual assistants for financial advisors and firms. Client onboarding, scheduling, compliance support, CRM management & more. Starting at $4/hr."
+                keywords="financial services virtual assistant, financial advisor VA, wealth management VA, financial admin assistant, client onboarding VA, compliance support VA"
+                canonical="https://www.fivestarassistants.com/industries/financial-services"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import TrustBadges from '../components/TrustBadges';
 import WhoWeWorkWithSection from '../components/WhoWeWorkWithSection';
@@ -29,6 +30,12 @@ const LandingPage: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Five Star Assistants | Hire Top Virtual Assistants Starting at $4/hr"
+                description="We recruit, vet, and place top global virtual assistants for US businesses. Free placement. No lock-in contracts. Matched in 7 days or less. Starting at $4/hr."
+                keywords="virtual assistant service, hire virtual assistant, remote virtual assistant, VA placement agency, outsource admin work, virtual assistant USA, affordable virtual assistant"
+                canonical="https://www.fivestarassistants.com/"
+            />
             <Navbar onOpenSurvey={openSurvey} />
             <main className="flex-grow">
                 <ScrollReveal>

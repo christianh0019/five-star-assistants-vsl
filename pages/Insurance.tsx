@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp, Megaphone,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Insurance: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Insurance Virtual Assistants | Policy Admin & Client Service | Five Star Assistants"
+                description="Hire virtual assistants for insurance agencies. Policy admin, client follow-up, claims support, renewals & more. Free placement starting at $4/hr."
+                keywords="insurance virtual assistant, insurance agency VA, policy administration VA, insurance client service, claims support VA, insurance admin assistant"
+                canonical="https://www.fivestarassistants.com/industries/insurance"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

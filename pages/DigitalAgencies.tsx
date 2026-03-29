@@ -13,6 +13,7 @@ import {
     Award, Target, TrendingUp, Megaphone,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -167,6 +168,12 @@ const DigitalAgencies: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Virtual Assistants for Digital Agencies | Scale Your Team | Five Star Assistants"
+                description="Hire virtual assistants built for digital agencies. Social media, reporting, client comms, project coordination & more. Free placement starting at $4/hr."
+                keywords="digital agency virtual assistant, marketing agency VA, social media VA, SEO virtual assistant, agency operations VA, client management VA, digital marketing assistant"
+                canonical="https://www.fivestarassistants.com/digital-agencies"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

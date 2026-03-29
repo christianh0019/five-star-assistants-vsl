@@ -13,6 +13,7 @@ import {
     Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -167,6 +168,12 @@ const Energy: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Energy & Utilities Virtual Assistants | Admin & Customer Support | Five Star Assistants"
+                description="Hire virtual assistants for energy and utilities companies. Customer service, billing support, scheduling, compliance admin & more. Starting at $4/hr."
+                keywords="energy virtual assistant, utilities virtual assistant, energy company VA, billing support VA, energy admin assistant, solar company VA, utilities customer service VA"
+                canonical="https://www.fivestarassistants.com/industries/energy"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

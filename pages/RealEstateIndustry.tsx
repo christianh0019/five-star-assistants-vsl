@@ -13,6 +13,7 @@ import {
     Phone, BarChart2, Home, Award, Target, TrendingUp, Mail,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -167,6 +168,12 @@ const RealEstateIndustry: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Real Estate Virtual Assistants | Transaction Coordinators & Lead Follow-Up | Five Star Assistants"
+                description="Hire virtual assistants trained in real estate. Transaction coordination, lead follow-up, MLS management, CRM updates & more. Free placement starting at $4/hr."
+                keywords="real estate virtual assistant, transaction coordinator VA, real estate admin, MLS virtual assistant, real estate lead follow-up, property management VA"
+                canonical="https://www.fivestarassistants.com/industries/real-estate"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

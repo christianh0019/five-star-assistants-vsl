@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
@@ -11,6 +12,12 @@ const ForEmployeesLanding: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-navy flex flex-col font-body text-white selection:bg-gold/30 selection:text-white">
+            <SEO
+                title="Find US Remote Work | Join Five Star Assistants Platform"
+                description="Create a free account, browse real job postings from US businesses, and apply in minutes. No placement fees for candidates. Long-term remote roles starting at $4/hr."
+                keywords="remote work for virtual assistants, US remote jobs, virtual assistant jobs, work from home jobs, remote job platform, five star assistants apply"
+                canonical="https://www.fivestarassistants.com/for-employees"
+            />
             <Navbar hideMenu alwaysWhite />
 
             <main className="flex-grow pt-24">

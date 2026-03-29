@@ -14,6 +14,7 @@ import {
     Award, Target, TrendingUp,
 } from 'lucide-react';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 const socialProofStats = [
     { icon: Clock,       value: '7 Days',  label: 'Average Time to First Candidate' },
@@ -168,6 +169,12 @@ const Education: React.FC = () => {
 
     return (
         <div className="w-full bg-white flex flex-col min-h-screen">
+            <SEO
+                title="Education Virtual Assistants | Admin & Student Support | Five Star Assistants"
+                description="Hire virtual assistants for education businesses and training companies. Enrollment admin, student support, course coordination & more. Starting at $4/hr."
+                keywords="education virtual assistant, online course VA, student support VA, enrollment coordinator, eLearning virtual assistant, tutoring business VA, training company VA"
+                canonical="https://www.fivestarassistants.com/industries/education"
+            />
 
             <Navbar onOpenSurvey={openSurvey} />
 

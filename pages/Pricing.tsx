@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
@@ -64,6 +65,12 @@ const Pricing: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white flex flex-col font-body">
+            <SEO
+                title="Virtual Assistant Pricing | Transparent Rates Starting at $4/hr | Five Star Assistants"
+                description="Simple, transparent virtual assistant pricing. One hourly rate covers everything — no setup fees, no long-term contracts. See what it costs to hire a VA today."
+                keywords="virtual assistant cost, virtual assistant pricing, how much does a virtual assistant cost, VA hourly rate, affordable VA pricing, outsource cost"
+                canonical="https://www.fivestarassistants.com/pricing"
+            />
             <Navbar onOpenSurvey={openSurvey} />
 
             <main className="flex-grow">
