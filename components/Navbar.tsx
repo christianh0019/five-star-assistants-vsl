@@ -12,6 +12,7 @@ interface NavbarProps {
     onOpenSurvey?: () => void;
     hideMenu?: boolean;
     alwaysWhite?: boolean;
+    loginHref?: string;
 }
 
 const navLinkClass = 'text-sm font-body font-medium text-gray-600 hover:text-navy transition-colors';
@@ -32,7 +33,7 @@ const industries = [
     { label: 'Energy & Utilities',   icon: Zap,           href: '/industries/energy' },
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) => {
+const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, loginHref }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false);
@@ -69,12 +70,23 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite }) 
                             : 'bg-transparent py-4 md:py-6'
                 }`}
             >
-                <div className={`max-w-7xl mx-auto px-4 md:px-8 flex items-center ${hideMenu ? 'justify-center md:justify-start' : 'justify-between'}`}>
+                <div className={`max-w-7xl mx-auto px-4 md:px-8 flex items-center ${hideMenu && !loginHref ? 'justify-center md:justify-start' : 'justify-between'}`}>
 
                     {/* Brand */}
                     <Link to="/" className="flex-shrink-0 cursor-pointer relative z-[60]" onClick={closeMobile}>
                         <Logo variant="dark" />
                     </Link>
+
+                    {hideMenu && loginHref && (
+                        <a
+                            href={loginHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm font-body font-semibold text-navy border border-navy/20 hover:border-navy/50 hover:bg-navy/5 px-5 py-2 rounded-full transition-all"
+                        >
+                            Log In
+                        </a>
+                    )}
 
                     {!hideMenu && (
                         <>

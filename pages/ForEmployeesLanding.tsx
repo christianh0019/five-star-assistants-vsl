@@ -39,7 +39,7 @@ const ForEmployeesLanding: React.FC = () => {
                 keywords="remote work for virtual assistants, US remote jobs, virtual assistant jobs, work from home jobs, remote job platform, five star assistants apply"
                 canonical="https://www.fivestarassistants.com/for-employees"
             />
-            <Navbar hideMenu alwaysWhite />
+            <Navbar hideMenu alwaysWhite loginHref="https://app.fivestarassistants.com" />
 
             <main className="flex-grow pt-24">
 
