@@ -35,7 +35,7 @@ const ForEmployeesLanding: React.FC = () => {
         <div className="min-h-screen bg-white flex flex-col font-body text-gray-800">
             <SEO
                 title="Find US Remote Work | Join Five Star Assistants Platform"
-                description="Create a free account, browse real job postings from US businesses, and apply in minutes. No placement fees for candidates. Long-term remote roles starting at $4/hr."
+                description="Create a free account, browse real job postings from US businesses, and apply in minutes. Long-term remote roles with US clients, starting at $4/hr."
                 keywords="remote work for virtual assistants, US remote jobs, virtual assistant jobs, work from home jobs, remote job platform, five star assistants apply"
                 canonical="https://www.fivestarassistants.com/for-employees"
             />
@@ -44,20 +44,20 @@ const ForEmployeesLanding: React.FC = () => {
             <main className="flex-grow pt-24">
 
                 {/* HERO SECTION */}
-                <section className="relative pt-36 md:pt-48 pb-24 px-4 md:px-8 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
+                <section className="relative pt-20 md:pt-28 pb-24 px-4 md:px-8 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-50 via-white to-white">
                     <div className="max-w-6xl mx-auto relative z-10">
                         <div className="max-w-[900px] mx-auto text-center flex flex-col items-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-heading text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-heading text-sm font-bold tracking-widest uppercase mb-5 shadow-sm">
                                 <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                                 Join Our Platform
                             </div>
 
-                            <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8 text-navy">
+                            <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6 text-navy">
                                 Find High-Paying <span className="text-gold italic">US Remote Work</span>
                             </h1>
 
-                            <p className="font-body text-gray-500 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-                                Create a free account, browse real job postings from US businesses, and apply in minutes. No chasing clients. No middlemen taking your pay.
+                            <p className="font-body text-gray-500 text-xl md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed">
+                                Browse real job postings from US businesses and apply in minutes. Long-term, full-time roles — no cold outreach, no bidding wars.
                             </p>
 
                             <Button
@@ -68,12 +68,12 @@ const ForEmployeesLanding: React.FC = () => {
                                 Create Your Free Account
                             </Button>
                             <p className="font-heading italic text-gray-400 text-sm mt-6">
-                                Free to join. Zero placement fees for candidates.
+                                Free to apply. No fees to create your account.
                             </p>
                         </div>
 
                         {/* Portal Preview Mockup */}
-                        <div className="mt-14 w-full max-w-5xl mx-auto hidden md:block">
+                        <div className="mt-14 w-full max-w-5xl mx-auto">
                             {/* Browser Chrome */}
                             <div className="bg-[#1c1c2e] rounded-t-2xl px-5 py-3.5 flex items-center gap-4 shadow-2xl">
                                 <div className="flex gap-2">
@@ -88,11 +88,11 @@ const ForEmployeesLanding: React.FC = () => {
                             </div>
 
                             {/* Portal Shell */}
-                            <div className="relative rounded-b-2xl overflow-hidden shadow-[0_40px_80px_-20px_rgba(10,35,66,0.35)] border border-t-0 border-gray-200" style={{ height: 460 }}>
+                            <div className="relative rounded-b-2xl overflow-hidden shadow-[0_40px_80px_-20px_rgba(10,35,66,0.35)] border border-t-0 border-gray-200" style={{ height: 420 }}>
                                 <div className="flex h-full">
 
-                                    {/* Sidebar */}
-                                    <div className="w-56 bg-[#0A2342] flex flex-col py-6 px-4 flex-shrink-0">
+                                    {/* Sidebar — hidden on mobile */}
+                                    <div className="hidden md:flex w-56 bg-[#0A2342] flex-col py-6 px-4 flex-shrink-0">
                                         <div className="flex items-center gap-2.5 mb-8 px-2">
                                             <div className="w-7 h-7 bg-[#C5A059] rounded-lg flex items-center justify-center flex-shrink-0">
                                                 <span className="text-[#0A2342] font-black text-xs">★</span>
@@ -343,7 +343,7 @@ const ForEmployeesLanding: React.FC = () => {
                                         "Apply directly through the platform — no cold outreach",
                                         "Long-term, full-time positions (not short gigs)",
                                         "Competitive pay rates in USD based on your experience",
-                                        "Zero placement fees for candidates"
+                                        "Free to apply — no fees to join the platform"
                                     ].map((benefit, idx) => (
                                         <li key={idx} className="flex items-start gap-4">
                                             <CheckCircle className="text-gold w-6 h-6 shrink-0 mt-0.5" />
@@ -381,7 +381,7 @@ const ForEmployeesLanding: React.FC = () => {
                         >
                             Join The Platform Free
                         </Button>
-                        <p className="font-heading italic text-white/30 text-sm mt-4">Free to join. Zero placement fees.</p>
+                        <p className="font-heading italic text-white/30 text-sm mt-4">Free to apply. No fees to create your account.</p>
                     </div>
                 </section>
 
