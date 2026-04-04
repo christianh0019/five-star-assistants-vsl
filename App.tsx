@@ -8,6 +8,7 @@ import OnlineBusinessLanding from './pages/OnlineBusinessLanding';
 import RealEstateLanding from './pages/RealEstateLanding';
 import SDRLanding from './pages/SDRLanding';
 import VALanding from './pages/VALanding';
+import SMMLanding from './pages/SMMLanding';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
@@ -55,6 +56,7 @@ const App: React.FC = () => {
         <Route path="/real-estate" element={<RealEstateLanding />} />
         <Route path="/sdr" element={<SDRLanding />} />
         <Route path="/va" element={<VALanding />} />
+        <Route path="/smm" element={<SMMLanding />} />
         <Route path="/local-service-businesses" element={<LocalServiceBusinesses />} />
         <Route path="/digital-agencies" element={<DigitalAgencies />} />
         <Route path="/real-estate-agents" element={<RealEstateAgents />} />
