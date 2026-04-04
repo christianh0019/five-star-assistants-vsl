@@ -27,11 +27,11 @@ const Booking: React.FC = () => {
                 </div>
 
                 <h1 className="font-heading text-navy text-4xl md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm">
-                    Book Your <span className="text-gold italic">Free 15-Minute Call</span>
+                    Great! <span className="text-gold italic">Please Book A Time!</span>
                 </h1>
 
                 <p className="font-subheading text-navy/70 text-lg md:text-xl font-medium tracking-wider max-w-xl mx-auto">
-                    No pressure, no pitch. Just a quick conversation to see if we're a good fit for your team.
+                    You'll meet with one of our recruiters for 15-30 min to see if it's a fit. Remember, there's zero cost to get started. You just pay their hourly wage if you like them!
                 </p>
             </section>
 
