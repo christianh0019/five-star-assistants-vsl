@@ -6,6 +6,7 @@ import LocalStorefrontLanding from './pages/LocalStorefrontLanding';
 import OnlineServiceLanding from './pages/OnlineServiceLanding';
 import OnlineBusinessLanding from './pages/OnlineBusinessLanding';
 import RealEstateLanding from './pages/RealEstateLanding';
+import SDRLanding from './pages/SDRLanding';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
@@ -51,6 +52,7 @@ const App: React.FC = () => {
         <Route path="/online-service" element={<OnlineServiceLanding />} />
         <Route path="/online-business" element={<OnlineBusinessLanding />} />
         <Route path="/real-estate" element={<RealEstateLanding />} />
+        <Route path="/sdr" element={<SDRLanding />} />
         <Route path="/local-service-businesses" element={<LocalServiceBusinesses />} />
         <Route path="/digital-agencies" element={<DigitalAgencies />} />
         <Route path="/real-estate-agents" element={<RealEstateAgents />} />

@@ -7,9 +7,10 @@ interface HeroProps {
   callout?: React.ReactNode;
   headline?: React.ReactNode;
   subheadline?: React.ReactNode;
+  hideVideo?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadline }) => {
+const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadline, hideVideo }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -60,29 +61,31 @@ const Hero: React.FC<HeroProps> = ({ onOpenSurvey, callout, headline, subheadlin
         </p>
 
         {/* VSL Video Container */}
-        <div className="w-full max-w-4xl mx-auto rounded-[1.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video relative group">
-          <video
-            ref={videoRef}
-            className="w-full h-full rounded-[1.5rem]"
-            src="/FSAVideo.mp4"
-            poster="/FSAVideoThumbnail.png"
-            controls
-            playsInline
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-          />
-          {!playing && (
-            <button
-              onClick={handlePlay}
-              className="absolute inset-0 flex items-center justify-center z-10 group/btn"
-              aria-label="Play video"
-            >
-              <div className="w-20 h-20 rounded-full bg-white/90 shadow-2xl flex items-center justify-center transition-transform duration-200 group-hover/btn:scale-110">
-                <Play size={32} className="text-navy ml-1" fill="currentColor" />
-              </div>
-            </button>
-          )}
-        </div>
+        {!hideVideo && (
+          <div className="w-full max-w-4xl mx-auto rounded-[1.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video relative group">
+            <video
+              ref={videoRef}
+              className="w-full h-full rounded-[1.5rem]"
+              src="/FSAVideo.mp4"
+              poster="/FSAVideoThumbnail.png"
+              controls
+              playsInline
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+            />
+            {!playing && (
+              <button
+                onClick={handlePlay}
+                className="absolute inset-0 flex items-center justify-center z-10 group/btn"
+                aria-label="Play video"
+              >
+                <div className="w-20 h-20 rounded-full bg-white/90 shadow-2xl flex items-center justify-center transition-transform duration-200 group-hover/btn:scale-110">
+                  <Play size={32} className="text-navy ml-1" fill="currentColor" />
+                </div>
+              </button>
+            )}
+          </div>
+        )}
 
       </div>
     </section>
