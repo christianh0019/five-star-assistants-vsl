@@ -18,8 +18,8 @@ const faqs = [
         answer: 'There are zero upfront fees to get matched with a candidate. You only pay their hourly wage once you decide to hire them. No placement fees, no contracts, no risk.',
     },
     {
-        question: 'How experienced are your sales assistants?',
-        answer: 'Our sales assistants have hands-on experience with outbound prospecting, follow-up sequences, CRM management, and appointment setting. Many have worked with US-based sales teams before.',
+        question: 'How experienced are your virtual assistants?',
+        answer: 'Our VAs have real-world experience supporting busy business owners — inbox management, scheduling, customer follow-up, research, data entry, social media, and more. Many have worked with US-based clients for years.',
     },
     {
         question: 'How quickly can I get someone started?',
@@ -30,8 +30,8 @@ const faqs = [
         answer: 'No problem. There\'s no long-term commitment. If it\'s not working out, just let us know and we\'ll help you find a better match at no additional cost.',
     },
     {
-        question: 'What tasks can a sales assistant handle?',
-        answer: 'Cold outreach, lead follow-up, LinkedIn prospecting, CRM data entry, appointment setting, email sequences, list building, and more — whatever you need to keep your pipeline moving.',
+        question: 'What tasks can a virtual assistant handle?',
+        answer: 'Inbox and calendar management, customer support, data entry, research, scheduling, CRM updates, social media posting, travel booking, order tracking, and more — we match you with someone trained for your specific workflows.',
     },
     {
         question: 'Do I have to deal with international payroll?',
