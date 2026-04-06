@@ -42,6 +42,9 @@ import Travel from './pages/Travel';
 import Telecommunications from './pages/Telecommunications';
 import Energy from './pages/Energy';
 
+// Hire pages
+import SocialMediaManager from './pages/hire/SocialMediaManager';
+
 const App: React.FC = () => {
   return (
     <>
@@ -86,6 +89,9 @@ const App: React.FC = () => {
         <Route path="/industries/travel" element={<Travel />} />
         <Route path="/industries/telecommunications" element={<Telecommunications />} />
         <Route path="/industries/energy" element={<Energy />} />
+
+        {/* Hire pages */}
+        <Route path="/hire/social-media-manager" element={<SocialMediaManager />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
