@@ -102,6 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
     const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
     const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false);
     const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
+    const [activeMobileServiceCategory, setActiveMobileServiceCategory] = useState<number | null>(null);
     const [activeServiceCategory, setActiveServiceCategory] = useState(0);
 
     useEffect(() => {
@@ -120,12 +121,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
         setIsMobileServicesOpen(false);
         setIsMobileIndustriesOpen(false);
         setIsMobileResourcesOpen(false);
+        setActiveMobileServiceCategory(null);
     };
 
     const handleGetStartedClick = () => {
         closeMobile();
         if (onOpenSurvey) onOpenSurvey();
     };
+
+    const ActiveCategoryIcon = serviceCategories[activeServiceCategory].icon;
 
     return (
         <>
@@ -170,39 +174,47 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                         <ChevronDown size={16} className="transition-transform duration-300 group-hover:rotate-180" />
                                     </button>
 
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[520px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden flex">
+                                    <div className="absolute top-full left-0 w-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top-left translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden flex">
 
                                         {/* Left — Category List */}
-                                        <div className="w-[200px] flex-shrink-0 bg-gray-50 border-r border-gray-100 py-2">
+                                        <div className="w-[190px] flex-shrink-0 bg-gray-50/80 border-r border-gray-100 py-2">
                                             {serviceCategories.map(({ label, icon: Icon }, idx) => (
                                                 <button
                                                     key={label}
                                                     onMouseEnter={() => setActiveServiceCategory(idx)}
-                                                    className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-150 ${
+                                                    className={`w-full flex items-center gap-3 px-4 py-3 text-left border-l-[3px] transition-all duration-150 ${
                                                         activeServiceCategory === idx
-                                                            ? 'bg-navy text-white'
-                                                            : 'text-gray-600 hover:bg-white hover:text-navy'
+                                                            ? 'border-gold bg-white text-navy font-semibold'
+                                                            : 'border-transparent text-gray-500 hover:bg-white/70 hover:text-navy'
                                                     }`}
                                                 >
-                                                    <Icon size={15} className="flex-shrink-0" />
-                                                    <span className="text-[13px] font-body font-medium leading-tight flex-1">{label}</span>
-                                                    <ChevronRight size={13} className="flex-shrink-0 opacity-50" />
+                                                    <Icon size={14} className={`flex-shrink-0 transition-colors ${activeServiceCategory === idx ? 'text-gold' : 'text-gray-400'}`} />
+                                                    <span className="text-[13px] font-body leading-tight flex-1">{label}</span>
+                                                    <ChevronRight size={12} className={`flex-shrink-0 transition-colors ${activeServiceCategory === idx ? 'text-gold' : 'text-gray-300'}`} />
                                                 </button>
                                             ))}
                                         </div>
 
                                         {/* Right — Service Links */}
-                                        <div className="flex-1 p-4">
-                                            <p className="text-[10px] font-heading font-bold text-gold uppercase tracking-widest mb-3 px-1">
-                                                {serviceCategories[activeServiceCategory].label}
-                                            </p>
+                                        <div className="flex-1 p-5">
+                                            {/* Category header */}
+                                            <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-gray-100">
+                                                <div className="w-6 h-6 rounded-md bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                                    <ActiveCategoryIcon size={13} className="text-gold" />
+                                                </div>
+                                                <span className="text-[11px] font-heading font-bold text-navy uppercase tracking-wider">
+                                                    {serviceCategories[activeServiceCategory].label}
+                                                </span>
+                                            </div>
+                                            {/* Links */}
                                             <div className="flex flex-col gap-0.5">
                                                 {serviceCategories[activeServiceCategory].items.map(({ label, href }) => (
                                                     <Link
                                                         key={label}
                                                         to={href}
-                                                        className="text-[13px] font-body text-gray-600 hover:text-navy hover:bg-navy/[0.04] rounded-lg px-2 py-1.5 transition-all duration-150 leading-snug"
+                                                        className="text-[13px] font-body text-gray-500 hover:text-navy hover:bg-navy/[0.04] rounded-lg px-2 py-1.5 transition-all duration-150 leading-snug flex items-center gap-1.5 group/link"
                                                     >
+                                                        <span className="w-1 h-1 rounded-full bg-gray-300 group-hover/link:bg-gold flex-shrink-0 transition-colors" />
                                                         {label}
                                                     </Link>
                                                 ))}
@@ -251,8 +263,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                     </button>
                                     <div className="absolute top-full left-1/2 -translate-x-1/2 w-[210px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top translate-y-2 group-hover:translate-y-0 z-50">
                                         <div className="py-2">
-                                            <Link to="/results"      className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Results</Link>
-                                            <Link to="/how-it-works" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">How It Works</Link>
+                                            <Link to="/results"          className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Results</Link>
+                                            <Link to="/how-it-works"     className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">How It Works</Link>
                                             <div className="mx-6 my-1 border-t border-gray-100" />
                                             <Link to="/referral-program" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Referral Program</Link>
                                             <Link to="/youtube-videos"   className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">YouTube Videos</Link>
@@ -311,7 +323,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                             Pricing
                         </Link>
 
-                        {/* Services — collapsible */}
+                        {/* Services — nested accordion */}
                         <div className="border-b border-gray-100">
                             <button
                                 onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
@@ -320,25 +332,40 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                 Services
                                 <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180 text-gold' : ''}`} />
                             </button>
-                            <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-[900px] pb-4' : 'max-h-0'}`}>
-                                <div className="flex flex-col gap-5">
-                                    {serviceCategories.map(({ label, icon: Icon, items }) => (
+                            <div className={`overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? 'max-h-[1200px] pb-4' : 'max-h-0'}`}>
+                                <div className="flex flex-col divide-y divide-gray-50">
+                                    {serviceCategories.map(({ label, icon: Icon, items }, idx) => (
                                         <div key={label}>
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <Icon size={13} className="text-navy/40" />
-                                                <span className="text-[10px] font-heading font-bold text-navy/40 uppercase tracking-widest">{label}</span>
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-x-3 gap-y-1 pl-1">
-                                                {items.map(({ label: itemLabel, href }) => (
-                                                    <Link
-                                                        key={itemLabel}
-                                                        to={href}
-                                                        onClick={closeMobile}
-                                                        className="text-sm font-body text-gray-600 hover:text-navy transition-colors py-0.5 leading-snug"
-                                                    >
-                                                        {itemLabel}
-                                                    </Link>
-                                                ))}
+                                            <button
+                                                onClick={() => setActiveMobileServiceCategory(activeMobileServiceCategory === idx ? null : idx)}
+                                                className="w-full flex items-center justify-between py-3 text-left"
+                                            >
+                                                <div className="flex items-center gap-3">
+                                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${activeMobileServiceCategory === idx ? 'bg-gold/15' : 'bg-navy/[0.06]'}`}>
+                                                        <Icon size={15} className={`transition-colors ${activeMobileServiceCategory === idx ? 'text-gold' : 'text-navy/50'}`} />
+                                                    </div>
+                                                    <span className={`text-sm font-body font-semibold transition-colors ${activeMobileServiceCategory === idx ? 'text-navy' : 'text-gray-600'}`}>
+                                                        {label}
+                                                    </span>
+                                                </div>
+                                                <ChevronDown
+                                                    size={16}
+                                                    className={`transition-transform duration-300 ${activeMobileServiceCategory === idx ? 'rotate-180 text-gold' : 'text-gray-300'}`}
+                                                />
+                                            </button>
+                                            <div className={`overflow-hidden transition-all duration-300 ${activeMobileServiceCategory === idx ? 'max-h-96' : 'max-h-0'}`}>
+                                                <div className="flex flex-col gap-0.5 pl-11 pb-3">
+                                                    {items.map(({ label: itemLabel, href }) => (
+                                                        <Link
+                                                            key={itemLabel}
+                                                            to={href}
+                                                            onClick={closeMobile}
+                                                            className="text-sm font-body text-gray-500 hover:text-navy py-1.5 transition-colors"
+                                                        >
+                                                            {itemLabel}
+                                                        </Link>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
@@ -384,14 +411,14 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                 <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileResourcesOpen ? 'rotate-180 text-gold' : ''}`} />
                             </button>
                             <div className={`overflow-hidden transition-all duration-300 ${isMobileResourcesOpen ? 'max-h-[300px] pb-4' : 'max-h-0'}`}>
-                                <div className="flex flex-col gap-3 pl-1">
+                                <div className="flex flex-col gap-1 pl-1">
                                     {[
                                         { to: '/results',          label: 'Results' },
                                         { to: '/how-it-works',     label: 'How It Works' },
                                         { to: '/referral-program', label: 'Referral Program' },
                                         { to: '/youtube-videos',   label: 'YouTube Videos' },
                                     ].map(({ to, label }) => (
-                                        <Link key={to} to={to} onClick={closeMobile} className="text-base font-body font-medium text-gray-600 hover:text-navy transition-colors">
+                                        <Link key={to} to={to} onClick={closeMobile} className="text-base font-body font-medium text-gray-600 hover:text-navy py-2 transition-colors">
                                             {label}
                                         </Link>
                                     ))}
