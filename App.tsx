@@ -50,6 +50,10 @@ import ContentWriter from './pages/hire/ContentWriter';
 import GraphicDesigner from './pages/hire/GraphicDesigner';
 import VideoEditor from './pages/hire/VideoEditor';
 import EmailMarketingSpecialist from './pages/hire/EmailMarketingSpecialist';
+import VirtualAssistant from './pages/hire/VirtualAssistant';
+import ExecutiveAssistant from './pages/hire/ExecutiveAssistant';
+import CalendarEmailManagement from './pages/hire/CalendarEmailManagement';
+import DataEntryResearch from './pages/hire/DataEntryResearch';
 
 const App: React.FC = () => {
   return (
@@ -104,6 +108,10 @@ const App: React.FC = () => {
         <Route path="/hire/graphic-designer" element={<GraphicDesigner />} />
         <Route path="/hire/video-editor" element={<VideoEditor />} />
         <Route path="/hire/email-marketing-specialist" element={<EmailMarketingSpecialist />} />
+        <Route path="/hire/virtual-assistant" element={<VirtualAssistant />} />
+        <Route path="/hire/executive-assistant" element={<ExecutiveAssistant />} />
+        <Route path="/hire/calendar-email-management" element={<CalendarEmailManagement />} />
+        <Route path="/hire/data-entry" element={<DataEntryResearch />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
