@@ -57,6 +57,9 @@ import DataEntryResearch from './pages/hire/DataEntryResearch';
 import ProjectCoordinator from './pages/hire/ProjectCoordinator';
 import TravelLogistics from './pages/hire/TravelLogistics';
 import DocumentManagement from './pages/hire/DocumentManagement';
+import SDR from './pages/hire/SDR';
+import AppointmentSetter from './pages/hire/AppointmentSetter';
+import LeadListBuilding from './pages/hire/LeadListBuilding';
 
 const App: React.FC = () => {
   return (
@@ -118,6 +121,9 @@ const App: React.FC = () => {
         <Route path="/hire/project-coordinator" element={<ProjectCoordinator />} />
         <Route path="/hire/travel-logistics" element={<TravelLogistics />} />
         <Route path="/hire/document-management" element={<DocumentManagement />} />
+        <Route path="/hire/sdr" element={<SDR />} />
+        <Route path="/hire/appointment-setter" element={<AppointmentSetter />} />
+        <Route path="/hire/lead-list-building" element={<LeadListBuilding />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
