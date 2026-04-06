@@ -47,6 +47,9 @@ import SocialMediaManager from './pages/hire/SocialMediaManager';
 import PaidAdsManager from './pages/hire/PaidAdsManager';
 import SEOSpecialist from './pages/hire/SEOSpecialist';
 import ContentWriter from './pages/hire/ContentWriter';
+import GraphicDesigner from './pages/hire/GraphicDesigner';
+import VideoEditor from './pages/hire/VideoEditor';
+import EmailMarketingSpecialist from './pages/hire/EmailMarketingSpecialist';
 
 const App: React.FC = () => {
   return (
@@ -98,6 +101,9 @@ const App: React.FC = () => {
         <Route path="/hire/paid-ads-manager" element={<PaidAdsManager />} />
         <Route path="/hire/seo-specialist" element={<SEOSpecialist />} />
         <Route path="/hire/content-writer" element={<ContentWriter />} />
+        <Route path="/hire/graphic-designer" element={<GraphicDesigner />} />
+        <Route path="/hire/video-editor" element={<VideoEditor />} />
+        <Route path="/hire/email-marketing-specialist" element={<EmailMarketingSpecialist />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
