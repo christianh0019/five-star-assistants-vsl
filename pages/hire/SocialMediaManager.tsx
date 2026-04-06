@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     Clock, DollarSign, Users, Award,
-    Image, Video, MessageCircle, Target, BarChart2,
-    Calendar, PenTool, TrendingUp, Share2, Megaphone,
-    ChevronLeft, ChevronRight, ChevronDown, Check,
+    MessageCircle, Target, BarChart2,
+    Calendar, PenTool, Megaphone,
+    ChevronDown, Check,
     FileX, BadgeDollarSign, RefreshCw, CreditCard, Monitor, Timer,
     ShoppingBag, Wrench, Briefcase,
 } from 'lucide-react';
@@ -19,79 +19,64 @@ import SEO from '../../components/SEO';
 // ─── Data ──────────────────────────────────────────────────────────────────
 
 const socialProofStats = [
-    { icon: Clock,     value: '7 Days',   label: 'Average Time to First Candidate' },
-    { icon: DollarSign,value: '$5/hr',    label: 'Starting Rate' },
-    { icon: Users,     value: '1,000+',   label: 'Businesses Served' },
-    { icon: Award,     value: 'Top 1%',   label: 'Of Applicants Placed' },
+    { icon: Clock,      value: '7 Days',  label: 'Average Time to First Candidate' },
+    { icon: DollarSign, value: '$5/hr',   label: 'Starting Rate' },
+    { icon: Users,      value: '1,000+',  label: 'Businesses Served' },
+    { icon: Award,      value: 'Top 1%',  label: 'Of Applicants Placed' },
 ];
 
-const roles = [
+const taskCategories = [
     {
-        icon: Image,
-        title: 'Content Creator & Scheduler',
-        desc: 'Keep your feed full, your brand consistent, and your audience growing — without touching it yourself.\n\n• Design branded graphics and carousels in Canva for Instagram, Facebook, and LinkedIn\n• Write captions and on-brand copy tailored to each platform\'s tone\n• Build and manage a monthly content calendar aligned to your goals\n• Schedule posts using Buffer, Later, Hootsuite, or Meta Business Suite\n• Repurpose long-form content (blogs, podcasts, videos) into bite-sized social posts\n• Research trending topics, hashtags, and competitors to inform content strategy',
+        icon: PenTool,
+        title: 'Content Creation',
+        desc: 'From scroll-stopping graphics to on-brand Reels — your SMM creates everything from scratch.',
+        items: [
+            'Design branded graphics, carousels, and story templates in Canva',
+            'Edit short-form videos into polished Reels, TikToks, and YouTube Shorts',
+            'Write captions and platform-specific copy in your brand voice',
+            'Repurpose existing content (blogs, podcasts, clips) into social posts',
+            'Research trending sounds, formats, and content styles for your niche',
+            'Build and maintain a monthly content calendar',
+        ],
     },
     {
-        icon: Video,
-        title: 'Reels & Short-Form Video Editor',
-        desc: 'Turn raw footage into polished, algorithm-friendly content that actually gets watched.\n\n• Edit raw video into branded Reels, TikToks, and YouTube Shorts\n• Add captions, transitions, B-roll, and on-brand music or sound effects\n• Design custom thumbnails and cover images for each platform\n• Optimize aspect ratios and formats for Instagram, TikTok, and YouTube\n• Export and publish content according to platform-specific best practices\n• Maintain a consistent brand look and feel across all video content',
+        icon: Calendar,
+        title: 'Scheduling & Publishing',
+        desc: 'Consistent posting, every day, on every platform — without you lifting a finger.',
+        items: [
+            'Schedule posts across Instagram, TikTok, Facebook, LinkedIn, and more',
+            'Manage your content calendar in Buffer, Later, Hootsuite, or Meta Business Suite',
+            'Optimize posting times based on audience engagement data',
+            'Coordinate content drops around launches, promotions, and events',
+            'Maintain posting consistency even during your busiest weeks',
+            'Adapt content formats and aspect ratios for each platform\'s specs',
+        ],
     },
     {
         icon: MessageCircle,
-        title: 'Community Manager',
-        desc: 'Never let a comment, DM, or review go unanswered — even while you sleep.\n\n• Respond to comments, DMs, and story replies across all active platforms\n• Manage and moderate Facebook Groups and community spaces\n• Engage proactively with followers, partners, and target accounts\n• Escalate negative reviews or complaints to you with context and a suggested response\n• Track and report on engagement trends, follower sentiment, and audience growth\n• Build brand loyalty through consistent, on-brand interactions every day',
-    },
-    {
-        icon: Target,
-        title: 'Paid Social Ads Manager',
-        desc: 'Run ads that convert, not just ads that spend. Your budget managed with intention.\n\n• Build and launch Facebook, Instagram, and TikTok ad campaigns from scratch\n• Set up Meta Pixel, custom audiences, and retargeting sequences\n• Write and test ad copy and creative variations to improve CTR and ROAS\n• Monitor daily ad spend, CPC, CPM, and conversion performance\n• Pause underperforming ads and scale winning campaigns based on data\n• Prepare weekly performance summaries with recommendations',
+        title: 'Community Management',
+        desc: 'Never miss a comment, DM, or review — your audience stays engaged every single day.',
+        items: [
+            'Reply to every comment, DM, and story mention across all active platforms',
+            'Engage proactively with followers, potential customers, and brand partners',
+            'Moderate Facebook Groups and community spaces',
+            'Handle negative reviews and complaints with a professional tone',
+            'Flag urgent or sensitive messages for your immediate attention',
+            'Build brand loyalty through consistent, on-brand daily interactions',
+        ],
     },
     {
         icon: BarChart2,
-        title: 'Social Media Analyst & Strategist',
-        desc: 'Know exactly what\'s working, what\'s not, and what to do next — every single week.\n\n• Pull and analyze weekly and monthly performance reports across all platforms\n• Track follower growth, reach, impressions, engagement rate, and link clicks\n• Benchmark your performance against industry averages and direct competitors\n• Identify top-performing content types and recommend doubling down\n• Build a data-informed content strategy aligned to your business goals\n• Deliver clear, actionable monthly strategy reports with next-step recommendations',
-    },
-];
-
-const sampleJobs = [
-    {
-        photo: '/images/va-1.png',
-        title: 'Social Media Manager',
-        rate: '$5–7/hr',
-        responsibilities: [
-            'Manage content calendars and post scheduling across 3–5 platforms',
-            'Design graphics and carousels in Canva using brand guidelines',
-            'Write captions and platform-specific copy for each post',
-            'Respond to comments and DMs and report weekly on engagement',
-            'Track follower growth, reach, and performance metrics monthly',
+        title: 'Analytics & Reporting',
+        desc: 'Weekly and monthly reports that tell you exactly what\'s working — and what to do next.',
+        items: [
+            'Pull performance data across all platforms every week',
+            'Track follower growth, reach, impressions, engagement rate, and link clicks',
+            'Identify top-performing content types and surface patterns',
+            'Benchmark your performance against competitors and industry averages',
+            'Deliver monthly reports with data-backed strategy recommendations',
+            'Adjust content strategy based on performance, not guesswork',
         ],
-        requirements: '2+ yrs social media management · Canva, Buffer or Later · Strong English writing · Portfolio of managed accounts',
-    },
-    {
-        photo: '/images/va-2.png',
-        title: 'Reels & Video Editor',
-        rate: '$5–8/hr',
-        responsibilities: [
-            'Edit raw footage into branded Reels, TikToks, and YouTube Shorts',
-            'Add subtitles, transitions, music, and motion graphics',
-            'Design thumbnails and cover images optimized per platform',
-            'Maintain a consistent editing style aligned to brand identity',
-            'Publish and schedule video content across all active channels',
-        ],
-        requirements: '1+ yr video editing · CapCut and/or Adobe Premiere · Knowledge of short-form platform best practices · Sample reel required',
-    },
-    {
-        photo: '/images/va-3.png',
-        title: 'Facebook & Instagram Ads Manager',
-        rate: '$6–9/hr',
-        responsibilities: [
-            'Build, launch, and manage Meta ad campaigns from scratch',
-            'Set up pixel, audiences, and retargeting sequences',
-            'A/B test creatives and copy to improve ROAS and lower CPA',
-            'Monitor daily budgets and pause underperforming ad sets',
-            'Prepare weekly ad performance reports with clear recommendations',
-        ],
-        requirements: '1+ yr Meta Ads experience · Meta Business Suite & Ads Manager · Pixel setup & custom audience knowledge · ROAS tracking experience',
     },
 ];
 
@@ -142,7 +127,7 @@ const whoIsThisFor = [
     {
         icon: Briefcase,
         title: 'Coaches, Consultants & Agencies',
-        desc: 'You\'re building a personal brand and need consistent content, Reels, and a community manager so you can stay focused on delivering.',
+        desc: "You're building a personal brand and need consistent content, Reels, and a community manager so you can stay focused on delivering.",
     },
 ];
 
@@ -160,42 +145,42 @@ const pillars = [
     {
         icon: Megaphone,
         title: 'Full Account Ownership — Not Just Posting',
-        desc: "Your SMM doesn't just schedule posts. They handle strategy, content creation, video editing, community management, ad management, and weekly analytics reports — complete ownership of your social presence.",
+        desc: "Your SMM doesn't just schedule posts. They handle strategy, content creation, video editing, community management, and weekly analytics reports — complete ownership of your social presence.",
     },
 ];
 
 const faqs = [
     {
         question: 'What platforms can a social media manager handle?',
-        answer: 'Instagram, TikTok, Facebook, LinkedIn, Pinterest, YouTube, and X (Twitter). Most of our SMMs specialize in 2–4 platforms. During the matching process, we identify which platforms are most important to your business and match you accordingly.',
+        answer: 'Instagram, TikTok, Facebook, LinkedIn, Pinterest, YouTube, and X (Twitter). Most of our SMMs specialize in 2–4 platforms. During the matching process, we identify which platforms matter most to your business and match accordingly.',
     },
     {
         question: 'Do they create graphics and videos, or just post existing content?',
-        answer: 'Both. Our SMMs are full content creators — they design branded graphics in Canva, edit Reels and TikToks in CapCut or Adobe Premiere, write captions, and schedule everything. You can also provide raw content (phone footage, product photos) and they\'ll turn it into polished posts.',
+        answer: "Both. Our SMMs are full content creators — they design branded graphics in Canva, edit Reels and TikToks in CapCut or Adobe Premiere, write captions, and schedule everything. You can also provide raw content (phone footage, product photos) and they'll turn it into polished posts.",
     },
     {
         question: 'What tools do your social media managers use?',
-        answer: 'Content creation: Canva, Adobe Express, CapCut, Adobe Premiere. Scheduling: Buffer, Later, Hootsuite, Meta Business Suite, Sprout Social. Ads: Meta Ads Manager, TikTok Ads Manager. Analytics: native platform insights, Google Analytics. We match you with someone familiar with the tools you already use.',
+        answer: 'Content creation: Canva, Adobe Express, CapCut, Adobe Premiere. Scheduling: Buffer, Later, Hootsuite, Meta Business Suite. Ads: Meta Ads Manager, TikTok Ads Manager. Analytics: native platform insights, Google Analytics. We match you with someone familiar with the tools you already use.',
     },
     {
         question: 'How do I give them access to my social accounts?',
-        answer: 'Safely and without sharing your passwords. For most platforms, you\'ll add them as a team member or editor (e.g., Facebook Business Manager, LinkedIn Company Page admin, TikTok Business Center). We\'ll walk you through the setup on your onboarding call.',
+        answer: "Safely — no password sharing required. For most platforms you'll add them as a team member or editor (e.g., Facebook Business Manager, LinkedIn Company Page admin, TikTok Business Center). We'll walk you through the setup on your onboarding call.",
     },
     {
         question: 'Do I need to provide content ideas or do they handle everything?',
-        answer: 'They handle everything — but they\'ll want to understand your brand, voice, and goals first. Most clients do a short onboarding call to share brand guidelines and priorities, then hand it off completely. You review and approve content on whatever cadence feels right for you.',
+        answer: "They handle everything — but they'll want to understand your brand, voice, and goals first. Most clients do a short onboarding call to share brand guidelines and priorities, then hand it off completely. You review and approve content on whatever cadence feels right for you.",
     },
     {
         question: 'How quickly can they start after I book a call?',
         answer: 'Most clients are matched with a qualified candidate within 3–5 business days of their discovery call. Once you approve the match, your SMM can typically start within the same week.',
     },
     {
-        question: 'What if they don\'t understand my brand or niche?',
+        question: "What if they don't understand my brand or niche?",
         answer: "We match based on industry experience and platform expertise, not just availability. If your first match isn't right, we'll find you a better one at no additional cost. There's zero risk in getting started.",
     },
     {
         question: 'How is this different from hiring a freelancer on Fiverr or Upwork?',
-        answer: 'Freelancers come and go, bill per project, and usually juggle dozens of clients. Your Five Star SMM is dedicated exclusively to your business, works your hours, and is managed and held accountable by our in-house HR team — including full-screen activity tracking. You get a real team member, not a contractor.',
+        answer: "Freelancers come and go, bill per project, and usually juggle dozens of clients. Your Five Star SMM is dedicated exclusively to your business, works your hours, and is managed and held accountable by our in-house HR team — including full-screen activity tracking. You get a real team member, not a contractor.",
     },
 ];
 
@@ -203,19 +188,8 @@ const faqs = [
 
 const SocialMediaManager: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
-    const touchStartX = useRef(0);
     const navigate = useNavigate();
-
-    const prevSlide = () => setCurrentSlide(i => (i - 1 + roles.length) % roles.length);
-    const nextSlide = () => setCurrentSlide(i => (i + 1) % roles.length);
-
-    const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
-    const handleTouchEnd = (e: React.TouchEvent) => {
-        const diff = touchStartX.current - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) { if (diff > 0) nextSlide(); else prevSlide(); }
-    };
 
     const openSurvey = () => setIsSurveyOpen(true);
     const closeSurvey = () => setIsSurveyOpen(false);
@@ -238,7 +212,6 @@ const SocialMediaManager: React.FC = () => {
                 <ScrollReveal>
                     <Hero
                         onOpenSurvey={openSurvey}
-                        hideVideo
                         callout="Social Media Managers"
                         headline={
                             <>
@@ -275,187 +248,46 @@ const SocialMediaManager: React.FC = () => {
                     </section>
                 </ScrollReveal>
 
-                {/* ── Roles Carousel ────────────────────────────────────── */}
+                {/* ── What They Handle ──────────────────────────────────── */}
                 <ScrollReveal>
                     <section className="py-20 md:py-32 bg-gray-50 px-4 border-t border-gray-100">
-                        <div className="max-w-7xl mx-auto">
+                        <div className="max-w-6xl mx-auto">
 
                             <div className="text-center mb-12 md:mb-16">
                                 <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
                                     WHAT THEY HANDLE
                                 </h3>
                                 <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                    Everything Your Social Media Needs, Done For You
+                                    Everything a Social Media Manager Takes Off Your Plate
                                 </h2>
                                 <p className="font-body text-xl text-gray-500 max-w-2xl mx-auto">
-                                    From daily content to paid ads — your SMM takes full ownership so you never have to think about social again.
+                                    One dedicated person who owns your social presence end-to-end — creation, scheduling, community, and reporting.
                                 </p>
                             </div>
 
-                            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-
-                                {/* Carousel */}
-                                <div className="relative min-w-0">
-                                    <div
-                                        className="overflow-hidden rounded-[2rem]"
-                                        onTouchStart={handleTouchStart}
-                                        onTouchEnd={handleTouchEnd}
-                                    >
-                                        <div
-                                            className="flex transition-transform duration-500 ease-out"
-                                            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                                        >
-                                            {roles.map((role, idx) => (
-                                                <div key={idx} className="min-w-full">
-                                                    <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm relative overflow-hidden flex flex-col min-h-[340px]">
-                                                        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-                                                        <div className="w-14 h-14 rounded-2xl bg-navy/5 flex items-center justify-center mb-6 shrink-0 relative z-10">
-                                                            <role.icon className="text-navy" size={24} />
-                                                        </div>
-                                                        <h3 className="font-heading font-bold text-2xl md:text-3xl text-navy mb-5 leading-tight relative z-10">
-                                                            {role.title}
-                                                        </h3>
-                                                        <div className="font-body text-gray-600 text-base leading-relaxed space-y-3 relative z-10">
-                                                            {role.desc.split('\n\n').map((paragraph, pIdx) => {
-                                                                if (paragraph.startsWith('•')) {
-                                                                    return (
-                                                                        <ul key={pIdx} className="space-y-2">
-                                                                            {paragraph.split('\n').map((item, iIdx) => (
-                                                                                <li key={iIdx} className="flex items-start gap-3">
-                                                                                    <span className="text-gold font-bold mt-0.5 shrink-0">•</span>
-                                                                                    <span className="font-medium text-gray-700">{item.replace('• ', '')}</span>
-                                                                                </li>
-                                                                            ))}
-                                                                        </ul>
-                                                                    );
-                                                                }
-                                                                return <p key={pIdx}>{paragraph}</p>;
-                                                            })}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {taskCategories.map(({ icon: Icon, title, desc, items }, idx) => (
+                                    <div key={idx} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                                        <div className="w-12 h-12 rounded-xl bg-navy/[0.06] flex items-center justify-center mb-5">
+                                            <Icon size={22} className="text-navy/70" />
                                         </div>
-                                    </div>
-
-                                    {/* Controls */}
-                                    <div className="flex items-center justify-center gap-6 mt-8">
-                                        <button
-                                            onClick={prevSlide}
-                                            className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
-                                            aria-label="Previous"
-                                        >
-                                            <ChevronLeft size={20} />
-                                        </button>
-                                        <div className="flex items-center gap-2">
-                                            {roles.map((_, idx) => (
-                                                <button
-                                                    key={idx}
-                                                    onClick={() => setCurrentSlide(idx)}
-                                                    className={`rounded-full transition-all duration-300 h-2 ${idx === currentSlide ? 'bg-navy w-6' : 'bg-gray-300 hover:bg-gray-400 w-2'}`}
-                                                    aria-label={`Slide ${idx + 1}`}
-                                                />
+                                        <h3 className="font-heading font-bold text-navy text-xl mb-2">{title}</h3>
+                                        <p className="font-body text-gray-500 text-sm mb-5 leading-relaxed">{desc}</p>
+                                        <ul className="space-y-2">
+                                            {items.map((item) => (
+                                                <li key={item} className="flex items-start gap-2.5">
+                                                    <span className="text-gold font-bold mt-0.5 shrink-0">—</span>
+                                                    <span className="font-body text-sm text-gray-700 font-medium">{item}</span>
+                                                </li>
                                             ))}
-                                        </div>
-                                        <button
-                                            onClick={nextSlide}
-                                            className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-navy hover:bg-navy hover:text-white hover:border-navy transition-all duration-200"
-                                            aria-label="Next"
-                                        >
-                                            <ChevronRight size={20} />
-                                        </button>
+                                        </ul>
                                     </div>
-                                    <p className="text-center font-body text-sm text-gray-400 mt-3">
-                                        {currentSlide + 1} of {roles.length}
-                                    </p>
-                                </div>
-
-                                {/* Image */}
-                                <div className="mt-8 lg:mt-0">
-                                    <img
-                                        src="/images/va-1.png"
-                                        alt="Social media manager working"
-                                        className="w-full rounded-[2rem] shadow-xl object-cover"
-                                    />
-                                </div>
-
+                                ))}
                             </div>
 
                             <div className="mt-14 text-center">
                                 <Button onClick={openSurvey} variant="primary">
                                     Find My Social Media Manager
-                                </Button>
-                                <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
-                            </div>
-
-                        </div>
-                    </section>
-                </ScrollReveal>
-
-                {/* ── Sample Roles Placed ───────────────────────────────── */}
-                <ScrollReveal>
-                    <section className="py-20 md:py-32 bg-white px-4 border-t border-gray-100">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="text-center mb-12 md:mb-16">
-                                <h3 className="font-heading text-sm font-bold text-gold tracking-widest uppercase mb-4">
-                                    RECENTLY PLACED
-                                </h3>
-                                <h2 className="font-heading text-3xl md:text-5xl font-bold text-navy mb-6">
-                                    Social Media Roles We've Successfully Placed
-                                </h2>
-                                <p className="font-body text-xl text-gray-500 max-w-2xl mx-auto">
-                                    Real roles, real hires. Here's a sample of what we've placed for businesses just like yours.
-                                </p>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-                                {sampleJobs.map((job, idx) => (
-                                    <div key={idx} className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col overflow-hidden">
-
-                                        <div className="p-6 pb-4 border-b border-gray-50">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <img
-                                                    src={job.photo}
-                                                    alt="Placed assistant"
-                                                    className="w-11 h-11 rounded-full object-cover flex-shrink-0 border border-gray-100"
-                                                />
-                                            </div>
-                                            <h3 className="font-heading font-bold text-lg text-navy leading-snug mb-2">
-                                                {job.title}
-                                            </h3>
-                                            <span className="inline-block bg-gold/10 text-navy font-heading font-bold text-sm px-3 py-1 rounded-full">
-                                                {job.rate}
-                                            </span>
-                                        </div>
-
-                                        <div className="p-6 flex-grow">
-                                            <p className="font-heading text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">
-                                                Responsibilities
-                                            </p>
-                                            <ul className="space-y-2">
-                                                {job.responsibilities.map((r, rIdx) => (
-                                                    <li key={rIdx} className="flex items-start gap-2.5">
-                                                        <Check size={14} className="text-gold mt-0.5 flex-shrink-0" strokeWidth={3} />
-                                                        <span className="font-body text-sm text-gray-600 leading-snug">{r}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-                                            <p className="font-heading text-xs font-bold text-gray-400 tracking-widest uppercase mb-1.5">
-                                                Requirements
-                                            </p>
-                                            <p className="font-body text-xs text-gray-500 leading-relaxed">{job.requirements}</p>
-                                        </div>
-
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="text-center">
-                                <Button onClick={openSurvey} variant="primary">
-                                    Hire A Role Like These
                                 </Button>
                                 <p className="font-heading italic text-gray-400 text-sm mt-3">100% Free. No Obligation.</p>
                             </div>
@@ -580,7 +412,7 @@ const SocialMediaManager: React.FC = () => {
                             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                                 <div className="flex flex-col gap-6">
                                     {pillars.map(({ icon: Icon, title, desc }, idx) => (
-                                        <div key={idx} className="relative bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex gap-5 items-start">
+                                        <div key={idx} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex gap-5 items-start">
                                             <div className="w-12 h-12 rounded-xl bg-navy flex items-center justify-center flex-shrink-0">
                                                 <Icon size={22} className="text-gold" />
                                             </div>
