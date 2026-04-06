@@ -54,6 +54,9 @@ import VirtualAssistant from './pages/hire/VirtualAssistant';
 import ExecutiveAssistant from './pages/hire/ExecutiveAssistant';
 import CalendarEmailManagement from './pages/hire/CalendarEmailManagement';
 import DataEntryResearch from './pages/hire/DataEntryResearch';
+import ProjectCoordinator from './pages/hire/ProjectCoordinator';
+import TravelLogistics from './pages/hire/TravelLogistics';
+import DocumentManagement from './pages/hire/DocumentManagement';
 
 const App: React.FC = () => {
   return (
@@ -112,6 +115,9 @@ const App: React.FC = () => {
         <Route path="/hire/executive-assistant" element={<ExecutiveAssistant />} />
         <Route path="/hire/calendar-email-management" element={<CalendarEmailManagement />} />
         <Route path="/hire/data-entry" element={<DataEntryResearch />} />
+        <Route path="/hire/project-coordinator" element={<ProjectCoordinator />} />
+        <Route path="/hire/travel-logistics" element={<TravelLogistics />} />
+        <Route path="/hire/document-management" element={<DocumentManagement />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
