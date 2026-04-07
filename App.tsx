@@ -60,6 +60,8 @@ import DocumentManagement from './pages/hire/DocumentManagement';
 import SDR from './pages/hire/SDR';
 import AppointmentSetter from './pages/hire/AppointmentSetter';
 import LeadListBuilding from './pages/hire/LeadListBuilding';
+import CRMManagement from './pages/hire/CRMManagement';
+import PipelineManagement from './pages/hire/PipelineManagement';
 
 const App: React.FC = () => {
   return (
@@ -124,6 +126,8 @@ const App: React.FC = () => {
         <Route path="/hire/sdr" element={<SDR />} />
         <Route path="/hire/appointment-setter" element={<AppointmentSetter />} />
         <Route path="/hire/lead-list-building" element={<LeadListBuilding />} />
+        <Route path="/hire/crm-management" element={<CRMManagement />} />
+        <Route path="/hire/pipeline-management" element={<PipelineManagement />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
