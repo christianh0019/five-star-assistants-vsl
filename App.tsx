@@ -62,6 +62,9 @@ import AppointmentSetter from './pages/hire/AppointmentSetter';
 import LeadListBuilding from './pages/hire/LeadListBuilding';
 import CRMManagement from './pages/hire/CRMManagement';
 import PipelineManagement from './pages/hire/PipelineManagement';
+import CustomerServiceRep from './pages/hire/CustomerServiceRep';
+import LiveChatSupport from './pages/hire/LiveChatSupport';
+import EmailTicketSupport from './pages/hire/EmailTicketSupport';
 
 const App: React.FC = () => {
   return (
@@ -128,6 +131,9 @@ const App: React.FC = () => {
         <Route path="/hire/lead-list-building" element={<LeadListBuilding />} />
         <Route path="/hire/crm-management" element={<CRMManagement />} />
         <Route path="/hire/pipeline-management" element={<PipelineManagement />} />
+        <Route path="/hire/customer-service" element={<CustomerServiceRep />} />
+        <Route path="/hire/live-chat-support" element={<LiveChatSupport />} />
+        <Route path="/hire/email-support" element={<EmailTicketSupport />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
