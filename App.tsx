@@ -67,6 +67,9 @@ import LiveChatSupport from './pages/hire/LiveChatSupport';
 import EmailTicketSupport from './pages/hire/EmailTicketSupport';
 import CallHandling from './pages/hire/CallHandling';
 import ClientOnboarding from './pages/hire/ClientOnboarding';
+import Bookkeeper from './pages/hire/Bookkeeper';
+import AccountsPayableReceivable from './pages/hire/AccountsPayableReceivable';
+import InvoicingBilling from './pages/hire/InvoicingBilling';
 
 const App: React.FC = () => {
   return (
@@ -138,6 +141,9 @@ const App: React.FC = () => {
         <Route path="/hire/email-support" element={<EmailTicketSupport />} />
         <Route path="/hire/call-handling" element={<CallHandling />} />
         <Route path="/hire/client-onboarding" element={<ClientOnboarding />} />
+        <Route path="/hire/bookkeeper" element={<Bookkeeper />} />
+        <Route path="/hire/accounts-payable-receivable" element={<AccountsPayableReceivable />} />
+        <Route path="/hire/invoicing" element={<InvoicingBilling />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
