@@ -65,6 +65,8 @@ import PipelineManagement from './pages/hire/PipelineManagement';
 import CustomerServiceRep from './pages/hire/CustomerServiceRep';
 import LiveChatSupport from './pages/hire/LiveChatSupport';
 import EmailTicketSupport from './pages/hire/EmailTicketSupport';
+import CallHandling from './pages/hire/CallHandling';
+import ClientOnboarding from './pages/hire/ClientOnboarding';
 
 const App: React.FC = () => {
   return (
@@ -134,6 +136,8 @@ const App: React.FC = () => {
         <Route path="/hire/customer-service" element={<CustomerServiceRep />} />
         <Route path="/hire/live-chat-support" element={<LiveChatSupport />} />
         <Route path="/hire/email-support" element={<EmailTicketSupport />} />
+        <Route path="/hire/call-handling" element={<CallHandling />} />
+        <Route path="/hire/client-onboarding" element={<ClientOnboarding />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
