@@ -70,6 +70,8 @@ import ClientOnboarding from './pages/hire/ClientOnboarding';
 import Bookkeeper from './pages/hire/Bookkeeper';
 import AccountsPayableReceivable from './pages/hire/AccountsPayableReceivable';
 import InvoicingBilling from './pages/hire/InvoicingBilling';
+import ExpenseTracking from './pages/hire/ExpenseTracking';
+import PayrollSupport from './pages/hire/PayrollSupport';
 
 const App: React.FC = () => {
   return (
@@ -144,6 +146,8 @@ const App: React.FC = () => {
         <Route path="/hire/bookkeeper" element={<Bookkeeper />} />
         <Route path="/hire/accounts-payable-receivable" element={<AccountsPayableReceivable />} />
         <Route path="/hire/invoicing" element={<InvoicingBilling />} />
+        <Route path="/hire/expense-tracking" element={<ExpenseTracking />} />
+        <Route path="/hire/payroll-support" element={<PayrollSupport />} />
 
         {/* Onboarding funnel */}
         <Route path="/onboarding/welcome" element={<OnboardingWelcome />} />
