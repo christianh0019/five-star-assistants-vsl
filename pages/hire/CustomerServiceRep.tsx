@@ -159,7 +159,7 @@ const faqs = [
         answer: "Zendesk, Freshdesk, Gorgias, HubSpot Service Hub, Intercom, Front, Help Scout, Shopify, and most e-commerce and support platforms. We'll match you with a rep experienced in your specific stack.",
     },
     {
-        question: 'How do they handle situations they don't know the answer to?',
+        question: "How do they handle situations they don't know the answer to?",
         answer: "They use your knowledge base, FAQs, and internal SOPs for standard inquiries. For anything outside their scope, they escalate with full context rather than guessing. During onboarding, you'll build out their resource library so they can handle the vast majority of tickets independently.",
     },
     {
