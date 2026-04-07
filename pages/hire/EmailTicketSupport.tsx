@@ -155,7 +155,7 @@ const faqs = [
         answer: "Zendesk, Freshdesk, Gorgias, HubSpot Service Hub, Help Scout, Front, Intercom, Groove, and most other helpdesk and ticketing platforms. We'll match you with a specialist experienced in your specific tool.",
     },
     {
-        question: 'How do they handle emails they don't know the answer to?',
+        question: "How do they handle emails they don't know the answer to?",
         answer: "They escalate properly — flagging the ticket with context and routing it to the right person — rather than guessing or sending a generic response. During onboarding, you'll build their knowledge base and define clear escalation paths so they can handle the vast majority of tickets independently.",
     },
     {
@@ -179,7 +179,7 @@ const faqs = [
         answer: "Yes. Many clients have their email support specialist handle additional channels like live chat or SMS. If you need multi-channel coverage, tell us during onboarding and we'll match you with a specialist who has experience across all required channels.",
     },
     {
-        question: 'How do I know they're handling tickets correctly?',
+        question: "How do I know they're handling tickets correctly?",
         answer: "You can review tickets and responses directly in your helpdesk at any time. Many clients do weekly spot-checks on a sample of tickets. You can also set up approval workflows for sensitive responses during the initial onboarding period while the specialist gets up to speed.",
     },
 ];

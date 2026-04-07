@@ -155,11 +155,11 @@ const faqs = [
         answer: "Google Voice, RingCentral, Dialpad, Grasshopper, OpenPhone, Vonage, and most other VoIP and cloud phone systems. They can also work with forwarded lines from your existing business number. During onboarding, we'll confirm your phone setup and configure access accordingly.",
     },
     {
-        question: 'Can they answer calls as if they're part of my company?',
+        question: "Can they answer calls as if they're part of my company?",
         answer: "Yes. They answer using your business name and any greeting script you provide. Callers experience them as a member of your team, not an outside service. You provide the script and brand voice; they execute it consistently on every call.",
     },
     {
-        question: 'What if a caller asks something they can't answer?',
+        question: "What if a caller asks something they can't answer?",
         answer: "They take a detailed message and promise a callback — then deliver it immediately to the right person. During onboarding, you'll define clear escalation paths and build their call scripts so they can handle the majority of inquiries independently, with escalation reserved for genuinely complex situations.",
     },
     {

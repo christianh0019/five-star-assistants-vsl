@@ -171,7 +171,7 @@ const faqs = [
         answer: "Yes. Many clients have their chat agent book discovery calls or product demos directly using Calendly, HubSpot Meetings, or your booking tool of choice. This is one of the highest-converting use cases — turning a live visitor into a booked appointment without them ever leaving the website.",
     },
     {
-        question: 'How do they handle questions they can't answer?',
+        question: "How do they handle questions they can't answer?",
         answer: "They escalate properly — creating a ticket with full chat context and handing off to the right person. During onboarding, you'll build their knowledge base and establish clear escalation paths so they know exactly when and how to transfer.",
     },
     {
