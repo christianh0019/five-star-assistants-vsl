@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ArrowRight, User } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
@@ -66,6 +66,8 @@ const BlogPost: React.FC = () => {
                 <header className="mb-12">
                     <div className="flex items-center gap-4 text-sm text-gray-500 mb-6 font-medium uppercase tracking-wide flex-wrap">
                         <span className="text-navy font-bold bg-navy/5 px-3 py-1 rounded-full border border-navy/10">{post.category}</span>
+                        <div className="flex items-center gap-1"><User size={16} />Christian Hostetler</div>
+                        <div className="w-1 h-1 bg-gray-300 rounded-full hidden md:block" />
                         <div className="flex items-center gap-1"><Calendar size={16} />{formatDate(post.publishedAt)}</div>
                         <div className="w-1 h-1 bg-gray-300 rounded-full hidden md:block" />
                         <div className="flex items-center gap-1"><Clock size={16} />{post.readTime}</div>
@@ -92,6 +94,17 @@ const BlogPost: React.FC = () => {
                     prose-strong:text-navy prose-li:text-gray-700 prose-ul:my-4"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                 />
+
+                {/* Author Bio */}
+                <div className="mt-12 flex items-start gap-4 p-6 bg-gray-50 rounded-xl border border-gray-100">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center">
+                        <User size={22} className="text-navy" />
+                    </div>
+                    <div>
+                        <p className="font-heading font-bold text-navy">Christian Hostetler</p>
+                        <p className="text-gray-500 text-sm leading-relaxed mt-1">Founder of Five Star Assistants. Helps U.S. business owners build offshore teams at 60-70% less than domestic hiring, without doing the recruiting, HR, or compliance themselves.</p>
+                    </div>
+                </div>
 
                 {/* CTA */}
                 <div className="mt-16 bg-navy/5 border border-navy/10 rounded-2xl p-8 md:p-10 text-center">

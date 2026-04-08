@@ -55,8 +55,11 @@ SEO KEYWORD STRATEGY:
 - Choose ONE primary keyword phrase before writing (e.g. "virtual assistant for small business", "offshore staffing", "how to delegate", "virtual assistant cost").
 - Put the primary keyword in the title naturally. Do not force it.
 - Use it in the first 100 words.
-- Use 2-3 related secondary keywords naturally throughout. Do not repeat the same phrase more than 3 times total.
+- Put the primary keyword or a close variant in at least one H2 heading naturally.
+- Use 2-3 related secondary keywords naturally throughout the body. Do not repeat the same phrase more than 3 times total.
+- "Virtual assistant" is a high-volume search term. Include it naturally in the body at least once unless the topic makes it completely irrelevant.
 - Write for humans first. If a sentence sounds keyword-stuffed, cut the keyword.
+- Include exactly 2 internal links in the body using HTML anchor tags. Use natural anchor text, not "click here". Link to relevant pages only from this list: /hire/virtual-assistant, /hire/executive-assistant, /hire/sdr, /hire/appointment-setter, /hire/customer-service, /hire/social-media-manager, /hire/bookkeeper, /how-it-works, /pricing, /results, /blog. Example format: <a href='/how-it-works'>how FSA places and manages offshore talent</a>
 
 VOICE:
 - Write the way a sharp, experienced operator explains things to a peer. Direct. Plain. No fluff.
@@ -81,7 +84,10 @@ QUALITY TEST before finalizing:
 2. Does it sound like a founder who has done the work, not a content agency?
 3. Does any sentence exist only to sound smart or fill space? Cut it.
 4. Would this apply equally to an agency owner and a home services operator? If not, make it more universal.
-5. Are all banned words absent? Scan specifically for the em dash character (—) and remove every instance.`;
+5. Are all banned words absent? Scan specifically for the em dash character (—) and remove every instance.
+6. Does at least one H2 contain the primary keyword or a close variant? If not, revise a heading.
+7. Are exactly 2 internal links present in the body? If not, add them.
+8. Does the body include one specific FSA credibility statement with a number (e.g. "After placing X offshore team members" or "We have worked with clients across Y industries")? If not, add one naturally.`;
 
 // ─── Image Generation ──────────────────────────────────────────────────────────
 
@@ -193,7 +199,7 @@ Choose from one of the content pillars (Operational Pain, Offshore Education, In
 
 Good angles: what offshore roles are most underused, the real cost of a bad hire, how to write a job description for an offshore role, what breaks when you scale without systems, how to manage a remote worker you have never met, why most delegation fails, what to offshore vs. keep in-house, what a business owner should stop doing themselves, how to find 10 hours a week.
 
-Before writing, decide on a primary keyword phrase and weave it into the title and first paragraph naturally. The post should be useful to a business owner in any niche, not just one industry. Do not assume the reader has any existing processes, tools, or experience with offshore hiring.
+Before writing, decide on a primary keyword phrase and weave it into the title, first paragraph, and at least one H2 heading naturally. The post should be useful to a business owner in any niche, not just one industry. Do not assume the reader has any existing processes, tools, or experience with offshore hiring.
 
 Return ONLY a valid JSON object (no markdown, no code fences) with exactly these fields:
 {
@@ -214,10 +220,12 @@ Return ONLY a valid JSON object (no markdown, no code fences) with exactly these
 Content requirements:
 - 700-1000 words of HTML
 - At least 4 <h2> sections, <h3> for subsections if needed
-- Use <p>, <ul>, <li>, <strong>. Short paragraphs, 1-3 sentences each.
+- Use <p>, <ul>, <li>, <strong>, <a>. Short paragraphs, 1-3 sentences each.
 - No <html>, <body>, <head>, <br> tags
 - Open with the pain or the hook. Not a definition or "in this post we will cover"
 - Be specific. Use numbers. Give real examples.
+- Include exactly 2 internal links using <a href='/path'>natural anchor text</a> pointing to relevant pages. Choose from: /hire/virtual-assistant, /hire/executive-assistant, /hire/sdr, /hire/appointment-setter, /hire/customer-service, /hire/social-media-manager, /hire/bookkeeper, /how-it-works, /pricing, /results, /blog. Place them naturally mid-content where they add value, not at the end.
+- Include one specific FSA credibility statement with a real number mid-article (e.g. "We have placed offshore team members across more than a dozen industries" or "The business owners we work with typically recover 10 to 20 hours a week within the first month"). Weave it into a paragraph naturally.
 - End with a clear takeaway.
 
 ABSOLUTE HARD RULES FOR THIS POST:
