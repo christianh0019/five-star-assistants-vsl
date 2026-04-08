@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0A2342;
+  --color-gold: #C5A059;
+  --color-gold-hover: #b08d4b;
+  --color-offwhite: #F9FAFB;
+  --font-heading: "Playfair Display", serif;
+  --font-subheading: "Montserrat", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+  --shadow-video: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
 
 @layer utilities {
     .animate-in {
