@@ -39,6 +39,8 @@ const BlogPost: React.FC = () => {
             <Helmet>
                 <title>{post.metaTitle}</title>
                 <meta name="description" content={post.metaDescription} />
+                <meta name="keywords" content={post.tags.join(', ')} />
+                <meta name="author" content="Christian Hostetler" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://www.fivestarassistants.com/blog/${post.slug}`} />
                 <meta property="og:title" content={post.metaTitle} />
@@ -47,6 +49,8 @@ const BlogPost: React.FC = () => {
                 <meta property="og:url" content={`https://www.fivestarassistants.com/blog/${post.slug}`} />
                 <meta property="og:image" content={post.coverImage} />
                 <meta property="article:published_time" content={post.publishedAt} />
+                <meta property="article:author" content="Christian Hostetler" />
+                <meta property="article:publisher" content="https://www.fivestarassistants.com" />
             </Helmet>
 
             <Navbar onOpenSurvey={openSurvey} />
@@ -76,7 +80,7 @@ const BlogPost: React.FC = () => {
 
                 {/* Cover Image */}
                 <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-xl mb-16">
-                    <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
+                    <img src={post.coverImage} alt={post.title} title={post.title} className="w-full h-full object-cover" />
                 </div>
 
                 {/* Content */}
@@ -110,7 +114,7 @@ const BlogPost: React.FC = () => {
                         className="group block bg-white rounded-2xl p-4 md:p-8 hover:bg-gray-50 transition-colors border border-gray-100 shadow-sm hover:shadow-md md:flex gap-8 items-center"
                     >
                         <div className="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden shadow-md mb-6 md:mb-0">
-                            <img src={nextPost.coverImage} alt={nextPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <img src={nextPost.coverImage} alt={nextPost.title} title={nextPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                         <div className="md:w-2/3">
                             <span className="text-xs font-bold uppercase tracking-widest text-gold mb-2 block">{nextPost.category}</span>
