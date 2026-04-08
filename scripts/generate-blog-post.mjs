@@ -325,6 +325,39 @@ function updateSitemap(slug, date) {
     console.log(`Sitemap updated with /blog/${slug}`);
 }
 
+// ─── Make.com Webhook ──────────────────────────────────────────────────────────
+
+async function notifyMake(post) {
+    const webhookUrl = process.env.MAKE_WEBHOOK_URL;
+    if (!webhookUrl) {
+        console.log('MAKE_WEBHOOK_URL not set, skipping LinkedIn notification.');
+        return;
+    }
+
+    const payload = {
+        title: post.title,
+        excerpt: post.excerpt,
+        url: `https://www.fivestarassistants.com/blog/${post.slug}`,
+        coverImage: post.coverImage,
+        publishedAt: post.publishedAt,
+        category: post.category,
+        tags: post.tags,
+    };
+
+    const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+        const err = await response.text();
+        console.warn(`Make.com webhook failed (non-fatal): ${response.status} ${err}`);
+    } else {
+        console.log('Make.com webhook sent successfully.');
+    }
+}
+
 // ─── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -344,6 +377,8 @@ async function main() {
     console.log('Saved to blogPosts.json.');
 
     updateSitemap(newPost.slug, newPost.publishedAt);
+
+    await notifyMake(newPost);
     console.log('Done.');
 }
 

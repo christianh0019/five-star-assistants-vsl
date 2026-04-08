@@ -27,6 +27,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_IMAGEN_API_KEY: ${{ secrets.GOOGLE_IMAGEN_API_KEY }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
         run: node scripts/generate-blog-post.mjs
 
       - name: Commit and push
