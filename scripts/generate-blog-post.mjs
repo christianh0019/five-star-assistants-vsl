@@ -203,7 +203,8 @@ Content requirements:
 
 ABSOLUTE HARD RULES FOR THIS POST:
 - Zero em dashes (the — character, U+2014). Use a period or comma every single time instead.
-- No exclamation marks.`;
+- No exclamation marks.
+- CRITICAL JSON RULE: The content field contains HTML. You MUST use single quotes for every HTML attribute (e.g. class='foo', href='...'). Never use double quotes inside any HTML attribute. Double quotes inside a JSON string break parsing.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -232,9 +233,20 @@ ABSOLUTE HARD RULES FOR THIS POST:
     try {
         post = JSON.parse(text);
     } catch {
-        const match = text.match(/\{[\s\S]*\}/);
-        if (!match) throw new Error('Could not parse JSON from Claude response.');
-        post = JSON.parse(match[0]);
+        // Strip code fences if Claude wrapped the JSON
+        const stripped = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
+        try {
+            post = JSON.parse(stripped);
+        } catch {
+            const match = stripped.match(/\{[\s\S]*\}/);
+            if (!match) throw new Error('Could not extract JSON from Claude response.');
+            try {
+                post = JSON.parse(match[0]);
+            } catch (e) {
+                const preview = match[0].substring(3600, 3750);
+                throw new Error(`JSON parse failed near position 3670. Snippet: ...${preview}...\nOriginal: ${e.message}`);
+            }
+        }
     }
 
     const required = ['slug', 'title', 'excerpt', 'content', 'category', 'publishedAt', 'readTime', 'metaTitle', 'metaDescription'];
