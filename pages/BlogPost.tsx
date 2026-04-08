@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Calendar, Clock, ArrowRight, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ArrowRight, User, Linkedin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SurveyModal from '../components/SurveyModal';
@@ -97,11 +97,22 @@ const BlogPost: React.FC = () => {
 
                 {/* Author Bio */}
                 <div className="mt-12 flex items-start gap-4 p-6 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center">
-                        <User size={22} className="text-navy" />
+                    <div className="flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border-2 border-navy/10">
+                        <img src="/images/christian-headshot.png" alt="Christian Hostetler" className="w-full h-full object-cover" />
                     </div>
-                    <div>
-                        <p className="font-heading font-bold text-navy">Christian Hostetler</p>
+                    <div className="flex-1">
+                        <div className="flex items-center gap-3">
+                            <p className="font-heading font-bold text-navy">Christian Hostetler</p>
+                            <a
+                                href="https://www.linkedin.com/in/christian-hostetler-6b724b252"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-[#0077b5] transition-colors"
+                                aria-label="Christian Hostetler on LinkedIn"
+                            >
+                                <Linkedin size={16} />
+                            </a>
+                        </div>
                         <p className="text-gray-500 text-sm leading-relaxed mt-1">Founder of Five Star Assistants. Helps U.S. business owners build offshore teams at 60-70% less than domestic hiring, without doing the recruiting, HR, or compliance themselves.</p>
                     </div>
                 </div>
