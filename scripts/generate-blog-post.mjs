@@ -2,18 +2,21 @@
  * Daily Blog Post Generator
  * Calls the Claude API to generate a new blog post and appends it to data/blogPosts.json.
  * Also updates public/sitemap.xml with the new post URL.
+ * Optionally generates 2 inline images via Google Gemini image API.
  *
  * Usage: node scripts/generate-blog-post.mjs
  * Requires: ANTHROPIC_API_KEY environment variable
+ * Optional: GOOGLE_IMAGEN_API_KEY environment variable (enables inline images)
  */
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const BLOG_POSTS_PATH = resolve(__dirname, '../data/blogPosts.json');
 const SITEMAP_PATH = resolve(__dirname, '../public/sitemap.xml');
+const IMAGES_DIR = resolve(__dirname, '../public/images/blog');
 
 const COVER_IMAGES = [
     'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1200',
@@ -49,8 +52,8 @@ VOICE RULES:
 - Be specific. Numbers beat adjectives.
 - Honest about offshore industry problems. Acknowledging quality variance builds credibility.
 
-NEVER USE:
-- Em dashes. Use a period or comma instead.
+NEVER USE (these are hard rules, zero exceptions):
+- Em dashes. The character looks like this: — (Unicode U+2014). It is completely banned. Every time you want to use one, use a period or a comma instead. Never type this character.
 - Emojis or exclamation marks (one max per post).
 - leverage (as verb), synergy, ecosystem, disrupt, unlock, game-changer, revolutionary, cutting-edge, world-class
 - "in today's fast-paced world," "here's the thing," "it's not about X it's about Y," "full stop," "journey" in business context
@@ -61,15 +64,108 @@ QUALITY TEST before finalizing:
 1. Could any generic staffing company have written this? If yes, add specifics.
 2. Does it sound like a founder who has done the work, not a content agency?
 3. Does any sentence exist only to sound smart or fill space? Cut it.
-4. Are all banned words absent?`;
+4. Are all banned words absent? Scan specifically for the em dash character (—) and remove every instance.`;
+
+// ─── Image Generation ──────────────────────────────────────────────────────────
+
+async function generateSingleImage(prompt, slug, index, apiKey) {
+    const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${apiKey}`,
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: { responseModalities: ['IMAGE'] },
+            }),
+        }
+    );
+
+    if (!response.ok) {
+        const err = await response.text();
+        throw new Error(`Gemini image API ${response.status}: ${err}`);
+    }
+
+    const data = await response.json();
+    const parts = data.candidates?.[0]?.content?.parts ?? [];
+    const imagePart = parts.find((p) => p.inlineData?.data);
+
+    if (!imagePart) throw new Error('No image data in Gemini response.');
+
+    const mimeType = imagePart.inlineData.mimeType ?? 'image/jpeg';
+    const ext = mimeType.includes('png') ? 'png' : 'jpg';
+    const filename = `${slug}-${index}.${ext}`;
+
+    mkdirSync(IMAGES_DIR, { recursive: true });
+    writeFileSync(resolve(IMAGES_DIR, filename), Buffer.from(imagePart.inlineData.data, 'base64'));
+
+    return filename;
+}
+
+function extractH2Headings(html) {
+    const results = [];
+    const regex = /<h2[^>]*>(.*?)<\/h2>/g;
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+        results.push(match[1].replace(/<[^>]+>/g, '').trim());
+    }
+    return results;
+}
+
+async function generateBlogImages(slug, htmlContent, apiKey) {
+    const headings = extractH2Headings(htmlContent);
+    if (!headings.length) return [];
+
+    // Target the 2nd and 4th h2 sections (index 1 and 3)
+    const targets = [];
+    if (headings.length >= 2) targets.push({ heading: headings[1], position: 2 });
+    if (headings.length >= 4) targets.push({ heading: headings[3], position: 4 });
+    if (headings.length === 1) targets.push({ heading: headings[0], position: 1 });
+
+    const results = [];
+    for (let i = 0; i < targets.length; i++) {
+        const { heading, position } = targets[i];
+        const prompt = `Professional business photograph illustrating: "${heading}". No text, no logos, no watermarks. Clean modern office. Two or three professionals working together. Warm natural lighting. Trustworthy and documentary in style. High quality stock photo.`;
+
+        try {
+            const filename = await generateSingleImage(prompt, slug, i + 1, apiKey);
+            results.push({ filename, heading, position });
+            console.log(`Generated image ${i + 1}: ${filename}`);
+        } catch (err) {
+            console.warn(`Image ${i + 1} failed (skipping): ${err.message}`);
+        }
+    }
+
+    return results;
+}
+
+function injectImagesIntoHTML(html, images) {
+    if (!images.length) return html;
+
+    const positionMap = {};
+    for (const img of images) {
+        positionMap[img.position] = img;
+    }
+
+    let count = 0;
+    return html.replace(/<\/h2>/g, (match) => {
+        count++;
+        const img = positionMap[count];
+        if (img) {
+            const figure = `<figure class="my-8 not-prose"><img src="/images/blog/${img.filename}" alt="${img.heading}" class="rounded-xl w-full shadow-md" loading="lazy" /></figure>`;
+            return `</h2>\n${figure}`;
+        }
+        return match;
+    });
+}
+
+// ─── Blog Post Generation ──────────────────────────────────────────────────────
 
 async function generatePost(existingTitles, existingSlugs, nextId) {
     const today = new Date().toISOString().split('T')[0];
     const apiKey = process.env.ANTHROPIC_API_KEY;
 
-    if (!apiKey) {
-        throw new Error('ANTHROPIC_API_KEY environment variable is not set.');
-    }
+    if (!apiKey) throw new Error('ANTHROPIC_API_KEY environment variable is not set.');
 
     const avoidList = existingTitles.slice(0, 30).join('\n- ');
 
@@ -103,7 +199,11 @@ Content requirements:
 - No <html>, <body>, <head>, <br> tags
 - Open with the pain or the hook. Not a definition or "in this post we will cover"
 - Be specific. Use numbers. Give real examples.
-- End with a clear takeaway.`;
+- End with a clear takeaway.
+
+ABSOLUTE HARD RULES FOR THIS POST:
+- Zero em dashes (the — character, U+2014). Use a period or comma every single time instead.
+- No exclamation marks.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -142,6 +242,11 @@ Content requirements:
         if (!post[field]) throw new Error(`Missing required field: ${field}`);
     }
 
+    // Safety net: strip any em dashes that slipped through
+    post.content = post.content.replace(/\u2014/g, ',');
+    post.title = post.title.replace(/\u2014/g, ',');
+    post.excerpt = post.excerpt.replace(/\u2014/g, ',');
+
     post.coverImage = COVER_IMAGES[existingTitles.length % COVER_IMAGES.length];
     post.id = String(nextId);
 
@@ -149,8 +254,23 @@ Content requirements:
         post.slug = `${post.slug}-${today}`;
     }
 
+    // Generate inline images if API key is available
+    const googleApiKey = process.env.GOOGLE_IMAGEN_API_KEY;
+    if (googleApiKey) {
+        console.log('Generating inline images via Gemini...');
+        const images = await generateBlogImages(post.slug, post.content, googleApiKey);
+        if (images.length) {
+            post.content = injectImagesIntoHTML(post.content, images);
+            console.log(`Injected ${images.length} image(s) into post content.`);
+        }
+    } else {
+        console.log('GOOGLE_IMAGEN_API_KEY not set, skipping inline images.');
+    }
+
     return post;
 }
+
+// ─── Sitemap ───────────────────────────────────────────────────────────────────
 
 function updateSitemap(slug, date) {
     const sitemap = readFileSync(SITEMAP_PATH, 'utf-8');
@@ -165,6 +285,8 @@ function updateSitemap(slug, date) {
     writeFileSync(SITEMAP_PATH, updated, 'utf-8');
     console.log(`Sitemap updated with /blog/${slug}`);
 }
+
+// ─── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
     console.log('Reading existing blog posts...');
