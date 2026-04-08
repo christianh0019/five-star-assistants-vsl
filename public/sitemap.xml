@@ -456,4 +456,11 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://www.fivestarassistants.com/blog/what-breaks-when-you-scale-without-systems</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
