@@ -28,6 +28,41 @@ const COVER_IMAGES = [
     'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200',
 ];
 
+// Brand context injected as system prompt on every API call
+const SYSTEM_PROMPT = `You write blog content for Five Star Assistants (FSA), a B2B offshore staffing company founded by Christian Hostetler. FSA sources, vets, places, and manages overseas talent for U.S. businesses. Clients pay one hourly rate. FSA handles HR, compliance, payroll routing, replacements, and account management underneath. No placement fees ever.
+
+COMPANY: FSA is not a job board or freelancer marketplace. FSA employs the talent under its own contractor agreements. Core value prop: "We find, vet, place, and manage overseas talent so you can build the team you need at 60-70% less than domestic hiring, without doing any of the recruiting, HR, or compliance yourself."
+
+WHO WE'RE WRITING FOR: U.S. business owners at $2M+ revenue who need to build teams, not plug one gap. Many are hitting a growth plateau. They work in agencies, home services, real estate, e-commerce, and professional services. The blog also reaches Stage 1 buyers who search for "virtual assistant" content. "Virtual assistant" is acceptable in titles and SEO meta for discoverability.
+
+CONTENT PILLARS (rotate through these):
+1. Operational Pain: Names problems the reader lives with. Founder fatigue, revenue plateaus, scaling bottlenecks, the CEO doing admin work.
+2. Offshore Staffing Education: Teaches how offshore hiring works. Roles to offshore vs. keep in-house, timezone management, SOP building, the real economics.
+3. Industry Insight and Opinion: Takes a position. What agencies get wrong about offshore hiring, why "VA" undersells what these people do, what breaks when you scale DIY.
+4. Proof and Numbers: Cost comparison math, role-specific breakdowns, what clients save, what a bad hire actually costs.
+
+VOICE RULES:
+- Write like a 21-year-old founder talking to another business owner over coffee. Direct, plain, conversational.
+- Eighth-grade reading level. Short sentences. Use contractions. Fragments are fine.
+- Paragraphs are 1-3 sentences max. Assume the reader is on their phone.
+- Lead with the pain or the insight. Not with a definition or background.
+- Be specific. Numbers beat adjectives.
+- Honest about offshore industry problems. Acknowledging quality variance builds credibility.
+
+NEVER USE:
+- Em dashes. Use a period or comma instead.
+- Emojis or exclamation marks (one max per post).
+- leverage (as verb), synergy, ecosystem, disrupt, unlock, game-changer, revolutionary, cutting-edge, world-class
+- "in today's fast-paced world," "here's the thing," "it's not about X it's about Y," "full stop," "journey" in business context
+- Any sentence starting with "imagine," hollow openers like "Running a business is hard"
+- guru, ninja, rockstar, unicorn for talent descriptions
+
+QUALITY TEST before finalizing:
+1. Could any generic staffing company have written this? If yes, add specifics.
+2. Does it sound like a founder who has done the work, not a content agency?
+3. Does any sentence exist only to sound smart or fill space? Cut it.
+4. Are all banned words absent?`;
+
 async function generatePost(existingTitles, existingSlugs, nextId) {
     const today = new Date().toISOString().split('T')[0];
     const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -36,44 +71,39 @@ async function generatePost(existingTitles, existingSlugs, nextId) {
         throw new Error('ANTHROPIC_API_KEY environment variable is not set.');
     }
 
-    const avoidList = existingTitles.slice(0, 20).join('\n- ');
+    const avoidList = existingTitles.slice(0, 30).join('\n- ');
 
-    const prompt = `You are writing a blog post for Five Star Assistants (fivestarassistants.com), a B2B virtual assistant agency. They place trained, managed remote assistants with small and medium-sized businesses. Key facts:
-- Placements start at $4/hr
-- No lock-in contracts
-- Free placement (clients pay nothing to get matched)
-- Target audience: small business owners, entrepreneurs, real estate agents, agency owners, service businesses
-
-Write a complete, SEO-optimized blog post that would be genuinely useful to a small business owner. Choose a topic that is NOT already covered by these existing posts:
+    const userPrompt = `Write a new blog post for fivestarassistants.com. Pick a topic NOT already covered:
 - ${avoidList}
 
-Good topic ideas: delegation tactics, specific VA use cases (bookkeeping, customer service, social media, etc.), hiring mistakes, scaling tips, productivity systems, remote team management, cost savings, industry-specific VA guides.
+Choose from one of the content pillars (Operational Pain, Offshore Education, Industry Insight, Proof/Numbers). Rotate pillars.
 
-Write at a clear, simple level — assume the reader is a busy business owner, not a business consultant. Use short paragraphs and avoid jargon.
+Good angles: what offshore roles are most underused, the real cost of a bad hire, how to write a job description for an offshore role, what breaks when you scale without systems, industry-specific use cases (agencies, home services, real estate), how to manage a remote team you have never met, why most delegation fails, what to offshore vs. keep in-house.
 
-Return ONLY a valid JSON object (no markdown, no code fences, just raw JSON) with exactly these fields:
+Return ONLY a valid JSON object (no markdown, no code fences) with exactly these fields:
 {
   "id": "${nextId}",
-  "slug": "url-friendly-slug-here",
-  "title": "Blog Post Title Here",
-  "excerpt": "1-2 sentence summary used as the meta description and post preview. Should make someone want to click.",
-  "content": "<h2>Section Title</h2><p>Paragraph text...</p>",
+  "slug": "url-friendly-slug",
+  "title": "Post title (clear, specific, searchable)",
+  "excerpt": "2 sentences max. States the problem and what the post delivers.",
+  "content": "<h2>First Section</h2><p>Content...</p>",
   "category": "one of: Delegation | Remote Teams | Business Growth | Productivity | Hiring & Staffing",
   "tags": ["tag1", "tag2", "tag3", "tag4"],
   "publishedAt": "${today}",
   "readTime": "X min read",
-  "metaTitle": "Post Title | Five Star Assistants (under 60 chars total)",
-  "metaDescription": "155-160 character meta description with primary keyword",
+  "metaTitle": "SEO title under 60 chars including | Five Star Assistants",
+  "metaDescription": "150-160 chars, includes primary keyword",
   "coverImage": ""
 }
 
-Requirements for the content field:
-- 600–900 words of HTML
-- Use <h2> for main sections, <h3> for subsections
-- Use <p>, <ul>, <li>, <strong> tags
-- No <html>, <body>, <head>, or <br> tags
-- At least 4 sections with H2 headings
-- Practical, actionable content — not fluff`;
+Content requirements:
+- 700-1000 words of HTML
+- At least 4 <h2> sections, <h3> for subsections if needed
+- Use <p>, <ul>, <li>, <strong>. Short paragraphs, 1-3 sentences each.
+- No <html>, <body>, <head>, <br> tags
+- Open with the pain or the hook. Not a definition or "in this post we will cover"
+- Be specific. Use numbers. Give real examples.
+- End with a clear takeaway.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -84,8 +114,9 @@ Requirements for the content field:
         },
         body: JSON.stringify({
             model: 'claude-opus-4-6',
-            max_tokens: 4000,
-            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 4096,
+            system: SYSTEM_PROMPT,
+            messages: [{ role: 'user', content: userPrompt }],
         }),
     });
 
@@ -101,24 +132,19 @@ Requirements for the content field:
     try {
         post = JSON.parse(text);
     } catch {
-        // Try to extract JSON if Claude wrapped it in anything
         const match = text.match(/\{[\s\S]*\}/);
         if (!match) throw new Error('Could not parse JSON from Claude response.');
         post = JSON.parse(match[0]);
     }
 
-    // Validate required fields
     const required = ['slug', 'title', 'excerpt', 'content', 'category', 'publishedAt', 'readTime', 'metaTitle', 'metaDescription'];
     for (const field of required) {
         if (!post[field]) throw new Error(`Missing required field: ${field}`);
     }
 
-    // Assign cover image (rotate through pool based on post count)
-    const imageIndex = (existingTitles.length) % COVER_IMAGES.length;
-    post.coverImage = COVER_IMAGES[imageIndex];
+    post.coverImage = COVER_IMAGES[existingTitles.length % COVER_IMAGES.length];
     post.id = String(nextId);
 
-    // Ensure slug is unique
     if (existingSlugs.includes(post.slug)) {
         post.slug = `${post.slug}-${today}`;
     }
@@ -135,7 +161,6 @@ function updateSitemap(slug, date) {
     <priority>0.6</priority>
   </url>`;
 
-    // Insert before the closing </urlset>
     const updated = sitemap.replace('</urlset>', `${newEntry}\n\n</urlset>`);
     writeFileSync(SITEMAP_PATH, updated, 'utf-8');
     console.log(`Sitemap updated with /blog/${slug}`);
@@ -153,10 +178,9 @@ async function main() {
     const newPost = await generatePost(existingTitles, existingSlugs, nextId);
     console.log(`Generated: "${newPost.title}"`);
 
-    // Add to front (newest first)
     posts.unshift(newPost);
     writeFileSync(BLOG_POSTS_PATH, JSON.stringify(posts, null, 2), 'utf-8');
-    console.log(`Saved to blogPosts.json`);
+    console.log('Saved to blogPosts.json.');
 
     updateSitemap(newPost.slug, newPost.publishedAt);
     console.log('Done.');
