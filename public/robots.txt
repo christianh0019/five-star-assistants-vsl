@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /onboarding/
+Disallow: /thank-you
+
+Sitemap: https://www.fivestarassistants.com/sitemap.xml
