@@ -135,6 +135,18 @@ function extractH2Headings(html) {
     return results;
 }
 
+async function generateCoverImage(post, apiKey) {
+    const prompt = `Professional business photograph for an article titled "${post.title}". Topic: ${post.category}. ${post.excerpt} No text overlays, no logos, no watermarks. Clean modern office or business environment. Warm natural lighting. Trustworthy and editorial in style. Wide horizontal composition. High quality.`;
+    try {
+        const filename = await generateSingleImage(prompt, post.slug, 'cover', apiKey);
+        console.log(`Generated cover image: ${filename}`);
+        return filename;
+    } catch (err) {
+        console.warn(`Cover image generation failed (using fallback): ${err.message}`);
+        return null;
+    }
+}
+
 async function generateBlogImages(slug, htmlContent, apiKey) {
     const headings = extractH2Headings(htmlContent);
     if (!headings.length) return [];
@@ -286,16 +298,22 @@ ABSOLUTE HARD RULES FOR THIS POST:
     post.title = post.title.replace(/\u2014/g, ',');
     post.excerpt = post.excerpt.replace(/\u2014/g, ',');
 
-    post.coverImage = COVER_IMAGES[existingTitles.length % COVER_IMAGES.length];
     post.id = String(nextId);
 
     if (existingSlugs.includes(post.slug)) {
         post.slug = `${post.slug}-${today}`;
     }
 
-    // Generate inline images if API key is available
     const googleApiKey = process.env.GOOGLE_IMAGEN_API_KEY;
     if (googleApiKey) {
+        // Generate cover image
+        console.log('Generating cover image via Gemini...');
+        const coverFilename = await generateCoverImage(post, googleApiKey);
+        post.coverImage = coverFilename
+            ? `/images/blog/${coverFilename}`
+            : COVER_IMAGES[existingTitles.length % COVER_IMAGES.length];
+
+        // Generate inline images
         console.log('Generating inline images via Gemini...');
         const images = await generateBlogImages(post.slug, post.content, googleApiKey);
         if (images.length) {
@@ -303,7 +321,8 @@ ABSOLUTE HARD RULES FOR THIS POST:
             console.log(`Injected ${images.length} image(s) into post content.`);
         }
     } else {
-        console.log('GOOGLE_IMAGEN_API_KEY not set, skipping inline images.');
+        console.log('GOOGLE_IMAGEN_API_KEY not set, skipping image generation.');
+        post.coverImage = COVER_IMAGES[existingTitles.length % COVER_IMAGES.length];
     }
 
     return post;
@@ -327,14 +346,6 @@ function updateSitemap(slug, date) {
 
 // ─── Make.com Webhook ──────────────────────────────────────────────────────────
 
-function stripHtml(html) {
-    return html
-        .replace(/<figure[^>]*>[\s\S]*?<\/figure>/gi, '')
-        .replace(/<[^>]+>/g, ' ')
-        .replace(/\s{2,}/g, ' ')
-        .trim();
-}
-
 async function notifyMake(post) {
     const webhookUrl = process.env.MAKE_WEBHOOK_URL;
     if (!webhookUrl) {
@@ -345,7 +356,7 @@ async function notifyMake(post) {
     const payload = {
         title: post.title,
         excerpt: post.excerpt,
-        content: stripHtml(post.content),
+        content: post.content,
         url: `https://www.fivestarassistants.com/blog/${post.slug}`,
         coverImage: post.coverImage,
         publishedAt: post.publishedAt,
