@@ -35,7 +35,7 @@ const BlogPost: React.FC = () => {
     const nextPost = blogPosts[(currentIndex + 1) % blogPosts.length];
 
     return (
-        <div className="min-h-screen bg-white flex flex-col font-body text-navy pt-32 pb-20">
+        <div className="min-h-screen bg-white flex flex-col font-body text-navy pt-32">
             <Helmet>
                 <title>{post.metaTitle}</title>
                 <meta name="description" content={post.metaDescription} />
@@ -131,7 +131,7 @@ const BlogPost: React.FC = () => {
                 </div>
 
                 {/* Read Next */}
-                <div className="mt-20 border-t border-gray-200 pt-16">
+                <div className="mt-20 border-t border-gray-200 pt-16 pb-20">
                     <p className="font-heading font-bold text-gray-500 mb-8 uppercase tracking-widest text-sm text-center md:text-left">Read This Next</p>
                     <Link
                         to={`/blog/${nextPost.slug}`}
