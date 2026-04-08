@@ -327,6 +327,14 @@ function updateSitemap(slug, date) {
 
 // ─── Make.com Webhook ──────────────────────────────────────────────────────────
 
+function stripHtml(html) {
+    return html
+        .replace(/<figure[^>]*>[\s\S]*?<\/figure>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+}
+
 async function notifyMake(post) {
     const webhookUrl = process.env.MAKE_WEBHOOK_URL;
     if (!webhookUrl) {
@@ -337,6 +345,7 @@ async function notifyMake(post) {
     const payload = {
         title: post.title,
         excerpt: post.excerpt,
+        content: stripHtml(post.content),
         url: `https://www.fivestarassistants.com/blog/${post.slug}`,
         coverImage: post.coverImage,
         publishedAt: post.publishedAt,
