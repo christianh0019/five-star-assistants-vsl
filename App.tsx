@@ -20,6 +20,8 @@ import LocalServiceBusinesses from './pages/LocalServiceBusinesses';
 import DigitalAgencies from './pages/DigitalAgencies';
 import RealEstateAgents from './pages/RealEstateAgents';
 import Pricing from './pages/Pricing';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Results from './pages/Results';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 import HowItWorks from './pages/HowItWorks';
@@ -92,6 +94,8 @@ const App: React.FC = () => {
         <Route path="/digital-agencies" element={<DigitalAgencies />} />
         <Route path="/real-estate-agents" element={<RealEstateAgents />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/results" element={<Results />} />
         <Route path="/results/:slug" element={<CaseStudyDetail />} />
         <Route path="/how-it-works" element={<HowItWorks />} />

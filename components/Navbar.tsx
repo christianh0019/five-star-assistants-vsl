@@ -266,6 +266,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                             <Link to="/results"          className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Results</Link>
                                             <Link to="/how-it-works"     className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">How It Works</Link>
                                             <div className="mx-6 my-1 border-t border-gray-100" />
+                                            <Link to="/blog"             className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Blog</Link>
                                             <Link to="/referral-program" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Referral Program</Link>
                                             <Link to="/youtube-videos"   className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">YouTube Videos</Link>
                                         </div>
@@ -415,6 +416,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                     {[
                                         { to: '/results',          label: 'Results' },
                                         { to: '/how-it-works',     label: 'How It Works' },
+                                        { to: '/blog',             label: 'Blog' },
                                         { to: '/referral-program', label: 'Referral Program' },
                                         { to: '/youtube-videos',   label: 'YouTube Videos' },
                                     ].map(({ to, label }) => (

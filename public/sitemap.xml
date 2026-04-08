@@ -423,4 +423,30 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Blog -->
+  <url>
+    <loc>https://www.fivestarassistants.com/blog</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.fivestarassistants.com/blog/what-does-a-virtual-assistant-actually-cost</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.fivestarassistants.com/blog/how-to-hand-off-work-without-losing-your-mind</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.fivestarassistants.com/blog/5-signs-you-need-a-virtual-assistant-right-now</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
