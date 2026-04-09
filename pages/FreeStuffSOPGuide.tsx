@@ -24,10 +24,10 @@ const avatars = [
 ];
 
 const whatIsInside = [
-    { icon: FileText, text: 'How to build a perfect SOP in 5 minutes using Loom + AI' },
-    { icon: BookOpen, text: 'How to structure Identity SOPs that link to task-specific workflows' },
-    { icon: BarChart2, text: 'How to define KPIs so performance is clear from day one' },
-    { icon: Users, text: '3 complete role SOP packages — SDR, Admin VA, Social Media Manager' },
+    { icon: FileText, text: 'A method to document any task in under 5 minutes — no writing required' },
+    { icon: BookOpen, text: 'The two-document system that makes any remote role fully accountable from day one' },
+    { icon: BarChart2, text: 'How to define what "good" looks like before your hire ever logs in for the first time' },
+    { icon: Users, text: '3 complete role packages — built out and ready to hand off today' },
 ];
 
 const OptInView: React.FC<OptInProps> = ({ formData, onChange, onSubmit, canSubmit, isSubmitting }) => (
@@ -820,7 +820,7 @@ const FreeStuffSOPGuide: React.FC = () => {
                 title="Free SOP System for Remote Hiring | Five Star Assistants"
                 description="Get the complete SOP system for hiring and managing remote workers. Includes 3 full role SOP examples — SDR, Admin VA, and Social Media Manager — with KPIs and task SOPs ready to use."
                 keywords="remote hiring SOPs, virtual assistant SOPs, how to create SOPs, remote team management, SOP templates"
-                canonical="https://www.fivestarassistants.com/free-stuff"
+                canonical="https://www.fivestarassistants.com/free-stuff/sop-guide"
             />
             <Navbar alwaysWhite />
 
