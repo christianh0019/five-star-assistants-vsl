@@ -269,6 +269,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                             <Link to="/blog"             className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Blog</Link>
                                             <Link to="/referral-program" className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">Referral Program</Link>
                                             <Link to="/youtube-videos"   className="block px-6 py-3 text-sm font-body font-medium text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors">YouTube Videos</Link>
+                                            <div className="mx-6 my-1 border-t border-gray-100" />
+                                            <Link to="/free-stuff"       className="block px-6 py-3 text-sm font-body font-medium text-gold hover:text-gold/80 hover:bg-gold/5 transition-colors font-semibold">Free Stuff 🎁</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -424,6 +426,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSurvey, hideMenu, alwaysWhite, lo
                                             {label}
                                         </Link>
                                     ))}
+                                    <Link to="/free-stuff" onClick={closeMobile} className="text-base font-body font-semibold text-gold hover:text-gold/80 py-2 transition-colors">
+                                        Free Stuff 🎁
+                                    </Link>
                                 </div>
                             </div>
                         </div>

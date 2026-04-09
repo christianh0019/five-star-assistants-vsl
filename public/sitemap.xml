@@ -409,6 +409,14 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Free Resources -->
+  <url>
+    <loc>https://www.fivestarassistants.com/free-stuff</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Legal -->
   <url>
     <loc>https://www.fivestarassistants.com/privacy</loc>

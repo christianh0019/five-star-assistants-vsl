@@ -74,6 +74,7 @@ import AccountsPayableReceivable from './pages/hire/AccountsPayableReceivable';
 import InvoicingBilling from './pages/hire/InvoicingBilling';
 import ExpenseTracking from './pages/hire/ExpenseTracking';
 import PayrollSupport from './pages/hire/PayrollSupport';
+import FreeStuffSOPGuide from './pages/FreeStuffSOPGuide';
 
 const App: React.FC = () => {
   return (
@@ -107,6 +108,7 @@ const App: React.FC = () => {
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/free-stuff" element={<FreeStuffSOPGuide />} />
 
         {/* Industry pages */}
         <Route path="/industries/e-commerce" element={<ECommerce />} />
