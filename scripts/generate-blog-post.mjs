@@ -213,13 +213,15 @@ Good angles: what offshore roles are most underused, the real cost of a bad hire
 
 Before writing, decide on a primary keyword phrase and weave it into the title, first paragraph, and at least one H2 heading naturally. The post should be useful to a business owner in any niche, not just one industry. Do not assume the reader has any existing processes, tools, or experience with offshore hiring.
 
-Return ONLY a valid JSON object (no markdown, no code fences) with exactly these fields:
+Return your response in TWO parts separated by the exact delimiter ===CONTENT===
+
+PART 1: A valid JSON object (no markdown, no code fences) with these fields — leave "content" as an empty string:
 {
   "id": "${nextId}",
   "slug": "url-friendly-slug",
   "title": "Post title (clear, specific, searchable)",
   "excerpt": "2 sentences max. States the problem and what the post delivers.",
-  "content": "<h2>First Section</h2><p>Content...</p>",
+  "content": "",
   "category": "one of: Delegation | Remote Teams | Business Growth | Productivity | Hiring & Staffing",
   "tags": ["tag1", "tag2", "tag3", "tag4"],
   "publishedAt": "${today}",
@@ -229,6 +231,8 @@ Return ONLY a valid JSON object (no markdown, no code fences) with exactly these
   "coverImage": ""
 }
 
+PART 2: After the delimiter ===CONTENT=== on its own line, output the raw HTML content. No JSON encoding, no escaping, no quotes around it. Just plain HTML.
+
 Content requirements:
 - 700-1000 words of HTML
 - At least 4 <h2> sections, <h3> for subsections if needed
@@ -236,14 +240,13 @@ Content requirements:
 - No <html>, <body>, <head>, <br> tags
 - Open with the pain or the hook. Not a definition or "in this post we will cover"
 - Be specific. Use numbers. Give real examples.
-- Include exactly 2 internal links using <a href='/path'>natural anchor text</a> pointing to relevant pages. Choose from: /hire/virtual-assistant, /hire/executive-assistant, /hire/sdr, /hire/appointment-setter, /hire/customer-service, /hire/social-media-manager, /hire/bookkeeper, /how-it-works, /pricing, /results, /blog. Place them naturally mid-content where they add value, not at the end.
+- Include exactly 2 internal links using <a href="/path">natural anchor text</a> pointing to relevant pages. Choose from: /hire/virtual-assistant, /hire/executive-assistant, /hire/sdr, /hire/appointment-setter, /hire/customer-service, /hire/social-media-manager, /hire/bookkeeper, /how-it-works, /pricing, /results, /blog. Place them naturally mid-content where they add value, not at the end.
 - Include one specific FSA credibility statement with a real number mid-article (e.g. "We have placed offshore team members across more than a dozen industries" or "The business owners we work with typically recover 10 to 20 hours a week within the first month"). Weave it into a paragraph naturally.
 - End with a clear takeaway.
 
 ABSOLUTE HARD RULES FOR THIS POST:
 - Zero em dashes (the — character, U+2014). Use a period or comma every single time instead.
-- No exclamation marks.
-- CRITICAL JSON RULE: The content field contains HTML. You MUST use single quotes for every HTML attribute (e.g. class='foo', href='...'). Never use double quotes inside any HTML attribute. Double quotes inside a JSON string break parsing.`;
+- No exclamation marks.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -269,21 +272,35 @@ ABSOLUTE HARD RULES FOR THIS POST:
     const text = data.content[0].text.trim();
 
     let post;
-    try {
-        post = JSON.parse(text);
-    } catch {
-        // Strip code fences if Claude wrapped the JSON
-        const stripped = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
+    const delimIdx = text.indexOf('===CONTENT===');
+    if (delimIdx !== -1) {
+        // New two-part format: JSON metadata + raw HTML separated by delimiter
+        const jsonPart = text.substring(0, delimIdx).trim();
+        const htmlPart = text.substring(delimIdx + '===CONTENT==='.length).trim();
+        const cleanJson = jsonPart.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
         try {
-            post = JSON.parse(stripped);
+            post = JSON.parse(cleanJson);
+        } catch (e) {
+            throw new Error(`JSON metadata parse failed: ${e.message}\nJSON was:\n${cleanJson.substring(0, 500)}`);
+        }
+        post.content = htmlPart;
+    } else {
+        // Fallback: try parsing entire response as JSON (legacy path)
+        try {
+            post = JSON.parse(text);
         } catch {
-            const match = stripped.match(/\{[\s\S]*\}/);
-            if (!match) throw new Error('Could not extract JSON from Claude response.');
+            const stripped = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
             try {
-                post = JSON.parse(match[0]);
-            } catch (e) {
-                const preview = match[0].substring(3600, 3750);
-                throw new Error(`JSON parse failed near position 3670. Snippet: ...${preview}...\nOriginal: ${e.message}`);
+                post = JSON.parse(stripped);
+            } catch {
+                const match = stripped.match(/\{[\s\S]*\}/);
+                if (!match) throw new Error('Could not extract JSON from Claude response. Missing ===CONTENT=== delimiter and no valid JSON found.');
+                try {
+                    post = JSON.parse(match[0]);
+                } catch (e) {
+                    const preview = match[0].substring(2000, 2300);
+                    throw new Error(`JSON parse failed. Snippet near error: ...${preview}...\nOriginal: ${e.message}`);
+                }
             }
         }
     }
