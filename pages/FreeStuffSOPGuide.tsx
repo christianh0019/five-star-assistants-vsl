@@ -214,7 +214,7 @@ const ResourceView: React.FC = () => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     return (
-        <div className="w-full bg-white pt-24 pb-24 px-4">
+        <div className="w-full bg-white pt-32 pb-24 px-4">
 
             {/* Unlock Banner */}
             <div className="max-w-4xl mx-auto mb-10">
@@ -255,59 +255,35 @@ const ResourceView: React.FC = () => {
                             subtitle="You don't need to write anything from scratch. Here's the fastest way to document a task in your own words."
                         />
 
-                        <p className="font-body text-gray-600 leading-relaxed mb-6">
-                            Most business owners never build SOPs because they think it takes hours. It doesn't. The secret is you already know how to do the task — you just need a way to capture it. That's where Loom comes in.
+                        <p className="font-body text-gray-600 leading-relaxed mb-8">
+                            Watch the walkthrough below, then open the Google Doc to follow along.
                         </p>
 
-                        <h3 className="font-heading text-navy font-bold text-xl mb-4">The 4-Step SOP Method</h3>
+                        {/* Loom Video */}
+                        <div className="relative rounded-2xl overflow-hidden mb-6 bg-black" style={{ paddingTop: '62.5%' }}>
+                            <iframe
+                                src="https://www.loom.com/embed/8ec281f4baf5417096ba23e58c1c36db"
+                                className="absolute inset-0 w-full h-full"
+                                allowFullScreen
+                                title="How to create SOPs with Loom"
+                            />
+                        </div>
 
-                        <TaskSOPStep
-                            step={1}
-                            title="Open Loom and hit record"
-                            description="Go to loom.com and start a new recording. Share your screen and turn on your microphone. You don't need a script — just talk out loud while you do the task. Say things like 'now I'm clicking here because...' and 'this step is important because...'. The more you narrate, the better the SOP."
-                        />
-                        <TaskSOPStep
-                            step={2}
-                            title="Walk through the task from start to finish"
-                            description="Do the task exactly as you would normally do it. Keep the recording under 10 minutes if possible. Don't worry about being perfect — just be complete. If you make a mistake and fix it, narrate that too. Real-world nuance makes for better SOPs."
-                        />
-                        <TaskSOPStep
-                            step={3}
-                            title="Get the Loom AI transcript"
-                            description="When your recording is done, Loom AI automatically generates a full transcript and summary of everything you said. Open the AI Notes or Summary panel in your Loom dashboard and copy the full text output."
-                        />
-                        <TaskSOPStep
-                            step={4}
-                            title="Paste into ChatGPT with this exact prompt"
-                            description="Paste the Loom transcript below along with this prompt. ChatGPT will format it into a clean, structured SOP in seconds — written in your exact words and workflow."
-                        />
-
-                        <PromptBlock>{`You are a business operations expert. Below is a Loom video transcript of someone walking through a business task.
-
-Turn this transcript into a clean, structured Standard Operating Procedure (SOP) document using the following format:
-
-**SOP Title:** [Task Name]
-**Purpose:** [1-2 sentence explanation of why this task matters]
-**Tools Required:** [List all tools/software mentioned]
-**Step-by-Step Process:**
-1. [Clear action step]
-2. [Clear action step]
-...
-
-**Common Mistakes to Avoid:**
-- [Any mistakes or edge cases mentioned]
-
-**Notes:**
-- [Any other important context or nuance]
-
-Keep the language simple and direct. Write it so a new hire can follow this on their first day with zero prior knowledge.
-
-Here is the transcript:
-[PASTE YOUR LOOM TRANSCRIPT HERE]`}</PromptBlock>
-
-                        <Callout>
-                            <strong>Pro tip:</strong> After ChatGPT generates the SOP, paste it into a Google Doc or Notion page and add screenshots from your Loom video. Screenshots make SOPs dramatically easier to follow for visual learners — and most remote workers are.
-                        </Callout>
+                        {/* Google Doc */}
+                        <a
+                            href="https://docs.google.com/document/d/1BU6ft57K4KhNJUBmSr7teHjoTgxlD7zxOyz6yHkdFS0/edit?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-4 p-5 rounded-xl border-2 border-navy/10 hover:border-gold/40 bg-white hover:bg-gold/5 transition-all group"
+                        >
+                            <div className="w-10 h-10 rounded-lg bg-navy/[0.07] flex items-center justify-center flex-shrink-0">
+                                <FileText size={18} className="text-navy" />
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-heading text-navy font-bold text-sm">Open the SOP Template in Google Docs →</p>
+                                <p className="font-body text-gray-500 text-xs mt-0.5">Copy it to your Drive and customize for your business</p>
+                            </div>
+                        </a>
                     </div>
                 </ScrollReveal>
 
@@ -418,8 +394,7 @@ Here is the transcript:
                 </ScrollReveal>
 
                 {/* ─── PART 4: SOP EXAMPLES ────────────────────────────────── */}
-                <ScrollReveal>
-                    <div className="mb-16">
+                <div className="mb-16">
                         <SectionHeader
                             number="04"
                             title="3 Full SOP Examples"
@@ -743,8 +718,7 @@ Here is the transcript:
                             </div>
                         </SOPDocument>
 
-                    </div>
-                </ScrollReveal>
+                </div>
 
                 {/* ─── CTA ─────────────────────────────────────────────────── */}
                 <ScrollReveal>
