@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Star, Lock, FileText, BarChart2, BookOpen, Users, ChevronDown } from 'lucide-react';
+import { Check, Star, Lock, FileText, BarChart2, BookOpen, Users } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -210,9 +210,61 @@ const TaskSOPStep: React.FC<{ step: number; title: string; description: string }
     </div>
 );
 
-const ResourceView: React.FC = () => {
-    const [openFaq, setOpenFaq] = useState<number | null>(null);
+// ─── SOP Relationship Diagram ─────────────────────────────────────────────────
 
+const SOPRelationshipDiagram: React.FC = () => (
+    <div className="my-8 select-none">
+        {/* Identity SOP — top */}
+        <div className="flex justify-center">
+            <div className="bg-navy rounded-2xl px-7 py-5 max-w-sm w-full text-center shadow-lg">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/20 border border-gold/30 mb-3">
+                    <BookOpen size={11} className="text-gold" />
+                    <span className="font-body text-gold text-[10px] font-bold uppercase tracking-wider">Layer 1 · Identity SOP</span>
+                </div>
+                <p className="font-heading text-white font-bold text-sm mb-3">Master Role Document</p>
+                <div className="flex flex-wrap gap-1.5 justify-center">
+                    {['Role Overview', 'Daily Schedule', 'Core Responsibilities', 'Performance KPIs', '→ Task SOP Links'].map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 rounded-full bg-white/[0.1] text-white/60 text-[10px] font-body">{tag}</span>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        {/* Connector */}
+        <div className="flex items-center gap-3 my-4">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="font-body text-[10px] font-bold uppercase tracking-widest text-gray-400 whitespace-nowrap">each responsibility links to</span>
+            <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        {/* Task SOPs — bottom */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+                'Cold Calling SOP',
+                'Email Outreach SOP',
+                'CRM Logging SOP',
+                'Lead Research SOP',
+                'EOD Report SOP',
+            ].map((sop, i) => (
+                <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-center">
+                    <div className="w-7 h-7 rounded-lg bg-navy/[0.07] flex items-center justify-center mx-auto mb-2">
+                        <FileText size={12} className="text-navy/40" />
+                    </div>
+                    <p className="font-body text-gray-600 text-[11px] leading-snug font-semibold">{sop}</p>
+                    <span className="mt-1.5 inline-block font-body text-[9px] text-gray-400 uppercase tracking-wider">Layer 2</span>
+                </div>
+            ))}
+        </div>
+
+        <p className="font-body text-gray-400 text-xs text-center mt-4">
+            These are example Task SOPs for an SDR. Every role has its own set — built using the Loom method in Part 1.
+        </p>
+    </div>
+);
+
+// ─── Resource Content ─────────────────────────────────────────────────────────
+
+const ResourceView: React.FC = () => {
     return (
         <div className="w-full bg-white pt-32 pb-24 px-4">
 
@@ -337,6 +389,8 @@ const ResourceView: React.FC = () => {
                         <Callout>
                             <strong>How they connect:</strong> The Identity SOP should have a dedicated section called "Task SOPs" that lists every task this role is responsible for, with a direct link to the corresponding SOP document. When a new hire finishes reading the Identity SOP, they know exactly where to go to learn how to do their job.
                         </Callout>
+
+                        <SOPRelationshipDiagram />
                     </div>
                 </ScrollReveal>
 
@@ -376,6 +430,22 @@ const ResourceView: React.FC = () => {
                         <p className="font-body text-gray-600 leading-relaxed mb-4">
                             Keep it simple. A shared Google Sheet works fine. The assistant fills it in at the end of every shift. You review it weekly. When something is consistently below target, you address it with data — not feelings.
                         </p>
+
+                        <a
+                            href="https://docs.google.com/spreadsheets/d/18wd4-ep2l-hA1URS3Ue1Pql0ox_doqvOYrbZqFn_OHQ/edit?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-4 p-4 rounded-xl border-2 border-navy/10 hover:border-gold/40 bg-white hover:bg-gold/5 transition-all group mb-6"
+                        >
+                            <div className="w-9 h-9 rounded-lg bg-navy/[0.07] flex items-center justify-center flex-shrink-0">
+                                <BarChart2 size={16} className="text-navy" />
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-heading text-navy font-bold text-sm">Open the KPI Tracker Template →</p>
+                                <p className="font-body text-gray-500 text-xs mt-0.5">Copy to your Drive — fill in your role's KPIs and targets</p>
+                            </div>
+                        </a>
+
                         <ul className="space-y-2 mb-6">
                             {[
                                 'Build a simple tracker with one row per day and one column per KPI',
@@ -415,17 +485,24 @@ const ResourceView: React.FC = () => {
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
-                                    <ul className="space-y-1.5">
-                                        {[
-                                            'Run outbound cold calls daily from the assigned lead list',
-                                            'Send and manage personalized email outreach sequences',
-                                            'Research and qualify prospects before first contact',
-                                            'Log every call, email, and outcome in the CRM the same day',
-                                            'Book discovery calls directly on the sales team\'s calendar',
-                                            'Maintain a clean, updated lead list at all times',
-                                            'Submit an EOD activity report before logging off each day',
-                                        ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
+                                    <ul className="space-y-2.5">
+                                        {([
+                                            { text: 'Run outbound cold calls daily from the assigned lead list', sop: 'Cold Calling SOP' },
+                                            { text: 'Send and manage personalized email outreach sequences', sop: 'Email Outreach & Follow-Up SOP' },
+                                            { text: 'Research and qualify prospects before first contact', sop: 'Lead Research & Qualification SOP' },
+                                            { text: 'Log every call, email, and outcome in the CRM the same day', sop: 'CRM Logging SOP' },
+                                            { text: 'Book discovery calls directly on the sales team\'s calendar', sop: 'Discovery Call Booking SOP' },
+                                            { text: 'Maintain a clean, updated lead list at all times', sop: 'Lead List Maintenance SOP' },
+                                            { text: 'Submit an EOD activity report before logging off each day', sop: 'EOD Activity Report SOP' },
+                                        ] as { text: string; sop: string }[]).map((item, i) => (
+                                            <li key={i} className="flex flex-col gap-0.5">
+                                                <div className="flex items-start gap-2"><span className="text-gold mt-0.5 flex-shrink-0">•</span><span>{item.text}</span></div>
+                                                <div className="flex items-center gap-1.5 ml-4">
+                                                    <FileText size={10} className="text-navy/30 flex-shrink-0" />
+                                                    <span className="font-body text-[11px] text-navy/50 font-medium">{item.sop}</span>
+                                                    <span className="font-body text-[11px] text-gray-300">← [paste link here]</span>
+                                                </div>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -481,18 +558,6 @@ const ResourceView: React.FC = () => {
                                     </ul>
                                 </div>
 
-                                <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Cold Calling SOP', 'Email Outreach & Follow-Up SOP', 'CRM Management SOP', 'Lead Research & Qualification SOP', 'Discovery Call Booking SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="text-gray-700">{sop}</span>
-                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </div>
                         </SOPDocument>
 
@@ -510,18 +575,25 @@ const ResourceView: React.FC = () => {
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
-                                    <ul className="space-y-1.5">
-                                        {[
-                                            'Manage the owner\'s email inbox to zero every business day',
-                                            'Own the calendar — schedule, confirm, and protect time proactively',
-                                            'Coordinate tasks and projects across tools and team members',
-                                            'Respond to routine inquiries using approved message templates',
-                                            'Complete research briefs and information requests as assigned',
-                                            'Maintain organized document systems in shared drives',
-                                            'Send a daily EOD summary to the owner before logging off',
-                                            'Flag anything urgent the moment it\'s identified — never hold until EOD',
-                                        ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
+                                    <ul className="space-y-2.5">
+                                        {([
+                                            { text: 'Manage the owner\'s email inbox to zero every business day', sop: 'Email Inbox Management SOP' },
+                                            { text: 'Own the calendar — schedule, confirm, and protect time proactively', sop: 'Calendar Management SOP' },
+                                            { text: 'Coordinate tasks and projects across tools and team members', sop: 'Daily Task & Project Tracking SOP' },
+                                            { text: 'Respond to routine inquiries using approved message templates', sop: 'Routine Communication Templates SOP' },
+                                            { text: 'Complete research briefs and information requests as assigned', sop: 'Research Request SOP' },
+                                            { text: 'Maintain organized document systems in shared drives', sop: 'Document Filing & Organization SOP' },
+                                            { text: 'Send a daily EOD summary to the owner before logging off', sop: 'EOD Summary & Reporting SOP' },
+                                            { text: 'Flag anything urgent the moment it\'s identified — never hold until EOD', sop: 'Priority & Escalation Protocol SOP' },
+                                        ] as { text: string; sop: string }[]).map((item, i) => (
+                                            <li key={i} className="flex flex-col gap-0.5">
+                                                <div className="flex items-start gap-2"><span className="text-gold mt-0.5 flex-shrink-0">•</span><span>{item.text}</span></div>
+                                                <div className="flex items-center gap-1.5 ml-4">
+                                                    <FileText size={10} className="text-navy/30 flex-shrink-0" />
+                                                    <span className="font-body text-[11px] text-navy/50 font-medium">{item.sop}</span>
+                                                    <span className="font-body text-[11px] text-gray-300">← [paste link here]</span>
+                                                </div>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -576,18 +648,6 @@ const ResourceView: React.FC = () => {
                                     </ul>
                                 </div>
 
-                                <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Email Inbox Management SOP', 'Calendar Management SOP', 'Daily Task & Project Tracking SOP', 'Document Filing & Organization SOP', 'Research Request SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="text-gray-700">{sop}</span>
-                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </div>
                         </SOPDocument>
 
@@ -605,17 +665,24 @@ const ResourceView: React.FC = () => {
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
-                                    <ul className="space-y-1.5">
-                                        {[
-                                            'Create, get approved, and publish [X] posts per week across [platforms]',
-                                            'Write all captions in the brand\'s voice (reference: Brand Voice Guide)',
-                                            'Respond to every comment and DM within 2 business hours',
-                                            'Build and maintain the weekly content calendar',
-                                            'Submit a weekly analytics report every Monday morning',
-                                            'Research content trends relevant to the brand each week',
-                                            'Run every piece of content through the approval workflow before scheduling',
-                                        ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
+                                    <ul className="space-y-2.5">
+                                        {([
+                                            { text: 'Create, get approved, and publish [X] posts per week across [platforms]', sop: 'Content Creation & Scheduling SOP' },
+                                            { text: 'Write all captions in the brand\'s voice (reference: Brand Voice Guide)', sop: 'Brand Voice & Caption Writing SOP' },
+                                            { text: 'Respond to every comment and DM within 2 business hours', sop: 'Community Engagement (Comments & DMs) SOP' },
+                                            { text: 'Build and maintain the weekly content calendar', sop: 'Content Calendar Management SOP' },
+                                            { text: 'Submit a weekly analytics report every Monday morning', sop: 'Analytics Reporting SOP' },
+                                            { text: 'Research content trends relevant to the brand each week', sop: 'Trend Research SOP' },
+                                            { text: 'Run every piece of content through the approval workflow before scheduling', sop: 'Content Approval Workflow SOP' },
+                                        ] as { text: string; sop: string }[]).map((item, i) => (
+                                            <li key={i} className="flex flex-col gap-0.5">
+                                                <div className="flex items-start gap-2"><span className="text-gold mt-0.5 flex-shrink-0">•</span><span>{item.text}</span></div>
+                                                <div className="flex items-center gap-1.5 ml-4">
+                                                    <FileText size={10} className="text-navy/30 flex-shrink-0" />
+                                                    <span className="font-body text-[11px] text-navy/50 font-medium">{item.sop}</span>
+                                                    <span className="font-body text-[11px] text-gray-300">← [paste link here]</span>
+                                                </div>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -670,18 +737,6 @@ const ResourceView: React.FC = () => {
                                     </ul>
                                 </div>
 
-                                <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Content Creation & Scheduling SOP', 'Community Engagement (Comments & DMs) SOP', 'Analytics Reporting SOP', 'Trend Research SOP', 'Content Approval Workflow SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="text-gray-700">{sop}</span>
-                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </div>
                         </SOPDocument>
 
