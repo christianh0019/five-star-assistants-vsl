@@ -36,6 +36,14 @@ const resources: Resource[] = [
         tags: ['SOPs', 'Remote Teams', 'Accountability'],
         isNew: true,
     },
+    {
+        slug: 'delegation-audit',
+        title: 'Cost of Delegation Reality Check',
+        description: 'Map every task you spent time on last week, price it at your hourly rate, and see exactly what staying in the weeds is costing you — with a prioritized roadmap to fix it.',
+        category: 'Operations',
+        tags: ['Delegation', 'Cost Analysis', 'ROI'],
+        isNew: true,
+    },
     // Add more resources here — they'll appear automatically in the grid
 ];
 

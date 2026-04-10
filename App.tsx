@@ -76,6 +76,7 @@ import ExpenseTracking from './pages/hire/ExpenseTracking';
 import PayrollSupport from './pages/hire/PayrollSupport';
 import FreeStuff from './pages/FreeStuff';
 import FreeStuffSOPGuide from './pages/FreeStuffSOPGuide';
+import FreeStuffDelegationAudit from './pages/FreeStuffDelegationAudit';
 
 const App: React.FC = () => {
   return (
@@ -111,6 +112,7 @@ const App: React.FC = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/free-stuff" element={<FreeStuff />} />
         <Route path="/free-stuff/sop-guide" element={<FreeStuffSOPGuide />} />
+        <Route path="/free-stuff/delegation-audit" element={<FreeStuffDelegationAudit />} />
 
         {/* Industry pages */}
         <Route path="/industries/e-commerce" element={<ECommerce />} />
