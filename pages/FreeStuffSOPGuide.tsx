@@ -8,7 +8,7 @@ import ScrollReveal from '../components/ScrollReveal';
 // ─── Opt-In Form ─────────────────────────────────────────────────────────────
 
 interface OptInProps {
-    formData: { name: string; email: string; phone: string };
+    formData: { name: string; email: string; phone: string; businessName: string };
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmit: (e: React.FormEvent) => void;
     canSubmit: boolean;
@@ -102,6 +102,7 @@ const OptInView: React.FC<OptInProps> = ({ formData, onChange, onSubmit, canSubm
                     <form onSubmit={onSubmit} className="p-6 space-y-4">
                         {[
                             { label: 'Full Name', name: 'name', type: 'text', placeholder: 'John Doe' },
+                            { label: 'Business Name', name: 'businessName', type: 'text', placeholder: 'Acme Inc.' },
                             { label: 'Email Address', name: 'email', type: 'email', placeholder: 'john@company.com' },
                             { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '(555) 123-4567' },
                         ].map((field) => (
@@ -773,7 +774,7 @@ const ResourceView: React.FC = () => {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 const FreeStuffSOPGuide: React.FC = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', businessName: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isUnlocked, setIsUnlocked] = useState(false);
 
@@ -781,7 +782,7 @@ const FreeStuffSOPGuide: React.FC = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const canSubmit = !!(formData.name && formData.email && formData.phone);
+    const canSubmit = !!(formData.name && formData.email && formData.phone && formData.businessName);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -789,16 +790,14 @@ const FreeStuffSOPGuide: React.FC = () => {
         setIsSubmitting(true);
 
         try {
-            // TODO: Replace with your GHL resource download webhook URL (separate from main lead capture)
-            await fetch('https://services.leadconnectorhq.com/hooks/REPLACE_WITH_RESOURCE_WEBHOOK_ID/webhook-trigger/REPLACE_WITH_TRIGGER_ID', {
+            await fetch('https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/2STHrEnx6189hqwufzbU', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     name: formData.name,
                     email: formData.email,
                     phone: formData.phone,
-                    source: 'Free Stuff — SOP Guide',
-                    contactType: 'ResourceDownload',
+                    businessName: formData.businessName,
                 }),
             });
         } catch (err) {
