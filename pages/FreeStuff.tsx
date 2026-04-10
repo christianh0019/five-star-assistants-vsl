@@ -4,7 +4,6 @@ import { ArrowRight, FileText, BarChart2, BookOpen, Users, Megaphone, DollarSign
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import ScrollReveal from '../components/ScrollReveal';
 
 // ─── Resource Library Data ────────────────────────────────────────────────────
 // To add a new resource: add an entry to this array. That's it.
@@ -51,53 +50,33 @@ const resources: Resource[] = [
 
 const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => {
     const CategoryIcon = categoryIcons[resource.category] ?? FileText;
-
     return (
         <Link
             to={`/free-stuff/${resource.slug}`}
-            className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
         >
-            {/* Card top band */}
-            <div className="h-2 bg-navy w-full" />
-
-            <div className="p-6 flex flex-col flex-1">
-                {/* Category + New badge */}
+            <div className="flex flex-col flex-grow p-7">
                 <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-lg bg-navy/[0.07] flex items-center justify-center">
-                            <CategoryIcon size={13} className="text-navy" />
-                        </div>
-                        <span className="font-body text-xs font-semibold text-gray-500 uppercase tracking-wider">{resource.category}</span>
-                    </div>
+                    <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-gold">
+                        <CategoryIcon size={12} />
+                        {resource.category}
+                    </span>
                     {resource.isNew && (
                         <span className="px-2.5 py-0.5 rounded-full bg-gold/15 text-gold text-xs font-body font-bold uppercase tracking-wider">New</span>
                     )}
                 </div>
-
-                {/* Title */}
-                <h3 className="font-heading text-navy text-xl font-bold leading-snug mb-3 group-hover:text-gold transition-colors duration-200">
+                <h3 className="font-heading text-xl font-bold text-navy mb-3 leading-tight group-hover:text-gold transition-colors">
                     {resource.title}
                 </h3>
-
-                {/* Description */}
-                <p className="font-body text-gray-500 text-sm leading-relaxed flex-1 mb-5">
-                    {resource.description}
-                </p>
-
-                {/* Tags */}
+                <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">{resource.description}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                     {resource.tags.map((tag) => (
-                        <span key={tag} className="px-2.5 py-1 rounded-full bg-gray-100 text-gray-500 text-xs font-body font-medium">
-                            {tag}
-                        </span>
+                        <span key={tag} className="px-2.5 py-1 rounded-full bg-gray-100 text-gray-500 text-xs font-medium">{tag}</span>
                     ))}
                 </div>
-
-                {/* CTA */}
-                <div className="flex items-center gap-1.5 text-gold font-body font-semibold text-sm group-hover:gap-3 transition-all duration-200">
-                    Get Free Access
-                    <ArrowRight size={15} />
-                </div>
+                <span className="inline-flex items-center font-bold text-navy group-hover:text-gold group-hover:gap-2 transition-all">
+                    Get Free Access <ArrowRight size={16} className="ml-1" />
+                </span>
             </div>
         </Link>
     );
@@ -108,18 +87,15 @@ const ResourceCard: React.FC<{ resource: Resource }> = ({ resource }) => {
 const ComingSoonCard: React.FC<{ title: string; category: string }> = ({ title, category }) => {
     const CategoryIcon = categoryIcons[category] ?? FileText;
     return (
-        <div className="bg-gray-50 border border-dashed border-gray-200 rounded-2xl overflow-hidden flex flex-col opacity-60">
-            <div className="h-2 bg-gray-200 w-full" />
-            <div className="p-6 flex flex-col flex-1">
-                <div className="flex items-center gap-2 mb-4">
-                    <div className="w-7 h-7 rounded-lg bg-gray-200 flex items-center justify-center">
-                        <CategoryIcon size={13} className="text-gray-400" />
-                    </div>
-                    <span className="font-body text-xs font-semibold text-gray-400 uppercase tracking-wider">{category}</span>
-                </div>
-                <h3 className="font-heading text-gray-400 text-xl font-bold leading-snug mb-3">{title}</h3>
-                <div className="mt-auto">
-                    <span className="px-3 py-1.5 rounded-full bg-gray-200 text-gray-400 text-xs font-body font-bold uppercase tracking-wider">Coming Soon</span>
+        <div className="flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 opacity-50">
+            <div className="flex flex-col flex-grow p-7">
+                <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+                    <CategoryIcon size={12} />
+                    {category}
+                </span>
+                <h3 className="font-heading text-xl font-bold text-gray-400 leading-tight mb-auto">{title}</h3>
+                <div className="mt-6">
+                    <span className="px-3 py-1.5 rounded-full bg-gray-100 text-gray-400 text-xs font-bold uppercase tracking-wider">Coming Soon</span>
                 </div>
             </div>
         </div>
@@ -129,7 +105,7 @@ const ComingSoonCard: React.FC<{ title: string; category: string }> = ({ title, 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 const FreeStuff: React.FC = () => (
-    <>
+    <div className="min-h-screen bg-gray-50 flex flex-col font-body">
         <SEO
             title="Free Resources | Five Star Assistants"
             description="Free guides, templates, and playbooks for hiring and managing remote workers. Built from the systems we use with 1,000+ businesses."
@@ -138,50 +114,37 @@ const FreeStuff: React.FC = () => (
         />
         <Navbar alwaysWhite />
 
-        <div className="w-full bg-white pt-24 pb-24 px-4">
+        <main className="flex-grow pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-50 text-navy">
+            <div className="max-w-6xl mx-auto">
 
-            {/* Hero */}
-            <div className="w-full bg-navy py-16 px-4" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw' }}>
-                <div className="max-w-3xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/30 text-gold font-body text-sm font-semibold mb-6">
+                {/* Header */}
+                <div className="max-w-3xl mx-auto text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
                         <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                         100% Free — No Strings
                     </div>
-                    <h1 className="font-heading text-white text-4xl md:text-5xl font-bold leading-tight mb-5">
-                        Free Stuff
+                    <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-sm text-navy">
+                        Free <span className="text-gold">Resources</span>
                     </h1>
-                    <p className="font-body text-white/75 text-lg max-w-xl mx-auto">
+                    <p className="font-subheading text-navy/80 text-xl font-medium tracking-wider leading-relaxed max-w-2xl mx-auto">
                         Guides, templates, and playbooks built from the systems we use with over 1,000 businesses. Take what's useful. Use it today.
                     </p>
                 </div>
+
+                {/* Resource Grid */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {resources.map((resource) => (
+                        <ResourceCard key={resource.slug} resource={resource} />
+                    ))}
+                    <ComingSoonCard title="The Hiring Checklist: From Job Post to Day One" category="Hiring & Onboarding" />
+                    <ComingSoonCard title="The 30-Day VA Onboarding Playbook" category="Management" />
+                </div>
+
             </div>
-
-            {/* Resource Grid */}
-            <div className="max-w-5xl mx-auto mt-14">
-                <ScrollReveal>
-                    <div className="flex items-center justify-between mb-8">
-                        <div>
-                            <p className="font-body text-gold font-bold tracking-widest uppercase text-xs mb-1">Resource Library</p>
-                            <h2 className="font-heading text-navy text-2xl font-bold">
-                                {resources.length} {resources.length === 1 ? 'Resource' : 'Resources'} Available
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {resources.map((resource) => (
-                            <ResourceCard key={resource.slug} resource={resource} />
-                        ))}
-                        <ComingSoonCard title="The Hiring Checklist: From Job Post to Day One" category="Hiring & Onboarding" />
-                        <ComingSoonCard title="The 30-Day VA Onboarding Playbook" category="Management" />
-                    </div>
-                </ScrollReveal>
-            </div>
-
-        </div>
+        </main>
 
         <Footer />
-    </>
+    </div>
 );
 
 export default FreeStuff;

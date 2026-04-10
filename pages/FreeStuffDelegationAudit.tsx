@@ -142,60 +142,43 @@ const ProgressBar: React.FC<{ step: number }> = ({ step }) => {
 
 const Step0Landing: React.FC<{ onStart: () => void }> = ({ onStart }) => (
   <div className="w-full">
-    {/* Hero */}
-    <div className="w-full bg-navy py-20 px-4" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw' }}>
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/30 text-gold font-body text-sm font-semibold mb-6">
-          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-          Free Tool — No Fluff
-        </div>
-        <h1 className="font-heading text-white text-4xl md:text-5xl font-bold leading-tight mb-5">
-          Cost of Delegation<br />Reality Check
-        </h1>
-        <p className="font-body text-white/75 text-lg max-w-xl mx-auto mb-10">
-          Map every task you spent time on last week, price it at your hourly rate, and see exactly what staying in the weeds is costing you — with a prioritized plan to fix it.
-        </p>
-        <button
-          onClick={onStart}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-hover text-navy font-body font-bold text-base rounded-full shadow-lg transition-all duration-200"
-        >
-          Start the Audit
-          <ArrowRight size={18} />
-        </button>
-        <p className="font-body text-white/40 text-sm mt-4">Takes about 5 minutes. Results are immediate.</p>
+    {/* Header */}
+    <div className="max-w-3xl mx-auto text-center px-4 mb-16">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
+        <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+        Free Tool — No Fluff
       </div>
+      <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-sm">
+        Cost of Delegation<br />
+        <span className="text-gold">Reality Check</span>
+      </h1>
+      <p className="font-subheading text-navy/80 text-xl font-medium leading-relaxed max-w-xl mx-auto mb-10">
+        Map every task you spent time on last week, price it at your hourly rate, and see exactly what staying in the weeds is costing you.
+      </p>
+      <button
+        onClick={onStart}
+        className="inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-hover text-navy font-body font-bold text-base rounded-full shadow-lg transition-all duration-200"
+      >
+        Start the Audit
+        <ArrowRight size={18} />
+      </button>
+      <p className="font-body text-navy/40 text-sm mt-4">Takes about 5 minutes. Results are immediate.</p>
     </div>
 
     {/* What You'll Get */}
-    <div className="max-w-4xl mx-auto mt-16 px-4">
+    <div className="max-w-5xl mx-auto px-4 pb-24">
       <div className="text-center mb-10">
-        <p className="font-body text-gold font-bold tracking-widest uppercase text-xs mb-1">What You'll Get</p>
+        <p className="font-body text-gold font-bold tracking-widest uppercase text-xs mb-2">What You'll Get</p>
         <h2 className="font-heading text-navy text-2xl md:text-3xl font-bold">Your personal delegation report</h2>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          {
-            icon: Clock,
-            title: 'Hours Audit',
-            desc: 'See exactly how many hours per week you spend on tasks someone else could handle.',
-          },
-          {
-            icon: DollarSign,
-            title: 'Opportunity Cost',
-            desc: 'Know the dollar value of every hour you stay stuck in low-leverage work.',
-          },
-          {
-            icon: TrendingUp,
-            title: 'Savings Estimate',
-            desc: 'Compare your current cost to what offshore delegation actually runs per month.',
-          },
-          {
-            icon: Users,
-            title: 'Role Roadmap',
-            desc: 'Get a specific list of roles to hire, ranked by the biggest impact first.',
-          },
+          { icon: Clock, title: 'Hours Audit', desc: 'See exactly how many hours per week you spend on tasks someone else could handle.' },
+          { icon: DollarSign, title: 'Opportunity Cost', desc: 'Know the dollar value of every hour you stay stuck in low-leverage work.' },
+          { icon: TrendingUp, title: 'Savings Estimate', desc: 'Compare your current cost to what offshore delegation actually runs.' },
+          { icon: Users, title: 'Role Roadmap', desc: 'Get a specific list of roles to hire, ranked by the biggest impact first.' },
         ].map(({ icon: Icon, title, desc }) => (
-          <div key={title} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+          <div key={title} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="w-10 h-10 rounded-xl bg-navy/[0.07] flex items-center justify-center mb-4">
               <Icon size={18} className="text-navy" />
             </div>
@@ -204,8 +187,7 @@ const Step0Landing: React.FC<{ onStart: () => void }> = ({ onStart }) => (
           </div>
         ))}
       </div>
-
-      <div className="mt-10 text-center">
+      <div className="mt-12 text-center">
         <button
           onClick={onStart}
           className="inline-flex items-center gap-2 px-8 py-4 bg-navy hover:bg-navy/90 text-white font-body font-bold text-base rounded-full shadow-lg transition-all duration-200"
@@ -966,8 +948,8 @@ const FreeStuffDelegationAudit: React.FC = () => {
       />
       <Navbar alwaysWhite />
 
-      <div className="w-full bg-white min-h-screen">
-        <div className={`${step === 0 ? 'pt-24' : 'pt-28 pb-24 px-4'}`}>
+      <div className="w-full bg-gray-50 min-h-screen">
+        <div className={step === 0 ? 'pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-50' : 'pt-28 pb-24 px-4'}>
           {step > 0 && (
             <div className="max-w-2xl mx-auto">
               {showProgress && <ProgressBar step={step} />}

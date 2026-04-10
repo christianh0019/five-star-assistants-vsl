@@ -31,26 +31,24 @@ const whatIsInside = [
 ];
 
 const OptInView: React.FC<OptInProps> = ({ formData, onChange, onSubmit, canSubmit, isSubmitting }) => (
-    <div className="w-full min-h-screen bg-white pt-24 pb-24 px-4">
+    <div className="w-full min-h-screen pt-36 md:pt-48 pb-20 px-4 md:px-8 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-50">
 
-        {/* Hero */}
-        <div className="w-full bg-navy py-16 px-4 -mx-4 mb-0" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw' }}>
-            <div className="max-w-3xl mx-auto text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/30 text-gold font-body text-sm font-semibold mb-6">
-                    <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                    Free Resource
-                </div>
-                <h1 className="font-heading text-white text-4xl md:text-5xl font-bold leading-tight mb-5">
-                    The Complete SOP System<br className="hidden md:block" /> for Remote Roles
-                </h1>
-                <p className="font-body text-white/75 text-lg max-w-2xl mx-auto">
-                    Build SOPs in minutes. Hire with confidence. Hold anyone accountable — from day one.
-                </p>
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                Free Resource
             </div>
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-sm text-navy">
+                The Complete <span className="text-gold">SOP System</span><br className="hidden md:block" /> for Remote Roles
+            </h1>
+            <p className="font-subheading text-navy/80 text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                Build SOPs in minutes. Hire with confidence. Hold anyone accountable — from day one.
+            </p>
         </div>
 
         {/* Content + Form */}
-        <div className="max-w-4xl mx-auto mt-12 grid md:grid-cols-2 gap-10 items-start">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-start">
 
             {/* What's Inside */}
             <ScrollReveal>
