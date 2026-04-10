@@ -307,7 +307,7 @@ const Step2Tasks: React.FC<{
   return (
     <div className="w-full max-w-2xl mx-auto">
       {/* Sticky running total */}
-      <div className="sticky top-0 z-20 bg-white border-b border-gray-100 py-3 mb-6 -mx-4 px-4">
+      <div className="sticky top-24 z-20 bg-white border-b border-gray-100 py-3 mb-6 -mx-4 px-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <span className="font-body text-sm font-semibold text-gray-600">Tasks selected: {Object.keys(selected).length}</span>
           <div className="flex items-center gap-2 bg-navy/[0.07] px-4 py-1.5 rounded-full">
@@ -467,7 +467,7 @@ const Step4EmailGate: React.FC<{
   onSubmit: () => void;
   submitting: boolean;
 }> = ({ form, onChange, delegatableHours, weeklyOpCost, annualOpCost, onSubmit, submitting }) => {
-  const canSubmit = form.email.trim() !== '' && form.company.trim() !== '';
+  const canSubmit = form.email.trim() !== '';
 
   return (
     <div className="w-full max-w-xl mx-auto">
@@ -510,7 +510,7 @@ const Step4EmailGate: React.FC<{
           />
         </div>
         <div>
-          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Company name <span className="text-gold">*</span></label>
+          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Company name <span className="font-body text-gray-400 font-normal">(optional)</span></label>
           <input
             type="text"
             value={form.company}
@@ -608,7 +608,10 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
 
       {/* Section A: Summary Stats + Category Bar Chart */}
       <div>
-        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-4">A — Time Breakdown</p>
+        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">A — Time Breakdown</p>
+        <p className="font-body text-gray-500 text-sm mb-6">
+          {form.firstName ? `${form.firstName}, you` : 'You'} logged {delegatableHours.toFixed(1)} hours last week across {uniqueCategories} {uniqueCategories === 1 ? 'category' : 'categories'} that a VA could own. The breakdown below shows exactly where it went.
+        </p>
 
         {/* Stat cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -652,7 +655,10 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
 
       {/* Section B: Opportunity Cost Table */}
       <div>
-        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-4">B — Opportunity Cost by Task</p>
+        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">B — Opportunity Cost by Task</p>
+        <p className="font-body text-gray-500 text-sm mb-5">
+          At {fmt(hourlyRate)}/hr, the time you spent on these tasks last week translates to the numbers below. This isn't a theoretical exercise — it's what your time actually costs the business when priced honestly.
+        </p>
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -692,7 +698,10 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
 
       {/* Section C: Offshore Cost Comparison */}
       <div>
-        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-4">C — What Delegation Actually Costs</p>
+        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">C — What Delegation Actually Costs</p>
+        <p className="font-body text-gray-500 text-sm mb-5">
+          At $8/hr for a trained offshore VA, your entire task list costs {fmt(weeklyOffshoreCost)}/week to hand off. Compare that to the {fmt(weeklyOpCost)}/week it costs when you do it yourself. The gap is {fmt(weeklyOpCost - weeklyOffshoreCost)} every single week.
+        </p>
         <div className="grid md:grid-cols-3 gap-4 mb-5">
           <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm text-center">
             <p className="font-heading text-navy text-2xl font-bold">{fmt(weeklyOffshoreCost)}</p>
@@ -732,7 +741,10 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
 
       {/* Section D: Delegation Priority List */}
       <div>
-        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-4">D — Delegation Priority List</p>
+        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">D — Delegation Priority List</p>
+        <p className="font-body text-gray-500 text-sm mb-5">
+          Tasks marked "Delegate Now" are the ones taking 3+ hours a week. Those go first. They have the biggest dollar impact and usually take less than an hour to document and hand off. Work through the rest over the following 4 to 6 weeks.
+        </p>
         <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm space-y-3">
           {sortedByOppCost.map((task, i) => {
             const isNow = task.hours >= 3;
@@ -758,7 +770,10 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
 
       {/* Section E: Role Map + CTA */}
       <div>
-        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-4">E — Your Role Roadmap</p>
+        <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">E — Your Role Roadmap</p>
+        <p className="font-body text-gray-500 text-sm mb-5">
+          Based on where your hours are going, {form.firstName ? `${form.firstName}, ` : ''}here's the type of assistant you'd hire first. The monthly cost estimates below are based on offshore rates so you have a real number before making any decisions.
+        </p>
         <div className="space-y-3 mb-6">
           {topCategories.map(([cat, hrs]) => {
             const role = ROLE_MAP[cat] ?? 'Virtual Assistant';
@@ -961,7 +976,7 @@ const FreeStuffDelegationAudit: React.FC = () => {
       <Navbar alwaysWhite />
 
       <div className="w-full bg-white min-h-screen">
-        <div className={`${step === 0 ? '' : 'pt-28 pb-24 px-4'}`}>
+        <div className={`${step === 0 ? 'pt-24' : 'pt-28 pb-24 px-4'}`}>
           {step > 0 && (
             <div className="max-w-2xl mx-auto">
               {showProgress && <ProgressBar step={step} />}
@@ -1012,7 +1027,7 @@ const FreeStuffDelegationAudit: React.FC = () => {
         </div>
       </div>
 
-      {step !== 0 && <Footer />}
+      <Footer />
     </>
   );
 };
