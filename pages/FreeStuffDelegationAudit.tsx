@@ -715,11 +715,11 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
         </div>
 
         {/* Domestic comparison callout */}
+        <p className="font-body text-sm text-gray-500 mb-4">
+          Domestic rates are average U.S. wages by role. The offshore figure is $8/hr for a trained VA doing the same tasks. For the work you logged, the output is the same — the price isn't.
+        </p>
         <div className="bg-navy/[0.04] border border-navy/[0.07] rounded-xl p-5">
-          <p className="font-body text-xs font-bold text-navy uppercase tracking-wider mb-2">vs. Hiring Domestically</p>
-          <p className="font-body text-sm text-gray-500 mb-4">
-            Domestic rates are based on average U.S. market wages for each role type. The offshore figure assumes a trained, English-speaking VA at $8/hr. These aren't apples-to-apples on skill, but for the repeatable tasks you logged, the output quality is comparable.
-          </p>
+          <p className="font-body text-xs font-bold text-navy uppercase tracking-wider mb-3">vs. Hiring Domestically</p>
           <div className="flex items-center justify-between">
             <div>
               <p className="font-body text-sm text-gray-500">Domestic weekly cost (avg local rates)</p>
