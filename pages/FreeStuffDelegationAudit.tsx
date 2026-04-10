@@ -467,7 +467,7 @@ const Step4EmailGate: React.FC<{
   onSubmit: () => void;
   submitting: boolean;
 }> = ({ form, onChange, delegatableHours, weeklyOpCost, annualOpCost, onSubmit, submitting }) => {
-  const canSubmit = form.email.trim() !== '';
+  const canSubmit = form.email.trim() !== '' && form.company.trim() !== '' && form.phone.trim() !== '';
 
   return (
     <div className="w-full max-w-xl mx-auto">
@@ -510,7 +510,7 @@ const Step4EmailGate: React.FC<{
           />
         </div>
         <div>
-          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Company name <span className="font-body text-gray-400 font-normal">(optional)</span></label>
+          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Company name <span className="text-gold">*</span></label>
           <input
             type="text"
             value={form.company}
@@ -520,7 +520,7 @@ const Step4EmailGate: React.FC<{
           />
         </div>
         <div>
-          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Phone <span className="font-body text-gray-400 font-normal">(optional)</span></label>
+          <label className="font-body text-sm font-semibold text-gray-700 block mb-1.5">Phone <span className="text-gold">*</span></label>
           <input
             type="tel"
             value={form.phone}
@@ -614,11 +614,7 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
         </p>
 
         {/* Stat cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm text-center">
-            <p className="font-heading text-navy text-3xl font-bold">{delegatableHours.toFixed(1)}</p>
-            <p className="font-body text-gray-400 text-xs mt-1">Total Hours / Week</p>
-          </div>
+        <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-navy rounded-xl p-4 shadow-sm text-center">
             <p className="font-heading text-gold text-3xl font-bold">{delegatableHours.toFixed(1)}</p>
             <p className="font-body text-white/60 text-xs mt-1">Delegatable Hours</p>
@@ -721,6 +717,9 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
         {/* Domestic comparison callout */}
         <div className="bg-navy/[0.04] border border-navy/[0.07] rounded-xl p-5">
           <p className="font-body text-xs font-bold text-navy uppercase tracking-wider mb-2">vs. Hiring Domestically</p>
+          <p className="font-body text-sm text-gray-500 mb-4">
+            Domestic rates are based on average U.S. market wages for each role type. The offshore figure assumes a trained, English-speaking VA at $8/hr. These aren't apples-to-apples on skill, but for the repeatable tasks you logged, the output quality is comparable.
+          </p>
           <div className="flex items-center justify-between">
             <div>
               <p className="font-body text-sm text-gray-500">Domestic weekly cost (avg local rates)</p>
@@ -772,12 +771,12 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
       <div>
         <p className="font-body text-gold text-xs font-bold uppercase tracking-widest mb-2">E — Your Role Roadmap</p>
         <p className="font-body text-gray-500 text-sm mb-5">
-          Based on where your hours are going, {form.firstName ? `${form.firstName}, ` : ''}here's the type of assistant you'd hire first. The monthly cost estimates below are based on offshore rates so you have a real number before making any decisions.
+          Based on where your hours are going, {form.firstName ? `${form.firstName}, ` : ''}here's the type of assistant you'd hire first. Rates shown compare what the market charges domestically versus what you'd pay offshore.
         </p>
         <div className="space-y-3 mb-6">
           {topCategories.map(([cat, hrs]) => {
             const role = ROLE_MAP[cat] ?? 'Virtual Assistant';
-            const monthlyOffshoreCost = hrs * OFFSHORE_RATE * 4.33;
+            const domesticRate = DOMESTIC_RATES[cat as Category] ?? 20;
             return (
               <div key={cat} className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -790,7 +789,8 @@ const Step5Results: React.FC<ResultsProps> = ({ selected, hourlyRate, form }) =>
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="font-body text-sm font-bold text-navy">{fmt(monthlyOffshoreCost)}<span className="text-xs font-normal text-gray-400">/mo</span></p>
+                  <p className="font-body text-sm font-bold text-navy">$8<span className="text-xs font-normal text-gray-400">/hr offshore</span></p>
+                  <p className="font-body text-xs text-gray-400 mt-0.5">vs. ${domesticRate}/hr domestic</p>
                 </div>
               </div>
             );
@@ -929,28 +929,19 @@ const FreeStuffDelegationAudit: React.FC = () => {
   const handleEmailSubmit = async () => {
     setSubmitting(true);
     try {
+      const summary = `${form.firstName} is ${form.role ? `a ${form.role}` : 'an owner'} at ${form.company}${form.industry ? ` in the ${form.industry} industry` : ''}${form.revenueRange ? ` with ${form.revenueRange} in annual revenue` : ''}. They logged ${delegatableHours.toFixed(1)} hours of delegatable work last week across ${Object.keys(selected).length} tasks. At their estimated rate of $${hourlyRate}/hr, that represents $${Math.round(weeklyOpCost).toLocaleString('en-US')}/week or $${Math.round(annualOpCost).toLocaleString('en-US')}/year in opportunity cost. Delegating those tasks at $8/hr offshore would cost $${Math.round(weeklyOffshoreCost).toLocaleString('en-US')}/week, saving an estimated $${Math.round(annualSavings).toLocaleString('en-US')}/year. Top tasks by opportunity cost: ${top3Tasks.join(', ')}. Recommended assistant roles: ${suggestedRoles.join(', ')}.`;
+
       await fetch(
-        'https://services.leadconnectorhq.com/hooks/REPLACE_WITH_AUDIT_WEBHOOK_ID/webhook-trigger/REPLACE_WITH_TRIGGER_ID',
+        'https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/FR1apIIwuNQ3owMgL1kE',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            firstName: form.firstName,
+            name: form.firstName,
             email: form.email,
             phone: form.phone,
-            company: form.company,
-            role: form.role,
-            industry: form.industry,
-            revenueRange: form.revenueRange,
-            hourlyRate,
-            totalDelegatableHours: delegatableHours,
-            weeklyOpportunityCost: weeklyOpCost,
-            annualOpportunityCost: annualOpCost,
-            annualOffshoreSavings: annualSavings,
-            top3Tasks,
-            suggestedRoles,
-            source: 'Delegation Audit',
-            contactType: 'AuditLead',
+            businessName: form.company,
+            summary,
           }),
         }
       );
