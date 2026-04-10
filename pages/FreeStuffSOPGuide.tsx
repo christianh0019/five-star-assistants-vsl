@@ -405,33 +405,43 @@ const ResourceView: React.FC = () => {
                         <h3 className="font-heading text-navy text-2xl font-bold mb-4">Sales Development Representative (SDR)</h3>
 
                         <SOPDocument title="SDR Identity SOP" role="Identity SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
+                            <div className="space-y-6 font-body text-sm text-gray-700">
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-1">Role Overview</p>
-                                    <p className="leading-relaxed">The SDR is the engine of your outbound sales machine. This role is responsible for identifying and contacting potential customers, qualifying their interest, and booking discovery calls for the sales team. The SDR does not close deals — they open conversations.</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Role Overview</p>
+                                    <p className="leading-relaxed mb-2">The SDR's job is to keep the sales pipeline full. This role handles all outbound prospecting — cold calls, email outreach, follow-ups, and appointment setting — so the sales team always has qualified conversations to close. The SDR does not close deals. They start the right ones.</p>
+                                    <p className="leading-relaxed">Great SDRs run their day like a machine — high volume, organized records, and zero excuses for unlogged activity. If it wasn't logged, it didn't happen.</p>
                                 </div>
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
                                     <ul className="space-y-1.5">
-                                        {['Conduct outbound cold calls to prospective leads', 'Send personalized outreach emails and follow-ups', 'Research and qualify prospects before contact', 'Log all activity in the CRM (no exceptions)', 'Book discovery calls on the sales team\'s calendar', 'Maintain organized lead lists and update statuses daily', 'Submit daily activity report by end of shift'].map((item, i) => (
+                                        {[
+                                            'Run outbound cold calls daily from the assigned lead list',
+                                            'Send and manage personalized email outreach sequences',
+                                            'Research and qualify prospects before first contact',
+                                            'Log every call, email, and outcome in the CRM the same day',
+                                            'Book discovery calls directly on the sales team\'s calendar',
+                                            'Maintain a clean, updated lead list at all times',
+                                            'Submit an EOD activity report before logging off each day',
+                                        ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Daily Schedule</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Daily Schedule <span className="text-gray-400 font-body font-normal">(9 AM – 5 PM)</span></p>
                                     <div className="space-y-1.5 text-gray-600">
                                         {[
-                                            ['9:00 AM', 'Log in, check messages, review today\'s call list'],
-                                            ['9:15 AM', 'Outbound calling block (minimum 3 hours)'],
+                                            ['9:00 AM',  'Log in, check messages, pull today\'s call list from the CRM'],
+                                            ['9:15 AM',  'Outbound calling block — minimum 3 hours, no interruptions'],
                                             ['12:15 PM', 'Lunch'],
-                                            ['1:00 PM', 'Email outreach block'],
-                                            ['2:00 PM', 'CRM updates and lead research'],
-                                            ['3:30 PM', 'Follow-ups from previous days'],
-                                            ['4:30 PM', 'Submit EOD activity report'],
+                                            ['1:00 PM',  'Email outreach — personalized sends and active follow-ups'],
+                                            ['2:00 PM',  'CRM cleanup — log all morning activity, update lead statuses'],
+                                            ['3:00 PM',  'Lead research — qualify tomorrow\'s call list, build pipeline'],
+                                            ['4:30 PM',  'Submit EOD report with daily activity numbers'],
+                                            ['5:00 PM',  'Log off'],
                                         ].map(([time, task], i) => (
                                             <div key={i} className="flex gap-4">
                                                 <span className="font-semibold text-navy w-20 flex-shrink-0">{time}</span>
@@ -442,103 +452,47 @@ const ResourceView: React.FC = () => {
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs (Reviewed Weekly)</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs</p>
                                     <KPITable showDaily
                                         rows={[
                                             { kpi: 'Outbound Calls Made', daily: '80+', weekly: '400+' },
                                             { kpi: 'Emails Sent', daily: '50+', weekly: '250+' },
                                             { kpi: 'Discovery Calls Booked', daily: '1–2', weekly: '5–7' },
-                                            { kpi: 'Show Rate', daily: 'N/A', weekly: '80%+' },
+                                            { kpi: 'Show Rate', daily: '—', weekly: '80%+' },
                                             { kpi: 'CRM Update Compliance', daily: '100%', weekly: '100%' },
                                         ]}
                                     />
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs (Link Each Below)</p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Cold Calling SOP', 'Email Outreach & Follow-Up SOP', 'CRM Management SOP', 'Lead Research & Qualification SOP', 'Discovery Call Booking SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="underline underline-offset-2 cursor-pointer">{sop}</span>
-                                                <span className="text-gray-400 no-underline">← [paste link here]</span>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Non-Negotiables</p>
+                                    <ul className="space-y-2">
+                                        {[
+                                            'Every call and email gets logged in the CRM the day it happens. No exceptions, no catching up tomorrow.',
+                                            'Personalize every email. No unmodified template sends. One genuine line changes everything.',
+                                            'The EOD report goes out before logging off — every day, without being asked.',
+                                            'Never book a meeting without confirming availability on the calendar first.',
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2.5">
+                                                <span className="w-5 h-5 rounded-full bg-navy/10 flex items-center justify-center flex-shrink-0 mt-0.5 text-navy font-bold text-xs">{i + 1}</span>
+                                                <span>{item}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
-                        </SOPDocument>
-
-                        <SOPDocument title="Cold Calling SOP" role="SDR Task SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
-                                <p className="leading-relaxed"><strong className="text-navy">Purpose:</strong> Outline the exact process for conducting outbound cold calls to maximize contact rate and conversation quality.</p>
-                                <p><strong className="text-navy">Tools Required:</strong> CRM (GHL, HubSpot, or Pipedrive), Dialer (JustCall, RingCentral), Call list</p>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Before You Call</p>
-                                    <TaskSOPStep step={1} title="Pull today's call list from the CRM" description="Sort by priority tier: warm leads first, then cold. Review each lead's name, business, and any notes from previous calls before dialing." />
-                                    <TaskSOPStep step={2} title="Have your script open" description="Never wing it. Keep the opening script visible before every call. Familiarity with the script builds confidence — confidence improves your connect rate." />
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-2">Opening Script</p>
-                                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 leading-relaxed italic">
-                                        "Hi [Name], this is [Your Name] calling from [Company]. I know this is out of the blue — I'll be super quick. We help [type of business] [specific result, e.g., 'book 5–10 extra qualified appointments per month']. Is that something you'd be open to a quick conversation about?"
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-2">Voicemail Script</p>
-                                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 leading-relaxed italic">
-                                        "Hey [Name], this is [Your Name] from [Company]. Had a quick question for you — didn't want to leave it in an email. Give me a call back at [phone number] when you get 2 minutes. Thanks, talk soon."
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">After Every Call</p>
-                                    <TaskSOPStep step={1} title="Log the outcome in CRM immediately" description="Mark one of: Answered / No Answer / Voicemail Left / Not Interested / Callback Requested / Meeting Booked. Never leave a call unlogged." />
-                                    <TaskSOPStep step={2} title="Handle the next step based on outcome" description="If interested → book the call directly or send the calendar link. If callback requested → set a CRM reminder for the exact time they specified. If not interested → mark closed/lost with a note." />
-                                </div>
-
-                                <Callout><strong>Rule:</strong> Never call the same number more than 3 times in a single day. Persistence is a virtue — harassment is not.</Callout>
-                            </div>
-                        </SOPDocument>
-
-                        <SOPDocument title="Email Outreach & Follow-Up SOP" role="SDR Task SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
-                                <p className="leading-relaxed"><strong className="text-navy">Purpose:</strong> Outline how to send outbound prospecting emails and manage follow-up sequences without letting leads slip through the cracks.</p>
-                                <p><strong className="text-navy">Tools Required:</strong> CRM or email tool (GHL, Instantly, Woodpecker), Lead list, Email templates</p>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-2">Initial Outreach Template</p>
-                                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 leading-relaxed">
-                                        <p className="font-semibold mb-1">Subject: Quick question for [Company Name]</p>
-                                        <p className="italic">Hey [First Name],</p>
-                                        <p className="italic mt-2">Came across [Company Name] and noticed [specific observation — e.g., you're growing your sales team / you recently expanded to a new market].</p>
-                                        <p className="italic mt-2">We help [business type] [specific result] — without [common pain point].</p>
-                                        <p className="italic mt-2">Mind if I share how it works in a quick 15-minute call?</p>
-                                        <p className="italic mt-2">[Your Name]<br />[Company]</p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-2">Follow-Up Sequence</p>
-                                    <div className="space-y-2">
-                                        {[
-                                            { day: 'Day 1', action: 'Initial email (template above)' },
-                                            { day: 'Day 3', action: 'Follow-up #1 — reference the first email, add one new piece of context or data' },
-                                            { day: 'Day 7', action: 'Follow-up #2 — value add (share a result, case study, or useful insight)' },
-                                            { day: 'Day 14', action: 'Break-up email — "Last one from me — still open to a quick chat?"' },
-                                        ].map(({ day, action }, i) => (
-                                            <div key={i} className="flex gap-4 items-start">
-                                                <span className="font-heading font-bold text-gold w-14 flex-shrink-0 text-xs uppercase tracking-wider pt-0.5">{day}</span>
-                                                <span className="text-gray-700">{action}</span>
-                                            </div>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
+                                    <ul className="space-y-1.5 text-gold">
+                                        {['Cold Calling SOP', 'Email Outreach & Follow-Up SOP', 'CRM Management SOP', 'Lead Research & Qualification SOP', 'Discovery Call Booking SOP'].map((sop, i) => (
+                                            <li key={i} className="flex items-center gap-2">
+                                                <FileText size={13} className="flex-shrink-0" />
+                                                <span className="text-gray-700">{sop}</span>
+                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
+                                            </li>
                                         ))}
-                                    </div>
+                                    </ul>
                                 </div>
-
-                                <Callout><strong>Non-negotiable:</strong> Personalize the first line of every email. A generic blast is easy to spot and easy to ignore. One sentence of genuine personalization changes everything.</Callout>
                             </div>
                         </SOPDocument>
 
@@ -546,33 +500,44 @@ const ResourceView: React.FC = () => {
                         <h3 className="font-heading text-navy text-2xl font-bold mb-4 mt-10">Admin Virtual Assistant</h3>
 
                         <SOPDocument title="Admin VA Identity SOP" role="Identity SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
+                            <div className="space-y-6 font-body text-sm text-gray-700">
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-1">Role Overview</p>
-                                    <p className="leading-relaxed">The Admin VA is the operational backbone of the business. This role keeps everything running behind the scenes — managing the owner's calendar, inbox, tasks, and communications so they can focus on high-leverage work. A great Admin VA anticipates needs before they're asked. They're proactive, accurate, and treat access to sensitive information with confidentiality.</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Role Overview</p>
+                                    <p className="leading-relaxed mb-2">The Admin VA is the operational nerve center of the business. This role manages the owner's calendar, inbox, task list, and communications — making sure nothing falls through the cracks so the owner can focus entirely on high-leverage work.</p>
+                                    <p className="leading-relaxed">The standard in this role is simple: if the owner has to remind you of something, that's a miss. Proactivity, accuracy, and discretion are the three things this role is measured by above all else.</p>
                                 </div>
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
                                     <ul className="space-y-1.5">
-                                        {['Manage and organize the owner\'s email inbox daily', 'Maintain the calendar — scheduling, confirmations, reminders', 'Handle task coordination and project tracking', 'Respond to routine messages using approved templates', 'Complete research tasks and prepare briefs', 'File and organize documents in shared systems', 'Flag anything urgent immediately — never wait until EOD'].map((item, i) => (
+                                        {[
+                                            'Manage the owner\'s email inbox to zero every business day',
+                                            'Own the calendar — schedule, confirm, and protect time proactively',
+                                            'Coordinate tasks and projects across tools and team members',
+                                            'Respond to routine inquiries using approved message templates',
+                                            'Complete research briefs and information requests as assigned',
+                                            'Maintain organized document systems in shared drives',
+                                            'Send a daily EOD summary to the owner before logging off',
+                                            'Flag anything urgent the moment it\'s identified — never hold until EOD',
+                                        ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Daily Schedule</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Daily Schedule <span className="text-gray-400 font-body font-normal">(8 AM – 4 PM)</span></p>
                                     <div className="space-y-1.5 text-gray-600">
                                         {[
-                                            ['8:00 AM', 'Log in, review overnight emails, flag urgents'],
-                                            ['8:30 AM', 'Calendar check — confirm today\'s meetings, send reminders'],
-                                            ['9:00 AM', 'Begin assigned task list for the day'],
+                                            ['8:00 AM',  'Log in, scan overnight emails, flag anything urgent immediately'],
+                                            ['8:30 AM',  'Calendar review — confirm today\'s meetings, send reminders'],
+                                            ['9:00 AM',  'Work through daily task list, starting with highest-priority items'],
                                             ['12:00 PM', 'Lunch'],
-                                            ['1:00 PM', 'Inbox management — clear, file, respond'],
-                                            ['2:00 PM', 'Project tracker update, flag any blockers'],
-                                            ['3:30 PM', 'Prepare and send EOD summary to owner'],
+                                            ['1:00 PM',  'Full inbox sweep — respond, file, or escalate everything'],
+                                            ['2:00 PM',  'Update project tracker, flag blockers, coordinate handoffs'],
+                                            ['3:30 PM',  'Prepare and send EOD summary to the owner'],
+                                            ['4:00 PM',  'Log off'],
                                         ].map(([time, task], i) => (
                                             <div key={i} className="flex gap-4">
                                                 <span className="font-semibold text-navy w-20 flex-shrink-0">{time}</span>
@@ -583,58 +548,46 @@ const ResourceView: React.FC = () => {
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs (Reviewed Weekly)</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs</p>
                                     <KPITable rows={[
-                                        { kpi: 'Inbox Zero achieved', target: 'Daily' },
-                                        { kpi: 'Meetings confirmed 24 hrs ahead', target: '100%' },
+                                        { kpi: 'Inbox Zero achieved', target: 'Every day' },
+                                        { kpi: 'Meetings confirmed 24 hrs in advance', target: '100%' },
                                         { kpi: 'Task completion rate', target: '90%+' },
                                         { kpi: 'Response time to owner messages', target: '< 15 minutes' },
-                                        { kpi: 'EOD report submitted', target: 'Daily' },
-                                        { kpi: 'Errors requiring rework', target: '< 2 per week' },
+                                        { kpi: 'EOD summary submitted', target: 'Every day' },
+                                        { kpi: 'Rework requests from owner', target: '< 2 per week' },
                                     ]} />
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs (Link Each Below)</p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Email Inbox Management SOP', 'Calendar Management SOP', 'Daily Task & Project Tracking SOP', 'Document Filing & Organization SOP', 'Research Request SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="underline underline-offset-2">{sop}</span>
-                                                <span className="text-gray-400">← [paste link here]</span>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Non-Negotiables</p>
+                                    <ul className="space-y-2">
+                                        {[
+                                            'Never make a decision on the owner\'s behalf without explicit approval — always ask first.',
+                                            'Urgent items get flagged immediately. Not at the end of the day.',
+                                            'Inbox Zero every single day. If you can\'t get there, flag it before logging off.',
+                                            'Everything stays confidential. Access to information in this role is a privilege, not a right.',
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2.5">
+                                                <span className="w-5 h-5 rounded-full bg-navy/10 flex items-center justify-center flex-shrink-0 mt-0.5 text-navy font-bold text-xs">{i + 1}</span>
+                                                <span>{item}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
-                        </SOPDocument>
-
-                        <SOPDocument title="Calendar Management SOP" role="Admin VA Task SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
-                                <p><strong className="text-navy">Purpose:</strong> Manage the owner's calendar — scheduling meetings, sending confirmations, and resolving conflicts without back-and-forth.</p>
-                                <p><strong className="text-navy">Tools Required:</strong> Google Calendar (or applicable tool), Calendly (or scheduling tool), Communication channel (Slack / WhatsApp)</p>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Scheduling a New Meeting</p>
-                                    <TaskSOPStep step={1} title="Check for conflicts before booking" description="Open the calendar and verify the requested time slot is clear. Check for focus blocks — do not schedule meetings during deep work time unless explicitly approved by the owner." />
-                                    <TaskSOPStep step={2} title="Add the meeting with complete details" description="Include: attendee names, meeting purpose, video call link (Zoom or Google Meet), and any prep notes the owner needs to know. Incomplete calendar entries will be rejected." />
-                                    <TaskSOPStep step={3} title="Send the calendar invite" description="Send to all attendees. If using Calendly, verify the booking appears correctly in the primary calendar." />
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
+                                    <ul className="space-y-1.5 text-gold">
+                                        {['Email Inbox Management SOP', 'Calendar Management SOP', 'Daily Task & Project Tracking SOP', 'Document Filing & Organization SOP', 'Research Request SOP'].map((sop, i) => (
+                                            <li key={i} className="flex items-center gap-2">
+                                                <FileText size={13} className="flex-shrink-0" />
+                                                <span className="text-gray-700">{sop}</span>
+                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Daily Calendar Review (Every Morning by 8:30 AM)</p>
-                                    <TaskSOPStep step={1} title="Review tomorrow's schedule" description="Confirm all meetings are still on. Look for gaps, double-bookings, or anything that needs attention." />
-                                    <TaskSOPStep step={2} title="Send reminders if applicable" description="If the owner has requested reminder messages to attendees, send them now for any meeting starting within 24 hours." />
-                                    <TaskSOPStep step={3} title="Flag anything unusual immediately" description="If something looks off — wrong time, missing link, missing attendee — message the owner right away. Don't wait." />
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Handling a Cancellation</p>
-                                    <TaskSOPStep step={1} title="Remove from calendar immediately" description="Notify the owner as soon as a cancellation comes in. Remove the event and update the slot as available." />
-                                    <TaskSOPStep step={2} title="Draft a reschedule message" description="If the owner needs to reschedule, draft the outreach and propose 2–3 new time options. Wait for owner approval before sending." />
-                                </div>
-
-                                <Callout><strong>Never:</strong> Make the decision on which meeting to keep when there's a conflict. Always surface the conflict to the owner with both meetings listed and wait for their call.</Callout>
                             </div>
                         </SOPDocument>
 
@@ -642,79 +595,93 @@ const ResourceView: React.FC = () => {
                         <h3 className="font-heading text-navy text-2xl font-bold mb-4 mt-10">Social Media Manager</h3>
 
                         <SOPDocument title="Social Media Manager Identity SOP" role="Identity SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
+                            <div className="space-y-6 font-body text-sm text-gray-700">
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-1">Role Overview</p>
-                                    <p className="leading-relaxed">The Social Media Manager is responsible for building and maintaining the company's brand presence across all active platforms. This includes creating and scheduling content, engaging with the audience, and tracking what's working. This is not a set-it-and-forget-it role. Quality, consistency, and brand accuracy are non-negotiable on every post.</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Role Overview</p>
+                                    <p className="leading-relaxed mb-2">The Social Media Manager owns the brand's online presence. This role is responsible for creating and publishing content, engaging with the audience, and tracking what's working — consistently, every week, without reminders. This isn't a role you can coast in. Every post is public and every gap in the schedule has a cost.</p>
+                                    <p className="leading-relaxed">A great Social Media Manager is equal parts creative and organized. They bring ideas to the table, execute reliably, and back up every decision with data from the weekly analytics report.</p>
                                 </div>
 
                                 <div>
                                     <p className="font-heading text-navy font-bold text-base mb-2">Core Responsibilities</p>
                                     <ul className="space-y-1.5">
-                                        {['Create and schedule [X] posts per week across [list platforms]', 'Write captions that match the brand voice (see Brand Voice Guide)', 'Design graphics or coordinate with the design team', 'Engage with comments and DMs daily during business hours', 'Track performance and compile weekly analytics report', 'Research trends and content ideas relevant to the brand', 'Never post without going through the approval workflow'].map((item, i) => (
+                                        {[
+                                            'Create, get approved, and publish [X] posts per week across [platforms]',
+                                            'Write all captions in the brand\'s voice (reference: Brand Voice Guide)',
+                                            'Respond to every comment and DM within 2 business hours',
+                                            'Build and maintain the weekly content calendar',
+                                            'Submit a weekly analytics report every Monday morning',
+                                            'Research content trends relevant to the brand each week',
+                                            'Run every piece of content through the approval workflow before scheduling',
+                                        ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-2"><span className="text-gold mt-1">•</span>{item}</li>
                                         ))}
                                     </ul>
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs (Reviewed Weekly)</p>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Daily Schedule <span className="text-gray-400 font-body font-normal">(9 AM – 5 PM)</span></p>
+                                    <div className="space-y-1.5 text-gray-600">
+                                        {[
+                                            ['9:00 AM',  'Log in, check DMs and comments from overnight, respond to anything outstanding'],
+                                            ['9:30 AM',  'Content creation block — create graphics, draft captions for upcoming posts'],
+                                            ['12:00 PM', 'Lunch'],
+                                            ['1:00 PM',  'Schedule and confirm all upcoming approved posts in scheduling tool'],
+                                            ['2:00 PM',  'Trend research — identify content ideas, update content calendar'],
+                                            ['3:30 PM',  'Submit content for approval; follow up on any pending approvals'],
+                                            ['4:30 PM',  'Final DM/comment sweep; submit EOD summary'],
+                                            ['5:00 PM',  'Log off'],
+                                        ].map(([time, task], i) => (
+                                            <div key={i} className="flex gap-4">
+                                                <span className="font-semibold text-navy w-20 flex-shrink-0">{time}</span>
+                                                <span>{task}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Performance KPIs</p>
                                     <KPITable rows={[
                                         { kpi: 'Posts published on schedule', target: '100%' },
                                         { kpi: 'Comment / DM response time', target: '< 2 hours (business hours)' },
-                                        { kpi: 'Follower growth', target: '2–5% monthly' },
-                                        { kpi: 'Average engagement rate', target: '3%+ (varies by platform)' },
+                                        { kpi: 'Follower growth (monthly)', target: '2–5%' },
+                                        { kpi: 'Average engagement rate', target: '3%+' },
                                         { kpi: 'Weekly analytics report submitted', target: 'Every Monday' },
                                         { kpi: 'Unapproved posts published', target: '0' },
                                     ]} />
                                 </div>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs (Link Each Below)</p>
-                                    <ul className="space-y-1.5 text-gold">
-                                        {['Content Creation & Scheduling SOP', 'Community Engagement (Comments & DMs) SOP', 'Analytics Reporting SOP', 'Trend Research SOP', 'Approval Workflow SOP'].map((sop, i) => (
-                                            <li key={i} className="flex items-center gap-2">
-                                                <FileText size={13} className="flex-shrink-0" />
-                                                <span className="underline underline-offset-2">{sop}</span>
-                                                <span className="text-gray-400">← [paste link here]</span>
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Non-Negotiables</p>
+                                    <ul className="space-y-2">
+                                        {[
+                                            'Zero unapproved posts — ever. Every piece of content goes through the approval workflow before it gets scheduled.',
+                                            'All DMs and comments get a response within 2 business hours. Silence is not engagement.',
+                                            'The Monday analytics report is non-negotiable. It goes out every week, on time.',
+                                            'Use only approved brand assets. No free stock photos or off-brand graphics.',
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2.5">
+                                                <span className="w-5 h-5 rounded-full bg-navy/10 flex items-center justify-center flex-shrink-0 mt-0.5 text-navy font-bold text-xs">{i + 1}</span>
+                                                <span>{item}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
-                        </SOPDocument>
-
-                        <SOPDocument title="Content Creation & Scheduling SOP" role="Social Media Manager Task SOP">
-                            <div className="space-y-5 font-body text-sm text-gray-700">
-                                <p><strong className="text-navy">Purpose:</strong> Create, get approved, and schedule social media content without delays, errors, or off-brand posts.</p>
-                                <p><strong className="text-navy">Tools Required:</strong> Design tool (Canva), Scheduling tool (Later, Buffer, or native scheduler), Approval tool (Notion, Slack, or Trello), Brand Asset Folder</p>
 
                                 <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Step 1 — Plan the Content</p>
-                                    <TaskSOPStep step={1} title="Review the Content Calendar at the start of each week" description="Open the shared Content Calendar. Check what's due this week and what content pillars each post should hit." />
-                                    <TaskSOPStep step={2} title="Check trending topics" description="Spend 10 minutes researching what's trending in the niche. Add any relevant hooks or ideas to this week's calendar before creating anything." />
+                                    <p className="font-heading text-navy font-bold text-base mb-2">Task-Specific SOPs <span className="text-gray-400 font-body font-normal text-xs">(build these using the Loom method above)</span></p>
+                                    <ul className="space-y-1.5 text-gold">
+                                        {['Content Creation & Scheduling SOP', 'Community Engagement (Comments & DMs) SOP', 'Analytics Reporting SOP', 'Trend Research SOP', 'Content Approval Workflow SOP'].map((sop, i) => (
+                                            <li key={i} className="flex items-center gap-2">
+                                                <FileText size={13} className="flex-shrink-0" />
+                                                <span className="text-gray-700">{sop}</span>
+                                                <span className="text-gray-400 text-xs">← [paste link here]</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Step 2 — Create the Content</p>
-                                    <TaskSOPStep step={1} title="Open the correct template in Canva" description="Instagram Feed: 1080×1080px. Instagram Story / TikTok: 1080×1920px. LinkedIn: 1200×627px. Use only brand colors and fonts from the Brand Asset Folder." />
-                                    <TaskSOPStep step={2} title="Write the caption separately first" description="Write the caption in a Google Doc before adding it to the scheduler. Match the brand voice (reference: Brand Voice Guide). Include a clear CTA." />
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Step 3 — Submit for Approval</p>
-                                    <TaskSOPStep step={1} title="Add to the Approval Folder" description="Save the graphic and caption to the Approval Folder in [tool]. Tag the owner or marketing lead in the approval task." />
-                                    <TaskSOPStep step={2} title="Do not schedule until approved" description="If no response within 24 hours, send a follow-up message. Never assume silence is approval." />
-                                </div>
-
-                                <div>
-                                    <p className="font-heading text-navy font-bold mb-3">Step 4 — Schedule and Confirm</p>
-                                    <TaskSOPStep step={1} title="Upload to the scheduling tool" description="Once approved: paste the caption, upload the graphic, add hashtags from the Hashtag Bank, and schedule for the approved date and time." />
-                                    <TaskSOPStep step={2} title="Verify after publishing" description="Check the post within 30 minutes of going live. If there's an error — wrong image, typo, wrong account — flag to the owner immediately. Do not delete without approval." />
-                                </div>
-
-                                <Callout><strong>Zero unapproved posts.</strong> This is a non-negotiable. Every post represents the brand. One unapproved post that goes wrong can create a reputation problem that takes months to fix.</Callout>
                             </div>
                         </SOPDocument>
 
