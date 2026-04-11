@@ -146,14 +146,14 @@ const Step0Landing: React.FC<{ onStart: () => void }> = ({ onStart }) => (
     <div className="max-w-3xl mx-auto text-center px-4 mb-16">
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
         <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-        Free Tool — No Fluff
+        Free Stuff
       </div>
       <h1 className="font-heading text-navy text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-sm">
         Cost of Delegation<br />
-        <span className="text-gold">Reality Check</span>
+        <span className="text-gold">Calculator</span>
       </h1>
       <p className="font-subheading text-navy/80 text-xl font-medium leading-relaxed max-w-xl mx-auto mb-10">
-        Map every task you spent time on last week, price it at your hourly rate, and see exactly what staying in the weeds is costing you.
+        See exactly what your low-leverage tasks are costing you — then get a recommended role and a real quote on what it costs to hand them off.
       </p>
       <button
         onClick={onStart}
