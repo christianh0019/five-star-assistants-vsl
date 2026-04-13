@@ -34,8 +34,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!response.ok) {
       const err = await response.text();
-      console.error('Kit API error:', err);
-      return res.status(response.status).json({ error: 'Failed to subscribe. Please try again.' });
+      console.error('Kit API error:', response.status, err);
+      return res.status(response.status).json({ error: err });
     }
 
     return res.status(200).json({ success: true });
