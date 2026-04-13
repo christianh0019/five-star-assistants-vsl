@@ -1,11 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import NewsletterSignup from './NewsletterSignup';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-navy pt-20 pb-10 px-4 md:px-8 border-t border-navy/10 mt-auto">
       <div className="max-w-7xl mx-auto">
+
+        {/* Newsletter Section */}
+        <div className="mb-16 pb-16 border-b border-white/10">
+          <div className="max-w-2xl">
+            <p className="text-xs font-heading font-bold text-gold uppercase tracking-widest mb-3">Free Weekly Newsletter</p>
+            <h3 className="font-heading font-bold text-white text-2xl md:text-3xl mb-2">
+              Delegated.
+            </h3>
+            <p className="font-body text-gray-400 text-sm mb-6">
+              One delegation idea every Tuesday for founders who are done being the busiest person in their company.
+            </p>
+            <NewsletterSignup variant="footer" />
+          </div>
+        </div>
 
         {/* Top Section: 4 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
