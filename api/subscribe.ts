@@ -24,7 +24,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
+        'X-Kit-Api-Key': apiKey,
       },
       body: JSON.stringify({
         email_address: email.trim().toLowerCase(),
