@@ -13,7 +13,8 @@ interface LiveJob {
     slug: string;
     title: string;
     description: string | null;
-    published_at: string | null;
+    date: string | null;
+    type: 'job' | 'pool';
 }
 
 function timeAgo(iso: string | null): string {
@@ -78,7 +79,6 @@ function JobCardSkeleton() {
 
 // ── Live job card ──────────────────────────────────────────────────
 function JobCard({ job }: { job: LiveJob }) {
-    const applyUrl = `${PORTAL_URL}`;
     const excerpt = job.description
         ? stripMarkdown(job.description).slice(0, 110) + (job.description.length > 110 ? '…' : '')
         : 'Full-time remote position with a growing US business. Apply to learn more.';
@@ -107,12 +107,16 @@ function JobCard({ job }: { job: LiveJob }) {
                 <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> Full-Time</span>
                 <span className="text-gray-200">·</span>
                 <span className="flex items-center gap-1"><DollarSign className="w-3 h-3" /> USD Pay</span>
-                <span className="text-gray-200">·</span>
-                <span>{timeAgo(job.published_at)}</span>
+                {job.date && (
+                    <>
+                        <span className="text-gray-200">·</span>
+                        <span>{timeAgo(job.date)}</span>
+                    </>
+                )}
             </div>
 
             <a
-                href={applyUrl}
+                href={PORTAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-bold text-[#0A192F] transition-all hover:opacity-90 hover:shadow-md"
@@ -229,8 +233,8 @@ const ForEmployeesLanding: React.FC = () => {
                     <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-6 text-center">
                         {[
                             { icon: <Zap className="w-4 h-4 text-gold" />, text: 'Positions fill fast — apply early' },
-                            { icon: <DollarSign className="w-4 h-4 text-gold" />, text: 'USD pay, paid weekly' },
-                            { icon: <CheckCircle className="w-4 h-4 text-gold" />, text: 'Free to join, no placement fees' },
+                            { icon: <DollarSign className="w-4 h-4 text-gold" />, text: 'USD pay, paid bi-weekly' },
+                            { icon: <CheckCircle className="w-4 h-4 text-gold" />, text: 'Free to join' },
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-2 text-white/80 text-sm font-medium">
                                 {item.icon}
