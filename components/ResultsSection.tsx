@@ -91,8 +91,8 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ onOpenSurvey }) => {
                   />
                 ) : (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 z-10" />
-                    <div className="absolute inset-0 bg-navy/40 z-[5]" />
+                    <img src="/videos/testimonial-rework-tn.png" alt="Christian James — ReWork Consulting" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10 z-10" />
                     <div className="absolute inset-0 z-20 flex flex-col items-center justify-center"
                       onClick={(e) => { e.preventDefault(); handlePlay(); }}>
                       <div className="w-16 h-16 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mb-4">

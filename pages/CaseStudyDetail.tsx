@@ -70,6 +70,7 @@ const CaseStudyDetail: React.FC = () => {
                             {study.videoUrl.endsWith('.mp4') || study.videoUrl.endsWith('.mov') ? (
                                 <video
                                     src={study.videoUrl}
+                                    poster={study.thumbnailUrl || undefined}
                                     className="absolute inset-0 w-full h-full object-contain"
                                     controls
                                     playsInline
