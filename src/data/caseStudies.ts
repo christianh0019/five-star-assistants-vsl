@@ -19,6 +19,25 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
     {
+        id: "4",
+        slug: "rework-consulting-agency-team",
+        clientName: "ReWork Consulting",
+        industry: "Marketing Agency",
+        title: "How ReWork Consulting Scaled Their Team and Built a Real Culture",
+        summary: "A home services marketing agency went from chaos to structure — hiring an ops manager, a media buyer, and an automation builder to fuel their next stage of growth.",
+        fullDescription: "",
+        videoUrl: "/videos/testimonial-rework.mov",
+        thumbnailUrl: "",
+        metrics: [
+            { label: "Roles Filled", value: "3" },
+            { label: "Sector", value: "Home Services" },
+            { label: "Outcome", value: "Culture Built" }
+        ],
+        challenge: "",
+        solution: "",
+        result: ""
+    },
+    {
         id: "1",
         slug: "builderproject-fulfillment-team",
         clientName: "BuilderProject",

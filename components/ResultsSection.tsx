@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Clock, DollarSign, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
@@ -8,6 +8,14 @@ interface ResultsSectionProps {
 }
 
 const ResultsSection: React.FC<ResultsSectionProps> = ({ onOpenSurvey }) => {
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  function handlePlay() {
+    setPlaying(true);
+    setTimeout(() => videoRef.current?.play(), 50);
+  }
+
   return (
     <section id="results" className="bg-white py-24 md:py-32 px-4 border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -68,33 +76,46 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ onOpenSurvey }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-            {/* Video Testimonial 1 */}
-            <div className="group cursor-pointer">
+            {/* Video Testimonial — Christian James, ReWork Consulting */}
+            <Link to="/results/rework-consulting-agency-team" className="group block">
               <div className="relative aspect-video bg-navy rounded-2xl overflow-hidden shadow-lg mb-6 group-hover:shadow-2xl transition-all duration-300">
-                {/* Placeholder for actual video thumbnail */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Client Testimonial" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" />
-
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mb-4">
-                    <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
-                  </div>
-                  <p className="text-white font-heading font-medium tracking-wide">Watch Case Study</p>
-                </div>
+                {playing ? (
+                  <video
+                    ref={videoRef}
+                    src="/videos/testimonial-rework.mov"
+                    className="absolute inset-0 w-full h-full object-contain bg-black"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    onClick={(e) => e.preventDefault()}
+                  />
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20 z-10" />
+                    <div className="absolute inset-0 bg-navy/40 z-[5]" />
+                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center"
+                      onClick={(e) => { e.preventDefault(); handlePlay(); }}>
+                      <div className="w-16 h-16 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg mb-4">
+                        <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
+                      </div>
+                      <p className="text-white font-heading font-medium tracking-wide">Watch Testimonial</p>
+                    </div>
+                  </>
+                )}
               </div>
               <blockquote className="font-heading text-xl text-navy italic leading-relaxed mb-4">
-                "My assistant handles all my inbound leads and CRM management. I went from working 60 hours a week in the weeds to focusing purely on closing deals."
+                "We're building a really good culture together. They're not just workers — they're part of the team."
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" alt="Client" className="w-full h-full object-cover" />
+                <div className="w-12 h-12 bg-navy rounded-full flex items-center justify-center shrink-0">
+                  <span className="text-gold font-heading font-bold text-lg">CJ</span>
                 </div>
                 <div>
-                  <p className="font-body font-bold text-navy">Michael T.</p>
-                  <p className="font-body text-sm text-gray-500">Real Estate Agency Owner</p>
+                  <p className="font-body font-bold text-navy">Christian James</p>
+                  <p className="font-body text-sm text-gray-500">Owner, ReWork Consulting</p>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Video Testimonial 2 */}
             <div className="group cursor-pointer">

@@ -67,7 +67,7 @@ const CaseStudyDetail: React.FC = () => {
                 <div className="max-w-6xl mx-auto px-4 mb-20">
                     <div className="bg-navy rounded-[2rem] md:rounded-[3rem] p-4 md:p-8 shadow-2xl">
                         <div className="aspect-video w-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-black relative shadow-inner">
-                            {study.videoUrl.endsWith('.mp4') ? (
+                            {study.videoUrl.endsWith('.mp4') || study.videoUrl.endsWith('.mov') ? (
                                 <video
                                     src={study.videoUrl}
                                     className="absolute inset-0 w-full h-full object-contain"
@@ -120,7 +120,108 @@ const CaseStudyDetail: React.FC = () => {
 
                 {/* Deep Dive Content */}
                 <div className="max-w-4xl mx-auto px-4">
-                    {study.slug === 'builderproject-fulfillment-team' ? (
+                    {study.slug === 'rework-consulting-agency-team' ? (
+                        <div className="text-left font-body max-w-3xl mx-auto space-y-12">
+                            {/* Client Overview */}
+                            <div className="space-y-4">
+                                <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy border-b border-gray-200 pb-2">Client Overview</h3>
+                                <div className="font-body text-lg text-gray-700 leading-relaxed space-y-4">
+                                    <p>Christian James is the owner of ReWork Consulting, a marketing agency that specializes in the home services sector. His team helps home services companies — contractors, HVAC companies, and similar businesses — generate more leads and grow their revenue through structured marketing systems.</p>
+                                    <p>The agency was performing well. They had clients, revenue, and momentum. But as the team grew, a new problem emerged.</p>
+                                    <p className="font-bold text-navy text-xl">There was no structure tying everything together.</p>
+                                </div>
+                            </div>
+
+                            {/* The Challenge */}
+                            <div className="space-y-4">
+                                <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy border-b border-gray-200 pb-2">The Challenge</h3>
+                                <div className="font-body text-lg text-gray-700 leading-relaxed space-y-4">
+                                    <p>Christian had built a team. He had employees doing the work. But no one was connecting the dots.</p>
+                                    <p>There was no system holding the agency together. Communication fell through the cracks. Processes weren't documented. Projects moved forward without any real coordination.</p>
+                                    <blockquote className="border-l-4 border-gold bg-gold/5 p-6 rounded-r-xl italic font-heading text-xl text-navy my-6 shadow-sm">
+                                        "I had a bunch of people, but nothing was tying the whole process together."
+                                    </blockquote>
+                                    <p>Without structure, growth created more chaos rather than more leverage. The more clients they took on, the harder it was to maintain quality and keep everyone aligned.</p>
+                                    <p>He needed someone to come in and build the infrastructure the team was missing.</p>
+                                </div>
+                            </div>
+
+                            {/* The Solution */}
+                            <div className="space-y-4">
+                                <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy border-b border-gray-200 pb-2">The Solution</h3>
+                                <div className="font-body text-lg text-gray-700 leading-relaxed space-y-4">
+                                    <p>Five Star Assistants helped Christian build his team in phases, starting with the most critical gap and then expanding from there.</p>
+
+                                    <p className="font-bold text-navy">Phase 1: Operations Manager</p>
+                                    <p>The first hire was an operations manager whose entire job was to fix the communication breakdown and build a real system inside the agency.</p>
+                                    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm my-4">
+                                        <p className="text-sm font-body text-gray-600">They built out a Monday.com workflow that documented every stage of the client delivery process, gave the team a shared operating rhythm, and created visibility across everything happening in the agency.</p>
+                                    </div>
+                                    <p>For the first time, everyone knew what they were responsible for, what was happening with each client, and where things stood.</p>
+
+                                    <p className="font-bold text-navy mt-6">Phase 2: Specialist Roles</p>
+                                    <p>Once the operations infrastructure was in place, Christian added two more roles to fuel growth:</p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-8">
+                                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                                            <h4 className="font-heading font-bold text-gold mb-2">Media Buyer</h4>
+                                            <p className="text-sm font-body text-gray-600">Manages paid advertising campaigns for ReWork's home services clients, driving lead volume and improving ROAS.</p>
+                                        </div>
+                                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                                            <h4 className="font-heading font-bold text-gold mb-2">Automation Builder</h4>
+                                            <p className="text-sm font-body text-gray-600">Builds and maintains backend automations that keep the agency's systems running smoothly and reduce manual work across the team.</p>
+                                        </div>
+                                    </div>
+                                    <p>Together, these three hires gave ReWork Consulting the operational foundation and the specialized skill set to grow without breaking down.</p>
+                                </div>
+                            </div>
+
+                            {/* The Results */}
+                            <div className="space-y-4">
+                                <h3 className="font-heading text-2xl md:text-3xl font-bold text-navy border-b border-gray-200 pb-2">The Results</h3>
+                                <div className="font-body text-lg text-gray-700 leading-relaxed space-y-4">
+                                    <p>The impact was felt immediately. With operations locked in, the team started functioning like a real agency — not just a group of people doing disconnected work.</p>
+                                    <blockquote className="border-l-4 border-gold bg-gold/5 p-6 rounded-r-xl italic font-heading text-xl text-navy my-6 shadow-sm">
+                                        "He loved the candidates. Every single one of them."
+                                    </blockquote>
+                                    <p>Beyond the individual contributions, what Christian noticed most was the shift in team culture. The people Five Star placed weren't just doing tasks — they were invested. They cared about the work and showed up like owners.</p>
+                                    <blockquote className="border-l-4 border-gold bg-gold/5 p-6 rounded-r-xl italic font-heading text-xl text-navy my-6 shadow-sm">
+                                        "We're building a really good culture together. They're not just workers — they're part of the team."
+                                    </blockquote>
+                                    <p>Revenue continued to grow. The media buyer and automation builder gave the agency better execution on the marketing side, which helped drive results for clients and made the agency easier to sell.</p>
+                                </div>
+                            </div>
+
+                            {/* Key Takeaways */}
+                            <div className="bg-navy p-8 md:p-12 rounded-3xl shadow-xl mt-12 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 z-0 pointer-events-none"></div>
+                                <h3 className="relative z-10 font-heading text-2xl md:text-3xl font-bold text-white border-b border-white/20 pb-4 mb-8">Key Takeaways</h3>
+                                <p className="font-body text-blue-100 text-lg mb-6 relative z-10">After hiring through Five Star Assistants, ReWork Consulting was able to:</p>
+                                <ul className="space-y-4 relative z-10 mb-8">
+                                    <li className="flex items-start gap-4">
+                                        <CheckCircle className="text-gold w-6 h-6 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                                        <span className="font-body text-lg text-white font-medium">Replace chaos with a real operating system built in Monday.com</span>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <CheckCircle className="text-gold w-6 h-6 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                                        <span className="font-body text-lg text-white font-medium">Add a media buyer and automation builder who drove real revenue</span>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <CheckCircle className="text-gold w-6 h-6 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                                        <span className="font-body text-lg text-white font-medium">Build a team culture where people show up invested, not just employed</span>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <CheckCircle className="text-gold w-6 h-6 flex-shrink-0 mt-0.5" strokeWidth={3} />
+                                        <span className="font-body text-lg text-white font-medium">Scale without the chaos that typically comes with team growth</span>
+                                    </li>
+                                </ul>
+                                <div className="relative z-10 pt-6 border-t border-white/20">
+                                    <p className="font-heading font-bold text-gold text-xl md:text-2xl italic tracking-wide">
+                                        Structure first. Then growth. That's the playbook that worked for ReWork Consulting.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ) : study.slug === 'builderproject-fulfillment-team' ? (
                         <div className="text-left font-body max-w-3xl mx-auto space-y-12">
                             {/* Client Overview */}
                             <div className="space-y-4">
