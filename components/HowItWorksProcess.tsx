@@ -42,14 +42,14 @@ const processSteps: StepData[] = [
     {
         number: "3",
         title: "You Meet Pre-Vetted Candidates",
-        description: "We present you with a small group of qualified candidates who match your requirements. You’ll review their profiles and meet them in a short interview to confirm they are the right fit for your team.\n\nOnce you choose a candidate, we handle the placement and get them started. Most roles are filled within 1–3 weeks.",
+        description: "We present you with a small group of qualified candidates who match your requirements. You’ll review their profiles and meet them in a short interview to confirm they are the right fit for your team.\n\nOnce you choose a candidate, we handle the placement and get them started. Most roles are filled within 1 week.",
         imageUrl: "/images/phase-3.jpg",
         imageAlt: "Client meeting hand-selected candidate"
     },
     {
         number: "4",
         title: "We Handle Payroll and Administration",
-        description: "You do not need to manage international payroll, tax paperwork, or contractor payments.\n\nFive Star Assistants handles the payroll infrastructure so your assistant is paid on time and in compliance with international payment systems.\n\nYou receive a simple monthly invoice based on the agreed hourly rate.",
+        description: "You do not need to manage international payroll, tax paperwork, or contractor payments.\n\nFive Star Assistants handles the payroll infrastructure so your assistant is paid on time and in compliance with international payment systems.\n\nYou receive one simple bi-weekly invoice based on the agreed hourly rate.",
         imageUrl: "/images/phase-4.jpg",
         imageAlt: "Payroll and administrative paperwork"
     },
