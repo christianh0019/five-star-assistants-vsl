@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { Play } from 'lucide-react';
 import SEO from '../components/SEO';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -10,7 +11,16 @@ import Button from '../components/Button';
 
 const HowItWorks: React.FC = () => {
     const [isSurveyOpen, setIsSurveyOpen] = useState(false);
+    const [playing, setPlaying] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const navigate = useNavigate();
+
+    const handlePlay = () => {
+        if (videoRef.current) {
+            videoRef.current.play();
+            setPlaying(true);
+        }
+    };
 
     const openSurvey = () => setIsSurveyOpen(true);
     const closeSurvey = () => setIsSurveyOpen(false);
@@ -59,20 +69,33 @@ const HowItWorks: React.FC = () => {
                                 100% Free. No Obligation.
                             </p>
 
-                            {/* Hero Image */}
+                            {/* Hero Video */}
                             <div className="w-full relative mt-4 md:mt-8">
-                                {/* Decorative elements behind the image */}
                                 <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-r from-gold/20 via-navy/5 to-gold/20 rounded-[2rem] md:rounded-[2.5rem] blur-xl opacity-50"></div>
 
                                 <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-navy/10 transform transition-transform duration-500 hover:scale-[1.01]">
                                     <div className="aspect-video w-full bg-navy flex items-center justify-center relative group">
-                                        <img
-                                            src="/images/how-it-works-hero.jpg"
-                                            alt="Five Star Assistants Global Team Sync via Zoom"
+                                        <video
+                                            ref={videoRef}
                                             className="absolute inset-0 w-full h-full object-cover"
+                                            src="/videos/process-video.mp4"
+                                            poster="/images/how-it-works-hero.jpg"
+                                            controls
+                                            playsInline
+                                            onPlay={() => setPlaying(true)}
+                                            onPause={() => setPlaying(false)}
                                         />
-                                        {/* Subtle overlay */}
-                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                        {!playing && (
+                                            <button
+                                                onClick={handlePlay}
+                                                className="absolute inset-0 flex items-center justify-center z-10 group/btn"
+                                                aria-label="Play video"
+                                            >
+                                                <div className="w-20 h-20 rounded-full bg-white/90 shadow-2xl flex items-center justify-center transition-transform duration-200 group-hover/btn:scale-110">
+                                                    <Play size={32} className="text-navy ml-1" fill="currentColor" />
+                                                </div>
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
