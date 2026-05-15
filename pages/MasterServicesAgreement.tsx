@@ -136,25 +136,36 @@ const MasterServicesAgreement: React.FC = () => {
                                 Company invoices Client bi-weekly on the 1st and 15th of each calendar month for Verified Productive Hours worked during the preceding billing period. Each invoice is supported by a timesheet summary detailing hours worked.
                             </p>
 
-                            <h3 className="text-xl font-semibold text-navy mb-3">5.2 Payment Terms</h3>
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.2 Automatic Billing & Card on File</h3>
+                            <p className="mb-4">
+                                When Client pays the Engagement Deposit, Client's payment method is stored on file. All subsequent invoices for Verified Productive Hours are charged automatically to the stored payment method on the invoice due date. No additional payment action is required from Client for recurring billing.
+                            </p>
+                            <p className="mb-4">
+                                Each billing receipt includes the name of the assigned Hire and a summary of Verified Productive Hours worked during the billing period, along with the applicable Hourly Rate and total amount charged. Client will receive the invoice by email prior to the charge.
+                            </p>
+                            <p className="mb-4">
+                                Client may update their stored payment method at any time by contacting Company. Company processes payments through a PCI-compliant payment processor; full card details are not stored on Company's systems.
+                            </p>
+
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.3 Payment Terms</h3>
                             <p className="mb-4">Invoices are due within five (5) business days of the invoice date.</p>
 
-                            <h3 className="text-xl font-semibold text-navy mb-3">5.3 Late Fees</h3>
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.4 Late Fees</h3>
                             <p className="mb-4">
                                 Overdue balances accrue a one-time late charge of five percent (5%) of the outstanding balance after the five-business-day grace period, plus zero point five percent (0.5%) per week thereafter until the balance is settled.
                             </p>
 
-                            <h3 className="text-xl font-semibold text-navy mb-3">5.4 Service Suspension for Non-Payment</h3>
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.5 Service Suspension for Non-Payment</h3>
                             <p className="mb-4">
                                 Company may pause the Hire's services for any account more than five (5) business days past due. Service interruptions caused by Client's non-payment are not Company's responsibility, and Company is not liable for any business losses, missed deadlines, or operational disruptions resulting from suspension.
                             </p>
 
-                            <h3 className="text-xl font-semibold text-navy mb-3">5.5 What Hours Are Billed</h3>
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.6 What Hours Are Billed</h3>
                             <p className="mb-4">
                                 Client is billed only for Verified Productive Hours during the Preferred Schedule. Client is not charged for Hire Unavailability, absenteeism, or hours not worked due to public holidays in the Hire's country of residence.
                             </p>
 
-                            <h3 className="text-xl font-semibold text-navy mb-3">5.6 Third-Party Costs</h3>
+                            <h3 className="text-xl font-semibold text-navy mb-3">5.7 Third-Party Costs</h3>
                             <p className="mb-4">
                                 Where applicable, Client is responsible for paying third-party costs directly, including software subscriptions, telephony, dialer access, and other tools required for the Hire to perform their work. See Section 8 for further detail on Client responsibilities for equipment and tools.
                             </p>
