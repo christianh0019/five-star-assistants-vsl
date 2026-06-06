@@ -58,10 +58,10 @@ const TeamLanding: React.FC = () => {
 
     const questions = useMemo<Question[]>(() => [
         {
-            id: 1,
-            text: 'How many people are you looking to hire?',
+            id: 6,
+            text: 'When are you looking to hire?',
             type: 'single',
-            options: ['1–2 people', '3–5 people', '6–10 people', '10+ people'],
+            options: ['ASAP', '1-2 weeks', '3-4 weeks', 'Next couple months', 'Just exploring'],
         },
         {
             id: 5,
@@ -127,7 +127,7 @@ const TeamLanding: React.FC = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    teamSize: answers[1] || '',
+                    hiringTimeline: answers[6] || '',
                     monthlyRevenue: answers[5] || '',
                     businessName: answers[8]?.businessName || '',
                     name: answers[8]?.name || '',
@@ -164,12 +164,8 @@ const TeamLanding: React.FC = () => {
             {/* Hero Text */}
             <ScrollReveal>
                 <section className="max-w-[800px] w-full text-center mt-10 mb-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy font-body text-sm font-semibold mb-6 shadow-sm">
-                        <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                        Scale Your Business 👇
-                    </div>
                     <h1 className="font-heading text-navy text-2xl md:text-4xl font-bold leading-tight mb-6 drop-shadow-sm">
-                        Build Your Own Remote Team With Experienced Overseas Specialists For <span className="text-gold italic">70-80% Less</span> Than The Cost Of One Local Hire.
+                        Build a Remote Team With Experienced Overseas Specialists For <span className="text-gold italic">70-80% Less</span> Than The Cost Of Local Hires.
                     </h1>
                     <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider max-w-2xl mx-auto">
                         Zero hiring fees. Completely free to start — just pay their hourly wage ($7–9.50) if you like them.
