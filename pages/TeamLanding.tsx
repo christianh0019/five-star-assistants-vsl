@@ -168,7 +168,7 @@ const TeamLanding: React.FC = () => {
                         <span className="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
                         Scale Your Business 👇
                     </div>
-                    <h1 className="font-heading text-navy text-4xl md:text-6xl font-bold leading-tight mb-6 drop-shadow-sm">
+                    <h1 className="font-heading text-navy text-2xl md:text-4xl font-bold leading-tight mb-6 drop-shadow-sm">
                         Build Your Own Remote Team With Experienced Overseas Specialists For <span className="text-gold italic">70-80% Less</span> Than The Cost Of One Local Hire.
                     </h1>
                     <p className="font-subheading text-navy/80 text-lg md:text-xl font-medium tracking-wider max-w-2xl mx-auto">
