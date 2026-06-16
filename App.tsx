@@ -32,6 +32,7 @@ import YouTubeVideoDetail from './pages/YouTubeVideoDetail';
 import ForEmployeesLanding from './pages/ForEmployeesLanding';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import ChromeExtensionPrivacyPolicy from './pages/ChromeExtensionPrivacyPolicy';
 import MasterServicesAgreement from './pages/MasterServicesAgreement';
 import ECommerce from './pages/ECommerce';
 import Healthcare from './pages/Healthcare';
@@ -113,6 +114,7 @@ const App: React.FC = () => {
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/chrome-extension-privacy-policy" element={<ChromeExtensionPrivacyPolicy />} />
         <Route path="/master-services-agreement" element={<MasterServicesAgreement />} />
         <Route path="/free-stuff" element={<FreeStuff />} />
         <Route path="/free-stuff/sop-guide" element={<FreeStuffSOPGuide />} />
