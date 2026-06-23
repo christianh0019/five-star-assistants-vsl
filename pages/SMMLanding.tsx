@@ -123,7 +123,7 @@ const SMMLanding: React.FC = () => {
         setIsSubmitting(true);
 
         try {
-            await fetch('https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK', {
+            await fetch('/api/submit-lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

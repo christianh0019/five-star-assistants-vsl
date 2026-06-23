@@ -154,7 +154,7 @@ const SurveyModal: React.FC<SurveyModalProps> = ({ isOpen, onClose, onComplete, 
                 contactType: source === 'General' ? (answers[1] || 'Unknown') : (source || 'Unknown')
             };
 
-            await fetch("https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8AgZeL/webhook-trigger/bykaLCimOn5w3duaqxpK", {
+            await fetch("/api/submit-lead", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
