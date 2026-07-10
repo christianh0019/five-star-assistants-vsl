@@ -80,7 +80,7 @@ const DlcOptIn: React.FC = () => {
                                             className="mt-1 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-navy focus:ring-navy"
                                         />
                                         <span className="text-sm leading-relaxed text-gray-600">
-                                            By providing my phone number and checking this box, I agree to receive account, support, and service SMS notifications from Five Star Assistants at the number provided. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase or service. Mobile information will not be shared or sold to third parties. See our{' '}
+                                            By providing my phone number and checking this box, I agree to receive customer care SMS messages from Five Star Assistants at the number provided. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase or service. Mobile information will not be shared or sold to third parties. See our{' '}
                                             <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="text-navy font-semibold underline hover:text-gold transition-colors">
                                                 Privacy Policy
                                             </Link>
