@@ -12,6 +12,24 @@ function parseName(full: string): { first: string | null; last: string | null } 
     return { first: titleCase(parts[0]), last: parts.slice(1).map(titleCase).join(' ') };
 }
 
+// Normalize any phone the user types into E.164 so Telnyx/GHL can dial it.
+// US/CA is assumed for bare 10-digit or 1-prefixed 11-digit numbers.
+// Numbers already in +<country> format (or clearly non-US) are preserved.
+function normalizePhone(raw: string): string | null {
+    if (!raw) return null;
+    const hadPlus = raw.trim().startsWith('+');
+    const digits = raw.replace(/\D/g, '');
+    if (!digits) return null;
+    // Already international (has a + prefix) — keep the digits, just re-attach the +.
+    if (hadPlus) return `+${digits}`;
+    // Bare US/CA 10-digit number → prepend +1.
+    if (digits.length === 10) return `+1${digits}`;
+    // 11-digit starting with country code 1 → +1XXXXXXXXXX.
+    if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
+    // Anything else: best-effort E.164 (don't silently drop a real number).
+    return `+${digits}`;
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -31,13 +49,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         contactType = '',
     } = req.body ?? {};
 
+    // Force phone into +1 E.164 before it goes anywhere (GHL/Telnyx can't dial a bare 10-digit number).
+    const normalizedPhone = normalizePhone(phone);
+
     // Fire both in parallel — neither blocks the other
     const [ghlResult, sbResult] = await Promise.allSettled([
-        // 1. GHL webhook (unchanged behavior)
+        // 1. GHL webhook
         fetch(GHL_WEBHOOK, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, businessName, website, monthlyRevenue, hiringTimeline, contactType }),
+            body: JSON.stringify({ name, email, phone: normalizedPhone ?? phone, businessName, website, monthlyRevenue, hiringTimeline, contactType }),
         }),
 
         // 2. Supabase insert
@@ -47,7 +68,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 first_name:      first,
                 last_name:       last,
                 email:           email || null,
-                phone:           phone || null,
+                phone:           normalizedPhone,
                 company:         businessName || null,
                 website:         website || null,
                 monthly_revenue: monthlyRevenue || null,
