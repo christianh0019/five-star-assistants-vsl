@@ -11,6 +11,7 @@ import VALanding from './pages/VALanding';
 import SMMLanding from './pages/SMMLanding';
 import TeamLanding from './pages/TeamLanding';
 import Booking from './pages/Booking';
+import TestBooking from './pages/TestBooking';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
 import OnboardingWelcome from './pages/onboarding/Welcome';
@@ -112,6 +113,7 @@ const App: React.FC = () => {
         <Route path="/youtube-videos/:slug" element={<YouTubeVideoDetail />} />
         <Route path="/for-employees" element={<ForEmployeesLanding />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/testbooking" element={<TestBooking />} />
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
