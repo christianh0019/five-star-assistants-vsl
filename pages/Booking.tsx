@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import BookingWidget from '../components/BookingWidget';
+import EmbeddedBookingWidget from '../components/EmbeddedBookingWidget';
 import Logo from '../components/Logo';
 
 const Booking: React.FC = () => {
-    const CALENDAR_ID = 'pPex5OdxMW9i7kQBs89C';
-
     useEffect(() => {
         if (typeof (window as any).fbq === 'function') {
             (window as any).fbq('track', 'Lead');
@@ -35,10 +33,10 @@ const Booking: React.FC = () => {
                 </p>
             </section>
 
-            {/* Booking Widget */}
+            {/* Booking Widget — FSA software embed (replaced GoHighLevel) */}
             <div className="w-full max-w-4xl">
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 min-h-[800px]">
-                    <BookingWidget calendarId={CALENDAR_ID} />
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 min-h-[700px]">
+                    <EmbeddedBookingWidget />
                 </div>
             </div>
 

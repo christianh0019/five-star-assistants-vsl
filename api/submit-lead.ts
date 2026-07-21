@@ -4,6 +4,11 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8A
 const SUPABASE_URL = process.env.SUPABASE_URL!;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
+// Slack #new-leads notification (requires SLACK_BOT_TOKEN in this project's env,
+// and the bot invited to the channel). No-op if the token is missing.
+const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
+const SLACK_NEW_LEADS_CHANNEL_ID = process.env.SLACK_NEW_LEADS_CHANNEL_ID || 'C0AS7RJFGTG';
+
 function parseName(full: string): { first: string | null; last: string | null } {
     const parts = full.trim().split(/\s+/).filter(Boolean);
     if (parts.length === 0) return { first: null, last: null };
@@ -53,7 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const normalizedPhone = normalizePhone(phone);
 
     // Fire both in parallel — neither blocks the other
-    const [ghlResult, sbResult] = await Promise.allSettled([
+    const [ghlResult, sbResult, slackResult] = await Promise.allSettled([
         // 1. GHL webhook
         fetch(GHL_WEBHOOK, {
             method: 'POST',
@@ -94,10 +99,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 throw new Error(`Supabase insert failed: ${text}`);
             }
         })(),
+
+        // 3. Slack #new-leads notification
+        (async () => {
+            if (!SLACK_BOT_TOKEN) return;
+            const sourceLabel = 'Facebook Ads';
+            const text =
+                `:chart_with_upwards_trend: New Lead\n` +
+                `:eyes: Source: ${sourceLabel}\n` +
+                `:bust_in_silhouette: Name: ${name || '—'}\n` +
+                `:dollar: Revenue: ${monthlyRevenue || '—'}\n` +
+                `:hourglass_flowing_sand: Hiring Timeline: ${hiringTimeline || '—'}`;
+            const r = await fetch('https://slack.com/api/chat.postMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type':  'application/json; charset=utf-8',
+                    'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
+                },
+                body: JSON.stringify({ channel: SLACK_NEW_LEADS_CHANNEL_ID, text }),
+            });
+            const j = await r.json();
+            if (!j.ok) throw new Error(`Slack error: ${j.error}`);
+        })(),
     ]);
 
     if (ghlResult.status === 'rejected') console.error('GHL webhook error:', ghlResult.reason);
     if (sbResult.status === 'rejected') console.error('Supabase insert error:', sbResult.reason);
+    if (slackResult.status === 'rejected') console.error('Slack notify error:', slackResult.reason);
 
     // Always return success so the user flow isn't interrupted
     return res.status(200).json({ success: true });
