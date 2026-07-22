@@ -4,10 +4,9 @@ const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/Vfs1lM3WjyR7NO8A
 const SUPABASE_URL = process.env.SUPABASE_URL!;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-// Slack #new-leads notification (requires SLACK_BOT_TOKEN in this project's env,
-// and the bot invited to the channel). No-op if the token is missing.
-const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
-const SLACK_NEW_LEADS_CHANNEL_ID = process.env.SLACK_NEW_LEADS_CHANNEL_ID || 'C0AS7RJFGTG';
+// The #new-leads Slack notification is sent by the FSA software (it already has
+// the Slack bot token). We just forward the lead to its public endpoint.
+const FSA_APP_URL = process.env.FSA_APP_URL ?? '';
 
 function parseName(full: string): { first: string | null; last: string | null } {
     const parts = full.trim().split(/\s+/).filter(Boolean);
@@ -100,26 +99,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             }
         })(),
 
-        // 3. Slack #new-leads notification
+        // 3. New-lead Slack notification — handled by the FSA software
         (async () => {
-            if (!SLACK_BOT_TOKEN) return;
-            const sourceLabel = 'Facebook Ads';
-            const text =
-                `:chart_with_upwards_trend: New Lead\n` +
-                `:eyes: Source: ${sourceLabel}\n` +
-                `:bust_in_silhouette: Name: ${name || '—'}\n` +
-                `:dollar: Revenue: ${monthlyRevenue || '—'}\n` +
-                `:hourglass_flowing_sand: Hiring Timeline: ${hiringTimeline || '—'}`;
-            const r = await fetch('https://slack.com/api/chat.postMessage', {
+            if (!FSA_APP_URL) return;
+            const r = await fetch(`${FSA_APP_URL}/api/public/new-lead`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type':  'application/json; charset=utf-8',
-                    'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
-                },
-                body: JSON.stringify({ channel: SLACK_NEW_LEADS_CHANNEL_ID, text }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, source: 'Facebook Ads', monthlyRevenue, hiringTimeline }),
             });
-            const j = await r.json();
-            if (!j.ok) throw new Error(`Slack error: ${j.error}`);
+            if (!r.ok) throw new Error(`FSA new-lead notify failed: ${r.status}`);
         })(),
     ]);
 
