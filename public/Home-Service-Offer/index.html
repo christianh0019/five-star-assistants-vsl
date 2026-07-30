@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Star Assistants | Free Lead-to-Job Diagnostic</title>
+  <meta name="description" content="For home service businesses doing $1M–$10M: get more jobs from the leads you're already paying for. We build your front office system and place a trained coordinator to respond to leads instantly, book jobs, run follow-ups, and chase quotes." />
+  <link rel="icon" type="image/png" href="https://www.fivestarassistants.com/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel -->
+  <!-- ⚠️ Pixel ID below was pulled from the live fivestarassistants.com site. Confirm this is the
+       pixel that should track THIS funnel, or swap in a dedicated one from the client's tech inputs. -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1605542917395404');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1605542917395404&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js" defer></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{overflow-x:clip}
+    body{font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#fff}
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+    .rv.in{opacity:1;transform:none}
+    @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    .h1{animation:up .7s cubic-bezier(.16,1,.3,1) .05s both}
+    .h2{animation:up .7s cubic-bezier(.16,1,.3,1) .18s both}
+    .h3{animation:up .7s cubic-bezier(.16,1,.3,1) .3s both}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:4px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:scale(.98)}
+    .btn-accent{background:#C5A059;color:#0D0D0D;padding:1rem 2.25rem;font-size:1.0625rem}
+    .btn-accent:hover{background:#B08D4B}
+    .apply-overlay{position:fixed;inset:0;z-index:500;background:rgba(10,35,66,.96);display:flex;align-items:center;justify-content:center;padding:12px;overflow-y:auto}
+    .apply-overlay.cal-mode{align-items:flex-start;padding-top:24px;padding-bottom:24px}
+    .apply-modal{width:100%;max-width:640px;border-radius:20px;background:#fff;position:relative;margin:auto;overflow-y:auto}
+    .apply-modal.cal-mode{max-width:560px;max-height:none;overflow-y:visible}
+    .qtile{border:2px solid #C8C4BE;border-radius:12px;padding:1.375rem 1.25rem;font-size:1rem;font-weight:600;cursor:pointer;background:#F9F8F6;color:#1A1917;transition:border-color .15s,background .15s,color .15s;font-family:'DM Sans',sans-serif;text-align:left;width:100%}
+    .qtile:hover,.qtile.sel{border-color:#C5A059;background:#FDF6EE;color:#8A6D2F}
+    .form-input{width:100%;border:2px solid #C8C4BE;border-radius:8px;padding:.875rem 1rem;font-size:1rem;font-family:'DM Sans',sans-serif;color:#1A1917;background:#fff;outline:none;transition:border-color .2s;box-sizing:border-box}
+    .form-input:focus{border-color:#C5A059}
+    .iti{width:100%}
+    .iti__tel-input{width:100%;border:2px solid #E2DFDA;border-radius:8px;padding:.875rem 1rem .875rem 3.75rem;font-size:1rem;font-family:'DM Sans',sans-serif;color:#1A1917;outline:none;transition:border-color .2s;box-sizing:border-box}
+    .iti__tel-input:focus{border-color:#C5A059}
+    .sec-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A059;margin:0 0 .875rem}
+    .sec-h2{font-size:clamp(1.6rem,4vw,2.35rem);font-weight:800;letter-spacing:-.025em;line-height:1.12;margin:0 0 .875rem}
+    #mob-cta{display:none}
+    @media(max-width:767px){
+      #mob-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;background:#fff;border-top:1px solid #E2DFDA;padding:.875rem 1.25rem}
+      .btn-accent{font-size:.9375rem;padding:.875rem 1.375rem}
+      .apply-overlay{padding:0}
+      .apply-modal{max-width:none;min-height:100vh;border-radius:0;margin:0}
+    }
+    /* ── "What your coordinator does" clickable blocks ───────────────── */
+    .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;max-width:660px;margin:0 auto}
+    .dtile{position:relative;background:#fff;border:2px solid #E2DFDA;border-radius:12px;padding:1.125rem .75rem;cursor:pointer;transition:border-color .18s,background .18s,transform .18s,box-shadow .18s;font-family:inherit;width:100%;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center}
+    .dtile:hover{border-color:#C5A059;transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(10,35,66,.22)}
+    .dtile.on{border-color:#C5A059;background:#FDF6E3;box-shadow:0 10px 22px -12px rgba(197,160,89,.5)}
+    .dtile-label{font-size:.875rem;font-weight:700;color:#0A2342;line-height:1.25;letter-spacing:-.01em}
+    .dtile .plus{position:absolute;top:7px;right:9px;width:13px;height:13px;color:#C8C4BE;transition:color .18s,transform .22s}
+    .dtile:hover .plus{color:#C5A059}
+    .dtile.on .plus{color:#C5A059;transform:rotate(135deg)}
+    /* ── Booking calendar (step 5) ───────────────────────────────────── */
+    .cal-nav{background:#F8F7F3;border:1px solid #E2DFDA;border-radius:9px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#0A2342;transition:background .15s,border-color .15s}
+    .cal-nav:hover:not(:disabled){background:#FDF6E3;border-color:#C5A059}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .cal-day{width:100%;aspect-ratio:1;border:1px solid #E2DFDA;border-radius:9px;background:#fff;font-family:inherit;font-size:.9375rem;font-weight:600;color:#0A2342;cursor:pointer;transition:background .14s,border-color .14s,color .14s;display:flex;align-items:center;justify-content:center;padding:0}
+    .cal-day:hover:not(.off):not(.sel){background:#FDF6E3;border-color:#C5A059}
+    .cal-day.off{color:#C8C4BE;background:#FAFAF8;cursor:not-allowed;border-color:#EFEDE6}
+    .cal-day.sel{background:#C5A059;border-color:#C5A059;color:#fff}
+    .slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+    .slot{border:1.5px solid #E2DFDA;border-radius:9px;background:#fff;padding:.625rem .25rem;font-family:inherit;font-size:.8125rem;font-weight:700;color:#0A2342;cursor:pointer;transition:background .14s,border-color .14s,color .14s;white-space:nowrap}
+    .slot:hover:not(.sel){background:#FDF6E3;border-color:#C5A059}
+    .slot.sel{background:#C5A059;border-color:#C5A059;color:#fff}
+    @media(max-width:767px){
+      .slot-grid{grid-template-columns:repeat(3,1fr)}
+      .cal-day{font-size:.875rem;border-radius:8px}
+    }
+    @keyframes tilepulse{0%,100%{box-shadow:0 0 0 0 rgba(197,160,89,.5)}55%{box-shadow:0 0 0 11px rgba(197,160,89,0)}}
+    @keyframes tapbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    .dtile.hint{border-color:#C5A059;animation:tilepulse 2.4s ease-out infinite}
+    .dtile.hint:hover{animation:none}
+    .tap-ico{position:absolute;bottom:6px;right:7px;width:17px;height:17px;color:#C5A059;animation:tapbob 2.4s ease-in-out infinite}
+    /* Detail modal — opens on tile click so the CTA below never gets pushed down */
+    @keyframes dpop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+    .dmodal-overlay{position:fixed;inset:0;z-index:450;background:rgba(10,35,66,.74);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+    .dmodal{width:100%;max-width:520px;background:#fff;border-radius:20px;padding:2rem 2rem 1.75rem;position:relative;text-align:left;margin:auto;box-shadow:0 30px 80px -20px rgba(10,35,66,.55);animation:dpop .24s cubic-bezier(.16,1,.3,1)}
+    .dmodal-close{position:absolute;top:14px;right:14px;background:#F8F7F3;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+    .dmodal-close:hover{background:#E2DFDA}
+    .dmodal-icon{width:54px;height:54px;border-radius:15px;background:#FDF6E3;border:1px solid rgba(197,160,89,.32);display:flex;align-items:center;justify-content:center;margin-bottom:1.125rem}
+    .dmodal h3{font-size:1.375rem;font-weight:800;color:#0A2342;margin:0 0 .75rem;letter-spacing:-.02em;line-height:1.2}
+    .dmodal .lead{font-size:1rem;color:#4A4840;line-height:1.7;margin:0}
+    .dmodal .money{margin-top:1.125rem;background:#F8F7F3;border-left:3px solid #C5A059;border-radius:0 10px 10px 0;padding:1rem 1.125rem}
+    .dmodal .money .mlabel{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .375rem}
+    .dmodal .money p{font-size:.9375rem;color:#0A2342;line-height:1.6;margin:0;font-weight:600}
+    .dmodal-cta{margin-top:1.5rem;padding-top:1.375rem;border-top:1px solid #E2DFDA;text-align:center}
+    @media(max-width:767px){
+      .dgrid{grid-template-columns:repeat(2,1fr);gap:.625rem}
+      .dtile{padding:.875rem .5rem}
+      .dtile-label{font-size:.8125rem}
+      .dmodal{padding:1.75rem 1.25rem 1.5rem;border-radius:16px}
+      .dmodal h3{font-size:1.2rem}
+    }
+    [x-cloak]{display:none !important}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     ALPINE WRAPPER
+     applyOpen  → controls popup overlay
+     formStep   → 1 = contact info, 2-4 = qualifying Qs, 5 = calendar
+     ═══════════════════════════════════════════════════ -->
+<div x-data="{
+  applyOpen:false,
+  formStep:1,
+  q1:'',q2:'',q3:'',
+  firstName:'',lastName:'',email:'',phone:'',
+  canNext1(){ return this.firstName && this.email && this.phone },
+
+  /* ── Booking calendar ──────────────────────────────────────────────
+     Self-contained date/time picker. Availability is currently generated
+     client-side: weekdays only, fixed hourly slots, no real-time check
+     against a live calendar.
+     ⚠️ WIRE-UP NEEDED before this takes real bookings — see BUILD NOTES:
+       1. Replace slot generation with live free/busy from Google Calendar.
+       2. POST the selection (name, email, phone, q1-q3, date, time, tz)
+          to whatever creates the event and sends the confirmation email.
+       3. Redirect to thank-you.html with Calendly-style params so the
+          confirmation page can populate — it already reads them. */
+  today: (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })(),
+  viewY: new Date().getFullYear(),
+  viewM: new Date().getMonth(),
+  selDay: null, selTime: '', booking: false, booked: false,
+  slots: ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','1:00 PM','2:00 PM','3:00 PM','4:00 PM'],
+  dow: ['S','M','T','W','T','F','S'],
+  monthLabel(){ return new Date(this.viewY, this.viewM, 1).toLocaleString('en-US',{month:'long', year:'numeric'}); },
+  cells(){
+    const pad = new Date(this.viewY, this.viewM, 1).getDay();
+    const dim = new Date(this.viewY, this.viewM + 1, 0).getDate();
+    return [...Array(pad).fill(null), ...Array.from({length: dim}, (_, i) => i + 1)];
+  },
+  dayOff(d){
+    const dt = new Date(this.viewY, this.viewM, d);
+    return dt < this.today || dt.getDay() === 0 || dt.getDay() === 6;
+  },
+  atFirstMonth(){ return this.viewY === this.today.getFullYear() && this.viewM === this.today.getMonth(); },
+  shiftMonth(n){
+    if (n < 0 && this.atFirstMonth()) return;
+    const dt = new Date(this.viewY, this.viewM + n, 1);
+    this.viewY = dt.getFullYear(); this.viewM = dt.getMonth();
+    this.selDay = null; this.selTime = '';
+  },
+  pickDay(d){ if (this.dayOff(d)) return; this.selDay = d; this.selTime = ''; },
+  dayLabel(){
+    if (!this.selDay) return '';
+    return new Date(this.viewY, this.viewM, this.selDay)
+      .toLocaleDateString('en-US',{weekday:'long', month:'long', day:'numeric'});
+  },
+  tzLabel(){
+    try { return new Intl.DateTimeFormat('en-US',{timeZoneName:'short'}).formatToParts(new Date())
+      .find(p => p.type === 'timeZoneName').value; } catch(e) { return 'your local time'; }
+  },
+  confirmBooking(){
+    if (!this.selDay || !this.selTime) return;
+    this.booking = true;
+    /* ⚠️ No backend yet. Swap this timeout for the real POST + redirect. */
+    setTimeout(() => { this.booking = false; this.booked = true; }, 600);
+  }
+}" x-init="
+  $watch('applyOpen', v => {
+    document.body.style.overflow = v ? 'hidden' : '';
+    if (v) { this.formStep = 1; this.booked = false; this.selDay = null; this.selTime = ''; }
+  });
+" @keydown.escape.window="applyOpen=false">
+
+<!-- Netlify hidden form — captures leads even if they don't book -->
+<form name="lead-backup" netlify hidden>
+  <input name="firstName"/><input name="lastName"/><input name="email"/>
+  <input name="phone"/><input name="q1"/><input name="q2"/><input name="q3"/>
+  <input name="bookingDate"/><input name="bookingTime"/>
+</form>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO — NO NAV. Page opens directly here.
+     ═══════════════════════════════════════════════════ -->
+<section class="hero-sec" style="background:#ffffff;padding-top:1rem;padding-bottom:3.5rem;">
+  <div style="max-width:860px;margin:0 auto;padding:0 1.25rem;text-align:center;">
+
+    <!-- Badge pill -->
+    <div class="h1 hero-badge" style="display:inline-flex;align-items:center;gap:8px;background:#FDF6E3;border:1px solid rgba(197,160,89,.32);border-radius:100px;padding:6px 16px;margin-bottom:1.25rem;">
+      <span style="font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8A6D2F;">For Home Services Doing $1M&ndash;$10M</span>
+    </div>
+
+    <!-- H1 -->
+    <!-- No hard <br> here on purpose. A forced break stranded "Leads" alone on its own line at
+         mobile widths. text-wrap:balance evens the lines out at every width instead.
+         Mobile floor raised from 1.9rem to 2.15rem so the headline clearly outranks the subhead. -->
+    <h1 class="h2 hero-h1" style="font-size:clamp(2.15rem,4.6vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:#0A2342;margin:0 0 1rem;text-wrap:balance;">
+      Get More Jobs From The Leads You're Already Paying For.
+    </h1>
+
+    <!-- Subheadline — leads directly into the clickable blocks below -->
+    <p class="h3 hero-sub" style="font-size:clamp(1.02rem,1.9vw,1.15rem);color:#4A4840;line-height:1.62;max-width:600px;margin:0 auto 1.5rem;">
+      We'll build your front office system and place and manage a trained coordinator to&hellip;
+    </p>
+
+    <!-- ═══════════════════════════════════════════════════
+         WHAT YOUR COORDINATOR DOES — 6 clickable blocks.
+         Replaces the VSL video. Home service owners don't watch videos (client's call),
+         so the explanation is something they tap through instead of sit through.
+         Block 1 is open by default so the click affordance is obvious on arrival.
+         ═══════════════════════════════════════════════════ -->
+    <div x-data="{ d: 0, dOpen: false, tapped: false }"
+         x-init="$watch('dOpen', v => { if (v) document.body.style.overflow='hidden'; else if (!applyOpen) document.body.style.overflow=''; })"
+         @keydown.escape.window="dOpen=false"
+         style="margin-bottom:1.75rem;">
+
+
+      <div class="dgrid">
+        <button type="button" class="dtile" :class="tapped ? '' : 'hint'" @click="d=0; dOpen=true; tapped=true">
+          <svg class="tap-ico" x-show="!tapped" viewBox="0 0 24 24" fill="none"><path d="M9 11.5V5.8a1.8 1.8 0 0 1 3.6 0v5.7m0-1.4a1.8 1.8 0 0 1 3.6 0v1.4m0-.7a1.8 1.8 0 0 1 3.6 0v4.6a6.5 6.5 0 0 1-6.5 6.5h-1.3a6.6 6.6 0 0 1-5.3-2.7l-2.5-4a1.8 1.8 0 0 1 3-2l1.4 1.7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dtile-label">Answer Your Phone</span>
+        </button>
+
+        <button type="button" class="dtile" @click="d=1; dOpen=true; tapped=true">
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#C5A059" stroke-width="1.9" stroke-linejoin="round"/><path d="M14 2v6h6M8 13h6M8 17h4" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dtile-label">Chase Your Quotes</span>
+        </button>
+
+        <button type="button" class="dtile" @click="d=2; dOpen=true; tapped=true">
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="17" rx="2" stroke="#C5A059" stroke-width="1.9"/><path d="M16 2.5v4M8 2.5v4M3 10h18" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round"/><path d="M9 15l2 2 4-4" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dtile-label">Book &amp; Confirm Jobs</span>
+        </button>
+
+        <button type="button" class="dtile" @click="d=3; dOpen=true; tapped=true">
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 2.5h14v19l-2.3-1.6-2.35 1.6L12 20l-2.35 1.5-2.35-1.6L5 21.5z" stroke="#C5A059" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round"/></svg>
+          <span class="dtile-label">Follow Up On Invoices</span>
+        </button>
+
+        <button type="button" class="dtile" @click="d=4; dOpen=true; tapped=true">
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 3-6.7" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round"/><path d="M3 3.5V9h5.5" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4.5l3 1.5" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="dtile-label">Revive Your Old Quotes</span>
+        </button>
+
+        <button type="button" class="dtile" @click="d=5; dOpen=true; tapped=true">
+          <svg class="plus" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 20.5h18" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round"/><rect x="4.5" y="12" width="4" height="6" rx="1" stroke="#C5A059" stroke-width="1.9"/><rect x="10.5" y="8" width="4" height="10" rx="1" stroke="#C5A059" stroke-width="1.9"/><rect x="16.5" y="4" width="4" height="14" rx="1" stroke="#C5A059" stroke-width="1.9"/></svg>
+          <span class="dtile-label">Report Your Numbers</span>
+        </button>
+      </div>
+
+    <!-- ── DETAIL MODAL ────────────────────────────────────────────────
+         Opens over the page instead of expanding inline, so the CTA below
+         never gets pushed down. Every panel ends in its own booking button. -->
+    <div class="dmodal-overlay" x-show="dOpen" x-cloak @click.self="dOpen=false">
+      <div class="dmodal">
+        <button class="dmodal-close" @click="dOpen=false" aria-label="Close">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="#0A2342" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </button>
+
+        <div x-show="d===0">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Answer Your Phone</h3>
+          <p class="lead">Your coordinator picks up your main line, live, all day, while your guys are out on jobs. No voicemail. No &ldquo;leave a message and we'll get back to you.&rdquo;</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>A homeowner with water on the floor calls the next company on the list in about forty seconds. Every call you catch is a job that stays yours.</p>
+          </div>
+        </div>
+
+        <div x-show="d===1">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h6M8 17h4" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Chase Your Quotes</h3>
+          <p class="lead">Every estimate you send gets followed up on day one, day three, day seven, and day fourteen &mdash; by phone and by text &mdash; until they book it or tell you no.</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>Most quotes don't die because the price was wrong. They die because nobody called back. These are people who already told you they want the work.</p>
+          </div>
+        </div>
+
+        <div x-show="d===2">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 4.5h18v17H3zM16 2.5v4M8 2.5v4M3 10h18M9 15l2 2 4-4" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Book &amp; Confirm Jobs</h3>
+          <p class="lead">They put the job on your schedule, then call and text to confirm it before the truck rolls. If somebody cancels, they fill the slot.</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>Your guys spend the day working instead of driving to empty driveways. A full board is worth more than a busy one.</p>
+          </div>
+        </div>
+
+        <div x-show="d===3">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 2.5h14v19l-2.3-1.6-2.35 1.6L12 20l-2.35 1.5-2.35-1.6L5 21.5zM9 8h6M9 12h6M9 16h3" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Follow Up On Invoices</h3>
+          <p class="lead">Finished jobs that haven't been paid for get a friendly call and a text until the invoice clears. Same follow-up we run on your quotes, pointed at the money you've already earned.</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>You already did this work. Every week an invoice sits unpaid is your money funding somebody else's business instead of your payroll.</p>
+          </div>
+        </div>
+
+        <div x-show="d===4">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 3-6.7M3 3.5V9h5.5M12 8v4.5l3 1.5" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Revive Your Old Quotes</h3>
+          <p class="lead">In their second week, before they've taken a single live call, they work back through every open estimate already sitting in your system.</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>You already paid for those. The truck already rolled and the estimate already got written. This is money sitting on your own books.</p>
+          </div>
+        </div>
+
+        <div x-show="d===5">
+          <div class="dmodal-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 20.5h18M4.5 12h4v6h-4zM10.5 8h4v10h-4zM16.5 4h4v14h-4z" stroke="#C5A059" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Report Your Numbers</h3>
+          <p class="lead">Once a month you get one simple report: calls answered, quotes chased, jobs booked. No dashboard to learn, no login to remember.</p>
+          <div class="money">
+            <p class="mlabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> &nbsp;What it does to your money</p>
+            <p>You stop guessing whether your marketing works, because you can finally see what happens to a lead after it comes in.</p>
+          </div>
+        </div>
+
+        <!-- Booking button, present on every panel -->
+        <div class="dmodal-cta">
+          <button class="btn btn-accent" style="width:100%;justify-content:center;" @click="dOpen=false; applyOpen=true">
+            Book Your Free Lead-to-Job Diagnostic
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p style="font-size:.75rem;color:#7A7870;margin:.75rem 0 0;">Takes 30 seconds. If you&rsquo;re not a fit, we&rsquo;ll tell you on the call.</p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- Guarantee line, then CTA -->
+    <p style="font-size:clamp(1rem,1.9vw,1.1rem);font-weight:700;color:#0A2342;margin:0 0 1.25rem;">
+      And if you aren't fully satisfied, you don't pay a dime.
+    </p>
+
+    <!-- PRIMARY CTA -->
+    <div>
+      <button class="btn btn-accent" @click="applyOpen=true">
+        Book Your Free Lead-to-Job Diagnostic
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+
+
+    <!-- SOCIAL PROOF STRIP — omitted on purpose. No verified numbers exist for this offer yet.
+         Add three real stats here once the first Day-90 Results Review produces them. -->
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — VARIANT B (lean persuasion, no proof assets yet)
+     Problem → Mechanism → Guarantee → Who It's For / Not For
+     ═══════════════════════════════════════════════════ -->
+
+<!-- PROBLEM -->
+<section style="background:#F8F7F3;padding:4.5rem 1.25rem;border-top:1px solid #E2DFDA;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="rv" style="text-align:center;margin-bottom:2.5rem;">
+      <p class="sec-eyebrow">The Real Problem</p>
+      <h2 class="sec-h2" style="color:#0A2342;">Your leads aren't the problem.<br />Nobody owns the phone.</h2>
+      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:560px;margin:0 auto;">You're already paying for the calls. They come in at lunch, at 4:55, on a Saturday &mdash; and they go to voicemail. The estimate you sent Tuesday is still sitting there. That's not a lead problem. That's a front office problem.</p>
+    </div>
+    <div class="rv" style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
+        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I'm paying for leads and half of them go nowhere."</p>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">Every call that hits voicemail is a job you already bought and then handed to whoever picks up first.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
+        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I can't get off the phone. I'm quoting at night. I'm the bottleneck."</p>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">You're answering the business line from the truck and writing quotes at the kitchen table at nine at night.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
+        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I can't find good office help, and when I do they cost $50k+ and quit."</p>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">So the work lands back on you, or on an office manager who's already underwater.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
+        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">Nobody chases the estimates you've already sent.</p>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">Ask yourself who follows up on a quote that hasn't been answered in a week. The honest answer is usually nobody.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section style="background:#0A2342;padding:4.5rem 1.25rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="rv" style="text-align:center;margin-bottom:2.75rem;">
+      <p class="sec-eyebrow">What We Install</p>
+      <h2 class="sec-h2" style="color:#F8F7F3;">The Front Office System</h2>
+      <p style="font-size:1rem;color:rgba(248,247,243,.72);line-height:1.7;max-width:600px;margin:0 auto;">We place a trained, certified customer service coordinator into your home service business, install the phone, follow-up, and scheduling system they run on, and have them live on your phones within 30 days.</p>
+    </div>
+    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">One</p>
+        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Diagnostic</h3>
+        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">We audit your call flow, lead sources, quote pipeline, and scheduling process. You get a one-page Ops Map showing exactly where the revenue is leaking &mdash; missed calls, dead quotes, unconfirmed jobs. You have it in week one.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">Two</p>
+        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Install</h3>
+        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">Call routing so your main line gets answered live. An estimate follow-up cadence built into your own software so every open quote gets chased until it closes or dies. Booking and confirmation rules. A dashboard that reports the numbers back to you monthly.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">Three</p>
+        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Coordinator</h3>
+        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">One full-time coordinator, certified on our home service playbook before they ever touch your business. We employ them, so you get the output without the employer liability. If the hire isn't working, we replace them free for as long as they're with you.</p>
+      </div>
+
+    </div>
+
+    <div class="rv" style="margin-top:2rem;background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.25);border-radius:12px;padding:1.5rem 1.75rem;">
+      <p style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .625rem;">What this is not</p>
+      <p style="font-size:.9375rem;color:rgba(248,247,243,.75);line-height:1.7;margin:0;">This isn't lead generation. We don't create demand and we won't pretend to. This converts the leads you already pay for. It's also not a virtual receptionist reading a script off a card &mdash; it's one dedicated coordinator who learns your services, your pricing, and your service area, and runs your front office.</p>
+    </div>
+
+    <div class="rv" style="text-align:center;margin-top:2.25rem;">
+      <button class="btn btn-accent" @click="applyOpen=true">
+        Book Your Free Lead-to-Job Diagnostic
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEES -->
+<!-- ⚠️ SAM DECISION PENDING. These three replace the single 30-Day Launch Guarantee from offer
+     doc §2.4, which said we deliberately do NOT guarantee revenue. The ROI guarantee below does
+     guarantee revenue. Three things still need defining before this is contractual copy:
+       1. When does the 7-day clock start — purchase date, or kickoff call?
+       2. What counts as "made your investment back," and who measures it? Upfront only, or
+          upfront plus recurring? Attribution to coordinator-handled calls needs a defined source.
+       3. "Until you do" is currently uncapped. The comparable SWS guarantee caps at 60 extra days.
+     Placeholder wording below is written to be honest and readable, not to be signed. -->
+<section style="background:#fff;padding:4.5rem 1.25rem;">
+  <div style="max-width:1000px;margin:0 auto;">
+
+    <div class="rv" style="text-align:center;margin-bottom:2.75rem;">
+      <p class="sec-eyebrow">Your Risk, Handled</p>
+      <h2 class="sec-h2" style="color:#0A2342;">Three guarantees, in plain English</h2>
+      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:560px;margin:0 auto;">You've been sold to before. So here's exactly what we put on the line, and exactly what happens if we don't hold up our end.</p>
+    </div>
+
+    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;">
+
+      <!-- 1. 7-Day Money-Back -->
+      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 3-6.7" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">7-Day Money-Back Guarantee</h3>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">Take the first week and make sure this is right for your business. If you decide it isn't, tell us any time in those seven days and we'll send back every dollar. You don't owe us a reason, and there's no exit call to sit through.</p>
+      </div>
+
+      <!-- 2. ROI -->
+      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">Return On Investment Guarantee</h3>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">Your coordinator should pay for themselves out of the jobs they book. If you haven't made your investment back within 60 days, we don't walk away and we don't bill you again &mdash; we keep working with you for free until you have.</p>
+      </div>
+
+      <!-- 3. Free Replacement -->
+      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#C5A059" stroke-width="2"/><path d="M17 8h5M19.5 5.5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">Free Replacement Guarantee</h3>
+        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">If your coordinator isn't meeting your standard, that's not yours to fix or manage. Say the word and we replace them free. We keep certified coordinators on the bench, so the person stepping in is already trained and ready to go.</p>
+      </div>
+
+    </div>
+
+    <p class="rv" style="font-size:.9375rem;color:#7A7870;line-height:1.7;margin:2rem auto 0;max-width:620px;text-align:center;">And here's what we won't do: promise you a close rate we don't control, or quote you a revenue number we made up to get you on a call.</p>
+
+    <div class="rv" style="text-align:center;margin-top:2.25rem;">
+      <button class="btn btn-accent" @click="applyOpen=true">
+        Book Your Free Lead-to-Job Diagnostic
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO IT'S FOR / NOT FOR -->
+<section style="background:#F8F7F3;padding:4.5rem 1.25rem;border-top:1px solid #E2DFDA;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="rv" style="text-align:center;margin-bottom:2.5rem;">
+      <p class="sec-eyebrow">Fit Check</p>
+      <h2 class="sec-h2" style="color:#0A2342;">This works for some companies and not others</h2>
+      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:540px;margin:0 auto;">We'd rather tell you now than waste your time on a call.</p>
+    </div>
+    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
+
+      <div style="background:#fff;border:1px solid #E2DFDA;border-top:3px solid #1F9D55;border-radius:12px;padding:1.75rem 1.5rem;">
+        <h3 style="font-size:1.05rem;font-weight:800;color:#0A2342;margin:0 0 1rem;">It's a fit if&hellip;</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You're doing $1M or more a year &mdash; roughly $85k a month or better.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You already run on ServiceTitan, Housecall Pro, or Jobber.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You've got inbound leads coming in &mdash; LSA, Google Ads, Angi, or heavy repeat and referral.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You've got techs in the field and you know calls are getting missed.</span></li>
+        </ul>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E2DFDA;border-top:3px solid #C44536;border-radius:12px;padding:1.75rem 1.5rem;">
+        <h3 style="font-size:1.05rem;font-weight:800;color:#0A2342;margin:0 0 1rem;">It's not a fit if&hellip;</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You're under $1M or running a single truck.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You're still on paper with no field service software.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>What you actually need is more leads. That's a different problem and we're not the ones to fix it.</span></li>
+          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You want somebody cold calling homeowners. We don't do that.</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="rv" style="text-align:center;margin-top:2.75rem;">
+      <button class="btn btn-accent" @click="applyOpen=true">
+        Book Your Free Lead-to-Job Diagnostic
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p style="font-size:.8125rem;color:#7A7870;margin:.875rem 0 0;">Takes 30 seconds. If you're not a fit, we'll tell you on the call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     POPUP APPLICATION OVERLAY
+     Step 1: Contact info — ALWAYS FIRST
+     Steps 2-4: The three hard qualifiers from the ICP
+     Step 5: Calendar embed
+     ═══════════════════════════════════════════════════ -->
+<div class="apply-overlay" x-show="applyOpen" x-cloak :class="{'cal-mode':formStep===5}" @click.self="applyOpen=false">
+  <div class="apply-modal" :class="{'cal-mode':formStep===5}">
+
+    <!-- Close -->
+    <button @click="applyOpen=false" style="position:absolute;top:16px;right:16px;background:#F8F7F3;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="#1A1917" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- Progress bar -->
+    <div style="height:4px;background:#F8F7F3;border-radius:20px 20px 0 0;overflow:hidden;">
+      <div style="height:100%;background:#C5A059;transition:width .3s;" :style="`width:${(formStep/5)*100}%`"></div>
+    </div>
+
+    <!-- STEP 1: Contact info -->
+    <div x-show="formStep===1" style="padding:2rem 2rem 2.5rem;">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 1 of 4</p>
+      <h2 style="font-size:1.5rem;font-weight:800;color:#0A2342;margin:0 0 .375rem;">Book Your Free Lead-to-Job Diagnostic</h2>
+      <p style="font-size:.9375rem;color:#4A4840;margin:0 0 1.75rem;">Takes 30 seconds. No commitment.</p>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="display:flex;gap:.75rem;">
+          <input class="form-input" type="text" placeholder="First name" x-model="firstName" />
+          <input class="form-input" type="text" placeholder="Last name" x-model="lastName" />
+        </div>
+        <input class="form-input" type="email" placeholder="Email address" x-model="email" />
+        <div id="iti-wrapper">
+          <input class="form-input" type="tel" id="phone-input" placeholder="Phone number" x-model="phone" />
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <button class="btn btn-accent" :disabled="!canNext1()" @click="formStep=2"
+          style="width:100%;justify-content:center;"
+          :style="!canNext1()?'opacity:.35;cursor:not-allowed':''">
+          Continue &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Revenue — hard qualifier #1 -->
+    <div x-show="formStep===2" style="padding:2rem 2rem 2.5rem;">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 2 of 4</p>
+      <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">Roughly what are you doing in monthly revenue?</h2>
+      <div style="display:flex;flex-direction:column;gap:.625rem;">
+        <button class="qtile" :class="q1==='a'?'sel':''" @click="q1='a';formStep=3">Under $85k/month</button>
+        <button class="qtile" :class="q1==='b'?'sel':''" @click="q1='b';formStep=3">$85k &ndash; $250k/month</button>
+        <button class="qtile" :class="q1==='c'?'sel':''" @click="q1='c';formStep=3">$250k &ndash; $850k/month</button>
+        <button class="qtile" :class="q1==='d'?'sel':''" @click="q1='d';formStep=3">$850k+/month</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: FSM software — the single most important filter -->
+    <div x-show="formStep===3" style="padding:2rem 2rem 2.5rem;">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 3 of 4</p>
+      <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">What software do you run your jobs on?</h2>
+      <div style="display:flex;flex-direction:column;gap:.625rem;">
+        <button class="qtile" :class="q2==='a'?'sel':''" @click="q2='a';formStep=4">ServiceTitan</button>
+        <button class="qtile" :class="q2==='b'?'sel':''" @click="q2='b';formStep=4">Housecall Pro</button>
+        <button class="qtile" :class="q2==='c'?'sel':''" @click="q2='c';formStep=4">Jobber</button>
+        <button class="qtile" :class="q2==='d'?'sel':''" @click="q2='d';formStep=4">Something else</button>
+        <button class="qtile" :class="q2==='e'?'sel':''" @click="q2='e';formStep=4">Nothing &mdash; we're on paper and spreadsheets</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Lead flow — hard qualifier #3 -->
+    <div x-show="formStep===4" style="padding:2rem 2rem 2.5rem;">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 4 of 4 &mdash; Almost there</p>
+      <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">Where do your calls come from today?</h2>
+      <div style="display:flex;flex-direction:column;gap:.625rem;">
+        <button class="qtile" :class="q3==='a'?'sel':''" @click="q3='a';formStep=5">We pay for leads &mdash; LSA, Google Ads, or Angi</button>
+        <button class="qtile" :class="q3==='b'?'sel':''" @click="q3='b';formStep=5">Mostly repeat customers and referrals</button>
+        <button class="qtile" :class="q3==='c'?'sel':''" @click="q3='c';formStep=5">Both &mdash; paid leads and a strong referral base</button>
+        <button class="qtile" :class="q3==='d'?'sel':''" @click="q3='d';formStep=5">Honestly, we need more leads coming in</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Booking — custom calendar, no third-party embed -->
+    <div x-show="formStep===5" style="padding:1.75rem 1.75rem 2rem;">
+
+      <!-- Picker (hidden once booked) -->
+      <div x-show="!booked">
+        <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Last step</p>
+        <h2 style="font-size:1.375rem;font-weight:800;color:#0A2342;margin:0 0 .375rem;letter-spacing:-.02em;">Pick a time that works</h2>
+        <p style="font-size:.9375rem;color:#4A4840;margin:0 0 1.5rem;">We've got your details &mdash; just grab a slot.</p>
+
+        <!-- Month nav -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem;">
+          <button type="button" class="cal-nav" @click="shiftMonth(-1)" :disabled="atFirstMonth()" :style="atFirstMonth() ? 'opacity:.25;cursor:not-allowed' : ''" aria-label="Previous month">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span style="font-size:1rem;font-weight:800;color:#0A2342;letter-spacing:-.01em;" x-text="monthLabel()"></span>
+          <button type="button" class="cal-nav" @click="shiftMonth(1)" aria-label="Next month">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Day-of-week header -->
+        <div class="cal-grid" style="margin-bottom:.25rem;">
+          <template x-for="(d, i) in dow" :key="i">
+            <div style="text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A9A69E;padding:.25rem 0;" x-text="d"></div>
+          </template>
+        </div>
+
+        <!-- Days -->
+        <div class="cal-grid">
+          <template x-for="(c, i) in cells()" :key="i">
+            <div>
+              <template x-if="c === null"><div></div></template>
+              <template x-if="c !== null">
+                <button type="button" class="cal-day"
+                        :class="{'off': dayOff(c), 'sel': selDay === c}"
+                        :disabled="dayOff(c)"
+                        @click="pickDay(c)"
+                        x-text="c"></button>
+              </template>
+            </div>
+          </template>
+        </div>
+
+        <!-- Times -->
+        <div x-show="selDay" style="margin-top:1.375rem;padding-top:1.25rem;border-top:1px solid #E2DFDA;">
+          <p style="font-size:.875rem;font-weight:700;color:#0A2342;margin:0 0 .125rem;" x-text="dayLabel()"></p>
+          <p style="font-size:.75rem;color:#7A7870;margin:0 0 .875rem;">All times <span x-text="tzLabel()"></span></p>
+          <div class="slot-grid">
+            <template x-for="t in slots" :key="t">
+              <button type="button" class="slot" :class="selTime === t ? 'sel' : ''" @click="selTime = t" x-text="t"></button>
+            </template>
+          </div>
+        </div>
+
+        <!-- Confirm -->
+        <div x-show="selDay && selTime" style="margin-top:1.5rem;">
+          <button class="btn btn-accent" style="width:100%;justify-content:center;" @click="confirmBooking()" :disabled="booking">
+            <span x-show="!booking">Confirm <span x-text="dayLabel()"></span> at <span x-text="selTime"></span></span>
+            <span x-show="booking">Booking&hellip;</span>
+          </button>
+        </div>
+
+        <!-- Moved here from the hero: what actually happens on the call -->
+        <div style="margin-top:1.75rem;padding-top:1.375rem;border-top:1px solid #E2DFDA;text-align:left;">
+          <p style="font-size:.72rem;font-weight:700;color:#7A7870;text-transform:uppercase;letter-spacing:.12em;margin:0 0 .75rem;">On this call we'll:</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            <div style="display:flex;align-items:flex-start;gap:.625rem;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#C5A059" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size:.875rem;color:#4A4840;line-height:1.5;">Map where your calls, your quotes, and your schedule are leaking revenue right now</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.625rem;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#C5A059" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size:.875rem;color:#4A4840;line-height:1.5;">Run the real math on your missed calls and your open estimates nobody has chased</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:.625rem;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:3px;"><path d="M1 7l4 4L13 3" stroke="#C5A059" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size:.875rem;color:#4A4840;line-height:1.5;">Show you exactly what gets installed, who runs it day to day, and what it costs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booked confirmation -->
+      <div x-show="booked" x-cloak style="text-align:center;padding:1.5rem 0 .5rem;">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:62px;height:62px;border-radius:50%;background:#071f12;border:2px solid #00B67A;margin-bottom:1.25rem;">
+          <svg width="28" height="28" viewBox="0 0 30 30" fill="none"><path d="M6 15l7 8L24 8" stroke="#00B67A" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 style="font-size:1.5rem;font-weight:800;color:#0A2342;margin:0 0 .5rem;letter-spacing:-.02em;">You're booked<span x-text="firstName ? ', ' + firstName : ''"></span>.</h2>
+        <p style="font-size:1rem;color:#4A4840;line-height:1.6;margin:0 0 1.25rem;">
+          <strong style="color:#0A2342;" x-text="dayLabel()"></strong> at <strong style="color:#0A2342;" x-text="selTime"></strong>
+          <span style="display:block;font-size:.875rem;color:#7A7870;margin-top:.375rem;">Confirmation and calendar invite are on their way to <span x-text="email"></span>.</span>
+        </p>
+        <!-- ⚠️ Placeholder confirmation. Once the backend exists this should redirect to
+             thank-you.html with the booking params instead of rendering here. -->
+        <button class="btn btn-accent" style="width:100%;justify-content:center;" @click="applyOpen=false">Done</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     MOBILE STICKY CTA BAR
+     ═══════════════════════════════════════════════════ -->
+<div id="mob-cta" style="align-items:center;justify-content:center;background:#fff;box-shadow:0 -4px 16px rgba(10,35,66,.08);">
+  <button class="btn btn-accent" @click="applyOpen=true" style="width:100%;justify-content:center;">
+    Book Your Free Lead-to-Job Diagnostic
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════ -->
+<footer style="background:#0A2342;padding:3rem 1.25rem;text-align:center;">
+  <!-- NOTE: this logo PNG has no alpha channel — its background is solid white. It needs a light
+       chip behind it on any dark surface. Swap for a transparent PNG/SVG if the client has one. -->
+  <div style="width:72px;height:72px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto .875rem;overflow:hidden;">
+    <img src="https://assets.cdn.filesafe.space/HllUVzV8V6VFH4nUuq4W/media/6997726b8d5b5a7d548bdb90.png" alt="Five Star Assistants" style="width:100%;height:100%;object-fit:contain;display:block;" />
+  </div>
+  <p style="font-size:1rem;font-weight:700;color:#F8F7F3;margin:0 0 .375rem;">Five Star Assistants</p>
+  <p style="font-size:.8125rem;color:rgba(248,247,243,.4);margin:0;">fivestarassistants.com</p>
+  <div style="margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+    <a href="https://www.fivestarassistants.com/privacy" style="font-size:.75rem;color:rgba(248,247,243,.35);text-decoration:none;">Privacy Policy</a>
+    <a href="https://www.fivestarassistants.com/terms" style="font-size:.75rem;color:rgba(248,247,243,.35);text-decoration:none;">Terms</a>
+  </div>
+</footer>
+
+<script>
+// intl-tel-input phone field
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('phone-input');
+  if (input && window.intlTelInput) {
+    intlTelInput(input, {
+      utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js',
+      initialCountry: 'us',
+      preferredCountries: ['us', 'ca', 'gb', 'au']
+    });
+  }
+});
+
+// Mobile sticky CTA — show after hero scrolls out
+const mobCta = document.getElementById('mob-cta');
+if (mobCta) {
+  const hero = document.querySelector('section');
+  if (hero) {
+    new IntersectionObserver(([e]) => {
+      mobCta.style.display = e.isIntersecting ? 'none' : 'flex';
+    }, { threshold: 0.1 }).observe(hero);
+  }
+}
+
+// Scroll-reveal
+const rvEls = document.querySelectorAll('.rv');
+if (rvEls.length) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  rvEls.forEach(el => io.observe(el));
+}
+</script>
+
+</div><!-- end Alpine wrapper -->
+</body>
+</html>

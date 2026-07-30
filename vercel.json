@@ -1,6 +1,18 @@
 {
     "rewrites": [
         {
+            "source": "/Home-Service-Offer",
+            "destination": "/Home-Service-Offer/index.html"
+        },
+        {
+            "source": "/home-service-offer",
+            "destination": "/Home-Service-Offer/index.html"
+        },
+        {
+            "source": "/Home-Service-Offer/thank-you",
+            "destination": "/Home-Service-Offer/thank-you.html"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
