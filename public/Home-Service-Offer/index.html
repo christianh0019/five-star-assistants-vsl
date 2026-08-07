@@ -52,9 +52,7 @@
     .iti__tel-input:focus{border-color:#C5A059}
     .sec-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#C5A059;margin:0 0 .875rem}
     .sec-h2{font-size:clamp(1.6rem,4vw,2.35rem);font-weight:800;letter-spacing:-.025em;line-height:1.12;margin:0 0 .875rem}
-    #mob-cta{display:none}
     @media(max-width:767px){
-      #mob-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;background:#fff;border-top:1px solid #E2DFDA;padding:.875rem 1.25rem}
       .btn-accent{font-size:.9375rem;padding:.875rem 1.375rem}
       .apply-overlay{padding:0}
       .apply-modal{max-width:none;min-height:100vh;border-radius:0;margin:0}
@@ -394,66 +392,83 @@
   <div style="max-width:720px;margin:0 auto;">
 
     <div class="rv" style="text-align:center;margin-bottom:2.25rem;">
-      <p class="sec-eyebrow">Questions</p>
       <h2 class="sec-h2" style="color:#0A2342;">Common questions</h2>
     </div>
 
     <div class="rv" x-data="{ f: null }">
+
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===0 ? null : 0" :class="f===0?'open':''">
           <span>Will my customers be able to tell?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===0" x-collapse><p>We hire for customer service experience and clear phone English, and every coordinator passes scored practice calls before they are placed with you. We review real call recordings in their first week and coach the same day. If you would rather start them on overflow and after hours calls before they take your main line, we set it up that way.</p></div>
+        <div class="faq-a" x-show="f===0" x-collapse><p>We only place the top one percent of the people we see. It is normal for us to screen more than two hundred candidates before we place one. Every coordinator has at least two years of experience on the phone, and before they take a single call for you they are fully trained on your scripts, your services and your pricing. We review their real call recordings in the first week and coach the same day.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===1 ? null : 1" :class="f===1?'open':''">
-          <span>How does the guarantee work?</span>
+          <span>How do I see whether it is working?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===1" x-collapse><p>We measure the revenue you win from the leads you are already paying for, against the baseline you give us before we start. If we have not brought you back at least double what you paid us, you do not pay for the service. You are also free to cancel inside the first seven days for any reason and we refund you the same day.</p></div>
+        <div class="faq-a" x-show="f===1" x-collapse><p>You get a dashboard, and everything the coordinator does lands in it. Every call they make is logged and their manager listens back to them. You can see how many calls went out, how quickly they got to each new lead, how many of those leads they booked and at what rate, how many estimates went out, how many of those closed off their follow up, and the revenue behind all of it. If you want to check any single call, the recording is there.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===2 ? null : 2" :class="f===2?'open':''">
-          <span>I already have an office manager. Is this replacing her?</span>
+          <span>What do you set up on the tech side?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===2" x-collapse><p>No, and it works considerably better when she is part of it. She keeps dispatch, the difficult customers, and the calls that need somebody who knows your business well. The coordinator takes the ringing phone and the follow up nobody currently has time for. Most office managers end up being the reason a company adds a second coordinator.</p></div>
+        <div class="faq-a" x-show="f===2" x-collapse><p>All of it, and it is done before your coordinator starts. We provide the dialer, write the call scripts for your services, build the follow up sequences, and connect the whole thing to the CRM you already run on so every lead, call and quote sits in one place. Setup is on us and it takes about a week.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===3 ? null : 3" :class="f===3?'open':''">
-          <span>What if the person is not the right fit?</span>
+          <span>How does the guarantee work?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===3" x-collapse><p>You tell us and we replace them at no cost, for as long as they are with you. We keep trained coordinators on the bench, so you are not waiting weeks while we recruit. Managing them is our responsibility, not yours.</p></div>
+        <div class="faq-a" x-show="f===3" x-collapse><p>We measure the revenue you win from the leads you are already paying for, against the baseline you give us before we start. If we have not brought you back at least double what you paid us, you do not pay for the service. You are also free to cancel inside the first seven days for any reason and we refund you the same day.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===4 ? null : 4" :class="f===4?'open':''">
-          <span>Do I have to change the software I run on?</span>
+          <span>I already have an office manager. Is this replacing them?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===4" x-collapse><p>No. We build everything inside what you already use, whether that is ServiceTitan, Housecall Pro, Jobber or something else. If you are not on a system yet, we provide one and route your website, your ads and your lead sources into it. That takes us an afternoon and costs you nothing extra.</p></div>
+        <div class="faq-a" x-show="f===4" x-collapse><p>No, and it works considerably better when they are part of it. They keep dispatch, the difficult customers, and the calls that need somebody who knows your business well. The coordinator takes the ringing phone and the follow up nobody currently has time for. Most office managers end up being the reason a company adds a second coordinator.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===5 ? null : 5" :class="f===5?'open':''">
-          <span>Is this an answering service?</span>
+          <span>What if the person is not the right fit?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===5" x-collapse><p>No. An answering service reads your company name off a card and takes a message. This is one person who learns your services, your pricing and your service area, then books the job and follows up on the quote afterwards. They work for you full time rather than being shared across dozens of companies.</p></div>
+        <div class="faq-a" x-show="f===5" x-collapse><p>You tell us and we replace them at no cost, for as long as they are with you. We keep trained coordinators on the bench, so you are not waiting weeks while we recruit. Managing them is our responsibility, not yours.</p></div>
       </div>
 
       <div class="faq">
         <button type="button" class="faq-q" @click="f = f===6 ? null : 6" :class="f===6?'open':''">
+          <span>Do I have to change the software I run on?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===6" x-collapse><p>No. We build everything inside what you already use, whether that is ServiceTitan, Housecall Pro, Jobber or something else. If you are not on a system yet, we provide one at no extra cost.</p></div>
+      </div>
+
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===7 ? null : 7" :class="f===7?'open':''">
+          <span>Is this an answering service?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===7" x-collapse><p>No. An answering service reads your company name off a card and takes a message. This is one person who learns your services, your pricing and your service area, then books the job and follows up on the quote afterwards. They work for you full time rather than being shared across dozens of companies.</p></div>
+      </div>
+
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===8 ? null : 8" :class="f===8?'open':''">
           <span>Who is this not for?</span>
           <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="faq-a" x-show="f===6" x-collapse><p>Single truck operations, companies under roughly a million a year, and anyone who wants outbound cold calling, which we do not do. If your phone genuinely is not ringing, you need a marketing company before you need us, and we will tell you that on the call rather than sell you anyway.</p></div>
+        <div class="faq-a" x-show="f===8" x-collapse><p>Single truck operations, companies under roughly a million a year, and anyone who wants outbound cold calling, which we do not do. If your phone genuinely is not ringing, you need a marketing company before you need us, and we will tell you that on the call rather than sell you anyway.</p></div>
       </div>
+
     </div>
 
     <div class="rv" style="text-align:center;margin-top:2.75rem;">
@@ -648,31 +663,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
-     MOBILE STICKY CTA BAR
-     ═══════════════════════════════════════════════════ -->
-<div id="mob-cta" style="align-items:center;justify-content:center;background:#fff;box-shadow:0 -4px 16px rgba(10,35,66,.08);">
-  <button class="btn btn-accent" @click="applyOpen=true" style="width:100%;justify-content:center;">
-    Book Your Free Lead-to-Job Diagnostic
-  </button>
-</div>
 
-<!-- ═══════════════════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════════════════ -->
-<footer style="background:#0A2342;padding:3rem 1.25rem;text-align:center;">
-  <!-- NOTE: this logo PNG has no alpha channel its background is solid white. It needs a light
-       chip behind it on any dark surface. Swap for a transparent PNG/SVG if the client has one. -->
-  <div style="width:72px;height:72px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto .875rem;overflow:hidden;">
-    <img src="https://assets.cdn.filesafe.space/HllUVzV8V6VFH4nUuq4W/media/6997726b8d5b5a7d548bdb90.png" alt="Five Star Assistants" style="width:100%;height:100%;object-fit:contain;display:block;" />
-  </div>
-  <p style="font-size:1rem;font-weight:700;color:#F8F7F3;margin:0 0 .375rem;">Five Star Assistants</p>
-  <p style="font-size:.8125rem;color:rgba(248,247,243,.4);margin:0;">fivestarassistants.com</p>
-  <div style="margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
-    <a href="https://www.fivestarassistants.com/privacy" style="font-size:.75rem;color:rgba(248,247,243,.35);text-decoration:none;">Privacy Policy</a>
-    <a href="https://www.fivestarassistants.com/terms" style="font-size:.75rem;color:rgba(248,247,243,.35);text-decoration:none;">Terms</a>
-  </div>
-</footer>
 
 <script>
 // intl-tel-input phone field
@@ -687,16 +678,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Mobile sticky CTA show after hero scrolls out
-const mobCta = document.getElementById('mob-cta');
-if (mobCta) {
-  const hero = document.querySelector('section');
-  if (hero) {
-    new IntersectionObserver(([e]) => {
-      mobCta.style.display = e.isIntersecting ? 'none' : 'flex';
-    }, { threshold: 0.1 }).observe(hero);
-  }
-}
 
 // Scroll-reveal
 const rvEls = document.querySelectorAll('.rv');
