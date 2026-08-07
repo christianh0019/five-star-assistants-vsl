@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Five Star Assistants | Free Lead-to-Job Diagnostic</title>
-  <meta name="description" content="For home service businesses doing $1M–$10M: get more jobs from the leads you're already paying for. We build your front office system and place a trained coordinator to respond to leads instantly, book jobs, run follow-ups, and chase quotes." />
+  <meta name="description" content="For home service businesses doing $1M to $10M: get more jobs from the leads you're already paying for. We build your front office system and place a trained coordinator to respond to leads instantly, book jobs, run follow-ups, and chase quotes." />
   <link rel="icon" type="image/png" href="https://www.fivestarassistants.com/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
@@ -20,6 +20,7 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1605542917395404&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel -->
 
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.1/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.css"/>
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js" defer></script>
@@ -67,6 +68,14 @@
     .dtile .plus{position:absolute;top:7px;right:9px;width:13px;height:13px;color:#C8C4BE;transition:color .18s,transform .22s}
     .dtile:hover .plus{color:#C5A059}
     .dtile.on .plus{color:#C5A059;transform:rotate(135deg)}
+    /* ── FAQ ─────────────────────────────────────────────────────────── */
+    .faq{border-bottom:1px solid #E2DFDA}
+    .faq-q{width:100%;background:none;border:none;font-family:inherit;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.125rem 0;cursor:pointer;font-size:1rem;font-weight:700;color:#0A2342;line-height:1.4;transition:color .15s}
+    .faq-q:hover{color:#8A6D2F}
+    .faq-ico{width:14px;height:14px;flex-shrink:0;color:#C5A059;transition:transform .25s}
+    .faq-q.open .faq-ico{transform:rotate(135deg)}
+    .faq-a p{font-size:.9375rem;color:#4A4842;line-height:1.75;margin:0 0 1.125rem}
+
     /* ── Booking calendar (step 5) ───────────────────────────────────── */
     .cal-nav{background:#F8F7F3;border:1px solid #E2DFDA;border-radius:9px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#0A2342;transition:background .15s,border-color .15s}
     .cal-nav:hover:not(:disabled){background:#FDF6E3;border-color:#C5A059}
@@ -88,7 +97,7 @@
     .dtile.hint{border-color:#C5A059;animation:tilepulse 2.4s ease-out infinite}
     .dtile.hint:hover{animation:none}
     .tap-ico{position:absolute;bottom:6px;right:7px;width:17px;height:17px;color:#C5A059;animation:tapbob 2.4s ease-in-out infinite}
-    /* Detail modal — opens on tile click so the CTA below never gets pushed down */
+    /* Detail modal opens on tile click so the CTA below never gets pushed down */
     @keyframes dpop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
     .dmodal-overlay{position:fixed;inset:0;z-index:450;background:rgba(10,35,66,.74);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
     .dmodal{width:100%;max-width:520px;background:#fff;border-radius:20px;padding:2rem 2rem 1.75rem;position:relative;text-align:left;margin:auto;box-shadow:0 30px 80px -20px rgba(10,35,66,.55);animation:dpop .24s cubic-bezier(.16,1,.3,1)}
@@ -129,12 +138,12 @@
      Self-contained date/time picker. Availability is currently generated
      client-side: weekdays only, fixed hourly slots, no real-time check
      against a live calendar.
-     ⚠️ WIRE-UP NEEDED before this takes real bookings — see BUILD NOTES:
+     ⚠️ WIRE-UP NEEDED before this takes real bookings see BUILD NOTES:
        1. Replace slot generation with live free/busy from Google Calendar.
        2. POST the selection (name, email, phone, q1-q3, date, time, tz)
           to whatever creates the event and sends the confirmation email.
        3. Redirect to thank-you.html with Calendly-style params so the
-          confirmation page can populate — it already reads them. */
+          confirmation page can populate it already reads them. */
   today: (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })(),
   viewY: new Date().getFullYear(),
   viewM: new Date().getMonth(),
@@ -181,7 +190,7 @@
   });
 " @keydown.escape.window="applyOpen=false">
 
-<!-- Netlify hidden form — captures leads even if they don't book -->
+<!-- Netlify hidden form captures leads even if they don't book -->
 <form name="lead-backup" netlify hidden>
   <input name="firstName"/><input name="lastName"/><input name="email"/>
   <input name="phone"/><input name="q1"/><input name="q2"/><input name="q3"/>
@@ -189,7 +198,7 @@
 </form>
 
 <!-- ═══════════════════════════════════════════════════
-     HERO — NO NAV. Page opens directly here.
+     HERO NO NAV. Page opens directly here.
      ═══════════════════════════════════════════════════ -->
 <section class="hero-sec" style="background:#ffffff;padding-top:1rem;padding-bottom:3.5rem;">
   <div style="max-width:860px;margin:0 auto;padding:0 1.25rem;text-align:center;">
@@ -207,13 +216,13 @@
       Get More Jobs From The Leads You're Already Paying For.
     </h1>
 
-    <!-- Subheadline — leads directly into the clickable blocks below -->
+    <!-- Subheadline leads directly into the clickable blocks below -->
     <p class="h3 hero-sub" style="font-size:clamp(1.02rem,1.9vw,1.15rem);color:#4A4840;line-height:1.62;max-width:600px;margin:0 auto 1.5rem;">
-      We'll build your front office system and place and manage a trained coordinator to&hellip;
+      Our fully trained team will&hellip;
     </p>
 
     <!-- ═══════════════════════════════════════════════════
-         WHAT YOUR COORDINATOR DOES — 6 clickable blocks.
+         WHAT YOUR COORDINATOR DOES 6 clickable blocks.
          Replaces the VSL video. Home service owners don't watch videos (client's call),
          so the explanation is something they tap through instead of sit through.
          Block 1 is open by default so the click affordance is obvious on arrival.
@@ -359,7 +368,7 @@
 
     <!-- Guarantee line, then CTA -->
     <p style="font-size:clamp(1rem,1.9vw,1.1rem);font-weight:700;color:#0A2342;margin:0 0 1.25rem;">
-      And if you aren't fully satisfied, you don't pay a dime.
+      And if you don&rsquo;t double what you paid us in extra revenue, it&rsquo;s free.
     </p>
 
     <!-- PRIMARY CTA -->
@@ -372,181 +381,79 @@
 
 
 
-    <!-- SOCIAL PROOF STRIP — omitted on purpose. No verified numbers exist for this offer yet.
+    <!-- SOCIAL PROOF STRIP omitted on purpose. No verified numbers exist for this offer yet.
          Add three real stats here once the first Day-90 Results Review produces them. -->
 
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 2 — VARIANT B (lean persuasion, no proof assets yet)
-     Problem → Mechanism → Guarantee → Who It's For / Not For
+     FAQ. The only section below the hero.
      ═══════════════════════════════════════════════════ -->
-
-<!-- PROBLEM -->
 <section style="background:#F8F7F3;padding:4.5rem 1.25rem;border-top:1px solid #E2DFDA;">
-  <div style="max-width:760px;margin:0 auto;">
-    <div class="rv" style="text-align:center;margin-bottom:2.5rem;">
-      <p class="sec-eyebrow">The Real Problem</p>
-      <h2 class="sec-h2" style="color:#0A2342;">Your leads aren't the problem.<br />Nobody owns the phone.</h2>
-      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:560px;margin:0 auto;">You're already paying for the calls. They come in at lunch, at 4:55, on a Saturday &mdash; and they go to voicemail. The estimate you sent Tuesday is still sitting there. That's not a lead problem. That's a front office problem.</p>
-    </div>
-    <div class="rv" style="display:flex;flex-direction:column;gap:1rem;">
-      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
-        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I'm paying for leads and half of them go nowhere."</p>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">Every call that hits voicemail is a job you already bought and then handed to whoever picks up first.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
-        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I can't get off the phone. I'm quoting at night. I'm the bottleneck."</p>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">You're answering the business line from the truck and writing quotes at the kitchen table at nine at night.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
-        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">"I can't find good office help, and when I do they cost $50k+ and quit."</p>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">So the work lands back on you, or on an office manager who's already underwater.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #E2DFDA;border-left:3px solid #C5A059;border-radius:10px;padding:1.25rem 1.5rem;">
-        <p style="font-size:1rem;font-weight:700;color:#0A2342;margin:0 0 .25rem;">Nobody chases the estimates you've already sent.</p>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.6;margin:0;">Ask yourself who follows up on a quote that hasn't been answered in a week. The honest answer is usually nobody.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <div style="max-width:720px;margin:0 auto;">
 
-<!-- MECHANISM -->
-<section style="background:#0A2342;padding:4.5rem 1.25rem;">
-  <div style="max-width:900px;margin:0 auto;">
-    <div class="rv" style="text-align:center;margin-bottom:2.75rem;">
-      <p class="sec-eyebrow">What We Install</p>
-      <h2 class="sec-h2" style="color:#F8F7F3;">The Front Office System</h2>
-      <p style="font-size:1rem;color:rgba(248,247,243,.72);line-height:1.7;max-width:600px;margin:0 auto;">We place a trained, certified customer service coordinator into your home service business, install the phone, follow-up, and scheduling system they run on, and have them live on your phones within 30 days.</p>
-    </div>
-    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
-
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">One</p>
-        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Diagnostic</h3>
-        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">We audit your call flow, lead sources, quote pipeline, and scheduling process. You get a one-page Ops Map showing exactly where the revenue is leaking &mdash; missed calls, dead quotes, unconfirmed jobs. You have it in week one.</p>
-      </div>
-
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">Two</p>
-        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Install</h3>
-        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">Call routing so your main line gets answered live. An estimate follow-up cadence built into your own software so every open quote gets chased until it closes or dies. Booking and confirmation rules. A dashboard that reports the numbers back to you monthly.</p>
-      </div>
-
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(197,160,89,.28);border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <p style="font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .75rem;">Three</p>
-        <h3 style="font-size:1.15rem;font-weight:800;color:#F8F7F3;margin:0 0 .625rem;letter-spacing:-.01em;">The Coordinator</h3>
-        <p style="font-size:.9375rem;color:rgba(248,247,243,.68);line-height:1.65;margin:0;">One full-time coordinator, certified on our home service playbook before they ever touch your business. We employ them, so you get the output without the employer liability. If the hire isn't working, we replace them free for as long as they're with you.</p>
-      </div>
-
+    <div class="rv" style="text-align:center;margin-bottom:2.25rem;">
+      <p class="sec-eyebrow">Questions</p>
+      <h2 class="sec-h2" style="color:#0A2342;">Common questions</h2>
     </div>
 
-    <div class="rv" style="margin-top:2rem;background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.25);border-radius:12px;padding:1.5rem 1.75rem;">
-      <p style="font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C5A059;margin:0 0 .625rem;">What this is not</p>
-      <p style="font-size:.9375rem;color:rgba(248,247,243,.75);line-height:1.7;margin:0;">This isn't lead generation. We don't create demand and we won't pretend to. This converts the leads you already pay for. It's also not a virtual receptionist reading a script off a card &mdash; it's one dedicated coordinator who learns your services, your pricing, and your service area, and runs your front office.</p>
-    </div>
-
-    <div class="rv" style="text-align:center;margin-top:2.25rem;">
-      <button class="btn btn-accent" @click="applyOpen=true">
-        Book Your Free Lead-to-Job Diagnostic
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEES -->
-<!-- ⚠️ SAM DECISION PENDING. These three replace the single 30-Day Launch Guarantee from offer
-     doc §2.4, which said we deliberately do NOT guarantee revenue. The ROI guarantee below does
-     guarantee revenue. Three things still need defining before this is contractual copy:
-       1. When does the 7-day clock start — purchase date, or kickoff call?
-       2. What counts as "made your investment back," and who measures it? Upfront only, or
-          upfront plus recurring? Attribution to coordinator-handled calls needs a defined source.
-       3. "Until you do" is currently uncapped. The comparable SWS guarantee caps at 60 extra days.
-     Placeholder wording below is written to be honest and readable, not to be signed. -->
-<section style="background:#fff;padding:4.5rem 1.25rem;">
-  <div style="max-width:1000px;margin:0 auto;">
-
-    <div class="rv" style="text-align:center;margin-bottom:2.75rem;">
-      <p class="sec-eyebrow">Your Risk, Handled</p>
-      <h2 class="sec-h2" style="color:#0A2342;">Three guarantees, in plain English</h2>
-      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:560px;margin:0 auto;">You've been sold to before. So here's exactly what we put on the line, and exactly what happens if we don't hold up our end.</p>
-    </div>
-
-    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;">
-
-      <!-- 1. 7-Day Money-Back -->
-      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 3-6.7" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/><path d="M3 4v5h5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">7-Day Money-Back Guarantee</h3>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">Take the first week and make sure this is right for your business. If you decide it isn't, tell us any time in those seven days and we'll send back every dollar. You don't owe us a reason, and there's no exit call to sit through.</p>
+    <div class="rv" x-data="{ f: null }">
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===0 ? null : 0" :class="f===0?'open':''">
+          <span>Will my customers be able to tell?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===0" x-collapse><p>We hire for customer service experience and clear phone English, and every coordinator passes scored practice calls before they are placed with you. We review real call recordings in their first week and coach the same day. If you would rather start them on overflow and after hours calls before they take your main line, we set it up that way.</p></div>
       </div>
 
-      <!-- 2. ROI -->
-      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 18L10 11l4 4 6-8" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">Return On Investment Guarantee</h3>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">Your coordinator should pay for themselves out of the jobs they book. If you haven't made your investment back within 60 days, we don't walk away and we don't bill you again &mdash; we keep working with you for free until you have.</p>
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===1 ? null : 1" :class="f===1?'open':''">
+          <span>How does the guarantee work?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===1" x-collapse><p>We measure the revenue you win from the leads you are already paying for, against the baseline you give us before we start. If we have not brought you back at least double what you paid us, you do not pay for the service. You are also free to cancel inside the first seven days for any reason and we refund you the same day.</p></div>
       </div>
 
-      <!-- 3. Free Replacement -->
-      <div style="background:#F8F7F3;border:1px solid #E2DFDA;border-top:3px solid #C5A059;border-radius:12px;padding:1.75rem 1.5rem;">
-        <div style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#FDF6E3;border:1px solid rgba(197,160,89,.35);margin-bottom:1rem;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#C5A059" stroke-width="2"/><path d="M17 8h5M19.5 5.5v5" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3 style="font-size:1.1rem;font-weight:800;color:#0A2342;margin:0 0 .625rem;letter-spacing:-.01em;">Free Replacement Guarantee</h3>
-        <p style="font-size:.9375rem;color:#4A4840;line-height:1.7;margin:0;">If your coordinator isn't meeting your standard, that's not yours to fix or manage. Say the word and we replace them free. We keep certified coordinators on the bench, so the person stepping in is already trained and ready to go.</p>
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===2 ? null : 2" :class="f===2?'open':''">
+          <span>I already have an office manager. Is this replacing her?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===2" x-collapse><p>No, and it works considerably better when she is part of it. She keeps dispatch, the difficult customers, and the calls that need somebody who knows your business well. The coordinator takes the ringing phone and the follow up nobody currently has time for. Most office managers end up being the reason a company adds a second coordinator.</p></div>
       </div>
 
-    </div>
-
-    <p class="rv" style="font-size:.9375rem;color:#7A7870;line-height:1.7;margin:2rem auto 0;max-width:620px;text-align:center;">And here's what we won't do: promise you a close rate we don't control, or quote you a revenue number we made up to get you on a call.</p>
-
-    <div class="rv" style="text-align:center;margin-top:2.25rem;">
-      <button class="btn btn-accent" @click="applyOpen=true">
-        Book Your Free Lead-to-Job Diagnostic
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHO IT'S FOR / NOT FOR -->
-<section style="background:#F8F7F3;padding:4.5rem 1.25rem;border-top:1px solid #E2DFDA;">
-  <div style="max-width:900px;margin:0 auto;">
-    <div class="rv" style="text-align:center;margin-bottom:2.5rem;">
-      <p class="sec-eyebrow">Fit Check</p>
-      <h2 class="sec-h2" style="color:#0A2342;">This works for some companies and not others</h2>
-      <p style="font-size:1rem;color:#4A4840;line-height:1.7;max-width:540px;margin:0 auto;">We'd rather tell you now than waste your time on a call.</p>
-    </div>
-    <div class="rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
-
-      <div style="background:#fff;border:1px solid #E2DFDA;border-top:3px solid #1F9D55;border-radius:12px;padding:1.75rem 1.5rem;">
-        <h3 style="font-size:1.05rem;font-weight:800;color:#0A2342;margin:0 0 1rem;">It's a fit if&hellip;</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You're doing $1M or more a year &mdash; roughly $85k a month or better.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You already run on ServiceTitan, Housecall Pro, or Jobber.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You've got inbound leads coming in &mdash; LSA, Google Ads, Angi, or heavy repeat and referral.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M1 7l4 4L13 3" stroke="#1F9D55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You've got techs in the field and you know calls are getting missed.</span></li>
-        </ul>
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===3 ? null : 3" :class="f===3?'open':''">
+          <span>What if the person is not the right fit?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===3" x-collapse><p>You tell us and we replace them at no cost, for as long as they are with you. We keep trained coordinators on the bench, so you are not waiting weeks while we recruit. Managing them is our responsibility, not yours.</p></div>
       </div>
 
-      <div style="background:#fff;border:1px solid #E2DFDA;border-top:3px solid #C44536;border-radius:12px;padding:1.75rem 1.5rem;">
-        <h3 style="font-size:1.05rem;font-weight:800;color:#0A2342;margin:0 0 1rem;">It's not a fit if&hellip;</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem;">
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You're under $1M or running a single truck.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You're still on paper with no field service software.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>What you actually need is more leads. That's a different problem and we're not the ones to fix it.</span></li>
-          <li style="display:flex;gap:.625rem;font-size:.9375rem;color:#4A4840;line-height:1.6;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:4px;"><path d="M2 2l10 10M12 2L2 12" stroke="#C44536" stroke-width="1.9" stroke-linecap="round"/></svg><span>You want somebody cold calling homeowners. We don't do that.</span></li>
-        </ul>
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===4 ? null : 4" :class="f===4?'open':''">
+          <span>Do I have to change the software I run on?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===4" x-collapse><p>No. We build everything inside what you already use, whether that is ServiceTitan, Housecall Pro, Jobber or something else. If you are not on a system yet, we provide one and route your website, your ads and your lead sources into it. That takes us an afternoon and costs you nothing extra.</p></div>
       </div>
 
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===5 ? null : 5" :class="f===5?'open':''">
+          <span>Is this an answering service?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===5" x-collapse><p>No. An answering service reads your company name off a card and takes a message. This is one person who learns your services, your pricing and your service area, then books the job and follows up on the quote afterwards. They work for you full time rather than being shared across dozens of companies.</p></div>
+      </div>
+
+      <div class="faq">
+        <button type="button" class="faq-q" @click="f = f===6 ? null : 6" :class="f===6?'open':''">
+          <span>Who is this not for?</span>
+          <svg class="faq-ico" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" x-show="f===6" x-collapse><p>Single truck operations, companies under roughly a million a year, and anyone who wants outbound cold calling, which we do not do. If your phone genuinely is not ringing, you need a marketing company before you need us, and we will tell you that on the call rather than sell you anyway.</p></div>
+      </div>
     </div>
 
     <div class="rv" style="text-align:center;margin-top:2.75rem;">
@@ -554,14 +461,14 @@
         Book Your Free Lead-to-Job Diagnostic
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <p style="font-size:.8125rem;color:#7A7870;margin:.875rem 0 0;">Takes 30 seconds. If you're not a fit, we'll tell you on the call.</p>
+      <p style="font-size:.8125rem;color:#7A7870;margin:.875rem 0 0;">Takes 30 seconds. If you&rsquo;re not a fit, we&rsquo;ll tell you on the call.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
      POPUP APPLICATION OVERLAY
-     Step 1: Contact info — ALWAYS FIRST
+     Step 1: Contact info ALWAYS FIRST
      Steps 2-4: The three hard qualifiers from the ICP
      Step 5: Calendar embed
      ═══════════════════════════════════════════════════ -->
@@ -602,7 +509,7 @@
       </div>
     </div>
 
-    <!-- STEP 2: Revenue — hard qualifier #1 -->
+    <!-- STEP 2: Revenue hard qualifier #1 -->
     <div x-show="formStep===2" style="padding:2rem 2rem 2.5rem;">
       <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 2 of 4</p>
       <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">Roughly what are you doing in monthly revenue?</h2>
@@ -614,7 +521,7 @@
       </div>
     </div>
 
-    <!-- STEP 3: FSM software — the single most important filter -->
+    <!-- STEP 3: FSM software the single most important filter -->
     <div x-show="formStep===3" style="padding:2rem 2rem 2.5rem;">
       <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 3 of 4</p>
       <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">What software do you run your jobs on?</h2>
@@ -627,7 +534,7 @@
       </div>
     </div>
 
-    <!-- STEP 4: Lead flow — hard qualifier #3 -->
+    <!-- STEP 4: Lead flow hard qualifier #3 -->
     <div x-show="formStep===4" style="padding:2rem 2rem 2.5rem;">
       <p style="font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A6D2F;margin:0 0 .5rem;">Step 4 of 4 &mdash; Almost there</p>
       <h2 style="font-size:1.25rem;font-weight:800;color:#0A2342;margin:0 0 1.5rem;">Where do your calls come from today?</h2>
@@ -639,7 +546,7 @@
       </div>
     </div>
 
-    <!-- STEP 5: Booking — custom calendar, no third-party embed -->
+    <!-- STEP 5: Booking custom calendar, no third-party embed -->
     <div x-show="formStep===5" style="padding:1.75rem 1.75rem 2rem;">
 
       <!-- Picker (hidden once booked) -->
@@ -754,7 +661,7 @@
      FOOTER
      ═══════════════════════════════════════════════════ -->
 <footer style="background:#0A2342;padding:3rem 1.25rem;text-align:center;">
-  <!-- NOTE: this logo PNG has no alpha channel — its background is solid white. It needs a light
+  <!-- NOTE: this logo PNG has no alpha channel its background is solid white. It needs a light
        chip behind it on any dark surface. Swap for a transparent PNG/SVG if the client has one. -->
   <div style="width:72px;height:72px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto .875rem;overflow:hidden;">
     <img src="https://assets.cdn.filesafe.space/HllUVzV8V6VFH4nUuq4W/media/6997726b8d5b5a7d548bdb90.png" alt="Five Star Assistants" style="width:100%;height:100%;object-fit:contain;display:block;" />
@@ -780,7 +687,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Mobile sticky CTA — show after hero scrolls out
+// Mobile sticky CTA show after hero scrolls out
 const mobCta = document.getElementById('mob-cta');
 if (mobCta) {
   const hero = document.querySelector('section');
